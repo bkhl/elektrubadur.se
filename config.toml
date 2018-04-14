@@ -1,0 +1,11 @@
+title = "Elektrubadur"
+description = "Personal web page of Björn Lindström"
+base_url = "https://elektrubadur.se"
+compile_sass = true
+highlight_code = true
+generate_rss = true
+generate_tags_pages = true
+generate_categories_pages = true
+
+[extra.author]
+name = "Björn Lindström"
