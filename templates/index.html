@@ -18,7 +18,7 @@
             <h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
              <time class="published" datetime="{{ page.date }}">{{ page.date | date(format="%B %e, %Y") }}</time>
         </header>
-        {{ page.content | safe }}
+        {{ page.summary | safe }}
         </article>
     {% endfor %}
 {% endblock content %}
