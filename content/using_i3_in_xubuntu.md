@@ -14,7 +14,7 @@ I have used this with Xubuntu 17.04 and 17.10.
 # Step 1: Install i3
 
 ```
-# apt install i3-wm i3status</pre>
+# apt install i3-wm i3status
 ```
 
 # Step 2: Set window manager
@@ -23,7 +23,7 @@ In the XFCE *Whisker* menu, open up *Settings/Session and Startup*, and select t
 
 ![Xubuntu i3 session settings](/images/using_i3_in_xubuntu/xubuntu_i3_session_settings.png)
 
-Don't forget to click *Save Session*>.
+Don't forget to click *Save Session*.
 
 You could leave the panel enabled to use it along with i3, but I prefer to just use the i3 bar.
 

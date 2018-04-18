@@ -1,26 +1,61 @@
-@import "fonts.scss"
-
 body
-  font-family: "Merriweather", serif
+  font-family: "Open Sans", sans-serif
+  max-width: 40em
+  margin-left: auto
+  margin-right: auto
 
 h1, h2, h3, h4, h5, h6
-  font-family: "Archivo Narrow", sans-serif
+  font-family: 'Oswald', sans-serif
 
-#sidebar
-  height: 100%
-  width: 180px
-  position: fixed
-  z-index: 1
-  top: 0
-  left: 0
+pre
+  font-family: 'Inconsolata', monospace;
+  font-size: 100%
+
+img
+  max-width: 100%
+
+a
+  color: blue
+  text-decoration: none
+
+a:hover
   color: white
-  background-color: #59260B
-  overflow-x: hidden
-  padding-top: 20px
+  background: blue
 
-#sidebar h1
-  font-size: 3.25rem
+body > header
+  background: black
+  color: white
+  padding: 1em 1em 3em 2em
+  text-align: center
 
-#content
-  margin-left: 180px
-  padding: 0px 10px
+body > header h1
+  overflow-wrap: break-word
+  font-size: 5rem
+
+body > header a
+  color: white
+  background: black
+  text-decoration: none
+
+body > header a:hover
+  color: white
+  background: black
+  border-bottom: 10pt solid blue
+
+article > header > h1 a
+  text-decoration: none
+  color: black
+  font-size: 2rem
+
+article > header > h1 a:hover
+  color: black
+  background: white
+  border-bottom: 10pt solid blue
+
+article > pre
+  margin-left: 2em
+  padding: 1em
+
+time
+  font-style: italic
+  font-size: smaller
