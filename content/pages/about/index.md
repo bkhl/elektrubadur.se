@@ -1,8 +1,10 @@
 +++
 title = "About"
+path = "about"
+template = "undated_page.html"
 +++
 
-![West]({filename}/images/west.jpeg)
+![West](west.jpeg)
 
 I am Björn Lindström, professional systems engineer and amateur photographer living in Bangkok. I used to live in Uppsala, Sweden. If you wish to contact me, send an e-mail to <bkhl@elektrubadur.se>.
 

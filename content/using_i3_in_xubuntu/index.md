@@ -7,7 +7,7 @@ Here are the steps I've taken to set up the [i3](https://i3wm.org/) window manag
 
 I have used this with Xubuntu 17.04 and 17.10.
 
-![Xubuntu i3 desktop](/images/using_i3_in_xubuntu/xubuntu_i3.png)
+![Xubuntu i3 desktop](xubuntu_i3.png)
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ I have used this with Xubuntu 17.04 and 17.10.
 
 In the XFCE *Whisker* menu, open up *Settings/Session and Startup*, and select the Session tab. Set Restart style for *xfwm4*, *xfce4-panel* and *xfdesktop* to *Never*.
 
-![Xubuntu i3 session settings](/images/using_i3_in_xubuntu/xubuntu_i3_session_settings.png)
+![Xubuntu i3 session settings](xubuntu_i3_session_settings.png)
 
 Don't forget to click *Save Session*.
 
@@ -29,7 +29,7 @@ You could leave the panel enabled to use it along with i3, but I prefer to just 
 
 Then go to the *Application Autostart* tab, and click the *Add* button. Create a startup entry for i3 with the command `/usr/bin/i3`.
 
-![Xubuntu i3 autostart settings](/images/using_i3_in_xubuntu/xubuntu_i3_autostart_settings.png)
+![Xubuntu i3 autostart settings](xubuntu_i3_autostart_settings.png)
 
 # Step 3: Log in again
 

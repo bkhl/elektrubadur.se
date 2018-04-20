@@ -7,8 +7,10 @@
 <header>
     <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
     <p>{{ config.description }}</p>
+    <nav>
+        <a href="/about/">About</a>
+    </nav>
 </header>
-<nav/>
 {% block content %}
     {% for page in paginator.pages %}
         <article class="post">
