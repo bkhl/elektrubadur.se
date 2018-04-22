@@ -1,8 +1,13 @@
+// Global
+
 body
   font-family: "Open Sans", sans-serif
-  max-width: 40em
+  max-width: 40rem
   margin-left: auto
   margin-right: auto
+
+
+// General markup styling
 
 h1, h2, h3, h4, h5, h6
   font-family: 'Oswald', sans-serif
@@ -19,45 +24,92 @@ a
   text-decoration: none
 
 a:hover
+  color: blue
+  background: white
+  border-bottom: .3em solid blue
+time
+  font-style: italic
+  font-size: smaller
+
+
+// General structural elements
+
+footer
   color: white
-  background: blue
+  background: black
+  line-height: 3em
+
+footer:before
+  padding-top: 10rem
+
+footer > .column
+  float: left
+  vertical-align: middle
+  min-height: 1em
+  text-align: center
+
+footer > .column20
+  width: 20%
+
+footer > .column50
+  width: 50%
+
+footer .page-number
+  font-family: 'Oswald', sans-serif
+  font-size: 1.5em
+  text-align: center
+
+footer:after
+  content: ''
+  display: table
+  clear: both
+
+footer a, footer a:hover
+  color: inherit
+  background: inherit
+  text-decoration: none
+  margin: 0 1em 0 1em
+
+
+// Site header
 
 body > header
   background: black
   color: white
-  padding: 1em 1em 3em 2em
+  padding: 1rem 1rem 3rem 2rem
   text-align: center
 
 body > header h1
   overflow-wrap: break-word
   font-size: 5rem
 
-body > header a
+body > header p
+  font-style: italic
+
+body > header a, body > header a:hover
   color: inherit
   background: inherit
   text-decoration: none
-
-body > header a:hover
-  color: white
-  background: black
-  border-bottom: 10pt solid blue
 
 body > header > nav
   color: white
   background: black
   text-align: left
-  padding: 1em 1em 1em 1em
+  padding: 1rem 1rem 1rem 1rem
 
 body > header > nav > a
-  font-weight: bold
   color: inherit
   background: inherit
-  padding: 0 0 0 0
+  padding: .5em .5em .5em .5em
+  border: 1px solid white
 
-body > header > nav > a:hover
-  padding: 0 0 0 0
 
-article> header> h1
+// Articles
+
+article
+  padding-bottom: 1rem
+
+article > header> h1
   font-size: 2rem
 
 article > header > h1 a
@@ -67,12 +119,7 @@ article > header > h1 a
 article > header > h1 a:hover
   color: inherit
   background: inherit
-  border-bottom: 10pt solid blue
 
 article > pre
-  margin-left: 2em
-  padding: 1em
-
-time
-  font-style: italic
-  font-size: smaller
+  margin-left: 2rem
+  padding: 1rem

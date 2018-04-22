@@ -7,13 +7,17 @@
             <time class="published" datetime="{{ page.date }}">{{ page.date | date(format="%B %e, %Y") }}</time>
         </header>
         {{ page.content | safe }}
-        <footer>
-            {% if page.previous %}
-                <a href="{{ page.previous.permalink }}">← {{ page.previous.title }}</a>
-            {% endif %}
-            {% if page.next %}
-                <a href="{{ page.next.permalink }}">{{ page.next.title }} ⇒</a>
-            {% endif %}
-        </footer>
     </article>
+    <footer>
+        <div class="column column50">
+            {% if page.previous %}
+                <a href="{{ page.previous.permalink }}">⇐&nbsp;{{ page.previous.title }}</a>
+            {% endif %}
+        </div>
+        <div class="column column50">
+            {% if page.next %}
+                <a href="{{ page.next.permalink }}">{{ page.next.title }}&nbsp;⇒</a>
+            {% endif %}
+        </div>
+    </footer>
 {% endblock content %}

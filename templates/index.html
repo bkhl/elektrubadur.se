@@ -26,18 +26,29 @@
         </article>
     {% endfor %}
     <footer>
-        {% set page_count = paginator.pages | length %}
-        {% if paginator.current_index > 1 %}
-            <a href="{{ paginator.first }}">⇤ first</a>
-            <a href="{{ paginator.previous }}">← previous</a>
-        {% endif %}
-        {% if page_count > 1 %}
-            {{ paginator.current_index }}
-        {% endif %}
-        {% if paginator.current_index < page_count %}
-            <a href="{{ paginator.next }}">next →</a>
-            <a href="{{ paginator.last }}">last ⇥</a>
-        {% endif %}
+        <div class="column column20">
+            {% if paginator.previous %}
+                <a href="{{ paginator.first }}">⇚&nbsp;first</a>
+            {% endif %}
+        </div>
+        <div class="column column20">
+            {% if paginator.previous %}
+                <a href="{{ paginator.previous }}">⇐&nbsp;previous</a>
+            {% endif %}
+        </div>
+        <div class="column column20 page-number">
+            {{ paginator.current_index }}/{{ paginator.pagers | length }}
+        </div>
+        <div class="column column20">
+            {% if paginator.next %}
+                <a href="{{ paginator.next }}">next&nbsp;⇒</a>
+            {% endif %}
+        </div>
+        <div class="column column20">
+            {% if paginator.next %}
+                <a href="{{ paginator.last }}">last&nbsp;⇛</a>
+            {% endif %}
+        </div>
     </footer>
 {% endblock content %}
 <footer/>
