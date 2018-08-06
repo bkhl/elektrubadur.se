@@ -1,0 +1,3 @@
+[submodule "themes/brutal-gutenberg"]
+	path = themes/brutal-gutenberg
+	url = https://github.com/bkhl/brutal-gutenberg.git
