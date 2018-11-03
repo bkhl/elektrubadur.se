@@ -1,3 +1,4 @@
-[submodule "themes/brutal-gutenberg"]
-	path = themes/brutal-gutenberg
-	url = git@github.com:bkhl/brutal-gutenberg.git
+[submodule "themes/plain-gutenberg"]
+	path = themes/plain-gutenberg
+	url = git@github.com:bkhl/plain-gutenberg.git
+	branch = master
