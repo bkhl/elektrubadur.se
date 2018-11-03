@@ -5,6 +5,9 @@ theme = "plain-gutenberg"
 highlight_code = false
 generate_rss = true
 generate_tags_pages = true
+taxonomies = [
+    { name = "categories", rss = true },
+]
 
 [extra.author]
 name = "Björn Lindström"
