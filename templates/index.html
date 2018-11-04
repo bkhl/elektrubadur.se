@@ -1,0 +1,15 @@
+{% extends "plain-gutenberg/templates/index.html" %}
+
+{% block headers %}
+<meta name="description" content="{{ config.description }}"/>
+<meta name="author" content="{{ config.extra.author.name }}"/>
+
+<link href="/style.css" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96"/>
+<link href="/favicon-192x192.png" rel="icon" sizes="192x192"/>
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32"/>
+{% endblock headers %}
+
