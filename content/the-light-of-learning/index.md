@@ -1,6 +1,6 @@
 +++
 title = "The Light of Learning"
-date = 2010-09-30
+date = 2010-09-03
 
 [taxonomies]
 categories = ["Photos"]
