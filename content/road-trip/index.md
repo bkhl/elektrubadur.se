@@ -7,3 +7,7 @@ categories = ["Photos"]
 +++
 
 ![Road Trip](road-trip.jpeg)
+
+<!-- more -->
+
+![Road Trip in Rain](road-trip-in-rain.jpeg)
