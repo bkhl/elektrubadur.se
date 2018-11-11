@@ -6,6 +6,6 @@ date = 2010-12-06
 categories = ["Photos"]
 +++
 
-![Family Portrait](family-portrait.jpeg)
+{{ snapshot(path="family-portrait/family-portrait.jpeg" description="Family Portrait")}}
 
 A family portrait I made for a couple of friends.

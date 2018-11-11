@@ -6,6 +6,6 @@ date = 2017-09-15
 categories = ["Photos"]
 +++
 
-![Traffic](traffic.jpeg)
+{{ snapshot(path="traffic/traffic.jpeg" description="Traffic")}}
 
 Lower Parel, Mumbai.

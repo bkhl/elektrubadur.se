@@ -6,6 +6,6 @@ date = 2010-10-23
 categories = ["Photos"]
 +++
 
-![Duet](duet.jpeg)
+{{ snapshot(path="duet/duet.jpeg" description="Duet")}}
 
 A playful portrait of a friend meant for advertising her music business.

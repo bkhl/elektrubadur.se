@@ -6,7 +6,7 @@ date = 2010-08-04
 categories = ["Photos"]
 +++
 
-![Sales Pitch](sales-pitch.jpeg)
+{{ snapshot(path="sales-pitch/sales-pitch.jpeg" description="Sales Pitch")}}
 
 My friend Zrajm wants to sell you his [pocket dictionary of
 Klingon](http://klingonska.org/dict/). Clearly a must have for anyone with

@@ -6,6 +6,6 @@ date = 2010-08-18
 categories = ["Photos"]
 +++
 
-![Flowering Head](flowering-head.jpeg)
+{{ snapshot(path="flowering-head/flowering-head.jpeg" description="Flowering Head")}}
 
 Man and flower in the Uppsala botanical garden.

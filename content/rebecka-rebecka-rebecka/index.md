@@ -6,6 +6,6 @@ date = 2010-09-14
 categories = ["Photos"]
 +++
 
-![Rebecka, Rebecka, Rebecka](rebecka-rebecka-rebecka.jpeg)
+{{ snapshot(path="rebecka-rebecka-rebecka/rebecka-rebecka-rebecka.jpeg" description="Rebecka, Rebecka, Rebecka")}}
 
 Another composite with a small acquaintance.

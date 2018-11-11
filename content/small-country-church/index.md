@@ -6,6 +6,6 @@ date = 2010-08-25
 categories = ["Photos"]
 +++
 
-![Small Country Church](small-country-church.jpeg)
+{{ snapshot(path="small-country-church/small-country-church.jpeg" description="Small Country Church")}}
 
 The 15th century church of Ragunda parish, Jämtland, through an aperture in its bell tower.

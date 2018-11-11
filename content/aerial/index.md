@@ -6,6 +6,6 @@ date = 2010-09-16
 categories = ["Photos"]
 +++
 
-![Aerial](aerial.jpeg)
+{{ snapshot(path="aerial/aerial.jpeg" description="Aerial")}}
 
 Jackdaws flocking at dusk.

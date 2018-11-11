@@ -6,6 +6,6 @@ date = 2010-08-07
 categories = ["Photos"]
 +++
 
-![Harvest](harvest.jpeg)
+{{ snapshot(path="harvest/harvest.jpeg" description="Harvest")}}
 
 The bumblebees favour these blue flowers in Uppsala's Botanical Garden.

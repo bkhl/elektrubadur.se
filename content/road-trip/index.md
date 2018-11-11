@@ -6,8 +6,8 @@ date = 2017-03-18
 categories = ["Photos"]
 +++
 
-![Road Trip](road-trip.jpeg)
+{{ snapshot(path="road-trip/road-trip.jpeg" description="Road Trip")}}
 
 <!-- more -->
 
-![Road Trip in Rain](road-trip-in-rain.jpeg)
+{{ snapshot(path="road-trip/road-trip-in-rain.jpeg" description="Road Trip in Rain")}}

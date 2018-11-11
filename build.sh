@@ -22,3 +22,9 @@ for xml_file in public/**/*.xml; do
         --encode 'utf-8' \
         "$xml_file" | sponge "$xml_file"
 done
+
+# Replace URLs for local display
+find public \
+    -type f \
+    -name '*.html' \
+    -exec sed -i 's@https://elektrubadur\.se@/home/bnl/Development/elektrubadur.se/public@g' '{}' ';'

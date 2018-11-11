@@ -6,6 +6,6 @@ date = 2010-11-11
 categories = ["Photos"]
 +++
 
-![Giant](giant.jpeg)
+{{ snapshot(path="giant/giant.jpeg" description="Giant")}}
 
 I photographed this river valley on my way home from Jämtland, a couple of months ago.

@@ -6,4 +6,4 @@ date = 2017-04-07
 categories = ["Photos"]
 +++
 
-![Bat Yam Beach](bat-yam-beach.jpeg)
+{{ snapshot(path="bat-yam-beach/bat-yam-beach.jpeg" description="Bat Yam Beach")}}

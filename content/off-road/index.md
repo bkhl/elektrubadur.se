@@ -6,6 +6,6 @@ date = 2010-09-11
 categories = ["Photos"]
 +++
 
-![Off-road](off-road.jpeg)
+{{ snapshot(path="off-road/off-road.jpeg" description="Off-road")}}
 
 Me and a sporty French car on a field outside of Uppsala.

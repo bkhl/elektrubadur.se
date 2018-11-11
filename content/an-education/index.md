@@ -6,6 +6,6 @@ date = 2010-09-17
 categories = ["Photos"]
 +++
 
-![An Education](an-education.jpeg)
+{{ snapshot(path="an-education/an-education.jpeg" description="An Education")}}
 
 Friend's daughter reading an improving comic book.

@@ -6,4 +6,4 @@ date = 2015-11-26
 categories = ["Photos"]
 +++
 
-![Loi Krathong](loi-krathong.jpeg)
+{{ snapshot(path="loi-krathong/loi-krathong.jpeg" description="Loi Krathong")}}

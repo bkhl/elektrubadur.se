@@ -6,4 +6,4 @@ date = 2015-03-12
 categories = ["Photos"]
 +++
 
-![Soekarno–Hatta](soekarno-hatta.jpeg)
+{{ snapshot(path="soekarno-hatta/soekarno-hatta.jpeg" description="Soekarno–Hatta")}}

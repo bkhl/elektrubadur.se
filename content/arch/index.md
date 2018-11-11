@@ -6,6 +6,6 @@ date = 2010-07-28
 categories = ["Photos"]
 +++
 
-![Arch](arch.jpeg)
+{{ snapshot(path="arch/arch.jpeg" description="Arch")}}
 
 I did this long hand held capture using the technique of zooming in during the exposure.

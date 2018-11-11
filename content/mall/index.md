@@ -6,8 +6,8 @@ date = 2015-02-14
 categories = ["Photos"]
 +++
 
-![Mall](mall.jpeg)
+{{ snapshot(path="mall/mall.jpeg" description="Mall")}}
 
 <!-- more -->
 
-![Another Mall](another-mall.jpeg)
+{{ snapshot(path="mall/another-mall.jpeg" description="Another Mall")}}
