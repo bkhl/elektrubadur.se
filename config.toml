@@ -1,7 +1,7 @@
 title = "Elektrubadur"
 description = "Personal web page of Björn Lindström"
 base_url = "https://elektrubadur.se"
-theme = "plain-gutenberg"
+theme = "elektrubadur"
 highlight_code = false
 generate_rss = true
 generate_tags_pages = true

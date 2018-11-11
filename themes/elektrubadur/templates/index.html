@@ -1,0 +1,63 @@
+{% import "post_macros.html" as post_macros %}
+
+<!doctype html>
+<html lang=en>
+<head>
+    <meta charset="utf-8"/>
+
+    <meta name="description" content="{{ config.description }}"/>
+    <meta name="author" content="{{ config.extra.author.name }}"/>
+
+    <link href="{{ get_url(path="style.css", trailing_slash=false) }}" rel="stylesheet"/>
+
+    <link href="{{ get_url(path="favicon.ico", trailing_slash=false) }}" rel="icon"/>
+    <link href="{{ get_url(path="favicon-16x16.png", trailing_slash=false) }}" rel="icon" sizes="16x16"/>
+    <link href="{{ get_url(path="favicon-96x96.png", trailing_slash=false) }}" rel="icon" sizes="96x96"/>
+    <link href="{{ get_url(path="favicon-192x192.png", trailing_slash=false) }}" rel="icon" sizes="192x192"/>
+    <link href="{{ get_url(path="favicon-32x32.png", trailing_slash=false) }}" rel="icon" sizes="32x32"/>
+
+    {% if page %}
+        <title>{{ page.title }} – {{ config.title }}</title>
+    {% elif section and section.title %}
+        <title>{{ section.title }} – {{ config.title }}</title>
+    {% else %}
+        <title>{{ config.title }}</title>
+    {% endif %}
+
+    {% if config.generate_rss %}
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"/>
+    {% endif %}
+</head>
+<body>
+<header>
+    <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
+    <p>{{ config.description }}</p>
+    <nav>
+        <a href="/about/">About</a>
+    </nav>
+</header>
+{% block content %}
+    {% for page in paginator.pages %}
+        {{ post_macros::page_in_list(page=page) }}
+    {% endfor %}
+    <footer>
+        {% if paginator.previous %}
+            <a href="{{ paginator.first }}">first</a>
+        {% endif %}
+        {% if paginator.previous %}
+            <a href="{{ paginator.previous }}">previous</a>
+        {% endif %}
+        {% if paginator.pagers | length > 1 %}
+            {{ paginator.current_index }}/{{ paginator.pagers | length }}
+        {% endif %}
+        {% if paginator.next %}
+            <a href="{{ paginator.next }}">next</a>
+        {% endif %}
+        {% if paginator.next %}
+            <a href="{{ paginator.last }}">last</a>
+        {% endif %}
+    </footer>
+{% endblock content %}
+<footer/>
+</body>
+</html>

@@ -1,0 +1,12 @@
+name = "elektrubadur-gutenberg"
+description = "Theme for elektrubadur.se"
+license = ""
+homepage = ""
+min_version = "0.4.2"
+demo = "https://elektrubadur.se"
+
+[extra]
+
+[author]
+name = "Björn Lindström"
+homepage = "https://elektrubadur.se"

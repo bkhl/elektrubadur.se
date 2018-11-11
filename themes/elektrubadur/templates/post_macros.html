@@ -1,0 +1,27 @@
+{% macro dateline(page) %}
+<p>
+    {% if page.taxonomies.categories %}
+        {% for category in page.taxonomies.categories %}
+            <a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">{{ category }}</a>
+            {%- if loop.last %} — {% else %}, {% endif %}
+        {% endfor %}
+    {% endif %}
+    <time datetime="{{ page.date }}">{{ page.date | date(format="%B %e, %Y") }}</time>
+</p>
+{% endmacro dateline %}
+
+{% macro page_in_list(page) %}
+    <article>
+        <header>
+            <h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
+            {{ post_macros::dateline(page=page) }}
+        </header>
+        {% if page.summary %}
+            {{ page.summary | safe }}
+
+            <p><a href="{{ page.permalink }}">More</a></p>
+        {% else %}
+            {{ page.content | safe }}
+        {% endif %}
+    </article>
+{% endmacro page_in_list %}
