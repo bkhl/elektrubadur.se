@@ -41,23 +41,26 @@
         {{ post_macros::page_in_list(page=page) }}
     {% endfor %}
     <footer>
-        {% if paginator.previous %}
-            <a href="{{ paginator.first }}">first</a>
-        {% endif %}
-        {% if paginator.previous %}
-            <a href="{{ paginator.previous }}">previous</a>
-        {% endif %}
-        {% if paginator.pagers | length > 1 %}
-            {{ paginator.current_index }}/{{ paginator.pagers | length }}
-        {% endif %}
-        {% if paginator.next %}
-            <a href="{{ paginator.next }}">next</a>
-        {% endif %}
-        {% if paginator.next %}
-            <a href="{{ paginator.last }}">last</a>
-        {% endif %}
+        <p id="pagenumber">
+            {% if paginator.pagers | length > 1 %}
+                {{ paginator.current_index }}/{{ paginator.pagers | length }}
+            {% endif %}
+        </p>
+         <p>
+            {% if paginator.previous %}
+                <a href="{{ paginator.first }}">← Front</a>
+            {% endif %}
+            {% if paginator.previous and paginator.previous != paginator.first %}
+                <a href="{{ paginator.previous }}">← Previous</a>
+            {% endif %}
+            {% if paginator.next and paginator.next != paginator.last %}
+                <a href="{{ paginator.next }}">Next →</a>
+            {% endif %}
+            {% if paginator.next %}
+                <a href="{{ paginator.last }}">Last →</a>
+            {% endif %}
+        </p>
     </footer>
 {% endblock content %}
-<footer/>
 </body>
 </html>
