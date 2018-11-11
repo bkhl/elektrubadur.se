@@ -33,7 +33,9 @@
     <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
     <p>{{ config.description }}</p>
     <nav>
-        <a href="/about/">About</a>
+        {% block navigation %}
+            <a href="{{ get_url(path="about") }}">About</a>
+        {% endblock navigation %}
     </nav>
 </header>
 {% block content %}
