@@ -44,8 +44,8 @@
     {% endfor %}
     <footer>
         <p id="pagenumber">
-            {% if paginator.pagers | length > 1 %}
-                {{ paginator.current_index }}/{{ paginator.pagers | length }}
+            {% if paginator.number_pagers > 1 %}
+                {{ paginator.current_index }}/{{ paginator.number_pagers }}
             {% endif %}
         </p>
          <p>

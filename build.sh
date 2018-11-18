@@ -5,7 +5,7 @@ set -e
 shopt -s globstar
 
 # Build
-gutenberg build
+zola build
 
 # Clean HTML
 tidy -config tidy.conf public/**/*.html || exit_code=$?
