@@ -2,7 +2,7 @@ name = "elektrubadur-gutenberg"
 description = "Theme for elektrubadur.se"
 license = ""
 homepage = ""
-min_version = "0.4.2"
+min_version = "0.5.0"
 demo = "https://elektrubadur.se"
 
 [extra]
