@@ -14,22 +14,13 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   enable-background="new"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="favicon.svg">
+   sodipodi:docname="favicon.svg"
+   inkscape:export-filename="/home/bnl/Desktop/favicon-48x48.png"
+   inkscape:export-xdpi="6.7800002"
+   inkscape:export-ydpi="6.7800002">
   <defs
-     id="defs2">
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter847">
-      <feBlend
-         inkscape:collect="always"
-         mode="color-burn"
-         in2="BackgroundImage"
-         id="feBlend849" />
-    </filter>
-  </defs>
+     id="defs2" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -37,17 +28,24 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="286.59245"
-     inkscape:cy="353.12244"
+     inkscape:zoom="0.35"
+     inkscape:cx="-122.85714"
+     inkscape:cy="564.9323"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
+     showguides="false"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0"
      inkscape:window-width="1366"
      inkscape:window-height="713"
      inkscape:window-x="0"
      inkscape:window-y="27"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4558" />
+  </sodipodi:namedview>
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -56,7 +54,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -65,21 +63,16 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#a05a2c;fill-opacity:1;stroke-width:0.26458332"
-       id="rect4569"
-       width="167.44345"
-       height="167.44345"
-       x="17.386906"
-       y="83.821426"
-       inkscape:export-xdpi="7.2800002"
-       inkscape:export-ydpi="7.2800002" />
+       style="fill:#835e37;fill-opacity:1;stroke-width:0.23852588"
+       id="rect823"
+       width="179.91667"
+       height="179.91667"
+       x="15.119047"
+       y="55.095226" />
     <path
        style="fill:#000000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 169.71131,228.20834 34.017856,232.74405 37.419642,104.23214 H 160.63988 l -7.9375,38.1756 -75.293239,-6.4256 -1.888044,20.8827 H 117.5506 l -0.26727,26.82615 -52.306154,-6.07449 16.287705,26.40136 65.875309,-9.75141 z"
-       id="path815"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccccccc"
-       inkscape:export-xdpi="7.2800002"
-       inkscape:export-ydpi="7.2800002" />
+       d="M 184.45238,65.678571 H 25.702381 V 224.42857 H 184.45238 v -31.75 h -127 v -31.75 h 63.5 v -31.75 h -63.5 V 97.428571 h 127 v -31.75"
+       id="path4560"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
