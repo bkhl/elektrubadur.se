@@ -1,8 +1,4 @@
-$darkliver: rgba(84, 73, 75, 1);
-$trolleygrey: rgba(126, 130, 135, 1);
-$pale: rgba(220, 171, 107, 1);
 $lightbrown: rgba(131, 94, 55, 1);
-$darkbrown: rgba(106, 56, 31, 1);
 
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=latin-ext');
 
@@ -18,7 +14,7 @@ header, footer {
 }
 
 article {
-    background: $pale;
+    background: white;
     padding: 1rem;
     margin-bottom: 1rem;
 }
