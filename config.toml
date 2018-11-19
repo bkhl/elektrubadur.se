@@ -1,6 +1,6 @@
 title = "Elektrubadur"
 description = "Personal web page of Björn Lindström"
-base_url = "https://elektrubadur.se"
+base_url = "__PREFIX__"
 theme = "elektrubadur"
 highlight_code = false
 generate_rss = true
