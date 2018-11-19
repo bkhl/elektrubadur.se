@@ -41,7 +41,7 @@ class Builder(cli.Application):
 
     def main(self):
         if self.local_prefix:
-            self.prefix = str(local.cwd)
+            self.prefix = "file://" + str(local.cwd / "public")
         else:
             self.prefix = "http://elektrubadur.se"
 
