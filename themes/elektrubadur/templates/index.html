@@ -37,6 +37,8 @@
             <a href="{{ get_url(path="about") }}">About</a>
         {% endblock navigation %}
     </nav>
+    {% block pageheader %}
+    {% endblock pageheader %}
 </header>
 {% block content %}
     {% for page in paginator.pages %}
