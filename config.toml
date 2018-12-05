@@ -6,7 +6,7 @@ highlight_code = false
 generate_rss = true
 generate_tags_pages = true
 taxonomies = [
-    { name = "categories", rss = true },
+    { name = "categories", rss = true, paginate_by = 10 },
 ]
 
 [extra.author]

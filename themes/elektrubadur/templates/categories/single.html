@@ -1,13 +1,18 @@
 {% extends "index.html" %}
 {% import "post_macros.html" as post_macros %}
+{% import "navigation_macros.html" as navigation_macros %}
 
 {% block pageheader %}
     <h1>{{ term.name }}</h1>
 {% endblock pageheader %}
 
 {% block content %}
-
-    {% for page in term.pages %}
+    {% for page in paginator.pages %}
         {{ post_macros::page_in_list(page=page) }}
     {% endfor %}
+
+    <footer>
+         {{ navigation_macros::pager(paginator=paginator) }}
+    </footer>
 {% endblock content %}
+
