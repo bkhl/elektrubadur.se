@@ -1,13 +1,11 @@
 {% extends "index.html" %}
 
 {% block pageheader %}
-<h1>File not found: 404</h1>
+    <h1>File not found: 404</h1>
 {% endblock pageheader %}
 
 {% block content %}
-<article>
-    <p>Please try <a href="{{ get_url(path="", trailing_slash=false) }}">the front page</a>.</p>
-</article>
+    <article>
+        <p>Please try <a href="{{ get_url(path="", trailing_slash=false) }}">the front page</a>.</p>
+    </article>
 {% endblock content %}
-
-
