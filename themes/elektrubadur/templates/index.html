@@ -45,9 +45,18 @@
     {% for page in paginator.pages %}
         {{ post_macros::page_in_list(page=page) }}
     {% endfor %}
-    <footer>
-         {{ navigation_macros::pager(paginator=paginator) }}
-    </footer>
 {% endblock content %}
+
+{% block footer %}
+    <footer>
+        {% if paginator %}
+            {{ navigation_macros::pager(paginator=paginator) }}
+        {% elif page %}
+            {{ navigation_macros::before_and_after(page=page) }}
+        {% endif %}
+        {% block customfooter %}
+        {% endblock customfooter %}
+    </footer>
+{% endblock footer %}
 </body>
 </html>

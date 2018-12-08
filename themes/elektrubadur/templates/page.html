@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% import "post_macros.html" as post_macros %}
+{% import "navigation_macros.html" as navigation_macros %}
 
 {% block content %}
     <article>
@@ -9,16 +10,4 @@
         </header>
         {{ page.content | safe }}
     </article>
-    <footer>
-        <div>
-            {% if page.previous %}
-                <a href="{{ page.previous.permalink }}">⇐&nbsp;{{ page.previous.title }}</a>
-            {% endif %}
-        </div>
-        <div>
-            {% if page.next %}
-                <a href="{{ page.next.permalink }}">{{ page.next.title }}&nbsp;⇒</a>
-            {% endif %}
-        </div>
-    </footer>
 {% endblock content %}

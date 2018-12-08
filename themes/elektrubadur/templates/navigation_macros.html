@@ -20,3 +20,15 @@
         {% endif %}
     </p>
 {% endmacro pager %}
+
+{% macro before_and_after(page) %}
+    <p>
+        {% if page.earlier %}
+            <a href="{{ page.earlier.permalink }}">←&nbsp;{{ page.earlier.title }}</a>
+        {% endif %}
+        {% if page.later %}
+            <a href="{{ page.later.permalink }}">{{ page.later.title }}&nbsp;→</a>
+        {% endif %}
+    </p>
+{% endmacro before_and_after %}
+
