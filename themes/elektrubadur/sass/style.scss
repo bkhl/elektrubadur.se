@@ -62,8 +62,8 @@ body > footer {
     text-align: center;
 }
 
-body > footer a {
-    padding: 0 1rem 0 1rem;
+body > header a, body > footer a {
+    padding: 0 1rem 0 0;
 }
 
 #pagenumber {

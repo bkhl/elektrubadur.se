@@ -17,6 +17,12 @@
     <link href="{{ get_url(path="favicon-192x192.png", trailing_slash=false) }}" rel="icon" sizes="192x192"/>
     <link href="{{ get_url(path="favicon-32x32.png", trailing_slash=false) }}" rel="icon" sizes="32x32"/>
 
+    <link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}"/>
+    <link rel="sitemap" type="application/xml" title="{{config.title}} Sitemap" href="{{ get_url(path="sitemap.xml", trailing_slash=false) }}" />
+
+    {% block extra_head_content %}
+    {% endblock extra_head_content %}
+
     {% if page %}
         <title>{{ page.title }} – {{ config.title }}</title>
     {% elif section and section.title %}
@@ -34,9 +40,10 @@
     <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
     <p>{{ config.description }}</p>
     <nav>
-        {% block navigation %}
-            <a href="{{ get_url(path="about") }}">About</a>
-        {% endblock navigation %}
+        <a href="{{ get_url(path="about") }}">About</a>
+        <a title="RSS Feed" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">RSS Feed</a>
+        {% block extra_navigation_links %}
+        {% endblock extra_navigation_links %}
     </nav>
     {% block pageheader %}
     {% endblock pageheader %}
