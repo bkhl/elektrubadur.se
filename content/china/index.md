@@ -6,4 +6,4 @@ date = 2015-09-27
 categories = ["Photos"]
 +++
 
-{{ snapshot(path="china/china.jpeg" description="China")}}
+![China](china.jpeg)

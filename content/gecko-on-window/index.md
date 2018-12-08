@@ -6,4 +6,4 @@ date = 2017-05-31
 categories = ["Photos"]
 +++
 
-{{ snapshot(path="gecko-on-window/gecko-on-window.jpeg" description="Gecko on Window")}}
+![Gecko on Window](gecko-on-window.jpeg)

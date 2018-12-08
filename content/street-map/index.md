@@ -6,6 +6,6 @@ date = 2016-12-19
 categories = ["Photos"]
 +++
 
-{{ snapshot(path="street-map/street-map.jpeg" description="Street Map")}}
+![Street Map](street-map.jpeg)
 
 My neighbourhood has these maps drawn on pavements, walls, street cabinets &c. I'm curious to know what they are for.

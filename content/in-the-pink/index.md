@@ -6,6 +6,6 @@ date = 2010-07-26
 categories = ["Photos"]
 +++
 
-{{ snapshot(path="in-the-pink/in-the-pink.jpeg" description="In the Pink")}}
+![In the Pink](in-the-pink.jpeg)
 
 This was made looking for pink subjects for an assignment.

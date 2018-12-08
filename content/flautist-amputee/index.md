@@ -6,6 +6,6 @@ date = 2010-10-17
 categories = ["Photos"]
 +++
 
-{{ snapshot(path="flautist-amputee/flautist-amputee.jpeg" description="Flautist Amputee")}}
+![Flautist Amputee](flautist-amputee.jpeg)
 
 A fountain sculpture in the Uppsala town garden.
