@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Elephants](elephants.jpeg)
+
+Painted elephants.

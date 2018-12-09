@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Bat Man](bat-man.jpeg)
+
+Bat Man in Bat Yam.

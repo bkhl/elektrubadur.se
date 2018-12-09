@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Yard](yard.jpeg)
+
+Yard of resort, Koh Samet.

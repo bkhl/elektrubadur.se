@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Frog](frog.jpeg)
+
+Bathroom decoration on Koh Lanta.

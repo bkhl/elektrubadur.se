@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Minaret](minaret.jpeg)
+
+Mosque of Omar minaret, Jerusalem.

@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Corridor](corridor.jpeg)
+
+A corridor somewhere.

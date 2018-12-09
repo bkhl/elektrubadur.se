@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Paramotoring](paramotoring.jpeg)
+
+Powered paraglider over Bat Yam beach.

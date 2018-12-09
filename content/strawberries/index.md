@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Strawberries](strawberries.jpeg)
+
+Brought some strawberries home from Korea.

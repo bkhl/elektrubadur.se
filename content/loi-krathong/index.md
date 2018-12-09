@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Loi Krathong](loi-krathong.jpeg)
+
+Celebrating Loi Krathong.

@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Ants](ants.jpeg)
+
+Fruit on the porch attracting ants.

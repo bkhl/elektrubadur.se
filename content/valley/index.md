@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Valley](valley.jpeg)
+
+View of Ragunda valley.

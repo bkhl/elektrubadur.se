@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Rain](rain.jpeg)
+
+View from my office, with rain coming.

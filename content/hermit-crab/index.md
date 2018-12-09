@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Hermit Crab](hermit-crab.jpeg)
+
+Hermit crab on the beach.

@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Strawberry Croissant](strawberry-croissant.jpeg)
+
+Strawberry croissant at Changi.

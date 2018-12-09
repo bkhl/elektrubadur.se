@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Open Mall](open-mall.jpeg)
+
+Open-air mall in Bangkok.

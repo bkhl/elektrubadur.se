@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Toast](toast.jpeg)
+
+Toast with coin for scale.

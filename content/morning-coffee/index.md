@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Morning Coffee](morning-coffee.jpeg)
+
+Morning coffee at hotel ฟ้าใส, Buriram.

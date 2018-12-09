@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Coffee](coffee.jpeg)
+
+Coffee in painted cup.

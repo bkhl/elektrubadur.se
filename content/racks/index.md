@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Racks](racks.jpeg)
+
+Some server room.

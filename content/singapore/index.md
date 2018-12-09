@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Singapore](singapore.jpeg)
+
+Singapore skyline.

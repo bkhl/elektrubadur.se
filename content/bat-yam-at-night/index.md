@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Bat Yam at Night](bat-yam-at-night.jpeg)
+
+Bat Yam night time skyline.

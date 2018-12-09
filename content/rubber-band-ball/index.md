@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Rubber Band Ball](rubber-band-ball.jpeg)
+
+Home made rubber band ball.

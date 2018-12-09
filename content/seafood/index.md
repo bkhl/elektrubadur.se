@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Seafood](seafood.jpeg)
+
+Seafood, ready to be grilled.

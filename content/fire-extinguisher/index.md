@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Fire Extinguisher](fire-extinguisher.jpeg)
+
+Fire extinguisher on public van.

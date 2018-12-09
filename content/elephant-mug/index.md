@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Elephant Mug](elephant-mug.jpeg)
+
+My tooth brushes and stuff.

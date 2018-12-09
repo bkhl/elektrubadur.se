@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![China](china.jpeg)
+
+Collage of a trip to China.

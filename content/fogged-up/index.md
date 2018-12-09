@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Fogged up](fogged-up.jpeg)
+
+Fogged up glasses.

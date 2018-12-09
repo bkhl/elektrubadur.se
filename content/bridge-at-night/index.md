@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Bridge at Night](bridge-at-night.jpeg)
+
+Sydney Harbour Bridge at night.

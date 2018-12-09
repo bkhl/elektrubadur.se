@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Beer Garden](beer-garden.jpeg)
+
+Beer garden on Koh Chang.

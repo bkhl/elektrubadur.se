@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Scrawls](scrawls.jpeg)
+
+Difficult to understand graffiti.

@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Water Fight](water-fight.jpeg)
+
+Dogs playing in water.

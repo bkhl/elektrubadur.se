@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Windy Beach](windy-beach.jpeg)
+
+Bandra beach, Mumbai.

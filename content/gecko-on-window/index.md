@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Gecko on Window](gecko-on-window.jpeg)
+
+Gecko climbing outside of my window.

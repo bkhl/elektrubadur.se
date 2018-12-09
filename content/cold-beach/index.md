@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Cold Beach](cold-beach.jpeg)
+
+Busan beach in winter.

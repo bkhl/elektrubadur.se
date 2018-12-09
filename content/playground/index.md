@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Playground](playground.jpeg)
+
+Playground in Mumbai.

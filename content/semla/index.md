@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Semla](semla.jpeg)
+
+Semla at Hotel Rembrandt, Bangkok.

@@ -8,6 +8,10 @@ categories = ["Photos"]
 
 ![Mall](mall.jpeg)
 
+Inside of a mall.
+
 <!-- more -->
 
 ![Another Mall](another-mall.jpeg)
+
+Inside of another mall.

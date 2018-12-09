@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Lake](lake.jpeg)
+
+View from my parents' cottage.

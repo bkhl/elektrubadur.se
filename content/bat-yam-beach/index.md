@@ -7,3 +7,5 @@ categories = ["Photos"]
 +++
 
 ![Bat Yam Beach](bat-yam-beach.jpeg)
+
+Bat Yam beach.
