@@ -1,10 +1,4 @@
 {% macro pager(paginator) %}
-    <p id="pagenumber">
-        {% if paginator.number_pagers > 1 %}
-            {{ paginator.current_index }}/{{ paginator.number_pagers }}
-        {% endif %}
-    </p>
-
     <p>
         {% if paginator.previous %}
             <a href="{{ paginator.first }}">← Front</a>
@@ -17,6 +11,12 @@
         {% endif %}
         {% if paginator.next %}
             <a href="{{ paginator.last }}">Last →</a>
+        {% endif %}
+    </p>
+
+    <p id="pagenumber">
+        {% if paginator.number_pagers > 1 %}
+            {{ paginator.current_index }}/{{ paginator.number_pagers }}
         {% endif %}
     </p>
 {% endmacro pager %}
