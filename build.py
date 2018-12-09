@@ -1,16 +1,26 @@
 #!/usr/bin/env python3
 
 import os
+from http.server import SimpleHTTPRequestHandler
+from socketserver import TCPServer
 
 from plumbum import cli, local
 from plumbum.cmd import tidy, xmlstarlet, zola
 
+PORT = 8000
+
 
 class Builder(cli.Application):
-    local_prefix = cli.Flag(["l", "local"], help="Build for local viewing")
+    serve_locally = cli.Flag(
+        ["l", "serve locally"], help="Build and serve page locally"
+    )
 
-    def build(self):
-        zola("build")
+    TCPServer.allow_reuse_address = True
+
+    def serve(self):
+        with TCPServer(("", PORT), SimpleHTTPRequestHandler) as httpd:
+            with local.cwd(local.cwd / "public"):
+                httpd.serve_forever()
 
     def public_files_by_extension(self, *extensions):
         extensions_with_dot = ["." + e for e in extensions]
@@ -21,9 +31,14 @@ class Builder(cli.Application):
                     yield os.path.join(root, file)
 
     def replace_prefix(self):
+        if self.serve_locally:
+            prefix = f"http://localhost:{PORT}"
+        else:
+            prefix = "http://elektrubadur.se"
+
         for file in self.public_files_by_extension("html", "xml", "txt"):
             with open(file) as file_object:
-                s = file_object.read().replace("__PREFIX__", self.prefix)
+                s = file_object.read().replace("__PREFIX__", prefix)
             with open(file, "w") as file_object:
                 file_object.write(s)
 
@@ -40,15 +55,13 @@ class Builder(cli.Application):
                 file_object.write(xml)
 
     def main(self):
-        if self.local_prefix:
-            self.prefix = "file://" + str(local.cwd / "public")
-        else:
-            self.prefix = "http://elektrubadur.se"
-
-        self.build()
+        zola("build")
         self.replace_prefix()
         self.clean_html()
         self.clean_xml()
+
+        if self.serve_locally:
+            self.serve()
 
 
 if __name__ == "__main__":
