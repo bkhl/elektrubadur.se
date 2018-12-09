@@ -8,10 +8,9 @@ template = "undated_page.html"
 
 [![Desktop Wallpaper: Uppsala](desktop-wallpaper-uppsala-thumbnail.jpeg)](./pages/desktop-wallpaper-uppsala/index.md)
 
-Some images from my old home town Uppsala, meant for use as desktop wallpapers.
 
-### [Nära](./pages/nara/index.md)
+### [Quick Fix](./pages/quick-fix/index.md)
 
-[![Nära](nara-thumbnail.jpeg)](./pages/nara/index.md)
+[![Quick Fix](quick-fix-thumbnail.jpeg)](./pages/quick-fix/index.md)
 
-Some close-up portraits of friends.
+A series of portraits of a friend.
