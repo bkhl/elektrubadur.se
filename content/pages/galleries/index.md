@@ -21,3 +21,9 @@ Some close-up portraits of friends.
 [![Quick Fix](quick-fix-thumbnail.jpeg)](./pages/quick-fix/index.md)
 
 A series of portraits of a friend.
+
+### [Mechatronic](./pages/mechatronic/index.md)
+
+[![Mechatronic](mechatronic-thumbnail.jpeg)](./pages/mechatronic/index.md)
+
+Some promotional pictures for a band I know.
