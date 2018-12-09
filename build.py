@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import os
 from http.server import SimpleHTTPRequestHandler
 from socketserver import TCPServer
 
@@ -23,12 +22,10 @@ class Builder(cli.Application):
                 httpd.serve_forever()
 
     def public_files_by_extension(self, *extensions):
-        extensions_with_dot = ["." + e for e in extensions]
-        for root, _, files in os.walk("public"):
-            for file in files:
-                _, extension = os.path.splitext(file)
-                if extension in extensions_with_dot:
-                    yield os.path.join(root, file)
+        for filepath in (local.cwd / "public").walk(
+            filter=lambda f: f.is_file() and f.suffix in ("." + e for e in extensions)
+        ):
+            yield filepath
 
     def replace_prefix(self):
         if self.serve_locally:
@@ -36,10 +33,10 @@ class Builder(cli.Application):
         else:
             prefix = "http://elektrubadur.se"
 
-        for file in self.public_files_by_extension("html", "xml", "txt"):
-            with open(file) as file_object:
+        for filepath in self.public_files_by_extension("html", "xml", "txt"):
+            with filepath.open() as file_object:
                 s = file_object.read().replace("__PREFIX__", prefix)
-            with open(file, "w") as file_object:
+            with filepath.open("w") as file_object:
                 file_object.write(s)
 
     def clean_html(self):
@@ -47,11 +44,17 @@ class Builder(cli.Application):
         tidy("-config", "tidy.conf", *files, retcode=(0, 1))
 
     def clean_xml(self):
-        for file in self.public_files_by_extension("xml"):
+        for filepath in self.public_files_by_extension("xml"):
             xml = xmlstarlet(
-                "fo", "--noindent", "--nocdata", "--nsclean", "--encode", "utf-8", file
+                "fo",
+                "--noindent",
+                "--nocdata",
+                "--nsclean",
+                "--encode",
+                "utf-8",
+                filepath,
             )
-            with open(file, "w") as file_object:
+            with filepath.open("w") as file_object:
                 file_object.write(xml)
 
     def main(self):
