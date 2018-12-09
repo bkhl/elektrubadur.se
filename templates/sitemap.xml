@@ -1,0 +1,13 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>{{ get_url(path="", trailing_slash=false) }}</loc>
+    </url>
+    {% for page in pages %}
+        <url>
+            <loc>{{ page.permalink | safe }}</loc>
+            {% if page.date %}
+                <lastmod>{{ page.date }}</lastmod>
+            {% endif %}
+        </url>
+    {% endfor %}
+</urlset>
