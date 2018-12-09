@@ -8,6 +8,8 @@ _Nära_ (“Near”) is a series of close-up portraits of friends. They have all
 
 ![Nära 1](nara-01.jpeg)
 
+<!-- more -->
+
 ![Nära 2](nara-02.jpeg)
 
 ![Nära 3](nara-03.jpeg)

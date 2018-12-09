@@ -14,7 +14,9 @@
     <article>
         <header>
             <h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
-            {{ post_macros::dateline(page=page) }}
+            {% if page.taxonomies.categories or page.date %}
+                {{ post_macros::dateline(page=page) }}
+            {% endif %}
         </header>
         {% if page.summary %}
             {{ page.summary | safe }}

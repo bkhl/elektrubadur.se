@@ -8,6 +8,8 @@ Here are some pictures of Uppsala meant for use as desktop wallpaper images. To 
 
 ![Artificial Sun](artificial-sun.jpeg)
 
+<!-- more -->
+
 ![Bell Tower](bell-tower.jpeg)
 
 ![Off the Fence](off-the-fence.jpeg)

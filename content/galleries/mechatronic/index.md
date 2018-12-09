@@ -11,6 +11,8 @@ around town.
 
 ![Mechatronic 1](mechatronic-1.jpeg)
 
+<!-- more -->
+
 ![Mechatronic 2](mechatronic-2.jpeg)
 
 ![Mechatronic 3](mechatronic-3.jpeg)
