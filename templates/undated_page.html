@@ -1,6 +1,10 @@
 {% extends "elektrubadur/templates/undated_page.html" %}
 {% import "content_macros.html" as content_macros %}
 
+{% block customnavigationlinks %}
+    {{ content_macros::navigation_links() }}
+{% endblock customnavigationlinks %}
+
 {% block customfooter %}
     {{ content_macros::footer() }}
 {% endblock customfooter %}

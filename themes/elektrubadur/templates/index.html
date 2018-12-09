@@ -40,8 +40,9 @@
     <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
     <p>{{ config.description }}</p>
     <nav>
-        <a href="{{ get_url(path="about") }}">About</a>
-        <a title="RSS Feed" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">RSS Feed</a>
+        {% block customnavigationlinks %}
+        {% endblock customnavigationlinks %}
+        <a title="RSS Feed" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">RSS</a>
         {% block extra_navigation_links %}
         {% endblock extra_navigation_links %}
     </nav>

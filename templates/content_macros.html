@@ -1,3 +1,8 @@
+{% macro navigation_links() %}
+    <a href="{{ get_url(path="about") }}">About</a>
+    <a href="{{ get_url(path="galleries") }}">Galleries</a>
+{% endmacro navigation_links %}
+
 {% macro footer() %}
 <p>
     <a rel="me" href="https://mastodon.sdf.org/@bkhl">Mastodon</a>
