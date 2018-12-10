@@ -1,8 +1,21 @@
-domain "elektrubadur.se" where
+val myCertificate = use_cert "/etc/apache2/ssl/user/elektrubadur.se.pem";
+
+val myRewrite = rewriteRule "^(.*)$" "https://elektrubadur.se$1" [redirectWith permanent];
+
+val mySubdomainAlias = \name -> begin
+    web name with myRewrite; end;
+    web name where SSL = myCertificate; with myRewrite; end;
+end;
+
+dom "elektrubadur.se" where
     DocumentRoot = home "www/elektrubadur.se";
+    CreateWWW = false;
+    HandleMail = false;
+    DefaultAlias = false;
+    AddMX = false;
 with
     vhostDefault where
-        SSL = use_cert "/etc/apache2/ssl/user/elektrubadur.se.pem"
+        SSL = myCertificate;
     with
         rewriteRule "^/2010/07/26/in-the-pink/?" "in-the-pink/" [redirectWith permanent];
         rewriteRule "^/2010/07/28/arch/?" "arch/" [redirectWith permanent];
@@ -46,8 +59,10 @@ with
         rewriteRule "^/feed/?" "rss.xml" [redirectWith permanent];
     end;
 
-    web "www" with serverAliasDefault end;
-    web "bkhl" with serverAliasDefault end;
+    vhostDefault with myRewrite; end;
+
+    mySubdomainAlias "www";
+    mySubdomainAlias "bkhl";
 
     dnsMail 10 "mx-1.pobox.com";
     dnsMail 10 "mx-2.pobox.com";
@@ -55,5 +70,5 @@ with
     dnsMail 10 "mx-4.pobox.com";
     dnsMail 10 "mx-5.pobox.com";
 
-    dnsText "_domainkey.mesmtp" "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDauhfUmSCxEypFVs5uLoNPfVRb+SewSFdScx+fJ2Bxh173uc/Vc259setKreityCEM7I+F/1cAc1l9RH+Z0VRYCcdG54Lhh466hy2cJJGT9KPwIg546AedZsxYgpg6K+fHahy+aF2prVLBDz5T//1il+K/q3jJ1VM2ESPuIu62UwIDAQAB";
+    dnsText "_domainkey.mesmtp" "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDauhfUmSCxEypFVs5uLoNPfVRb+SewSFdScx+fJ2Bxh173uc/Vc259setKreityCEM7I+F/1cAc1l9RH+Z0VRYCcdG54Lhh466hy2cJJGT9KPwIg546AedZsxYgpg6K+fHahy+aF2prVLBDz5T//1il+K/q3jJ1VM2ESPuIu62UwIDAQAB";
 end;
