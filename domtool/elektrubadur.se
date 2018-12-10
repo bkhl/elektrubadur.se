@@ -70,5 +70,5 @@ with
     dnsMail 10 "mx-4.pobox.com";
     dnsMail 10 "mx-5.pobox.com";
 
-    dnsText "_domainkey.mesmtp" "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDauhfUmSCxEypFVs5uLoNPfVRb+SewSFdScx+fJ2Bxh173uc/Vc259setKreityCEM7I+F/1cAc1l9RH+Z0VRYCcdG54Lhh466hy2cJJGT9KPwIg546AedZsxYgpg6K+fHahy+aF2prVLBDz5T//1il+K/q3jJ1VM2ESPuIu62UwIDAQAB";
+    dnsText "mesmtp._domainkey" "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDauhfUmSCxEypFVs5uLoNPfVRb+SewSFdScx+fJ2Bxh173uc/Vc259setKreityCEM7I+F/1cAc1l9RH+Z0VRYCcdG54Lhh466hy2cJJGT9KPwIg546AedZsxYgpg6K+fHahy+aF2prVLBDz5T//1il+K/q3jJ1VM2ESPuIu62UwIDAQAB";
 end;
