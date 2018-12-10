@@ -31,7 +31,7 @@ class Builder(cli.Application):
         if self.serve_locally:
             prefix = f"http://localhost:{PORT}"
         else:
-            prefix = "http://elektrubadur.se"
+            prefix = "https://elektrubadur.se"
 
         for filepath in self.public_files_by_extension("html", "xml", "txt"):
             with filepath.open() as file_object:
