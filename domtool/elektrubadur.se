@@ -43,6 +43,7 @@ with
         rewriteRule "^/collections/desktop-wallpapers-uppsala/?" "desktop-wallpaper-uppsala/" [redirectWith permanent];
         rewriteRule "^/collections/nara/?" "nara/" [redirectWith permanent];
         rewriteRule "^/collections/quick-fix/?" "quick-fix/" [redirectWith permanent];
+        rewriteRule "^/feed/?" "rss.xml" [redirectWith permanent];
     end;
 
     web "www" with serverAliasDefault end;
