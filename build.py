@@ -33,7 +33,7 @@ class Builder(cli.Application):
         else:
             prefix = "https://elektrubadur.se"
 
-        for filepath in self.public_files_by_extension("html", "xml", "txt"):
+        for filepath in self.public_files_by_extension("html", "xml", "txt", "css"):
             with filepath.open() as file_object:
                 s = file_object.read().replace("__PREFIX__", prefix)
             with filepath.open("w") as file_object:
