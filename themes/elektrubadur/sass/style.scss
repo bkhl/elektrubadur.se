@@ -28,16 +28,9 @@ $lightbrown: rgba(131, 94, 55, 1);
   src: local('Noto Sans Bold Italic'), local('NotoSans-BoldItalic'), url(__PREFIX__/fonts/Noto-Sans-Bold-Italic.ttf) format('truetype');
 }
 
-html {
-    max-width: 90vw;
-    margin-left: auto;
-    margin-left: auto;
-}
-
 body {
   margin: auto;
   max-width: 40rem;
-  padding: 1rem;
   background: $lightbrown;
   font-family: "Noto Sans", sans-serif
 }
@@ -84,7 +77,7 @@ body > header > p {
 }
 
 body > header > h1 > a {
-    font-size: larger;
+    font-size: 4rem;
 }
 
 article > header > p {
