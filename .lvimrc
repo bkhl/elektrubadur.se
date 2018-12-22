@@ -1,4 +1,3 @@
 if g:localvimrc_file =~ "\.html$"
     setlocal filetype=htmldjango
-    NeomakeDisableBuffer
 endif
