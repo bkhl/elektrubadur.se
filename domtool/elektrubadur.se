@@ -1,10 +1,10 @@
-val myCertificate = use_cert "/etc/apache2/ssl/user/elektrubadur.se.pem";
+val elektrubadurCertificate = use_cert "/etc/apache2/ssl/user/elektrubadur.se.pem";
 
-val myRewrite = rewriteRule "^(.*)$" "https://elektrubadur.se$1" [redirectWith permanent];
+val elektrubadurRewrite = rewriteRule "^(.*)$" "https://elektrubadur.se$1" [redirectWith permanent];
 
-val mySubdomainAlias = \name -> begin
-    web name with myRewrite; end;
-    web name where SSL = myCertificate; with myRewrite; end;
+val elektrubadurSubdomainAlias = \name -> begin
+    web name with elektrubadurRewrite; end;
+    web name where SSL = elektrubadurCertificate; with elektrubadurRewrite; end;
 end;
 
 dom "elektrubadur.se" where
@@ -15,8 +15,10 @@ dom "elektrubadur.se" where
     AddMX = false;
 with
     vhostDefault where
-        SSL = myCertificate;
+        SSL = elektrubadurCertificate;
     with
+        errorDocument "404" "/404.html";
+
         rewriteRule "^/2010/07/26/in-the-pink/?" "in-the-pink/" [redirectWith permanent];
         rewriteRule "^/2010/07/28/arch/?" "arch/" [redirectWith permanent];
         rewriteRule "^/2010/08/03/sheep-641/?" "sheep-641/" [redirectWith permanent];
@@ -59,10 +61,26 @@ with
         rewriteRule "^/feed/?" "rss.xml" [redirectWith permanent];
     end;
 
-    vhostDefault with myRewrite; end;
+    vhostDefault with elektrubadurRewrite; end;
 
-    mySubdomainAlias "www";
-    mySubdomainAlias "bkhl";
+    elektrubadurSubdomainAlias "www";
+    elektrubadurSubdomainAlias "bkhl";
+
+    web "cloud" where
+        PhpVersion = php72;
+        DocumentRoot = home "www/cloud.elektrubadur.se";
+        SSL = elektrubadurCertificate;
+    with
+        unset_options [indexes, multiViews];
+        directoryIndex ["index.php", "index.html"];
+
+        rewriteRule "/.well-known/caldav" "/remote.php/dav/" [last, redirectWith permanent];
+        rewriteRule "/.well-known/carddav" "/remote.php/dav/" [last, redirectWith permanent];
+    end;
+
+    web "cloud" with
+        rewriteRule "^(.*)$" "https://cloud.elektrubadur.se$1" [redirectWith permanent];
+    end;
 
     dnsMail 10 "mx-1.pobox.com";
     dnsMail 10 "mx-2.pobox.com";
