@@ -1,10 +1,23 @@
-{% extends "elektrubadur/templates/categories/single.html" %}
-{% import "content_macros.html" as content_macros %}
+{% extends "index.html" %}
+{% import "page_macros.html" as page_macros %}
+{% import "post_macros.html" as post_macros %}
 
-{% block customnavigationlinks %}
-    {{ content_macros::navigation_links() }}
-{% endblock customnavigationlinks %}
+{% block extra_head_content %}
+{% set category_rss_path = "public/categories/" ~ term.slug ~ "/rss.xml"%}
+<link rel="alternate" type="application/rss+xml" title="{{ config.title }}: {{ term.name }} RSS" href="{{ get_url(path=category_rss_path, trailing_slash=false) }}"/>
+{% endblock extra_head_content %}
 
-{% block customfooter %}
-    {{ content_macros::footer() }}
-{% endblock customfooter %}
+{% block extra_navigation_links %}
+<a title="{{ term.name }} RSS Feed" href="{{ get_url(path=category_rss_path, trailing_slash=false) }}">{{ term.name }} RSS</a>
+{% endblock extra_navigation_links %}
+
+{% block pageheader %}
+{{ page_macros::page_header(title=term.name) }}
+{% endblock pageheader %}
+
+{% block content %}
+    {% for page in paginator.pages %}
+        {{ post_macros::page_in_list(page=page) }}
+    {% endfor %}
+{% endblock content %}
+

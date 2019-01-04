@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% import "page_macros.html" as page_macros %}
+
+{% block pageheader %}
+{{ page_macros::page_header(title="Categories") }}
+{% endblock pageheader %}
+
+{% block content %}
+    {% if terms %}
+        <div class="w3-card w3-margin">
+            <ul class="w3-ul w3-hoverable w3-white">
+                {% for term in terms %}
+                    <li class="w3-padding-16">
+                        <span class="w3-large"><a href="{{ term.permalink | safe }}">{{ term.name }}</a> ({{ term.pages | length }})</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock content %}

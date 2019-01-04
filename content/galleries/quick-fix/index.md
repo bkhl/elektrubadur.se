@@ -1,12 +1,13 @@
 +++
 title = "Quick Fix"
 path = "quick-fix"
-template = "undated_page.html"
+
+[extra]
+image = "quick-fix-1.jpeg"
+image_title = "Quick Fix 1"
 +++
 
 This is a series my friend Sofia wanted me to make of her.
-
-![Quick Fix 1](quick-fix-1.jpeg)
 
 <!-- more -->
 

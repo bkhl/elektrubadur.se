@@ -1,10 +1,142 @@
-{% extends "elektrubadur/templates/index.html" %}
-{% import "content_macros.html" as content_macros %}
+{% import "post_macros.html" as post_macros %}
 
-{% block customnavigationlinks %}
-    {{ content_macros::navigation_links() }}
-{% endblock customnavigationlinks %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
+        <link rel="stylesheet" href="{{ get_url(path="style.css", trailing_slash=false) }}">
 
-{% block customfooter %}
-    {{ content_macros::footer() }}
-{% endblock customfooter %}
+        <link href="{{ get_url(path="favicon.ico", trailing_slash=false) }}" rel="icon">
+        <link href="{{ get_url(path="favicon-16x16.png", trailing_slash=false) }}" rel="icon" sizes="16x16">
+        <link href="{{ get_url(path="favicon-96x96.png", trailing_slash=false) }}" rel="icon" sizes="96x96">
+        <link href="{{ get_url(path="favicon-192x192.png", trailing_slash=false) }}" rel="icon" sizes="192x192">
+        <link href="{{ get_url(path="favicon-32x32.png", trailing_slash=false) }}" rel="icon" sizes="32x32">
+
+        {% if page %}
+            <title>{{ page.title }} – {{ config.title }}</title>
+        {% elif section and section.title %}
+            <title>{{ section.title }} – {{ config.title }}</title>
+        {% else %}
+            <title>{{ config.title }}</title>
+        {% endif %}
+
+        <link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}"/>
+        <link rel="sitemap" type="application/xml" title="{{config.title}} Sitemap" href="{{ get_url(path="sitemap.xml", trailing_slash=false) }}" />
+
+        <meta name="description" content="{{ config.description }}"/>
+        <meta name="author" content="{{ config.extra.author.name }}"/>
+        {% block extra_head_content %}
+        {% endblock extra_head_content %}
+    </head>
+    <body class="w3-light-grey">
+        <div class="w3-content" style="max-width:1400px">
+            <header class="w3-container w3-center w3-padding-32">
+                <h1><b><a href="{{ config.base_url }}">{{ config.title }}</a></b></h1>
+                <p>{{ config.description }}</p>
+            </header>
+
+            <div class="w3-row">
+                <div class="w3-col l8 s12">
+                    {% block pageheader %}{% endblock pageheader %}
+
+                    {% block content %}
+                        {% for page in paginator.pages %}
+                            {{ post_macros::page_in_list(page=page) }}
+                        {% endfor %}
+                    {% endblock content %}
+                </div>
+
+                <div class="w3-col l4">
+                    <div class="w3-card w3-margin">
+                        <img src="{{ get_url(path="box.jpeg", trailing_slash=false) }}" alt="Björn Lindström">
+                        <div class="w3-container w3-white">
+                            <p>
+                                Björn, professional systems engineer and amateur photographer living in Bangkok. I used to live in Uppsala, Sweden. If you wish to contact me, send an e-mail to <a href="mailto:bkhl@elektrubadur.se">bkhl@elektrubadur.se</a>.
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="w3-card w3-margin elektrubadur-navbox">
+                        <div class="w3-container w3-padding">
+                            <h4>Photography</h4>
+                        </div>
+                        <ul class="w3-ul w3-hoverable w3-white">
+                            <li class="w3-padding-16">
+                                <span class="w3-large"><a href="{{ get_url(path="galleries") }}">Galleries</a></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+
+                    <div class="w3-card w3-margin elektrubadur-navbox">
+                        <div class="w3-container w3-padding">
+                            <h4>Social</h4>
+                        </div>
+                        <ul class="w3-ul w3-hoverable w3-white">
+                            <li class="w3-padding-16">
+                                <span class="w3-large"><a rel="me" href="https://mastodon.sdf.org/@bkhl">Mastodon</a></span>
+                            </li>
+                            <li class="w3-padding-16">
+                                <span class="w3-large"><a rel="me" href="https://www.facebook.com/bjorn.lindstrom">Facebook</a></span>
+                            </li>
+                            <li class="w3-padding-16">
+                                <span class="w3-large"><a rel="me" href="https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/">LinkedIn</a></span>
+                            </li>
+                            <li class="w3-padding-16">
+                                <span class="w3-large"><a rel="me" href="https://github.com/bkhl">GitHub</a></span>
+                            </li>
+                            <li class="w3-padding-16">
+                                <span class="w3-large"><a rel="me" href="https://gitlab.com/bkhl">GitLab</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="w3-card w3-margin elektrubadur-navbox">
+                        <div class="w3-container w3-padding">
+                            <h4>Elektrubadur</h4>
+                            <p>This is a name I've used for various projects in the past, including:</p>
+                        </div>
+                        <ul class="w3-ul w3-hoverable w3-white">
+                            <li class="w3-padding-16">
+                                <span class="w3-large"><a href="https://www.jamendo.com/artist/4363/elektrubadur">A band</a></span>
+                            </li>
+                            <li class="w3-padding-16">
+                                <span class="w3-large"><a href="https://archive.org/details/ElektrubadurPodcast">A podcast</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div><br>
+        </div>
+
+        <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+            {% if paginator %}
+                {% if paginator.previous %}
+                    <a href="{{ paginator.previous }}" class="w3-button w3-black w3-padding-large w3-margin-bottom">« Previous</a>
+                {% else %}
+                    <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">« Previous</button>
+                {% endif %}
+                {% if paginator.next %}
+                    <a href="{{ paginator.next }}" class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</a>
+                {% else %}
+                    <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Next »</button>
+                {% endif %}
+            {% else %}
+                {% if page.later %}
+                    <a href="{{ page.later.permalink }}" class="w3-button w3-black w3-padding-large w3-margin-bottom">« {{ page.later.title }}</a>
+                {% endif %}
+                {% if page.earlier %}
+                    <a href="{{ page.earlier.permalink }}" class="w3-button w3-black w3-padding-large w3-margin-bottom">{{ page.earlier.title }} »</a>
+                {% endif %}
+            {% endif %}
+
+            <p><small>© 2010–2018 Björn Lindström</small></p>
+        </footer>
+    </body>
+</html>

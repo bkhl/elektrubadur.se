@@ -1,11 +1,15 @@
 {% extends "index.html" %}
 
+{% import "page_macros.html" as page_macros %}
+
 {% block pageheader %}
-    <h1>File not found: 404</h1>
+{{ page_macros::page_header(title="File not found: 404") }}
 {% endblock pageheader %}
 
 {% block content %}
-    <article>
-        <p>Please try <a href="{{ get_url(path="", trailing_slash=false) }}">the front page</a>.</p>
+    <article class="w3-card-4 w3-margin w3-white">
+        <div class="w3-container">
+            <p>Please try <a href="{{ get_url(path="", trailing_slash=false) }}">the front page</a>.</p>
+        </div>
     </article>
 {% endblock content %}

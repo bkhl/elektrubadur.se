@@ -1,10 +1,23 @@
-{% extends "elektrubadur/templates/page.html" %}
-{% import "content_macros.html" as content_macros %}
+{% extends "index.html" %}
 
-{% block customnavigationlinks %}
-    {{ content_macros::navigation_links() }}
-{% endblock customnavigationlinks %}
+{% block content %}
+    <header class="w3-container w3-left w3-margin w3-padding-32">
+        <h1><b>{{ page.title }}</b></h1>
 
-{% block customfooter %}
-    {{ content_macros::footer() }}
-{% endblock customfooter %}
+        {% if page.taxonomies.categories or page.date %}
+            {{ post_macros::dateline(page=page) }}
+        {% endif %}
+    </header>
+
+    <article class="w3-card-4 w3-margin w3-white">
+        {% for asset in page.assets %}
+            {% if asset is matching("(?i)/" ~ page.extra.image) %}
+                <img src="{{ get_url(path=asset, trailing_slash=false) }}" alt="{{ page.extra.image_title }}">
+            {% endif %}
+        {% endfor %}
+
+        <div class="w3-container">
+            {{ page.content | safe }}
+        </div>
+    </article>
+{% endblock content %}

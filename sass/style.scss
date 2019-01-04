@@ -1,0 +1,27 @@
+body {
+    font-family: "Noto Sans", sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+h1 a:link, h1 a:visited,
+h2 a:link, h2 a:visited,
+h3 a:link, h3 a:visited,
+h4 a:link, h4 a:visited,
+h5 a:link, h5 a:visited,
+h6 a:link, h6 a:visited,
+.elektrubadur-navbox a:link, .elektrubadur-navbox a:visited {
+    text-decoration: none;
+}
+
+h1 a:hover, h1 a:active,
+h2 a:hover, h2 a:active,
+h3 a:hover, h3 a:active,
+h4 a:hover, h4 a:active,
+h5 a:hover, h5 a:active,
+h6 a:hover, h6 a:active,
+.elektrubadur-navbox a:hover, .elektrubadur-navbox a:active {
+    text-decoration: underline;
+}

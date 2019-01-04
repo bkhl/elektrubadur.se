@@ -1,15 +1,16 @@
 +++
 title = "Mechatronic"
 path = "mechatronic"
-template = "undated_page.html"
+
+[extra]
+image = "mechatronic-1.jpeg"
+image_title = "Mechatronic 1"
 +++
 
 A couple of friends of mine, who are also the synthpop duo
 [Mechatronic](https://mechatronicmusic.wordpress.com/), needed some
 promotional pictures, so here are some photographs of them looking hard
 around town.
-
-![Mechatronic 1](mechatronic-1.jpeg)
 
 <!-- more -->
 
