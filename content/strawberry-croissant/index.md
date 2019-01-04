@@ -4,8 +4,10 @@ date = 2015-04-06
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Strawberry Croissant](strawberry-croissant.jpeg)
+[extra]
+image = "strawberry-croissant.jpeg"
+image_title = "Strawberry Croissant"
++++
 
 Strawberry croissant at Changi.

@@ -4,9 +4,11 @@ date = 2015-02-14
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Mall](mall.jpeg)
+[extra]
+image = "mall.jpeg"
+image_title = "Mall"
++++
 
 Inside of a mall.
 

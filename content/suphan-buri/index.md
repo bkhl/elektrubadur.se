@@ -4,9 +4,11 @@ date = 2018-12-10
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Buffalo](buffalo.jpeg)
+[extra]
+image = "buffalo.jpeg"
+image_title = "Buffalo"
++++
 
 I went on a work outing to Suphan Buri a little while back, here comes some photos. Most of the pictures are from the buffalo themed resort where we stayed.
 

@@ -4,8 +4,10 @@ date = 2017-04-22
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Jaffa](jaffa.jpeg)
+[extra]
+image = "jaffa.jpeg"
+image_title = "Jaffa"
++++
 
 Port of Jaffa.

@@ -4,8 +4,10 @@ date = 2015-03-12
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Soekarno–Hatta](soekarno-hatta.jpeg)
+[extra]
+image = "soekarno-hatta.jpeg"
+image_title = "Soekarno–Hatta"
++++
 
 Soekarno–Hatta International Airport, Jakarta.

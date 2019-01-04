@@ -4,8 +4,10 @@ date = 2017-03-20
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Grasshopper](grasshopper.jpeg)
+[extra]
+image = "grasshopper.jpeg"
+image_title = "Grasshopper"
++++
 
 Urban grasshopper, Bangkok.

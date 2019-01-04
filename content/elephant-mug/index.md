@@ -4,8 +4,10 @@ date = 2015-06-07
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Elephant Mug](elephant-mug.jpeg)
+[extra]
+image = "elephant-mug.jpeg"
+image_title = "Elephant Mug"
++++
 
 My tooth brushes and stuff.

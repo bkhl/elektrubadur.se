@@ -4,8 +4,10 @@ date = 2017-05-11
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Cow](cow.jpeg)
+[extra]
+image = "cow.jpeg"
+image_title = "Cow"
++++
 
 Resort cow.

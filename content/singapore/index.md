@@ -4,8 +4,10 @@ date = 2015-04-05
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Singapore](singapore.jpeg)
+[extra]
+image = "singapore.jpeg"
+image_title = "Singapore"
++++
 
 Singapore skyline.

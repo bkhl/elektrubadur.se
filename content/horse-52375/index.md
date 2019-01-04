@@ -4,6 +4,10 @@ date = 2010-11-21
 
 [taxonomies]
 categories = ["Photos"]
+
+[extra]
+image = "horse-52375.jpeg"
+image_title = "Horse 52375"
 +++
 
-![Horse 52375](horse-52375.jpeg)
+Anonymous horse.

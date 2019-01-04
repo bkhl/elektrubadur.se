@@ -4,8 +4,10 @@ date = 2015-02-22
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Pole](pole.jpeg)
+[extra]
+image = "pole.jpeg"
+image_title = "Pole"
++++
 
 Painted pole by beach on Koh Samet.

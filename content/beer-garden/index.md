@@ -4,8 +4,10 @@ date = 2015-06-13
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Beer Garden](beer-garden.jpeg)
+[extra]
+image = "beer-garden.jpeg"
+image_title = "Beer Garden"
++++
 
 Beer garden on Koh Chang.

@@ -4,8 +4,10 @@ date = 2010-07-28
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Arch](arch.jpeg)
+[extra]
+image = "arch.jpeg"
+image_title = "Arch"
++++
 
 I did this long hand held capture using the technique of zooming in during the exposure.

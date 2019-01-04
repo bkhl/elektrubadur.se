@@ -4,8 +4,10 @@ date = 2010-09-11
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Off-road](off-road.jpeg)
+[extra]
+image = "off-road.jpeg"
+image_title = "Off-road"
++++
 
 Me and a sporty French car on a field outside of Uppsala.

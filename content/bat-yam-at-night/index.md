@@ -4,8 +4,10 @@ date = 2017-04-29
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Bat Yam at Night](bat-yam-at-night.jpeg)
+[extra]
+image = "bat-yam-at-night.jpeg"
+image_title = "Bat Yam at Night"
++++
 
 Bat Yam night time skyline.

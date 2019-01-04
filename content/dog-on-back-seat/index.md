@@ -4,8 +4,10 @@ date = 2015-05-16
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Dog on Back Seat](dog-on-back-seat.jpeg)
+[extra]
+image = "dog-on-back-seat.jpeg"
+image_title = "Dog on Back Seat"
++++
 
 Dog riding on motorcycle back seat.

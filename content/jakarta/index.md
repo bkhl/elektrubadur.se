@@ -4,8 +4,10 @@ date = 2015-03-09
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Jakarta](jakarta.jpeg)
+[extra]
+image = "jakarta.jpeg"
+image_title = "Jakarta"
++++
 
 Jakarta skyline.

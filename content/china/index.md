@@ -4,8 +4,10 @@ date = 2015-09-27
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![China](china.jpeg)
+[extra]
+image = "china.jpeg"
+image_title = "China"
++++
 
 Collage of a trip to China.

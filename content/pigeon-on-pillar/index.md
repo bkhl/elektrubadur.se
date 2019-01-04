@@ -4,8 +4,10 @@ date = 2017-04-11
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Pigeon on Pillar](pigeon-on-pillar.jpeg)
+[extra]
+image = "pigeon-on-pillar.jpeg"
+image_title = "Pigeon on Pillar"
++++
 
 Pidgeon on stoa pillar.

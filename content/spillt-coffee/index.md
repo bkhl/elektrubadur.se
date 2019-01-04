@@ -4,8 +4,10 @@ date = 2017-01-12
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Spillt Coffee](spillt-coffee.jpeg)
+[extra]
+image = "spillt-coffee.jpeg"
+image_title = "Spillt Coffee"
++++
 
 Spillt coffee on my desk.

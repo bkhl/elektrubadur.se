@@ -4,8 +4,10 @@ date = 2015-03-08
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Corridor](corridor.jpeg)
+[extra]
+image = "corridor.jpeg"
+image_title = "Corridor"
++++
 
 A corridor somewhere.

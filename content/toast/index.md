@@ -4,8 +4,10 @@ date = 2015-11-08
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Toast](toast.jpeg)
+[extra]
+image = "toast.jpeg"
+image_title = "Toast"
++++
 
 Toast with coin for scale.

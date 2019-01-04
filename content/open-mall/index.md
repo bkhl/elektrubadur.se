@@ -4,8 +4,10 @@ date = 2015-03-29
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Open Mall](open-mall.jpeg)
+[extra]
+image = "open-mall.jpeg"
+image_title = "Open Mall"
++++
 
 Open-air mall in Bangkok.

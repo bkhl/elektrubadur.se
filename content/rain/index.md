@@ -4,8 +4,10 @@ date = 2015-06-16
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Rain](rain.jpeg)
+[extra]
+image = "rain.jpeg"
+image_title = "Rain"
++++
 
 View from my office, with rain coming.

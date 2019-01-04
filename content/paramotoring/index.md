@@ -4,8 +4,10 @@ date = 2017-04-08
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Paramotoring](paramotoring.jpeg)
+[extra]
+image = "paramotoring.jpeg"
+image_title = "Paramotoring"
++++
 
 Powered paraglider over Bat Yam beach.

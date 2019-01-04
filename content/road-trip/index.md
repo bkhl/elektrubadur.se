@@ -4,9 +4,11 @@ date = 2017-03-18
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Road Trip](road-trip.jpeg)
+[extra]
+image = "road-trip.jpeg"
+image_title = "Road Trip"
++++
 
 Isan road trip.
 

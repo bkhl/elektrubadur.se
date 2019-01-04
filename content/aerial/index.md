@@ -4,8 +4,10 @@ date = 2010-09-16
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Aerial](aerial.jpeg)
+[extra]
+image = "aerial.jpeg"
+image_title = "Aerial"
++++
 
 Jackdaws flocking at dusk.

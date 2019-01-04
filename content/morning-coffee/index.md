@@ -4,8 +4,10 @@ date = 2017-03-19
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Morning Coffee](morning-coffee.jpeg)
+[extra]
+image = "morning-coffee.jpeg"
+image_title = "Morning Coffee"
++++
 
 Morning coffee at hotel ฟ้าใส, Buriram.

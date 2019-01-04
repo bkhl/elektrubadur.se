@@ -4,8 +4,10 @@ date = 2016-07-31
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Cows](cows.jpeg)
+[extra]
+image = "cows.jpeg"
+image_title = "Cows"
++++
 
 Cows in Mumbai.

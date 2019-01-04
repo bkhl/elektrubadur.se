@@ -4,8 +4,10 @@ date = 2016-07-03
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Playground](playground.jpeg)
+[extra]
+image = "playground.jpeg"
+image_title = "Playground"
++++
 
 Playground in Mumbai.

@@ -4,8 +4,10 @@ date = 2016-05-02
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Swim](swim.jpeg)
+[extra]
+image = "swim.jpeg"
+image_title = "Swim"
++++
 
 With my parents on Koh Samet.

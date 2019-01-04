@@ -4,8 +4,10 @@ date = 2015-03-01
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Semla](semla.jpeg)
+[extra]
+image = "semla.jpeg"
+image_title = "Semla"
++++
 
 Semla at Hotel Rembrandt, Bangkok.

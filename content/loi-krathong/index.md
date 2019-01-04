@@ -4,8 +4,10 @@ date = 2015-11-26
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Loi Krathong](loi-krathong.jpeg)
+[extra]
+image = "loi-krathong.jpeg"
+image_title = "Loi Krathong"
++++
 
 Celebrating Loi Krathong.

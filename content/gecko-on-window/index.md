@@ -4,8 +4,10 @@ date = 2017-05-31
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Gecko on Window](gecko-on-window.jpeg)
+[extra]
+image = "gecko-on-window.jpeg"
+image_title = "Gecko on Window"
++++
 
 Gecko climbing outside of my window.

@@ -4,8 +4,10 @@ date = 2016-10-27
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Rubber Band Ball](rubber-band-ball.jpeg)
+[extra]
+image = "rubber-band-ball.jpeg"
+image_title = "Rubber Band Ball"
++++
 
 Home made rubber band ball.

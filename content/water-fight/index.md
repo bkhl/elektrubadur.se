@@ -4,8 +4,10 @@ date = 2016-08-18
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Water Fight](water-fight.jpeg)
+[extra]
+image = "water-fight.jpeg"
+image_title = "Water Fight"
++++
 
 Dogs playing in water.

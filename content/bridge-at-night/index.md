@@ -4,8 +4,10 @@ date = 2016-07-11
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Bridge at Night](bridge-at-night.jpeg)
+[extra]
+image = "bridge-at-night.jpeg"
+image_title = "Bridge at Night"
++++
 
 Sydney Harbour Bridge at night.

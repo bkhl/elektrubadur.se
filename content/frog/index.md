@@ -4,8 +4,10 @@ date = 2017-05-11
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Frog](frog.jpeg)
+[extra]
+image = "frog.jpeg"
+image_title = "Frog"
++++
 
 Bathroom decoration on Koh Lanta.

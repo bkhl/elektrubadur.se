@@ -4,8 +4,10 @@ date = 2017-02-13
 
 [taxonomies]
 categories = ["Photos"]
-+++
 
-![Strawberries](strawberries.jpeg)
+[extra]
+image = "strawberries.jpeg"
+image_title = "Strawberries"
++++
 
 Brought some strawberries home from Korea.
