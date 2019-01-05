@@ -1,17 +1,17 @@
 {% extends "index.html" %}
 {% import "macros.html" as macros %}
 
-{% block extra_head_content %}
-{% set category_rss_path = "public/categories/" ~ term.slug ~ "/rss.xml"%}
-<link rel="alternate" type="application/rss+xml" title="{{ config.title }}: {{ term.name }} RSS" href="{{ get_url(path=category_rss_path, trailing_slash=false) }}"/>
-{% endblock extra_head_content %}
+{% block extra_head_feed_links %}
+    {% set category_rss_path = "categories/" ~ term.slug ~ "/rss.xml"%}
+    <link rel="alternate" type="application/rss+xml" title="{{ config.title }}: {{ term.name }} RSS" href="{{ get_url(path=category_rss_path, trailing_slash=false) }}"/>
+{% endblock extra_head_feed_links %}
 
-{% block extra_navigation_links %}
-<a title="{{ term.name }} RSS Feed" href="{{ get_url(path=category_rss_path, trailing_slash=false) }}">{{ term.name }} RSS</a>
-{% endblock extra_navigation_links %}
+{% block extra_sidebar_feed_links %}
+    {{ macros::sidebar_link(name=term.name ~ " posts", url=category_rss_path, rel="alternate", icon="rss-icon.svg") }}
+{% endblock extra_sidebar_feed_links %}
 
 {% block pageheader %}
-{{ macros::page_header(title=term.name) }}
+    {{ macros::page_header(title=term.name) }}
 {% endblock pageheader %}
 
 {% block content %}

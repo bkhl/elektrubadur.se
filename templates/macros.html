@@ -1,3 +1,9 @@
+{% macro sidebar_link(url, name, icon="", rel="") %}
+    <li class="w3-padding-16">
+        <span class="w3-large"><a {% if rel %}rel="{{ rel }}"{% endif %} href="{{ url }}">{% if icon %}<img alt="{{ name }}" class="w3-round w3-margin-right" style="width: 10%" src="{{ get_url(path=icon) }}"> {% endif %}{{ name }}</a></span>
+    </li>
+{% endmacro sidebar_link %}
+
 {% macro page_header(title) %}
 <header class="w3-container w3-margin w3-left-align w3-padding-32">
     <h1><b>{{ title }}</b></h1>
