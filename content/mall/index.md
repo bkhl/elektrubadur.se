@@ -5,15 +5,11 @@ date = 2015-02-14
 [taxonomies]
 categories = ["Photos"]
 
-[extra.image]
-filename = "mall.jpeg"
-title = "Mall"
+[extra.gallery]
+"mall.jpeg" = { description = "Mall", featured = true }
+"another-mall.jpeg" = { description = "Inside of another mall" }
 +++
 
 Inside of a mall.
 
 <!-- more -->
-
-![Another Mall](another-mall.jpeg)
-
-Inside of another mall.
