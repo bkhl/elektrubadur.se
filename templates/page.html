@@ -19,7 +19,7 @@
 
             {% if page.extra.gallery %}
                 {% for filename, data in page.extra.gallery %}
-                    <div class="w3-border w3-padded w3-margin">
+                    <div class="w3-border w3-margin-bottom">
                         <div class="w3-margin">
                             <img src="{{ get_url(path=page.path ~ filename, trailing_slash=false) }}" alt="{% if data.title %}{{ data.title }}{% else %}{{ data.description }}{% endif %}">
                             {% if data.description %}
