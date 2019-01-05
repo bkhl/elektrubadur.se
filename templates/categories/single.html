@@ -2,7 +2,7 @@
 {% import "macros.html" as macros %}
 
 {% block extra_head_feed_links %}
-    {% set category_rss_path = "categories/" ~ term.slug ~ "/rss.xml"%}
+    {% set category_rss_path = get_url(path="categories/" ~ term.slug ~ "/rss.xml") %}
     <link rel="alternate" type="application/rss+xml" title="{{ config.title }}: {{ term.name }} RSS" href="{{ get_url(path=category_rss_path, trailing_slash=false) }}"/>
 {% endblock extra_head_feed_links %}
 
