@@ -5,9 +5,9 @@ date = 2016-06-22
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "football.jpeg"
-image_title = "Football"
+[extra.image]
+filename = "football.jpeg"
+title = "Football"
 +++
 
 Osotspa football club fans visiting Muangthong.

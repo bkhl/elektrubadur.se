@@ -1,6 +1,5 @@
 {% extends "index.html" %}
-{% import "page_macros.html" as page_macros %}
-{% import "post_macros.html" as post_macros %}
+{% import "macros.html" as macros %}
 
 {% block extra_head_content %}
 {% set category_rss_path = "public/categories/" ~ term.slug ~ "/rss.xml"%}
@@ -12,12 +11,12 @@
 {% endblock extra_navigation_links %}
 
 {% block pageheader %}
-{{ page_macros::page_header(title=term.name) }}
+{{ macros::page_header(title=term.name) }}
 {% endblock pageheader %}
 
 {% block content %}
     {% for page in paginator.pages %}
-        {{ post_macros::page_in_list(page=page) }}
+        {{ macros::page_in_list(page=page) }}
     {% endfor %}
 {% endblock content %}
 

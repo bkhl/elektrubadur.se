@@ -5,9 +5,9 @@ date = 2015-10-05
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "fogged-up.jpeg"
-image_title = "Fogged up"
+[extra.image]
+filename = "fogged-up.jpeg"
+title = "Fogged up"
 +++
 
 Fogged up glasses.

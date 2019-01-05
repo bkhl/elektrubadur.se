@@ -5,9 +5,9 @@ date = 2017-05-11
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "cow.jpeg"
-image_title = "Cow"
+[extra.image]
+filename = "cow.jpeg"
+title = "Cow"
 +++
 
 Resort cow.

@@ -5,9 +5,9 @@ date = 2015-04-04
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "racks.jpeg"
-image_title = "Racks"
+[extra.image]
+filename = "racks.jpeg"
+title = "Racks"
 +++
 
 Some server room.

@@ -5,9 +5,9 @@ date = 2016-08-18
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "valley.jpeg"
-image_title = "Valley"
+[extra.image]
+filename = "valley.jpeg"
+title = "Valley"
 +++
 
 View of Ragunda valley.

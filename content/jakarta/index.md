@@ -5,9 +5,9 @@ date = 2015-03-09
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "jakarta.jpeg"
-image_title = "Jakarta"
+[extra.image]
+filename = "jakarta.jpeg"
+title = "Jakarta"
 +++
 
 Jakarta skyline.

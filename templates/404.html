@@ -1,9 +1,9 @@
 {% extends "index.html" %}
 
-{% import "page_macros.html" as page_macros %}
+{% import "macros.html" as macros %}
 
 {% block pageheader %}
-{{ page_macros::page_header(title="File not found: 404") }}
+    {{ macros::page_header(title="File not found: 404") }}
 {% endblock pageheader %}
 
 {% block content %}

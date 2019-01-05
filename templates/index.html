@@ -1,4 +1,4 @@
-{% import "post_macros.html" as post_macros %}
+{% import "macros.html" as macros %}
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
 
                     {% block content %}
                         {% for page in paginator.pages %}
-                            {{ post_macros::page_in_list(page=page) }}
+                            {{ macros::page_in_list(page=page) }}
                         {% endfor %}
                     {% endblock content %}
                 </div>
@@ -58,7 +58,6 @@
                             </p>
                         </div>
                     </div>
-                    <hr>
 
                     <div class="w3-card w3-margin elektrubadur-navbox">
                         <div class="w3-container w3-padding">
@@ -70,7 +69,6 @@
                             </li>
                         </ul>
                     </div>
-                    <hr>
 
                     <div class="w3-card w3-margin elektrubadur-navbox">
                         <div class="w3-container w3-padding">

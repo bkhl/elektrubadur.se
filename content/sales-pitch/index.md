@@ -5,9 +5,9 @@ date = 2010-08-04
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "sales-pitch.jpeg"
-image_title = "Sales Pitch"
+[extra.image]
+filename = "sales-pitch.jpeg"
+title = "Sales Pitch"
 +++
 
 My friend Zrajm wants to sell you his [pocket dictionary of

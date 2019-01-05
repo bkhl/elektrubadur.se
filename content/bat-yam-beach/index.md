@@ -5,9 +5,9 @@ date = 2017-04-07
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "bat-yam-beach.jpeg"
-image_title = "Bat Yam Beach"
+[extra.image]
+filename = "bat-yam-beach.jpeg"
+title = "Bat Yam Beach"
 +++
 
 Bat Yam beach.

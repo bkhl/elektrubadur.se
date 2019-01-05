@@ -5,19 +5,30 @@
         <h1><b>{{ page.title }}</b></h1>
 
         {% if page.taxonomies.categories or page.date %}
-            {{ post_macros::dateline(page=page) }}
+            {{ macros::dateline(page=page) }}
         {% endif %}
     </header>
 
     <article class="w3-card-4 w3-margin w3-white">
-        {% for asset in page.assets %}
-            {% if asset is matching("(?i)/" ~ page.extra.image) %}
-                <img src="{{ get_url(path=asset, trailing_slash=false) }}" alt="{{ page.extra.image_title }}">
-            {% endif %}
-        {% endfor %}
+        {% if page.extra.image %}
+            {{ macros::featured_image(page=page, filename=page.extra.image.filename, data=page.extra.image) }}
+        {% endif %}
 
         <div class="w3-container">
             {{ page.content | safe }}
+
+            {% if page.extra.gallery %}
+                {% for filename, data in page.extra.gallery %}
+                    <div class="w3-border w3-padded w3-margin">
+                        <div class="w3-margin">
+                            <img src="{{ get_url(path=page.path ~ filename, trailing_slash=false) }}" alt="{% if data.title %}{{ data.title }}{% else %}{{ data.description }}{% endif %}">
+                            {% if data.description %}
+                                <p><em>{{ data.description }}</em></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </article>
 {% endblock content %}

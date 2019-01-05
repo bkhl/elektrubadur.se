@@ -5,9 +5,9 @@ date = 2017-02-10
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "cold-beach.jpeg"
-image_title = "Cold Beach"
+[extra.image]
+filename = "cold-beach.jpeg"
+title = "Cold Beach"
 +++
 
 Busan beach in winter.

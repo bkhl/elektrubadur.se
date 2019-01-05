@@ -5,9 +5,9 @@ date = 2015-11-26
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "loi-krathong.jpeg"
-image_title = "Loi Krathong"
+[extra.image]
+filename = "loi-krathong.jpeg"
+title = "Loi Krathong"
 +++
 
 Celebrating Loi Krathong.

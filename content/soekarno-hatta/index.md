@@ -5,9 +5,9 @@ date = 2015-03-12
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "soekarno-hatta.jpeg"
-image_title = "Soekarno–Hatta"
+[extra.image]
+filename = "soekarno-hatta.jpeg"
+title = "Soekarno–Hatta"
 +++
 
 Soekarno–Hatta International Airport, Jakarta.

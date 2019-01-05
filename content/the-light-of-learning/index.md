@@ -5,9 +5,9 @@ date = 2010-09-03
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "the-light-of-learning.jpeg"
-image_title = "The Light of Learning"
+[extra.image]
+filename = "the-light-of-learning.jpeg"
+title = "The Light of Learning"
 +++
 
 Portrait with Uppsala's grand university library, taken with a make-shift tilt-shift lens, made from a regular 50 mm lens and som bicycle inner-tube.

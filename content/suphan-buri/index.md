@@ -5,27 +5,14 @@ date = 2018-12-10
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "buffalo.jpeg"
-image_title = "Buffalo"
+[extra.gallery]
+"buffalo.jpeg" = { title = "Buffalo", description = "Buffalo.", featured = true }
+"deer.jpeg" = { title = "Deer", description = "Deer." }
+"houses.jpeg" = { title = "Houses", description = "Accomodations." }
+"peacock.jpeg" = { title = "Peacock", description = "Peacock." }
+"river.jpeg" = { title = "River", description = "River flowing past nearby Sam Chuk market." }
 +++
 
 I went on a work outing to Suphan Buri a little while back, here comes some photos. Most of the pictures are from the buffalo themed resort where we stayed.
 
 <!-- more -->
-
-![Deer](deer.jpeg)
-
-Deer.
-
-![Houses](houses.jpeg)
-
-Accomodations.
-
-![Peacock](peacock.jpeg)
-
-Peacock.
-
-![River](river.jpeg)
-
-River flowing past nearby Sam Chuk market.

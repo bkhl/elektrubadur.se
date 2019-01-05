@@ -5,9 +5,9 @@ date = 2016-07-11
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "bridge-at-night.jpeg"
-image_title = "Bridge at Night"
+[extra.image]
+filename = "bridge-at-night.jpeg"
+title = "Bridge at Night"
 +++
 
 Sydney Harbour Bridge at night.

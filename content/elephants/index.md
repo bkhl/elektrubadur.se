@@ -5,9 +5,9 @@ date = 2015-06-08
 [taxonomies]
 categories = ["Photos"]
 
-[extra]
-image = "elephants.jpeg"
-image_title = "Elephants"
+[extra.image]
+filename = "elephants.jpeg"
+title = "Elephants"
 +++
 
 Painted elephants.

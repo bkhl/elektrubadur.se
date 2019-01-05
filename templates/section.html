@@ -1,15 +1,14 @@
 {% extends "index.html" %}
 
-{% import "page_macros.html" as page_macros %}
-{% import "post_macros.html" as post_macros %}
+{% import "macros.html" as macros %}
 
 {% block pageheader %}
-{{ page_macros::page_header(title=section.title) }}
+    {{ macros::page_header(title=section.title) }}
 {% endblock pageheader %}
 
 {% block content %}
     {% for page in section.pages %}
-        {{ post_macros::page_in_list(page=page) }}
+        {{ macros::page_in_list(page=page) }}
     {% endfor %}
 {% endblock content %}
 
