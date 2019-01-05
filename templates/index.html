@@ -1,7 +1,7 @@
 {% import "macros.html" as macros %}
 
 <!DOCTYPE html>
-<html>
+<html lang="{% if page.extra.language %}{{ page.extra.language }}{% else %}{{ config.default_language }}{% endif %}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

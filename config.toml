@@ -8,6 +8,7 @@ compile_sass = true
 taxonomies = [
     { name = "categories", rss = true, paginate_by = 10 },
 ]
+default_language = "en"
 
 [extra.author]
 name = "Björn Lindström"
