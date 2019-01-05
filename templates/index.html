@@ -51,7 +51,12 @@
 
                 <div class="w3-col l4">
                     <div class="w3-card w3-margin">
-                        <img src="{{ get_url(path="box.jpeg", trailing_slash=false) }}" alt="Björn Lindström">
+                        {% if page.extra.sidebar_photo %}
+                            {% set sidebar_photo = page.extra.sidebar_photo %}
+                        {% else %}
+                            {% set sidebar_photo = "box.jpeg" %}
+                        {% endif %}
+                        <img src="{{ get_url(path=sidebar_photo, pathtrailing_slash=false) }}" alt="Björn Lindström">
                         <div class="w3-container w3-white">
                             <p>
                                 Björn, professional systems engineer and amateur photographer living in Bangkok. I used to live in Uppsala, Sweden. If you wish to contact me, send an e-mail to <a href="mailto:bkhl@elektrubadur.se">bkhl@elektrubadur.se</a>.
