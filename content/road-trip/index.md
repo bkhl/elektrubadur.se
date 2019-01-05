@@ -5,15 +5,11 @@ date = 2017-03-18
 [taxonomies]
 categories = ["Photos"]
 
-[extra.image]
-filename = "road-trip.jpeg"
-title = "Road Trip"
+[extra.gallery]
+"road-trip.jpeg" = { description = "Road Trip", featured = true }
+"road-trip-in-rain.jpeg" = { description = "Road Trip in Rain" }
 +++
 
 Isan road trip.
 
 <!-- more -->
-
-![Road Trip in Rain](road-trip-in-rain.jpeg)
-
-Isan road trip after rain started.
