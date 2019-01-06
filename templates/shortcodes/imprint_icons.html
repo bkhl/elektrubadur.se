@@ -1,0 +1,7 @@
+<div class="w3-layout-row">
+    {% for icon in icons %}
+        <div class="w3-cell w3-padding w3-white">
+            <img style="max-height: 2rem" src="{{ get_url(path=icon) }}">
+        </div>
+    {% endfor %}
+</div>
