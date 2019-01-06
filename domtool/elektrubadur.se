@@ -19,6 +19,15 @@ with
     with
         errorDocument "404" "/404.html";
 
+        expiresByType "text/plain" access 1 days;
+        expiresByType "text/css" access 1 days;
+
+        expiresByType "image/jpeg" access 1 weeks;
+        expiresByType "image/png" access 1 weeks;
+        expiresByType "image/gif" access 1 weeks;
+        expiresByType "image/svg" access 1 weeks;
+        expiresByType "image/vnd.microsoft.icon" access 1 weeks;
+
         rewriteRule "^/2010/07/26/in-the-pink/?" "in-the-pink/" [redirectWith permanent];
         rewriteRule "^/2010/07/28/arch/?" "arch/" [redirectWith permanent];
         rewriteRule "^/2010/08/03/sheep-641/?" "sheep-641/" [redirectWith permanent];
@@ -71,11 +80,32 @@ with
         DocumentRoot = home "www/cloud.elektrubadur.se";
         SSL = elektrubadurCertificate;
     with
-        unset_options [indexes, multiViews];
-        directoryIndex ["index.php", "index.html"];
+        location "/" with
+            unset_options [indexes, multiViews];
+            directoryIndex ["index.php", "index.html"];
+        end;
 
-        rewriteRule "/.well-known/caldav" "/remote.php/dav/" [last, redirectWith permanent];
-        rewriteRule "/.well-known/carddav" "/remote.php/dav/" [last, redirectWith permanent];
+        expiresByType "text/css" access 1 weeks;
+        expiresByType "application/javascript" access 1 weeks;
+        expiresByType "image/svg" access 1 weeks;
+        expiresByType "image/gif" access 1 weeks;
+        expiresByType "application/font-woff2" access 1 weeks;
+
+        setEnvIfNoCase "^Authorization$" "(.+)" ["XAUTHORIZATION=$1"];
+
+        rewriteCond "%{HTTP_USER_AGENT}" "DavClnt" [];
+        rewriteRule "^$" "/remote.php/webdav/" [redirectWith temp, last];
+
+        rewriteRule ".*" "-" [env "HTTP_AUTHORIZATION" "%{HTTP:Authorization}"];
+        rewriteRule "^\.well-known/host-meta" "/public.php?service=host-meta" [qsappend, last];
+        rewriteRule "^\.well-known/host-meta\.json" "/public.php?service=host-meta-json" [qsappend, last];
+        rewriteRule "^\.well-known/webfinger" "/public.php?service=webfinger" [qsappend, last];
+        rewriteRule "^\.well-known/carddav" "/remote.php/dav/" [redirectWith permanent, last];
+        rewriteRule "^\.well-known/caldav" "/remote.php/dav/" [redirectWith permanent, last];
+        rewriteRule "^remote/(.*)" "remote.php" [qsappend, last];
+        rewriteRule "^(?:build|tests|config|lib|3rdparty|templates)/.*" "-" [redirectWith notfound, last];
+        rewriteCond "%{REQUEST_URI}" "!^/\.well-known/(acme-challenge|pki-validation)/.*" [];
+        rewriteRule "^(?:\.|autotest|occ|issue|indie|db_|console).*" "-" [redirectWith notfound, last];
     end;
 
     web "cloud" with
