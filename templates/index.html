@@ -79,13 +79,23 @@
                         </div>
                         <ul class="w3-ul w3-hoverable w3-white">
                             {{ macros::sidebar_link(name="Mastodon", url="https://mastodon.sdf.org/@bkhl", rel="me", icon="joinmastodon-icon.svg") }}
-                            {{ macros::sidebar_link(name="LinkedIn", url="https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/", rel="me", icon="linkedin-icon.svg") }}
                             {{ macros::sidebar_link(name="GitHub", url="https://github.com/bkhl", rel="me", icon="github-icon.svg") }}
                             {{ macros::sidebar_link(name="GitLab", url="https://gitlab.com/bkhl", rel="me", icon="gitlab-icon.svg") }}
                             {{ macros::sidebar_link(name="Exercism", url="https://exercism.io/profiles/bkhl", rel="me", icon="exercism-logo.svg") }}
                             {{ macros::sidebar_link(name="Online-Go.com", url="https://online-go.com/player/52248/", rel="me", icon="ogslogo.svg") }}
                         </ul>
                     </div>
+
+                    <div class="w3-card w3-margin elektrubadur-navbox">
+                        <div class="w3-container w3-padding">
+                            <h4>Professional</h4>
+                        </div>
+                        <ul class="w3-ul w3-hoverable w3-white">
+                            {{ macros::sidebar_link(name="Resumé", url=get_url(path="resume"), rel="me", icon="resume.svg") }}
+                            {{ macros::sidebar_link(name="LinkedIn", url="https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/", rel="me", icon="linkedin-icon.svg") }}
+                        </ul>
+                    </div>
+
 
                     <div class="w3-card w3-margin elektrubadur-navbox">
                         <div class="w3-container w3-padding">
@@ -132,7 +142,7 @@
                 {% endif %}
             {% endif %}
 
-            <a href="{{ get_url(path="credits") }}" class="w3-button w3-black w3-padding-large w3-margin-bottom w3-right">Credits</a>
+            <a href="{{ get_url(path="imprint") }}" class="w3-button w3-black w3-padding-large w3-margin-bottom w3-right">Imprint</a>
             <p><small>© 2010–2019 Björn Lindström</small></p>
         </footer>
     </body>
