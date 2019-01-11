@@ -18,7 +18,7 @@ Some of my computer experience is from university and work, but most is from bei
 
 *[Vizrt][] is a software company in the broadcast industry.*
 
-**Systems Engineer** (Jan 2013 – Jan 2014)
+**Systems Engineer** (Jan 2013 – Jan 2015)
 
 Worked with installation, configuration, documentation, testing and fixing of Vizrt's media asset management (MAM) system.
 
