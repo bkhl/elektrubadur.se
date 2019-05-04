@@ -1,77 +1,62 @@
-{% macro sidebar_link(url, name, icon="", rel="") %}
-    <li class="w3-padding-16">
-        <span class="w3-large"><a {% if rel %}rel="{{ rel }}"{% endif %} href="{{ url }}">{% if icon %}<img alt="{{ name }}" class="w3-round w3-margin-right" style="width: 10%" src="{{ get_url(path=icon) }}"> {% endif %}{{ name }}</a></span>
-    </li>
-{% endmacro sidebar_link %}
-
 {% macro page_header(title) %}
-<header class="w3-container w3-margin w3-left-align w3-padding-32">
-    <h1><b>{{ title }}</b></h1>
+<header>
+    <h1>{{ title }}</h1>
 </header>
 {% endmacro page_header %}
 
 {% macro dateline(page) %}
 <p>
-   {% for category in page.taxonomies.categories %}
-        <a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}" class="w3-button w3-tiny w3-black w3-padding-large w3-margin-bottom">{{ category }}</a>
-    {% endfor%}
+    {% for category in page.taxonomies.categories %}
+    Category: <a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">{{ category }}</a>
+    {% endfor %}
 </p>
-    <h5><span class="w3-opacity">{{ page.date | date(format="%B %e, %Y") }}</span></h5>
+<p>
+    <time datetime="{{ page.date | date(format="%Y-%m-%d") }}">{{ page.date | date(format="%B %e, %Y") }}</time>
+</p>
 {% endmacro dateline %}
 
 {% macro featured_image(page, filename, data) %}
-    <img
-        src="{{ get_url(path=page.path ~ filename, trailing_slash=false) }}"
-        alt="
+<img src="{{ get_url(path=page.path ~ filename) }}" alt="
             {%- if data.title -%}
                 {{ data.title }}
             {%- else -%}
                 {{ data.description }}
             {%- endif -%}
-        "
-    >
+        ">
 {% endmacro featured_image %}
 
 {% macro linked_featured_image(page, filename, data) %}
-    <a href="{{ page.permalink }}">
-        {{ macros::featured_image(page=page, filename=filename, data=data) }}
-    </a>
+<a href="{{ page.permalink }}">
+    {{ macros::featured_image(page=page, filename=filename, data=data) }}
+</a>
 {% endmacro linked_featured_image %}
 
 {% macro page_in_list(page) %}
-<article class="w3-card-4 w3-margin w3-white">
+<article>
     {% if page.extra.image %}
-        {{ macros::linked_featured_image(page=page, filename=page.extra.image.filename, data=page.extra.image) }}
+    {{ macros::linked_featured_image(page=page, filename=page.extra.image.filename, data=page.extra.image) }}
     {% elif page.extra.gallery %}
-        {% for filename, data in page.extra.gallery %}
-            {% if data.featured %}
-                {{ macros::linked_featured_image(page=page, filename=filename, data=data) }}
-                {% break %}
-            {% endif %}
-        {% endfor %}
+    {% for filename, data in page.extra.gallery %}
+    {% if data.featured %}
+    {{ macros::linked_featured_image(page=page, filename=filename, data=data) }}
+    {% break %}
+    {% endif %}
+    {% endfor %}
     {% endif %}
 
-    <div class="w3-container">
-        <h3><b><a href="{{ page.permalink }}">{{ page.title }}</a></b></h3>
-        {% if page.taxonomies.categories or page.date %}
-            {{ macros::dateline(page=page) }}
-        {% endif %}
-    </div>
+    <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+    {% if page.taxonomies.categories or page.date %}
+    {{ macros::dateline(page=page) }}
+    {% endif %}
 
-    <div class="w3-container">
-        {% if page.summary %}
-            {{ page.summary | safe }}
-        {% else %}
-            {{ page.content | safe }}
-        {% endif %}
+    {% if page.summary %}
+    {{ page.summary | safe }}
+    {% else %}
+    {{ page.content | safe }}
+    {% endif %}
 
-        <div class="w3-row">
-            {% if page.summary %}
-                <div class="w3-col m8 s12">
-                    <p><a href="{{ page.permalink }}" class="w3-button w3-padding-large w3-white w3-border"><b>MORE »</b></a></p>
-                </div>
-            {% endif %}
-        </div>
-    </div>
+    {% if page.summary %}
+    <p><a href="{{ page.permalink }}">More</a></p>
+    {% endif %}
 </article>
 {% endmacro page_in_list %}

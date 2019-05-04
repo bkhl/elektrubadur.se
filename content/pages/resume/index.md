@@ -1,10 +1,9 @@
 +++
 title = "Resumé"
 path = "resume"
-
-[extra]
-sidebar_photo = "suit.jpeg"
 +++
+
+![Portrait](portrait.jpeg)
 
 # Summary
 

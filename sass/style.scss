@@ -1,27 +1,53 @@
 body {
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto;
+    max-width: 60ch;
+    padding: 2ch;
+    margin: auto;
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
-h1 a:link, h1 a:visited,
-h2 a:link, h2 a:visited,
-h3 a:link, h3 a:visited,
-h4 a:link, h4 a:visited,
-h5 a:link, h5 a:visited,
-h6 a:link, h6 a:visited,
-.elektrubadur-navbox a:link, .elektrubadur-navbox a:visited {
+main {
+    margin-bottom: 4ex;
+}
+
+
+article {
+    margin: 8ex 0 8ex 0;
+}
+
+section {
+    margin: 8ex 0 8ex 0;
+}
+
+header > h1 {
+    font-size: xx-large;
+}
+
+a {
+    color: #0066cc;
     text-decoration: none;
 }
 
-h1 a:hover, h1 a:active,
-h2 a:hover, h2 a:active,
-h3 a:hover, h3 a:active,
-h4 a:hover, h4 a:active,
-h5 a:hover, h5 a:active,
-h6 a:hover, h6 a:active,
-.elektrubadur-navbox a:hover, .elektrubadur-navbox a:active {
-    text-decoration: underline;
+a:hover {
+    color: #0099cc;
+}
+
+a:visited {
+     color: #cc0033;
+}
+
+a:visited:hover {
+     color: #cc6699;
+}
+
+time {
+    font-style: italic;
+}
+
+li {
+    line-height: 1.5;
 }

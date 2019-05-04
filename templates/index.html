@@ -2,148 +2,108 @@
 
 <!DOCTYPE html>
 <html lang="{% if page.extra.language %}{{ page.extra.language }}{% else %}{{ config.default_language }}{% endif %}">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-        <link rel="stylesheet" href="{{ get_url(path="style.css", trailing_slash=false) }}">
 
-        <link href="{{ get_url(path="favicon.ico", trailing_slash=false) }}" rel="icon">
-        <link href="{{ get_url(path="favicon-16x16.png", trailing_slash=false) }}" rel="icon" sizes="16x16">
-        <link href="{{ get_url(path="favicon-96x96.png", trailing_slash=false) }}" rel="icon" sizes="96x96">
-        <link href="{{ get_url(path="favicon-192x192.png", trailing_slash=false) }}" rel="icon" sizes="192x192">
-        <link href="{{ get_url(path="favicon-32x32.png", trailing_slash=false) }}" rel="icon" sizes="32x32">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
 
-        {% if page %}
-            <title>{{ page.title }} – {{ config.title }}</title>
-        {% elif section and section.title %}
-            <title>{{ section.title }} – {{ config.title }}</title>
-        {% else %}
-            <title>{{ config.title }}</title>
-        {% endif %}
+    <link href="{{ get_url(path="favicon.ico") }}" rel="icon">
+    <link href="{{ get_url(path="favicon-16x16.png") }}" rel="icon" sizes="16x16">
+    <link href="{{ get_url(path="favicon-96x96.png") }}" rel="icon" sizes="96x96">
+    <link href="{{ get_url(path="favicon-192x192.png") }}" rel="icon" sizes="192x192">
+    <link href="{{ get_url(path="favicon-32x32.png") }}" rel="icon" sizes="32x32">
 
-        <link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}"/>
-        {% block extra_head_feed_links %}{% endblock extra_head_feed_links %}
+    {% if page %}
+    <title>{{ page.title }} – {{ config.title }}</title>
+    {% elif section and section.title %}
+    <title>{{ section.title }} – {{ config.title }}</title>
+    {% else %}
+    <title>{{ config.title }}</title>
+    {% endif %}
 
-         <link rel="sitemap" type="application/xml" title="{{config.title}} Sitemap" href="{{ get_url(path="sitemap.xml", trailing_slash=false) }}" />
+    <link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS"
+        href="{{ get_url(path="rss.xml") }}" />
+    {% block extra_head_feed_links %}{% endblock extra_head_feed_links %}
 
-        <meta name="description" content="{{ config.description }}"/>
-        <meta name="author" content="{{ config.extra.author.name }}"/>
-   </head>
-    <body class="w3-light-grey">
-        <div class="w3-content" style="max-width:1400px">
-            <header class="w3-container w3-center w3-padding-32">
-                <h1><b><a href="{{ config.base_url }}">{{ config.title }}</a></b></h1>
-                <p>{{ config.description }}</p>
-            </header>
+    <link rel="sitemap" type="application/xml" title="{{config.title}} Sitemap"
+        href="{{ get_url(path="sitemap.xml") }}" />
 
-            <div class="w3-row">
-                <div class="w3-col l8 s12">
-                    {% block pageheader %}{% endblock pageheader %}
+    <link rel="me" href="https://mastodon.sdf.org/@bkhl" />
 
-                    {% block content %}
-                        {% for page in paginator.pages %}
-                            {{ macros::page_in_list(page=page) }}
-                        {% endfor %}
-                    {% endblock content %}
-                </div>
+    <meta name="description" content="{{ config.description }}" />
+    <meta name="author" content="{{ config.extra.author.name }}" />
+</head>
 
-                <div class="w3-col l4">
-                    <div class="w3-card w3-margin">
-                        {% if page.extra.sidebar_photo %}
-                            {% set sidebar_photo = page.extra.sidebar_photo %}
-                        {% else %}
-                            {% set sidebar_photo = "box.jpeg" %}
-                        {% endif %}
-                        <img src="{{ get_url(path=sidebar_photo, pathtrailing_slash=false) }}" alt="Björn Lindström">
-                        <div class="w3-container w3-white">
-                            <p>
-                                Björn, professional systems engineer and amateur photographer living in Bangkok. I used to live in Uppsala, Sweden. If you wish to contact me, send an e-mail to <a href="mailto:bkhl@elektrubadur.se">bkhl@elektrubadur.se</a>.
-                            </p>
-                        </div>
-                    </div>
+<body>
+    {% if current_path and current_path == "/" %}
+    <header>
+        <h1>{{ config.title }}</h1>
+        <p>{{ config.description }}</p>
+    </header>
+    {% else %}
+    <header>
+        <p><a href="{{ get_url(path="") }}">Elektrubadur</a></p>
+    </header>
+    {% endif %}
 
-                    <div class="w3-card w3-margin elektrubadur-navbox">
-                        <div class="w3-container w3-padding">
-                            <h4>Photography</h4>
-                        </div>
-                        <ul class="w3-ul w3-hoverable w3-white">
-                                {{ macros::sidebar_link(name="Galleries", url=get_url(path="galleries")) }}
-                        </ul>
-                    </div>
+    <main>
+        {% block pageheader %}{% endblock pageheader %}
 
-                    <div class="w3-card w3-margin elektrubadur-navbox">
-                        <div class="w3-container w3-padding">
-                            <h4>Social</h4>
-                        </div>
-                        <ul class="w3-ul w3-hoverable w3-white">
-                            {{ macros::sidebar_link(name="Mastodon", url="https://mastodon.sdf.org/@bkhl", rel="me", icon="joinmastodon-icon.svg") }}
-                            {{ macros::sidebar_link(name="GitHub", url="https://github.com/bkhl", rel="me", icon="github-icon.svg") }}
-                            {{ macros::sidebar_link(name="GitLab", url="https://gitlab.com/bkhl", rel="me", icon="gitlab-icon.svg") }}
-                            {{ macros::sidebar_link(name="Exercism", url="https://exercism.io/profiles/bkhl", rel="me", icon="exercism-logo.svg") }}
-                            {{ macros::sidebar_link(name="Online-Go.com", url="https://online-go.com/player/52248/", rel="me", icon="ogslogo.svg") }}
-                        </ul>
-                    </div>
+        {% block content %}
+        {% for page in paginator.pages %}
+        {{ macros::page_in_list(page=page) }}
+        {% endfor %}
+        {% endblock content %}
+    </main>
 
-                    <div class="w3-card w3-margin elektrubadur-navbox">
-                        <div class="w3-container w3-padding">
-                            <h4>Professional</h4>
-                        </div>
-                        <ul class="w3-ul w3-hoverable w3-white">
-                            {{ macros::sidebar_link(name="Resumé", url=get_url(path="resume"), rel="me", icon="resume.svg") }}
-                            {{ macros::sidebar_link(name="LinkedIn", url="https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/", rel="me", icon="linkedin-icon.svg") }}
-                        </ul>
-                    </div>
-
-
-                    <div class="w3-card w3-margin elektrubadur-navbox">
-                        <div class="w3-container w3-padding">
-                            <h4>Elektrubadur</h4>
-                            <p>This is a name I've used for various projects in the past, including:</p>
-                        </div>
-                        <ul class="w3-ul w3-hoverable w3-white">
-                            {{ macros::sidebar_link(name="A band", url="https://www.jamendo.com/artist/4363/elektrubadur", icon="jamendo-icon.svg") }}
-                            {{ macros::sidebar_link(name="A podcast", url="https://archive.org/details/ElektrubadurPodcast", icon="archive-icon.svg") }}
-                        </ul>
-                    </div>
-
-                    <div class="w3-card w3-margin elektrubadur-navbox">
-                        <div class="w3-container w3-padding">
-                            <h4>Subscribe</h4>
-                        </div>
-                        <ul class="w3-ul w3-hoverable w3-white">
-                            {{ macros::sidebar_link(name="All posts", url=get_url(path="rss.xml"), rel="alternate", icon="rss-icon.svg") }}
-                            {% block extra_sidebar_feed_links %}{% endblock extra_sidebar_feed_links %}
-                        </ul>
-                    </div>
-                </div>
-            </div><br>
-        </div>
-
-        <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
-            {% if paginator %}
-                {% if paginator.previous %}
-                    <a href="{{ paginator.previous }}" class="w3-button w3-black w3-padding-large w3-margin-bottom">« Previous</a>
-                {% else %}
-                    <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">« Previous</button>
-                {% endif %}
-                {% if paginator.next %}
-                    <a href="{{ paginator.next }}" class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</a>
-                {% else %}
-                    <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Next »</button>
-                {% endif %}
-            {% else %}
-                {% if page.later %}
-                    <a href="{{ page.later.permalink }}" class="w3-button w3-black w3-padding-large w3-margin-bottom">« {{ page.later.title }}</a>
-                {% endif %}
-                {% if page.earlier %}
-                    <a href="{{ page.earlier.permalink }}" class="w3-button w3-black w3-padding-large w3-margin-bottom">{{ page.earlier.title }} »</a>
-                {% endif %}
+    <footer>
+        <nav>
+            {% if paginator or page.later or page.earlier %}
+            <section>
+                <h4>Navigation</h4>
+                <ul>
+                    {% if paginator %}
+                    {% if paginator.previous %}
+                    <li><a href=" {{ paginator.previous }}" rel="prev">Previous</a></li>
+                    {% endif %}
+                    {% if paginator.next %}
+                    <li><a href=" {{ paginator.next }}" rel="next">Next</a></li>
+                    {% endif %}
+                    {% else %}
+                    {% if page.later %}
+                    <li><a href="{{ page.later.permalink }}" rel="next">Next ({{ page.later.title }})</a></li>
+                    {% endif %}
+                    {% if page.earlier %}
+                    <li><a href="{{ page.earlier.permalink }}" rel="prev">Previous ({{ page.earlier.title }})</a></li>
+                    {% endif %}
+                    {% endif %}
+                </ul>
+            </section>
             {% endif %}
+            <section>
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="{{ get_url(path="about") }}">About</a></li>
+                    <li><a href="{{ get_url(path="resume") }}">Resume</a></li>
+                    <li><a href="{{ get_url(path="galleries") }}">Galleries</a></li>
+                    <li><a href="{{ get_url(path="imprint") }}">Imprint</a></li>
+                </ul>
+            </section>
+            <section>
+                <h4>Subscribe by RSS</h4>
+                <ul>
+                    <li><a href="{{ get_url(path="rss.xml") }}" , rel="alternate">All posts</a>
+                    </li>
+                    {% block extra_links %}{% endblock extra_links %}
+                </ul>
+            </section>
+        </nav>
 
-            <a href="{{ get_url(path="imprint") }}" class="w3-button w3-black w3-padding-large w3-margin-bottom w3-right">Imprint</a>
-            <p><small>© 2010–2019 Björn Lindström</small></p>
-        </footer>
-    </body>
+        <section>
+            <p>© 2010–2019 Björn Lindström</p>
+        </section>
+    </footer>
+</body>
+
 </html>

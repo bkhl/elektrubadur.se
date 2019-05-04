@@ -1,34 +1,31 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <header class="w3-container w3-left w3-margin w3-padding-32">
-        <h1><b>{{ page.title }}</b></h1>
+<article>
+    <header>
+        <h1>{{ page.title }}</h1>
 
         {% if page.taxonomies.categories or page.date %}
-            {{ macros::dateline(page=page) }}
+        {{ macros::dateline(page=page) }}
         {% endif %}
     </header>
 
-    <article class="w3-card-4 w3-margin w3-white">
-        {% if page.extra.image %}
-            {{ macros::featured_image(page=page, filename=page.extra.image.filename, data=page.extra.image) }}
+    {% if page.extra.image %}
+    {{ macros::featured_image(page=page, filename=page.extra.image.filename, data=page.extra.image) }}
+    {% endif %}
+
+    {{ page.content | safe }}
+
+    {% if page.extra.gallery %}
+    {% for filename, data in page.extra.gallery %}
+    <p>
+        <img src="{{ get_url(path=page.path ~ filename) }}"
+            alt="{% if data.title %}{{ data.title }}{% else %}{{ data.description }}{% endif %}">
+        {% if data.description %}
+        <p><em>{{ data.description }}</em></p>
         {% endif %}
-
-        <div class="w3-container">
-            {{ page.content | safe }}
-
-            {% if page.extra.gallery %}
-                {% for filename, data in page.extra.gallery %}
-                    <div class="w3-border w3-margin-bottom">
-                        <div class="w3-margin">
-                            <img src="{{ get_url(path=page.path ~ filename, trailing_slash=false) }}" alt="{% if data.title %}{{ data.title }}{% else %}{{ data.description }}{% endif %}">
-                            {% if data.description %}
-                                <p><em>{{ data.description }}</em></p>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-    </article>
+    </p>
+    {% endfor %}
+    {% endif %}
+</article>
 {% endblock content %}
