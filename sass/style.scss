@@ -23,8 +23,22 @@ section {
     margin: 8ex 0 8ex 0;
 }
 
+pre {
+    padding: 1ch;
+    border: solid black 1pt;
+}
+
 header > h1 {
     font-size: xx-large;
+}
+
+tt, code, pre, source {
+    font-family: "Noto Sans Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: smaller;
+}
+
+pre {
+    min-width: 65ch;
 }
 
 a {

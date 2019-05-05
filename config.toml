@@ -1,7 +1,8 @@
 title = "Elektrubadur"
 description = "Personal web page of Björn Lindström"
 base_url = "__PREFIX__"
-highlight_code = false
+highlight_code = true
+highlight_theme = "classic-modified"
 generate_rss = true
 generate_tags_pages = true
 compile_sass = true
