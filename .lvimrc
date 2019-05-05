@@ -1,3 +1,0 @@
-if g:localvimrc_file =~ "\.html$"
-    setlocal filetype=htmldjango
-endif
