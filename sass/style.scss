@@ -25,7 +25,8 @@ section {
 
 pre {
     padding: 1ch;
-    border: solid black 1pt;
+    border: dotted black 1pt;
+    overflow: auto;
 }
 
 header > h1 {
@@ -35,10 +36,6 @@ header > h1 {
 tt, code, pre, source {
     font-family: "Noto Sans Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: smaller;
-}
-
-pre {
-    min-width: 65ch;
 }
 
 a {
@@ -51,11 +48,11 @@ a:hover {
 }
 
 a:visited {
-     color: #cc0033;
+     color: #003399;
 }
 
 a:visited:hover {
-     color: #cc6699;
+     color: #0099cc;
 }
 
 time {
