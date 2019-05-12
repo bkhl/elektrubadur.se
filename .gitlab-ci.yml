@@ -31,7 +31,10 @@ build:pages:
     LC_ALL: C.UTF-8
     LANG: C.UTF-8
   before_script:
-    - python3 -V && zola --version && xmlstarlet --version && tidy --version
+    - python3 -V
+    - zola --version
+    - xmlstarlet --version
+    - tidy --version
   script:
     - python3 build.py
   artifacts:
