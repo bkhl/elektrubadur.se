@@ -1,6 +1,6 @@
 +++
-title = "About"
-path = "about"
+title = "About Me"
+path = "about_me"
 +++
 
 ![Portrait](box.jpeg)
