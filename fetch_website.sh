@@ -25,6 +25,9 @@ main() {
     unzip -q -d "$temp_dir" "$temp_zip_file"
 
     rsync --archive --quiet --delete-delay "$public_dir/" "$destination"
+
+    rm "$temp_zip_file"
+    rm -r "$temp_dir"
 }
 
 main "$@"
