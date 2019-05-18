@@ -1,5 +1,5 @@
 +++
-title = "Simple Nextcloud to-do list automation with Python and WebDAV"
+title = "Simple Nextcloud To-Do List Automation with Python and WebDAV"
 date = 2019-05-05
 
 [taxonomies]
