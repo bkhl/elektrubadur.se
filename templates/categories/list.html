@@ -8,14 +8,12 @@
 
 {% block content %}
 {% if terms %}
-<div>
+<p>
     <ul>
         {% for term in terms %}
-        <li>
-            <p><a href="{{ term.permalink | safe }}">{{ term.name }}</a> ({{ term.pages | length }})</p>
-        </li>
+        <li><a href="{{ term.permalink | safe }}">{{ term.name }}</a> ({{ term.pages | length }})</li>
         {% endfor %}
     </ul>
-</div>
+</p>
 {% endif %}
 {% endblock content %}
