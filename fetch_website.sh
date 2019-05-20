@@ -24,7 +24,7 @@ main() {
     mkdir "$temp_public_dir"
 
     # Get etag of latest build.
-    curl --silent --location --head "$artifact_url" \
+    curl --silent --fail --location --head "$artifact_url" \
         | grep '^etag: ' \
         | tail -1 \
         | sed 's/^etag: "\(.*\)"\r$/\1/' \
@@ -37,7 +37,7 @@ main() {
     fi
 
     # Fetch and deploy website.
-    curl --silent --location "$artifact_url" > "$temp_zip_file"
+    curl --silent --fail --location "$artifact_url" > "$temp_zip_file"
     unzip -q -d "$temp_dir" "$temp_zip_file"
     rsync --archive --quiet --delete-delay "$temp_public_dir/" "$destination"
 
