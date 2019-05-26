@@ -1,4 +1,6 @@
 [packages]
 plumbum = "*"
+requests = "*"
 
-[dev-dependencies]
+[dev-packages]
+rope = "*"
