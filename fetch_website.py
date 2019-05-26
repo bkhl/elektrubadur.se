@@ -97,14 +97,21 @@ def fetch_website(
         save_etag(etag_filename=etag_filename, etag=response.headers["ETag"])
 
 
+def get_target_path(destination_dir: str, path: str) -> str:
+    return "{destination_dir}/{path}".format(
+        destination_dir=destination_dir,
+        path=remove_artifact_prefix(path).rstrip(os.path.sep),
+    )
+
+
 def extract_files(archive: zipfile.ZipFile, destination_dir: str):
     """
     Extract files to target directory.
     """
 
     for info in archive.infolist():
-        target_path = f"{destination_dir}/{remove_artifact_prefix(info.filename)}"
-        if info.is_dir():
+        target_path = get_target_path(destination_dir, info.filename)
+        if info.filename.endswith(os.path.sep):
             if os.path.exists(target_path):
                 if not os.path.isdir(target_path):
                     os.remove(target_path)
@@ -124,8 +131,7 @@ def delete_files(archive: zipfile.ZipFile, destination_dir: str):
     """
 
     keep_files = set(
-        f"{destination_dir}/{remove_artifact_prefix(name)}".rstrip(os.path.sep)
-        for name in archive.namelist()
+        get_target_path(destination_dir, path) for path in archive.namelist()
     )
 
     for path, directory_names, file_names in os.walk(destination_dir, topdown=False):
@@ -147,7 +153,7 @@ def save_etag(etag_filename: str, etag: str):
     """
 
     with open(etag_filename, "w") as f:
-        f.write(f"{etag}\n")
+        f.write("{etag}\n".format(etag=etag))
 
 
 def parse_args():
@@ -170,7 +176,7 @@ def main():
     artifact_url = args.artifact_url
     destination_dir = args.destination_dir
 
-    etag_filename = f"{destination_dir}/.etag"
+    etag_filename = "{destination_dir}/.etag".format(destination_dir=destination_dir)
 
     session = requests.Session()
 
