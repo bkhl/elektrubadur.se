@@ -2,15 +2,15 @@
 
 Articles and images in this repository, as well as any other files in the `content`, `resources` and `static` directories are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
-Copyright © 2010-2019 Björn Lindström
+Copyright © 2010-2020 Björn Lindström
 
 # Tools
 
-Any source code, configuration, &c. in this repository is licensed according to the below
-license. This applies to any files not mentioned in the [Content](#content)
-section of this document.
+Any source code, configuration, templates, &c. in this repository is licensed
+according to the below license. This applies to any files not mentioned in the
+[Content](#content) section of this document.
 
-> Copyright © 2018-2019 Björn Lindström
+> Copyright © 2018-2020 Björn Lindström
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
