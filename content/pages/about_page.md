@@ -5,7 +5,7 @@ path = "about_page"
 
 # Copyright
 
-Copyright 2010–2019 Björn Lindström, except where stated otherwise.
+Copyright 2010–2020 Björn Lindström, except where stated otherwise.
 
 Articles and images on this page are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/), except where stated otherwise.
 
