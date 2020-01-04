@@ -1,0 +1,3 @@
+[submodule "web-build"]
+	path = web-build
+	url = https://gitlab.com/bkhl/web-build.git

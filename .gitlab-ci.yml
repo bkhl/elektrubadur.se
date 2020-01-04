@@ -1,31 +1,11 @@
-stages:
-  - prepare
-  - build
+---
 
 variables:
-  CI_REGISTRY_IMAGE: builder
+  GIT_SUBMODULE_STRATEGY: recursive
 
-prepare:docker:
-  stage: prepare
-  image: docker:stable
-  services:
-    - docker:dind
-  before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  script:
-    - docker pull $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE:latest || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-    - docker push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE:latest
-  only:
-    refs:
-      - master
-    changes:
-      - Dockerfile
-
-build:pages:
+build:
   stage: build
-  image: $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE:latest
+  image: registry.gitlab.com/bkhl/web-build/build-machine:latest
   variables:
     LC_ALL: C.UTF-8
     LANG: C.UTF-8
@@ -35,7 +15,7 @@ build:pages:
     - xmlstarlet --version
     - tidy --version
   script:
-    - python3 build.py
+    - web-build/build_website.py
   artifacts:
     paths:
       - public
