@@ -52,7 +52,6 @@ Moved to Thailand and continued working as a systems engineer.
 
 * Playing [go](https://online-go.com/player/52248/).
 * Making a [Video timecode library](https://gitlab.com/bkhl/video-timecode-rs) to learn Rust.
-* [Overengineering my desktop](https://gitlab.com/bkhl/dotfiles/tree/master/.local/share/playbooks) to learn Ansible.
 * [Photography](@/galleries/_index.md).
 * Mentoring beginners in Python and Bash on [Exercism](https://exercism.io/).
 * Learning Thai.
