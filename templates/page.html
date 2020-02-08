@@ -27,5 +27,10 @@
     </p>
     {% endfor %}
     {% endif %}
+    {% if page.extra.links.mastodon %}
+        <footer>
+            <p>If you want to leave a comment you can do so on <a href="{{ page.extra.links.mastodon }}">Mastodon</a>.</p>
+        </footer>
+    {% endif %}
 </article>
 {% endblock content %}

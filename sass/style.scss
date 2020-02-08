@@ -19,6 +19,12 @@ article {
     margin: 8ex 0 8ex 0;
 }
 
+article footer {
+    font-size: smaller;
+    text-align: right;
+    margin-top: 3ex;
+}
+
 section {
     margin: 8ex 0 8ex 0;
 }
@@ -60,5 +66,5 @@ time {
 }
 
 li {
-    line-height: 1.5;
+    margin-bottom: 1ex;
 }
