@@ -6,6 +6,7 @@ date = 2020-02-08
 categories = ["Software"]
 
 [extra.links]
+mastodon = "https://mastodon.sdf.org/@bkhl/103623742796898036"
 
 +++
 
