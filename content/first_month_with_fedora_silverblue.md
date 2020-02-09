@@ -14,7 +14,7 @@ I decided during my midwinter vacation that I'd try out [Fedora
 Silverblue][silverblue] on my desktop, and I liked it, so here I am still
 using it on my work laptop.
 
-Silverblue is a version of Fedora using [rpm-ostree](rpm-ostree) to provide a
+Silverblue is a version of Fedora using [rpm-ostree][rpm-ostree] to provide a
 minimal and immutable base OS, providing a platform for running applications in
 containers.
 
@@ -41,7 +41,7 @@ The benefits I was hoping for was
 
 For applications, I'm using mostly Flatpak. I found after a while that
 applications I had installed from the Fedora Flatpak repository was more buggy
-than the ones I had from [Flathub](flathub), so at one point I made a switch to
+than the ones I had from [Flathub][flathub], so at one point I made a switch to
 get all my applications from Flathub.
 
 Here's the entire command line to get `rpm-ostree` into the current state of my
@@ -86,7 +86,7 @@ terminal, a file manager, and Firefox, in terms of applications.
 
 The main thing I've done so far to make it convenient for me to use as a
 development system is to create container images for use with
-[Toolbox](toolbox). I keep these images [here in GitLab](toolboxes). I'll write
+[Toolbox][toolbox]. I keep these images [here in GitLab][toolboxes]. I'll write
 more about that in a future article.
 
 For now I'll summarize it by saying I've created some Toolbox environments for
@@ -100,10 +100,10 @@ I like the look and feel of the default Gnome desktop. I also get a somewhat
 newer version of it, which is nice.
 
 A few weeks after the switch, Tobias Bernard (Gnome developer) posted the
-article [Doing Things That Scale](doing-things-that-scale), which resonated
+article [Doing Things That Scale][doing-things-that-scale], which resonated
 with me. While I've done some hacking to set up my development environments
 "just right" as described above, I'm trying to think of how to make that work
-more usable for others, maybe by contributing back to the [Toolbox](toolbox)
+more usable for others, maybe by contributing back to the [Toolbox][toolbox]
 project, or by making some sort of GUI wrapper to manage a set of development
 environment toolboxes.
 
