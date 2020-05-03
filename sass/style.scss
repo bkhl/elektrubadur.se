@@ -1,5 +1,5 @@
 body {
-    font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto;
+    font-family: sans-serif;
     max-width: 60ch;
     padding: 2ch;
     margin: auto;
@@ -42,11 +42,6 @@ pre {
 
 header > h1 {
     font-size: xx-large;
-}
-
-tt, code, pre, source {
-    font-family: "Noto Sans Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: smaller;
 }
 
 a {
