@@ -9,18 +9,18 @@
         {% if page.taxonomies.categories or page.taxonomies.tags %}
                 {% if page.taxonomies.categories %}
                         In
-                        {% for category in page.taxonomies.categories %}
+                        {%- for category in page.taxonomies.categories %}
                         {%- if not loop.first and not loop.last %}, {%- elif loop.last and not loop.first %} and {%- endif %}
                         <a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">{{ category }}</a>
-                        {% endfor %}
+                        {%- endfor %}
                 {% endif %}
 
                 {% if page.taxonomies.tags %}
                         about
-                        {% for tag in page.taxonomies.tags %}
+                        {%- for tag in page.taxonomies.tags %}
                         {%- if not loop.first and not loop.last %}, {%- elif loop.last and not loop.first %} and {%- endif %}
                         <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{ tag }}</a>
-                        {% endfor %}
+                        {%- endfor %}
                 {% endif %}
         —
         {% endif %}
