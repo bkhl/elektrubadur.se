@@ -8,6 +8,7 @@ generate_tags_pages = true
 compile_sass = true
 taxonomies = [
     { name = "categories", rss = true, paginate_by = 10 },
+    { name = "tags", rss = false, paginate_by = 10 },
 ]
 default_language = "en"
 

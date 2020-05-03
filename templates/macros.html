@@ -5,14 +5,27 @@
 {% endmacro page_header %}
 
 {% macro dateline(page) %}
-<p>
-    {% for category in page.taxonomies.categories %}
-    Category: <a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">{{ category }}</a>
-    {% endfor %}
-</p>
-<p>
-    <time datetime="{{ page.date | date(format="%Y-%m-%d") }}">{{ page.date | date(format="%B %e, %Y") }}</time>
-</p>
+    <p>
+        {% if page.taxonomies.categories or page.taxonomies.tags %}
+                {% if page.taxonomies.categories %}
+                        In
+                        {% for category in page.taxonomies.categories %}
+                        {%- if not loop.first and not loop.last %}, {%- elif loop.last and not loop.first %} and {%- endif %}
+                        <a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">{{ category }}</a>
+                        {% endfor %}
+                {% endif %}
+
+                {% if page.taxonomies.tags %}
+                        about
+                        {% for tag in page.taxonomies.tags %}
+                        {%- if not loop.first and not loop.last %}, {%- elif loop.last and not loop.first %} and {%- endif %}
+                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{ tag }}</a>
+                        {% endfor %}
+                {% endif %}
+        —
+        {% endif %}
+        <time datetime="{{ page.date | date(format="%Y-%m-%d") }}">{{ page.date | date(format="%B %e, %Y") }}</time>
+    </p>
 {% endmacro dateline %}
 
 {% macro featured_image(page, filename, data) %}
@@ -33,21 +46,23 @@
 
 {% macro page_in_list(page) %}
 <article>
-    {% if page.extra.image %}
-    {{ macros::linked_featured_image(page=page, filename=page.extra.image.filename, data=page.extra.image) }}
-    {% elif page.extra.gallery %}
-    {% for filename, data in page.extra.gallery %}
-    {% if data.featured %}
-    {{ macros::linked_featured_image(page=page, filename=filename, data=data) }}
-    {% break %}
-    {% endif %}
-    {% endfor %}
-    {% endif %}
+    <header>
+        {% if page.extra.image %}
+        {{ macros::linked_featured_image(page=page, filename=page.extra.image.filename, data=page.extra.image) }}
+        {% elif page.extra.gallery %}
+        {% for filename, data in page.extra.gallery %}
+        {% if data.featured %}
+        {{ macros::linked_featured_image(page=page, filename=filename, data=data) }}
+        {% break %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
 
-    <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
-    {% if page.taxonomies.categories or page.date %}
-    {{ macros::dateline(page=page) }}
-    {% endif %}
+        <h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
+        {% if page.taxonomies.categories or page.date %}
+        {{ macros::dateline(page=page) }}
+        {% endif %}
+    </header>
 
     {% if page.summary %}
     {{ page.summary | safe }}
