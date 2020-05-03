@@ -4,6 +4,7 @@ date = 2019-05-05
 
 [taxonomies]
 categories = ["Programming"]
+tags = ["Nextcloud", "planning"]
 +++
 
 I keep a task list in a [todo.txt][todo.txt] format in

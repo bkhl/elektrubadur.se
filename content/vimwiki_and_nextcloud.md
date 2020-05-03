@@ -4,6 +4,7 @@ date = 2020-05-02
 
 [taxonomies]
 categories = ["Software"]
+tags = ["Vim", "Vimwiki", "Nextcloud", "notes"]
 
 [extra.links]
 mastodon = "https://mastodon.sdf.org/@bkhl/104099207807530812"
