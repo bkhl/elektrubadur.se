@@ -6,6 +6,9 @@ date = 2020-05-03
 categories = ["Software"]
 tags = ["WWW", "HCoop", "Git", "CI/CD"]
 
+[extra.links]
+mastodon = "https://mastodon.sdf.org/@bkhl/104103866230089691"
+
 +++
 
 This blog is created using the [Zola static site engine][zola]. I use a
