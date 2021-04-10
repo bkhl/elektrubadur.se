@@ -241,7 +241,7 @@ if __name__ == "__main__":
         sys.exit(1)
 ```
 
-The entire script is in this [GitLab project][gitlab-project].
+Here is [the entire script](./todo_maintenance.py).
 
 This is just a start, if you want more advanced automation, handy things that
 could be added include (again, pull requests accepted):
