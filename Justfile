@@ -6,7 +6,7 @@ default:
 build_image:
     podman build -f Containerfile -t elektrubadur-builder .
 
-in_container *args:
+in_container *args: build_image
     podman run --rm -it \
     -v "${HOME}/.config/hut:/root/.config/hut:z" \
     -v "{{ justfile_directory() }}:{{ justfile_directory() }}:z" \
@@ -48,8 +48,8 @@ build:
             "${f}" > "${tempfile}" && mv -v "${tempfile}" "${f}"
     done
 
-package: build_site
+package: build
     tar -C public -czf public.tar.gz .
 
-publish: build_suite
+publish: package
     hut publish -d '{{ DOMAIN }}' public.tar.gz
