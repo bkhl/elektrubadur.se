@@ -1,0 +1,23 @@
+#+TITLE: About Me
+#+URL: /about_me
+
+{{< image file="box.jpeg" title="Portrait" alt="Portrait" >}}
+
+Björn, professional programmer and Scrum Master, and amateur photographer living in Sweden. I moved back from Bangkok a couple of years ago. If you wish to contact me, send an e-mail to [[mailto:bkhl@elektrubadur.se][bkhl@elektrubadur.se]].
+
+* Online presence
+
+- [[https://social.sdf.org/@bkhl][Mastodon]]
+- [[https://git.sr.ht/~bkhl/][Sourcehut]]
+- [[https://github.com/bkhl][GitHub]]
+- [[https://gitlab.com/bkhl][GitLab]]
+- [[https://exercism.io/profiles/bkhl][Exercism]]
+- [[https://online-go.com/player/52248/][Online-Go.com]]
+- [[https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/][LinkedIn]]
+
+* Elektrubadur
+
+This is a name I've used for various projects in the past, including:
+
+- [[https://www.jamendo.com/artist/4363/elektrubadur][A band]]
+- [[https://archive.org/details/ElektrubadurPodcast][A podcast]]

@@ -1,0 +1,15 @@
+<p>
+  {{ if eq $.Site.Home .Page }}
+  {{ with $.Site.Home.AlternativeOutputFormats.Get "rss" }}
+  <a href="{{ .RelPermalink }}" rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="RSS feed">Subscribe by RSS</a>
+  {{ end }}
+  {{ else }}
+  RSS Feeds:
+  {{ with $.Site.Home.AlternativeOutputFormats.Get "rss" }}
+  <a href="{{ .RelPermalink }}" rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="RSS feed">All</a>
+  {{ end }}
+  {{ with .AlternativeOutputFormats.Get "rss" }}
+  / <a href="{{ .RelPermalink }}" rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="RSS feed ({{ $.Page.Title }})">{{ $.Page.Title }}</a>
+  {{ end }}
+  {{ end }}
+</p>

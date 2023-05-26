@@ -1,0 +1,62 @@
+{{- block "setup" . -}}{{- end -}}
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{ with resources.Get "scss/style.scss" | toCSS (dict "targetPath" "style.css") | minify }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+
+    <link href="/favicon.ico" rel="icon">
+    <link href="/favicon-16x16.png" rel="icon" sizes="16x16">
+    <link href="/favicon-96x96.png" rel="icon" sizes="96x96">
+    <link href="/favicon-192x192.png" rel="icon" sizes="192x192">
+    <link href="/favicon-32x32.png" rel="icon" sizes="32x32">
+
+    <title>{{ with .Page.Title }}{{ . }} – {{ end }}Elektrubadur</title>
+
+    {{ with $.Site.Home.AlternativeOutputFormats.Get "rss" }}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end }}
+    {{ if ne $.Site.Home .Page }}
+    {{ with .AlternativeOutputFormats.Get "rss" }}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s on %s" />` .Rel .MediaType.Type .Permalink $.Page.Title $.Site.Title | safeHTML }}
+    {{ end }}
+    {{ end }}
+
+    <link rel="sitemap" type="application/xml" title="{{.Site.Title}} Sitemap" href="/sitemap.xml" /> <!-- FIXME: generate link? -->
+    <link rel="me" href="https://mastodon.sdf.org/@bkhl" />
+    <meta name="description" content="{{ .Site.Params.description }}" />
+    <meta name="author" content="{{ .Site.Params.author }}" />
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        {{ if and .Page.IsHome (eq (.Scratch.Get "paginator").PageNumber 1)}}
+        {{ .Site.Title }}
+        {{ else }}
+        <a href="/">{{ .Site.Title }}</a>
+        {{ end }}
+      </h1>
+      {{ block "site_subtitle" . }}
+      {{ end }}
+      <nav>
+        {{ block "site_nav" . }}
+        {{ end }}
+      </nav>
+    </header>
+
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer>
+      {{ block "footer" . }}
+      {{ end }}
+      <p>{{ .Site.Copyright }}</p>
+    </footer>
+  </body>
+</html>

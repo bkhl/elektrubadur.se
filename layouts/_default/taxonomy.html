@@ -1,0 +1,28 @@
+{{- define "setup" -}}
+{{- $.Scratch.Set "paginator" (.Paginate .Pages) -}}
+{{- end -}}
+
+{{ define "site_subtitle" }}
+<p><em>{{ .Site.Params.description }}</em></p>
+{{end}}
+
+{{ define "site_nav" }}
+{{ partial "main_menu" . }}
+{{ end }}
+
+{{ define "main" }}
+<header>
+  <h1><em>{{ .Page.Title }}</em>:</h1>
+</header>
+<p>
+<ul>
+  {{ range .Paginator.Pages }}
+  <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+  {{ end }}
+</ul>
+</p>
+{{ end }}
+
+{{ define "footer" }}
+{{ partial "rss_links" . }}
+{{ end }}

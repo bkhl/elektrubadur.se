@@ -1,0 +1,5 @@
+#+TITLE: Racks
+#+DATE: 2015-04-04
+#+CATEGORIES[]: Photos
+
+Some server room.

@@ -1,17 +1,46 @@
 title = "Elektrubadur"
-description = "Personal web page of Björn Lindström"
-base_url = "https://elektrubadur.se"
-highlight_code = true
-highlight_theme = "classic-modified"
-generate_feed = true
-feed_filename = "rss.xml"
-generate_tags_pages = true
-compile_sass = true
-taxonomies = [
-    { name = "categories", feed = true, paginate_by = 10 },
-    { name = "tags", feed = false, paginate_by = 10 },
-]
-default_language = "en"
+baseURL = "https://elektrubadur.se"
+canonifyURLs = true
+copyright = "© 2010–2023 Björn Lindström"
+defaultContentLanguage = "en"
+disableHugoGeneratorInject = true
+enableGitInfo = true
+enableRobotsTXT = true
+timeZone = "Europe/Stockholm"
 
-[extra.author]
-name = "Björn Lindström"
+[outputFormats]
+[outputFormats.RSS]
+mediatype = "application/rss+xml"
+baseName = "rss"
+
+[markup.highlight]
+style = "modus-operandi"
+
+[params]
+description = "Personal web page of Björn Lindström"
+author = "Björn Lindström"
+
+[[menu.main]]
+name = "Blog"
+pageRef = "/"
+weight = 10
+
+[[menu.main]]
+name = "Galleries"
+pageRef = "/galleries/"
+weight = 20
+
+[[menu.main]]
+name = "About Me"
+pageRef = "/about_me/"
+weight = 30
+
+[[menu.main]]
+name = "Resumé"
+pageRef = "/resume/"
+weight = 30
+
+[[menu.main]]
+name = "About This Page"
+pageRef = "/about_page/"
+weight = 40

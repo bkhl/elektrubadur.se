@@ -1,0 +1,25 @@
+{{- define "setup" -}}
+{{- $.Scratch.Set "paginator" (.Paginate (where .Pages "Section" "eq" $.Page.Section)) -}}
+{{- end -}}
+
+{{ define "title" }}{{ .Site.Title }}{{ end }}
+
+{{ define "site_subtitle" }}
+<p><em>{{ .Site.Params.description }}</em></p>
+{{ end }}
+
+{{ define "site_nav" }}
+{{ partial "main_menu" . }}
+{{ end }}
+
+{{ define "main" }}
+<header>
+  {{ partial "page_turner" . }}
+</header>
+
+{{ partial "article_list" (dict "Page" .Page "Paginator" ($.Scratch.Get "paginator") "Context" "blog") }}
+{{ end }}
+
+{{ define "footer" }}
+{{ partial "rss_links" . }}
+{{ end }}

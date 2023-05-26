@@ -1,0 +1,142 @@
+/*
+ * Fonts
+ */
+
+// "Old style" font list from https://modernfontstacks.com/
+$font_family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+
+// "Monospace Slab Serif" font list from https://modernfontstacks.com/
+$monospace_font_family: 'Nimbus Mono PS', 'Courier New', monospace;
+
+
+/*
+ * Entire page
+ */
+
+body {
+    font-family: $font_family;
+    max-width: 60ch;
+    padding: 2ch;
+    margin: auto;
+    font-size: 120%;
+}
+
+
+/*
+ * Basic elements
+ */
+
+article > main p, article > main li  {
+    text-align: justify;
+}
+
+li {
+    margin-bottom: 1ex;
+}
+
+code, kbd, tt, pre, samp, textarea {
+    font-family: $monospace_font_family;
+}
+
+pre {
+    padding: 1ch;
+    border: dotted black 1pt;
+    overflow: auto;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+time {
+    font-style: italic;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+
+/*
+ * Links
+ */
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0099cc;
+    text-decoration: underline;
+}
+
+a:visited {
+     color: #003399;
+}
+
+a:visited:hover {
+     color: #0099cc;
+}
+
+
+/*
+ * Headers
+ */
+
+header h1 {
+    font-size: larger;
+}
+
+header p {
+    font-size: smaller;
+}
+
+
+/*
+ * Footer
+ */
+
+body footer {
+    text-align: right;
+    margin-top: 4ex;
+}
+
+
+/*
+ * Articles
+ */
+
+article {
+    margin: 8ex 0 8ex 0;
+}
+
+article > header {
+    margin-bottom: 3ex;
+}
+
+article > header p {
+    font-size: smaller;
+}
+
+article > header h1 {
+    font-size: xx-large;
+}
+
+article > footer {
+    font-size: smaller;
+}
+
+
+/*
+ * Navigation section
+ */
+
+nav {
+    margin: 4ex 0 4ex 0;
+}
+
+header nav {
+    text-align: center
+}

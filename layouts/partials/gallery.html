@@ -1,0 +1,7 @@
+{{- $page := . -}}
+{{- with $page.Scratch.Get "config" -}}
+{{- range .gallery -}}
+<p><img src="{{ ($page.Resources.GetMatch .filename).RelPermalink }}" alt="{{ .description | default .title }}"><p>
+<p><em>{{ .description | default .title }}</em></p>
+{{- end -}}
+{{- end -}}

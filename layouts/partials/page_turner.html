@@ -1,0 +1,18 @@
+<nav>
+  <p>
+    {{ $paginator := $.Scratch.Get "paginator" }}
+    {{ if or $paginator.HasPrev .Paginator.HasNext }}
+    {{ if $paginator.HasPrev }}
+    <a href="{{ .Paginator.Prev.URL }}">« Newer</a>
+    {{ else }}
+    First page
+    {{ end }}
+    —
+    {{ if $paginator.HasNext }}
+    <a href="{{ .Paginator.Next.URL }}">Older »</a>
+    {{ else }}
+    Last page
+    {{ end }}
+    {{ end }}
+  </p>
+</nav>

@@ -1,0 +1,13 @@
+{{- $page := .Page -}}
+{{- $context := .Context }}
+{{- with $page.Scratch.Get "config" -}}
+{{- with .image }}
+<p><img src="{{ ($page.Resources.GetMatch .filename).RelPermalink }}" alt="{{ .description | default .title }}"></p>
+{{- else -}}
+{{- if eq $context "list" -}}
+{{- range first 1 (where .gallery "featured" true) -}}
+<p><img src="{{ ($page.Resources.GetMatch .filename).RelPermalink }}" alt="{{ .description | default .title }}"></p>
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}

@@ -1,0 +1,25 @@
+{{- define "setup" -}}
+{{- with .Resources.GetMatch "config.toml" -}}
+{{- $.Scratch.Set "config" (. | unmarshal) -}}
+{{- end -}}
+{{- end -}}
+
+{{ define "site_nav" }}
+{{ partial "main_menu" . }}
+{{ end }}
+
+{{ define "main" }}
+<article>
+  <header>
+    <h1>{{ .Page.Title }}</h1>
+    {{ if eq .Page.Section "" }}
+    {{ partial "dateline" (dict "Page" .Page "Context" "single") }}
+    {{ end }}
+  </header>
+  <main>
+  {{ partial "featured_image" (dict "Page" . "context" "single") }}
+  {{ .Page.Content | safeHTML }}
+  {{ partial "gallery" . }}
+  </main>
+</article>
+{{ end }}

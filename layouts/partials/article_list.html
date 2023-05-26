@@ -1,0 +1,24 @@
+{{ range .Paginator.Pages }}
+<article>
+  <header>
+    <h1><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></h1>
+    <a href="{{ .Page.Permalink }}">
+      {{ partial "featured_image" (dict "Page" .Page "Context" "list") }}
+    </a>
+    {{ if eq $.Context "blog" }}
+    {{ partial "dateline" (dict "Page" .Page "Context" "list") }}
+    {{ end }}
+  </header>
+  <main>
+    {{ .Page.Summary | safeHTML }}
+  </main>
+  <footer>
+    {{ if .Page.Truncated }}
+    <a href="{{ .Page.Permalink }}">
+      <p>[…]</p>
+      <p>Read more »</p>
+    </a>
+    {{ end }}
+  </footer>
+</article>
+{{ end }}
