@@ -52,4 +52,4 @@ package: build
     tar -C public -czf public.tar.gz .
 
 publish: package
-    hut publish -d '{{ DOMAIN }}' public.tar.gz
+    hut pages publish -d '{{ DOMAIN }}' public.tar.gz
