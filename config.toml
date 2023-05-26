@@ -3,12 +3,13 @@ description = "Personal web page of Björn Lindström"
 base_url = "https://elektrubadur.se"
 highlight_code = true
 highlight_theme = "classic-modified"
-generate_rss = true
+generate_feed = true
+feed_filename = "rss.xml"
 generate_tags_pages = true
 compile_sass = true
 taxonomies = [
-    { name = "categories", rss = true, paginate_by = 10 },
-    { name = "tags", rss = false, paginate_by = 10 },
+    { name = "categories", feed = true, paginate_by = 10 },
+    { name = "tags", feed = false, paginate_by = 10 },
 ]
 default_language = "en"
 
