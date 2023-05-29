@@ -2,8 +2,11 @@
 {{- $.Scratch.Set "paginator" (.Paginate .Pages) -}}
 {{- end -}}
 
-{{ define "site_header" }}
+{{ define "site_subtitle" }}
 <p><em>{{ .Site.Params.description }}</em></p>
+{{end}}
+
+{{ define "site_nav" }}
 {{ partial "main_menu" . }}
 {{ end }}
 
