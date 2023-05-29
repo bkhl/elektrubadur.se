@@ -63,21 +63,29 @@ figcaption {
  */
 
 a {
-    color: #0066cc;
+    color: #663300;
     text-decoration: none;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} a {
+      font-style: normal;
+  }
 }
 
 a:hover {
-    color: #0099cc;
+    color: #bb9966;
     text-decoration: underline;
 }
 
 a:visited {
-     color: #003399;
+     color: #663300;
 }
 
 a:visited:hover {
-     color: #0099cc;
+     color: #bb9966;
 }
 
 
