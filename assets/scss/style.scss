@@ -101,6 +101,11 @@ header p {
 body footer {
     text-align: right;
     margin-top: 4ex;
+
+}
+
+footer p {
+    font-size: smaller;
 }
 
 
@@ -137,6 +142,6 @@ nav {
     margin: 4ex 0 4ex 0;
 }
 
-header nav {
+main > header nav, main > footer nav {
     text-align: center
 }

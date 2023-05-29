@@ -18,6 +18,9 @@
   {{ partial "page_turner" . }}
 </header>
 {{ partial "article_list" (dict "Page" .Page "Paginator" ($.Scratch.Get "paginator") "Context" "blog") }}
+<footer>
+  {{ partial "page_turner" . }}
+</footer>
 {{ end }}
 
 {{ define "footer" }}
