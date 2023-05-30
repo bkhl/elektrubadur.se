@@ -26,7 +26,7 @@ body {
  * Basic elements
  */
 
-article > main p, article > main li  {
+article > p, article li  {
     text-align: justify;
 }
 
@@ -93,10 +93,6 @@ a:visited:hover {
  * Headers
  */
 
-header h1 {
-    font-size: larger;
-}
-
 header p {
     font-size: smaller;
 }
@@ -106,14 +102,13 @@ header p {
  * Footer
  */
 
-body footer {
-    text-align: right;
-    margin-top: 4ex;
-
-}
-
 footer p {
     font-size: smaller;
+}
+
+body > footer {
+    text-align: right;
+    margin-top: 4ex;
 }
 
 
@@ -125,19 +120,19 @@ article {
     margin: 8ex 0 8ex 0;
 }
 
-article > header {
+article header {
     margin-bottom: 3ex;
 }
 
-article > header p {
+article header p {
     font-size: smaller;
 }
 
-article > header h1 {
+article header h1 {
     font-size: xx-large;
 }
 
-article > footer {
+article footer {
     font-size: smaller;
 }
 
@@ -148,8 +143,5 @@ article > footer {
 
 nav {
     margin: 4ex 0 4ex 0;
-}
-
-main > header nav, main > footer nav {
-    text-align: center
+    text-align: center;
 }

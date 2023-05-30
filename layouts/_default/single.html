@@ -16,10 +16,8 @@
     {{ partial "dateline" (dict "Page" .Page "Context" "single") }}
     {{ end }}
   </header>
-  <main>
   {{ partial "featured_image" (dict "Page" . "context" "single") }}
   {{ .Page.Content | safeHTML }}
   {{ partial "gallery" . }}
-  </main>
 </article>
 {{ end }}

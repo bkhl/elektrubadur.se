@@ -7,7 +7,7 @@ default:
 build_image:
     podman build -f Containerfile -t '{{ IMAGE }}' .
 
-in_container *args: build_image
+_in_container *args: build_image
     podman run --rm -it \
     -v "${HOME}/.config/hut:/root/.config/hut:z" \
     -v "{{ justfile_directory() }}:{{ justfile_directory() }}:z" \
@@ -15,7 +15,7 @@ in_container *args: build_image
     '{{ IMAGE }}' \
     just {{ args }}
 
-serve:
+_serve:
     podman run --rm -it \
     -v "{{ justfile_directory() }}:{{ justfile_directory() }}:z" \
     -w "{{ justfile_directory() }}" \
@@ -23,7 +23,10 @@ serve:
     '{{ IMAGE }}' \
     hugo serve --bind 0.0.0.0
 
-build:
+serve:
+    @just _in_container _serve
+
+_build:
     #!/bin/bash
 
     set -xeuo pipefail
@@ -55,11 +58,24 @@ build:
             "${f}" > "${tempfile}" && mv -v "${tempfile}" "${f}"
     done
 
-package: build
+build:
+    @just _in_container _build
+
+validate: build
+    podman run --rm -it \
+    -v "{{ justfile_directory() }}:{{ justfile_directory() }}:z" \
+    -w "{{ justfile_directory() }}" \
+    ghcr.io/validator/validator:latest \
+    vnu --skip-non-html public
+
+package: build validate
     tar -C public -czf public.tar.gz .
 
-publish: package
+_publish:
     hut pages publish --domain '{{ DOMAIN }}' --site-config ./site-config.json public.tar.gz
+
+publish: package
+    just _in_container _publish
 
 package_redirect:
     tar -C redirect -czf redirect.tar.gz .

@@ -34,13 +34,13 @@
 
   <body>
     <header>
-      <h1>
+      <h2>
         {{ if and .Page.IsHome (eq (.Scratch.Get "paginator").PageNumber 1)}}
         {{ .Site.Title }}
         {{ else }}
         <a href="/">{{ .Site.Title }}</a>
         {{ end }}
-      </h1>
+      </h2>
       {{ block "site_subtitle" . }}
       {{ end }}
       <nav>
