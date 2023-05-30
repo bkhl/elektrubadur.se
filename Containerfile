@@ -1,3 +1,11 @@
 FROM docker.io/library/alpine:edge
 
-RUN apk add --no-cache hut git just hugo tzdata
+RUN apk add --no-cache \
+    bash \
+    git \
+    just \
+    hugo \
+    tzdata \
+    xmlstarlet \
+    tidyhtml \
+    hut
