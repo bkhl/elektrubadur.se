@@ -46,7 +46,7 @@ build:
             || (($?==1 ? 1 : 0))
 
     find "${output_dir}" -type f -iname '*.xml' | while read f; do
-        tempfile="$(mktemp -t xmlstarlet.XXXXXXXX)"
+        tempfile="$(mktemp -t "$(basename "${f}")".XXXXXXXX)"
         xmlstarlet fo \
             --noindent \
             --nocdata  \
