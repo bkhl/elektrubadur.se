@@ -32,3 +32,9 @@ package: build
 
 publish: package
     hut pages publish --domain '{{ DOMAIN }}' --site-config ./site-config.json public.tar.gz
+
+package_redirect:
+    tar -C redirect -czf redirect.tar.gz .
+
+publish_redirect domain: package_redirect
+    hut pages publish --domain '{{ domain }}' --site-config ./site-config-redirect.json redirect.tar.gz
