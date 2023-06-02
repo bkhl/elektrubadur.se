@@ -7,7 +7,7 @@ Björn, professional programmer and Scrum Master, and amateur photographer livin
 
 * Online presence
 
-- [[https://social.sdfeu.org/@bkhl][Mastodon]]
+- [[https://social.sdfeu.org/@bkhl][Mastodon on SDF EU]]
 - [[https://git.sr.ht/~bkhl/][Sourcehut]]
 - [[https://github.com/bkhl][GitHub]]
 - [[https://gitlab.com/bkhl][GitLab]]
