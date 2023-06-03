@@ -16,11 +16,6 @@ _in_container *args: build_image
     just {{ args }}
 
 _serve:
-    podman run --rm -it \
-    -v "{{ justfile_directory() }}:{{ justfile_directory() }}:z" \
-    -w "{{ justfile_directory() }}" \
-    -p 1313:1313 \
-    '{{ IMAGE }}' \
     hugo serve --bind 0.0.0.0
 
 serve:
