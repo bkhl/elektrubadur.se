@@ -1,6 +1,8 @@
 #+TITLE: Resumé
 #+URL: /resume
 
+/Björn Lindström/, programmer and scrum master
+
 {{< image file="portrait.jpeg" title="Portrait" alt="Portrait" >}}
 
 * Summary
