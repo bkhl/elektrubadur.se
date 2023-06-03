@@ -1,7 +1,7 @@
 {{ range .Paginator.Pages }}
 <article>
   <header>
-    <h2><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></h2>
+    <h2><a href="{{ .Page.Permalink }}" title="{{ .Page.Title }}">{{ .Page.Title }}</a></h2>
     <a href="{{ .Page.Permalink }}">
       {{ partial "featured_image" (dict "Page" .Page "Context" "list") }}
     </a>
