@@ -49,11 +49,7 @@ img {
     max-height: 100%;
 }
 
-time {
-    font-style: italic;
-}
-
-figcaption {
+time, figcaption {
     font-style: italic;
 }
 
@@ -79,19 +75,10 @@ a:hover {
 
 
 /*
- * Headers
+ * Headers and footers
  */
 
-header p {
-    font-size: smaller;
-}
-
-
-/*
- * Footer
- */
-
-footer p {
+header p, footer p {
     font-size: smaller;
 }
 
