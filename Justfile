@@ -15,11 +15,14 @@ _in_container *args: build_image
     '{{ IMAGE }}' \
     just {{ args }}
 
-_serve:
-    hugo serve --bind 0.0.0.0
-
 serve:
-    @just _in_container _serve
+    podman run --rm -it \
+    -v "${HOME}/.config/hut:/root/.config/hut:z" \
+    -v "{{ justfile_directory() }}:{{ justfile_directory() }}:z" \
+    -w "{{ justfile_directory() }}" \
+    -p 1313:1313 \
+    '{{ IMAGE }}' \
+    hugo serve --bind 0.0.0.0
 
 _build:
     #!/bin/bash
