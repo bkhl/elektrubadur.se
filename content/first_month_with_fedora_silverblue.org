@@ -15,7 +15,7 @@ containers.
 Previously I was using Ubuntu with a lot of Ansible playbooks for
 installing things both globally and in my home directory. I used to keep
 those playbooks in the same directory as my
-[[https://gitlab.com/bkhl/dotfiles/][dotfiles]], but after the switch to
+[[https://git.sr.ht/~bkhl/dotfiles][dotfiles]], but after the switch to
 Fedora I removed them. If anyone is curious about what that looked like,
 [[https://gitlab.com/bkhl/workstation-playbooks/tree/065ce9ca0547ca4d9c1e574407ba6373fcc99b69][they
 are here]].

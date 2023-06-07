@@ -5,7 +5,7 @@
 
 This blog is created using the [[https://www.getzola.org/][Zola static site engine]]. I use a combination of [[https://docs.gitlab.com/ee/ci/][GitLab CI]] and =cron= to automatically upload it to my web server whenever I merge a change to the [[https://git-scm.com/][Git]] =master= branch of the home page.
 
-The =elektrubadur.se= source code is kept [[https://gitlab.com/bkhl/elektrubadur.se/][here in GitLab]]. While writing a post I just run =zola serve= on my computer and can look at a dynamically updated website on a local web server.
+The =elektrubadur.se= source code is kept /here in GitLab/ /[Update 2023-06-07: [[https://git.sr.ht/~bkhl/elektrubadur.se/tree/d57ce94deec71c605ca62d4427befa8c59998d6f][elektrubadur.se sourcecode moved to Sourcehut]]]/. While writing a post I just run =zola serve= on my computer and can look at a dynamically updated website on a local web server.
 
 # more
 

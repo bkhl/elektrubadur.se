@@ -80,3 +80,6 @@ package_redirect:
 
 publish_redirect domain: package_redirect
     hut pages publish --domain '{{ domain }}' --site-config ./site-config-redirect.json redirect.tar.gz
+
+check_links:
+    podman run --rm docker.io/tennox/linkcheck --external '{{ DOMAIN }}'
