@@ -13,7 +13,7 @@ Once ready, I commit on a branch and push it to GitLab, and then make a merge re
 
 The repository includes the separate repository [[https://gitlab.com/bkhl/web-build][web-build]] as a submodule. It contains some scripts used to build and publish the web site.
 
-My website is hosted at [[https://hcoop.net/][HCoop]], a hosting cooperative. Because it uses AFS, passwordless login requiers the use of Kerberos, so I can't just push the page using a deploy key.
+My website is hosted at [[https://hcoop.net/][HCoop]], a hosting cooperative. Because it uses AFS, passwordless login requires the use of Kerberos, so I can't just push the page using a deploy key.
 
 So, rather than pushing the website there, I'm pulling. I've put the script =fetch_website.py= from [[https://gitlab.com/bkhl/web-build][web-build]] on the target host, and makes it run it as a cron job:
 
