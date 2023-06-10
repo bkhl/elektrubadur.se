@@ -78,8 +78,13 @@ publish: package
 package_redirect:
     tar -C redirect -czf redirect.tar.gz .
 
-publish_redirect domain: package_redirect
+_publish_redirect domain: package_redirect
     hut pages publish --domain '{{ domain }}' --site-config ./site-config-redirect.json redirect.tar.gz
+
+publish_redirects:
+    just _in_container _publish_redirect www.elektrubadur.se
+    just _in_container _publish_redirect bkhl.elektrubadur.se
+    just _in_container _publish_redirect bkhl.srht.site
 
 check_links:
     podman run --rm docker.io/tennox/linkcheck --external '{{ DOMAIN }}'
