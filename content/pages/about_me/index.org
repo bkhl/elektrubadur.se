@@ -7,7 +7,7 @@ Björn, professional programmer and amateur photographer living in Sweden. I mov
 
 * Online presence
 
-- [[https://social.sdfeu.org/@bkhl][Mastodon on SDF EU]]
+- [[https://emacs.ch/@bkhl][Mastodon on Emacs.ch]]
 - [[https://git.sr.ht/~bkhl/][Sourcehut]]
 - [[https://github.com/bkhl][GitHub]]
 - [[https://gitlab.com/bkhl][GitLab]]
