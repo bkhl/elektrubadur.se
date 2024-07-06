@@ -39,4 +39,4 @@ publish_redirect: package_redirect image
 	for domain in www.elektrubadur.se bkhl.elektrubadur.se bkhl.srht.site; do hut pages publish --domain $$domain --site-config ./site-config-redirect.json redirect.tar.gz; done
 
 check_links:
-	$(run) docker.io/tennox/linkcheck:latest --external $(DOMAIN)
+	$(run) docker.io/tennox/linkcheck:latest --show-redirects --check-anchors --skip-file linkcheck_skipfile.txt --external $(DOMAIN)
