@@ -1,11 +1,9 @@
-FROM docker.io/library/alpine:edge
+FROM docker.io/library/alpine:latest
 
 RUN apk add --no-cache \
     bash \
     git \
-    just \
     hugo \
     tzdata \
     xmlstarlet \
-    tidyhtml \
-    hut
+    tidyhtml

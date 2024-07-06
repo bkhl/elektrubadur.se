@@ -1,0 +1,21 @@
+---
+image: fedora/latest
+oauth: pages.sr.ht/PAGES:RW
+packages:
+  - podman
+  - hut
+sources:
+  - https://git.sr.ht/~bkhl/elektrubadur.se
+tasks:
+  - complete-unless-main: >-
+      git diff --quiet --exit-code origin/main || complete-build
+  - publish: >-
+      make -C elektrubadur.se publish
+  - publish_redirect: >-
+      make -C elektrubadur.se publish_redirect
+  - check_links: >-
+      make -C elektrubadur.se check_links
+triggers:
+  - action: email
+    condition: failure
+    to: "Björn Lindström <bkhl@elektrubadur.se>"
