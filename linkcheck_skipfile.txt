@@ -1,1 +1,4 @@
+# These give 'connection failed' for unclear reason.
+
 ^https://www.\jamendo\.com/artist/4363/elektrubadur$
+^https://creativecommons\.org/licenses/by-sa/4.0/$
