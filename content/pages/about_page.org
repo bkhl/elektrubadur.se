@@ -5,7 +5,7 @@
 
 Copyright 2010--2023 Björn Lindström, except where stated otherwise.
 
-Articles and images on this page are licensed under a [[http://creativecommons.org/licenses/by-sa/4.0/][Creative Commons Attribution-ShareAlike 4.0 International License]], except where stated otherwise.
+Articles and images on this page are licensed under a [[https://creativecommons.org/licenses/by-sa/4.0/][Creative Commons Attribution-ShareAlike 4.0 International License]], except where stated otherwise.
 
 * Design
 
