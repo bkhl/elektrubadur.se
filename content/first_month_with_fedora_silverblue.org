@@ -8,7 +8,7 @@ I decided during my midwinter vacation that I'd try out
 desktop, and I liked it, so here I am still using it on my work laptop.
 
 Silverblue is a version of Fedora using
-[[https://rpm-ostree.readthedocs.io][rpm-ostree]] to provide a minimal
+[[https://coreos.github.io/rpm-ostree/][rpm-ostree]] to provide a minimal
 and immutable base OS, providing a platform for running applications in
 containers.
 

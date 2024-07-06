@@ -11,7 +11,7 @@ The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use tha
 
 # more
 
-To start with, I added the function =SetWikiHeader= to [[https://git.sr.ht/~bkhl/dotfiles/tree/f43814891fcd47bf5a724d303be670c5f6308ecd/item/.vim/plugin/config/vimwiki.vim][my ~/.vim/plugin/config/vim.wiki]]:
+To start with, I added the function =SetWikiHeader= to [[https://git.sr.ht/~bkhl/dotfiles/tree/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/item/.vim/plugin/config/vimwiki.vim][my ~/.vim/plugin/config/vim.wiki]]:
 
 #+begin_src vim
 if &runtimepath !~? "vimwiki"
@@ -55,7 +55,7 @@ endfunction
 
 Vim script is pretty weird, had to search in documentation for how to do most things in there. Props to people who write entire programs in it, like let's say [[https://github.com/orgs/vimwiki/people][those people that wrote Vimwiki]].
 
-Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in [[https://git.sr.ht/~bkhl/dotfiles/tree/f43814891fcd47bf5a724d303be670c5f6308ecd/item/.vim/ftplugin/vimwiki.vim][my ~/.vim/ftplugin/vimwiki.vim]]:
+Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in [[https://git.sr.ht/~bkhl/dotfiles/tree/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/item/.vim/ftplugin/vimwiki.vim][my ~/.vim/ftplugin/vimwiki.vim]]:
 
 #+begin_src vim
 " Set header to match filename when opening or saving file, for
