@@ -7,8 +7,8 @@ packages:
 sources:
   - https://git.sr.ht/~bkhl/elektrubadur.se
 tasks:
-  - complete-unless-main: >-
-      git diff --quiet --exit-code origin/main || complete-build
+  - complete-unless-main: |
+      git -C elektrubadur.se diff --quiet --exit-code origin/main || complete-build
   - publish: >-
       make -C elektrubadur.se publish
   - publish_redirect: >-
