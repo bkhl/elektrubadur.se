@@ -9,7 +9,7 @@ Here I'll just share [[file:{{< file "convert.py" >}}][the script]] I made to do
 
 # more
 
-At the same time I've moved the sources from [[https://gitlab.com/][GitLab]] to [[https://sr.ht/][Sourcehut]].
+At the same time I've moved the sources from [[https://about.gitlab.com/][GitLab]] to [[https://sr.ht/][Sourcehut]].
 
 I won't delve deeper into the reasons for that, but I thought I'd post the Python script I used for the conversion in case it's useful for anyone else. It's not particularly pretty and has special casing for various things that were particular to my Zola theme, so if anyone else were to use it, they would in all likelyhood need to do some changes. I made a few manual fixes in the Org source after the conversion, of things that occurred to rarely to mke it worth automating.
 

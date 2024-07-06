@@ -15,7 +15,7 @@ Some of my computer experience is from university and work, but a lot of it is f
 
 *** Vizrt Sweden AB
 
-/[[http://www.vizrt.com][Vizrt]] is a software company in the broadcast industry./
+/[[https://www.vizrt.com/][Vizrt]] is a software company in the broadcast industry./
 
 - *Systems Engineer* (Jan 2013 -- Jan 2015)
 
@@ -69,5 +69,5 @@ Since 2022 I also wear the Scrum Master hat in my team.
 - Playing [[https://online-go.com/player/52248/][go]].
 - Learning [[https://godotengine.org/][Godot]] to make computer games as a hobby.
 - [[file:/galleries/][Photography]].
-- Mentoring beginners in Python and Bash on [[https://exercism.io/][Exercism]].
+- Mentoring beginners in Python and Bash on [[https://exercism.org/][Exercism]].
 - Learning Thai.

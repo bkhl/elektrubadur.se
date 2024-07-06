@@ -11,7 +11,7 @@ Björn, professional programmer and amateur photographer living in Sweden. I mov
 - [[https://git.sr.ht/~bkhl/][Sourcehut]]
 - [[https://github.com/bkhl][GitHub]]
 - [[https://gitlab.com/bkhl][GitLab]]
-- [[https://exercism.io/profiles/bkhl][Exercism]]
+- [[https://exercism.org/profiles/bkhl][Exercism]]
 - [[https://online-go.com/player/52248/][Online-Go.com]]
 - [[https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/][LinkedIn]]
 

@@ -4,7 +4,7 @@
 #+TAGS[]: Linux Fedora Silverblue containers
 
 I decided during my midwinter vacation that I'd try out
-[[https://silverblue.fedoraproject.org/][Fedora Silverblue]] on my
+[[https://fedoraproject.org/atomic-desktops/silverblue/][Fedora Silverblue]] on my
 desktop, and I liked it, so here I am still using it on my work laptop.
 
 Silverblue is a version of Fedora using
