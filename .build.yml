@@ -5,10 +5,15 @@ packages:
   - podman
   - hut
 sources:
+  - https://git.sr.ht/~bkhl/dotfiles
   - https://git.sr.ht/~bkhl/elektrubadur.se
 tasks:
   - complete-unless-main: |
       git -C elektrubadur.se diff --quiet --exit-code origin/main || complete-build
+  - add-content: >-
+      install -v -m 0644
+      dotfiles/.emacs.d/configuration.org
+      elektrubadur.se/content/articles/emacs-configuration.org
   - publish: >-
       make -C elektrubadur.se publish
   - publish_redirect: >-

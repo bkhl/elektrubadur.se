@@ -2,3 +2,9 @@
 
 ^https://www.\jamendo\.com/artist/4363/elektrubadur$
 ^https://creativecommons\.org/licenses/by-sa/4.0/$
+
+# Expected redirects.
+
+^https://bcert\.me/syjixfovh$
+^https://gitlab\.com/$
+^https://www\.youtube\.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g$
