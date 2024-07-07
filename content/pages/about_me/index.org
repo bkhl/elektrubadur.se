@@ -3,7 +3,14 @@
 
 {{< image file="box.jpeg" title="Portrait" alt="Portrait" >}}
 
-Björn, professional programmer and amateur photographer living in Sweden. I moved back from Bangkok a couple of years ago. If you wish to contact me, send an e-mail to [[mailto:bkhl@elektrubadur.se][bkhl@elektrubadur.se]].
+Björn, a programmer living in Sweden. My interests include:
+
+- playing go.
+- reading science fiction.
+- tie knots.
+- hacking on [[https://www.gnu.org/software/emacs/][Emacs]].
+
+I moved back from Bangkok a couple of years ago. If you wish to contact me, send an e-mail to [[mailto:bkhl@elektrubadur.se][bkhl@elektrubadur.se]].
 
 * Online presence
 

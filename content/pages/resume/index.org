@@ -67,7 +67,7 @@ Since 2022 I also wear the Scrum Master hat in my team.
 * Hobbies and side projects
 
 - Playing [[https://online-go.com/player/52248/][go]].
-- Learning [[https://godotengine.org/][Godot]] to make computer games as a hobby.
+- Learning to make computer games as a hobby.
 - [[file:/galleries/][Photography]].
-- Mentoring beginners in Python and Bash on [[https://exercism.org/][Exercism]].
+- Learning and mentoring on [[https://exercism.org/][Exercism]].
 - Learning Thai.
