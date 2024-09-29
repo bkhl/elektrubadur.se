@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://elektrubadur.se/style.min.css">
+<link href="https://elektrubadur.se/favicon.ico" rel="icon">
+<link href="https://elektrubadur.se/favicon-16x16.png" rel="icon" sizes="16x16">
+<link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
+<link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
+<link href="https://elektrubadur.se/favicon-32x32.png" rel="icon" sizes="32x32">
+<title>How This Blog Works – Elektrubadur</title>
+<link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
+<link rel="sitemap" type="application/xml" title="Elektrubadur Sitemap" href="https://elektrubadur.se/sitemap.xml">
+<link rel="me" href="https://emacs.ch/@bkhl">
+<meta name="description" content="Personal web page of Björn Lindström">
+<meta name="author" content="Björn Lindström">
+</head>
+<body>
+<header>
+<h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
+<nav>
+<p><a href="https://elektrubadur.se/">Blog</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
+</nav>
+</header>
+<main>
+<article>
+<header>
+<h1>How This Blog Works</h1>
+<p>By <em>Björn Lindström</em> in <a href="https://elektrubadur.se/categories/software/">Software</a> about <a href="https://elektrubadur.se/tags/www/">WWW</a>, <a href="https://elektrubadur.se/tags/hcoop/">HCoop</a>, <a href="https://elektrubadur.se/tags/git/">Git</a> and <a href="https://elektrubadur.se/tags/automation/">Automation</a> —&nbsp;<time datetime="2020-05-03">Sunday&nbsp;May&nbsp;3,&nbsp;2020</time></p>
+</header>
+<p>This blog is created using the <a href="https://www.getzola.org/">Zola static site engine</a>. I use a combination of <a href="https://docs.gitlab.com/ee/ci/">GitLab CI</a> and <code class="verbatim">cron</code> to automatically upload it to my web server whenever I merge a change to the <a href="https://git-scm.com/">Git</a> <code class="verbatim">master</code> branch of the home page.</p>
+<p>The <code class="verbatim">elektrubadur.se</code> source code is kept <em>here in GitLab</em> <em>[Update 2023-06-07: <a href="https://git.sr.ht/~bkhl/elektrubadur.se/tree/d57ce94deec71c605ca62d4427befa8c59998d6f">elektrubadur.se sourcecode moved to Sourcehut</a>]</em>. While writing a post I just run <code class="verbatim">zola serve</code> on my computer and can look at a dynamically updated website on a local web server.</p>
+<p>Once ready, I commit on a branch and push it to GitLab, and then make a merge request. This might seem a bit silly for a one-man project, but this way I can disable pushes to the <code class="verbatim">master</code> branch entirely, which can help prevent an accident.</p>
+<p>The repository includes the separate repository <a href="https://gitlab.com/bkhl/web-build">web-build</a> as a submodule. It contains some scripts used to build and publish the web site.</p>
+<p>My website is hosted at <a href="https://hcoop.net/">HCoop</a>, a hosting cooperative. Because it uses AFS, passwordless login requires the use of Kerberos, so I can't just push the page using a deploy key.</p>
+<p>So, rather than pushing the website there, I'm pulling. I've put the script <code class="verbatim">fetch_website.py</code> from <a href="https://gitlab.com/bkhl/web-build">web-build</a> on the target host, and makes it run it as a cron job:</p>
+<div class="src src-crontab">
+<pre tabindex="0"><code class="language-crontab" data-lang="crontab">*/5 * * * * k5start -qtUf "/etc/keytabs/user.daemon/$USER" -- "$HOME/scripts/fetch_website.py" "https://gitlab.com/bkhl/elektrubadur.se/-/jobs/artifacts/master/download?job=build" "$HOME/www/elektrubadur.se"</code></pre></div>
+<p>The <code class="verbatim">k5start</code> thing is another thing needed because of the use of AFS and Kerberos. The point here is that you give the script a URL to a GitLab artifact, and a target directory, and it will deploy it if there's been any change.</p>
+<p><a href="https://gitlab.com/bkhl/web-build/-/blob/f76df73fd337b43452e7cb934347357b5c9aafa7/fetch_website.py">The entire script</a> is a bit long to post here, but it basically checks if there is a new artifact in GitLab for the website, built from the <code class="verbatim">master</code> branch, and if there is downloads and deploys it. It saves the ETag in a file, so that it can compare to that and skip downloading unless there has been a change.</p>
+<p>Credits for tools used making this page, inspirations for the design &amp;c. are also on <a href="https://elektrubadur.se/about_page/">About This Page</a>.</p>
+</article>
+</main>
+<footer>
+<p>© 2010–2024 Björn Lindström</p>
+</footer>
+</body>
+</html>

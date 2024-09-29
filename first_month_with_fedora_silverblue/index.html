@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://elektrubadur.se/style.min.css">
+<link href="https://elektrubadur.se/favicon.ico" rel="icon">
+<link href="https://elektrubadur.se/favicon-16x16.png" rel="icon" sizes="16x16">
+<link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
+<link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
+<link href="https://elektrubadur.se/favicon-32x32.png" rel="icon" sizes="32x32">
+<title>First Month with Fedora Silverblue – Elektrubadur</title>
+<link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
+<link rel="sitemap" type="application/xml" title="Elektrubadur Sitemap" href="https://elektrubadur.se/sitemap.xml">
+<link rel="me" href="https://emacs.ch/@bkhl">
+<meta name="description" content="Personal web page of Björn Lindström">
+<meta name="author" content="Björn Lindström">
+</head>
+<body>
+<header>
+<h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
+<nav>
+<p><a href="https://elektrubadur.se/">Blog</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
+</nav>
+</header>
+<main>
+<article>
+<header>
+<h1>First Month with Fedora Silverblue</h1>
+<p>By <em>Björn Lindström</em> in <a href="https://elektrubadur.se/categories/software/">Software</a> about <a href="https://elektrubadur.se/tags/linux/">Linux</a>, <a href="https://elektrubadur.se/tags/fedora/">Fedora</a>, <a href="https://elektrubadur.se/tags/silverblue/">Silverblue</a> and <a href="https://elektrubadur.se/tags/containers/">Containers</a> —&nbsp;<time datetime="2020-02-08">Saturday&nbsp;Feb&nbsp;8,&nbsp;2020</time></p>
+</header>
+<p>I decided during my midwinter vacation that I'd try out <a href="https://fedoraproject.org/atomic-desktops/silverblue/">Fedora Silverblue</a> on my desktop, and I liked it, so here I am still using it on my work laptop.</p>
+<p>Silverblue is a version of Fedora using <a href="https://coreos.github.io/rpm-ostree/">rpm-ostree</a> to provide a minimal and immutable base OS, providing a platform for running applications in containers.</p>
+<p>Previously I was using Ubuntu with a lot of Ansible playbooks for installing things both globally and in my home directory. I used to keep those playbooks in the same directory as my <a href="https://git.sr.ht/~bkhl/dotfiles">dotfiles</a>, but after the switch to Fedora I removed them. If anyone is curious about what that looked like, <a href="https://gitlab.com/bkhl/workstation-playbooks/tree/065ce9ca0547ca4d9c1e574407ba6373fcc99b69">they are here</a>.</p>
+<p>The benefits I was hoping for was</p>
+<ul>
+<li>Make my laptop setup more "out of the box", to get away from having a big collection of Ansible roles for varied purposes, that all have to work together on my laptop.</li>
+<li>Simplifying my base OS by moving development stuff and applications into containers.</li>
+<li>Plain Gnome desktop without custom themes.</li>
+<li>RPM-based. This is not an advantage in itself, but makes things a bit easier as I mostly deal with RHEL and Centos for work.</li>
+</ul>
+<div id="outline-container-headline-1" class="outline-3">
+<h3 id="headline-1">Applications</h3>
+<div id="outline-text-headline-1" class="outline-text-3">
+<p>For applications, I'm using mostly Flatpak. I found after a while that applications I had installed from the Fedora Flatpak repository was more buggy than the ones I had from <a href="https://flathub.org/">Flathub</a>, so at one point I made a switch to get all my applications from Flathub.</p>
+<p>Here's the entire command line to get <code class="verbatim">rpm-ostree</code> into the current state of my laptop:</p>
+<div class="src src-sh">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>rpm-ostree reset
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rpm-ostree install <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  fedora-workstation-repositories <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  ffmpeg-libs <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  google-chrome-stable <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  gparted <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  krb5-workstation <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  langpacks-en <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  langpacks-en_GB <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  langpacks-sv <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  langpacks-th <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  libgnome-keyring <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  NetworkManager-fortisslvpn-gnome <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  nextcloud-client <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  qemu <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  thai-arundina-sans-fonts <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  thai-arundina-sans-mono-fonts <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  thai-arundina-serif-fonts <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  vim-enhanced <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  vim-X11 <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  virt-manager <span style="color:#2544bb">\
+</span></span></span><span style="display:flex;"><span>  wl-clipboard
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rpm-ostree install <span style="color:#2544bb">'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-31.noarch.rpm'</span>
+</span></span><span style="display:flex;"><span>rpm-ostree install <span style="color:#2544bb">'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-31.noarch.rpm'</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rpm-ostree install fuse-exfat exfat-utils</span></span></code></pre></div>
+</div>
+<p>As you can see, there's just a few things that has to be added as RPMs. Not a lot, considering that in the default installation, Silverblue just comes with a terminal, a file manager, and Firefox, in terms of applications.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-3">
+<h3 id="headline-2">Development environments</h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<p>The main thing I've done so far to make it convenient for me to use as a development system is to create container images for use with <a href="https://github.com/containers/toolbox">Toolbox</a>. I keep these images <a href="https://gitlab.com/bkhl/toolboxes">here in GitLab</a>. I'll write more about that in a future article.</p>
+<p>For now I'll summarize it by saying I've created some Toolbox environments for various languages, configured to keep caches and such in the container, rather than my <code class="verbatim">$HOME</code>, and it's working quite nicely so far.</p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">Gnome</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>I used the default Ubuntu desktop before, so this is not a dramatic change, but I like the look and feel of the default Gnome desktop. I also get a somewhat newer version of it, which is nice.</p>
+<p>A few weeks after the switch, Tobias Bernard (Gnome developer) posted the article <a href="https://blogs.gnome.org/tbernard/2020/01/17/doing-things-that-scale/">Doing Things That Scale</a>, which resonated with me. While I've done some hacking to set up my development environments "just right" as described above, I'm trying to think of how to make that work more usable for others, maybe by contributing back to the <a href="https://github.com/containers/toolbox">Toolbox</a> project, or by making some sort of GUI wrapper to manage a set of development environment toolboxes.</p>
+</div>
+</div>
+</article>
+</main>
+<footer>
+<p>© 2010–2024 Björn Lindström</p>
+</footer>
+</body>
+</html>

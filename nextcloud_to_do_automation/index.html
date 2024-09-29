@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://elektrubadur.se/style.min.css">
+<link href="https://elektrubadur.se/favicon.ico" rel="icon">
+<link href="https://elektrubadur.se/favicon-16x16.png" rel="icon" sizes="16x16">
+<link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
+<link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
+<link href="https://elektrubadur.se/favicon-32x32.png" rel="icon" sizes="32x32">
+<title>Simple Nextcloud To-Do List Automation with Python and WebDAV – Elektrubadur</title>
+<link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
+<link rel="sitemap" type="application/xml" title="Elektrubadur Sitemap" href="https://elektrubadur.se/sitemap.xml">
+<link rel="me" href="https://emacs.ch/@bkhl">
+<meta name="description" content="Personal web page of Björn Lindström">
+<meta name="author" content="Björn Lindström">
+</head>
+<body>
+<header>
+<h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
+<nav>
+<p><a href="https://elektrubadur.se/">Blog</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
+</nav>
+</header>
+<main>
+<article>
+<header>
+<h1>Simple Nextcloud To-Do List Automation with Python and WebDAV</h1>
+<p>By <em>Björn Lindström</em> in <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/nextcloud/">Nextcloud</a> and <a href="https://elektrubadur.se/tags/planning/">Planning</a> —&nbsp;<time datetime="2019-05-05">Sunday&nbsp;May&nbsp;5,&nbsp;2019</time></p>
+</header>
+<p>I keep a task list in a <a href="http://todotxt.org/">todo.txt</a> format in <a href="https://nextcloud.com/">Nextcloud</a>. They are simply kept as two text files, <code class="verbatim">todo.txt</code> and <code class="verbatim">done.txt</code> in the root of my Nextcloud user directory.</p>
+<p>Some clients already have the option to move tasks from <code class="verbatim">todo.txt</code> to <code class="verbatim">done.txt</code> when you mark a task as done. However, I would prefer they stick around in the <code class="verbatim">todo.txt</code> for a while, in case I change my mind.</p>
+<p>At first I thought I'd just write a script to run as a cronjob on the server hosting Nextcloud, but that won't work with syncrhonization, as it won't let Nextcloud know the files have changed. I then thought there must be an API to read/write files to Nextcloud, and then quickly realized that this API is <a href="https://tools.ietf.org/html/rfc2518">WebDAV</a>. So, I should be able to make a Python script to do this, using <a href="https://pypi.org/project/requests/">requests</a>. A more full-featured WebDAV library would be overkill for this.</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">Outline</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>Here's what the script will do.</p>
+<ol>
+<li>Get the <code class="verbatim">todo.txt</code> file.</li>
+<li>If there are any completed tasks in there, get the <code class="verbatim">done.txt</code> file.</li>
+<li>Strip the completed tasks from <code class="verbatim">todo.txt</code>.</li>
+<li>Append the completed tasks to the content from <code class="verbatim">done.txt</code>.</li>
+<li>Update <code class="verbatim">todo.txt</code>.</li>
+<li>If there was no problem updating <code class="verbatim">todo.txt</code>, update <code class="verbatim">done.txt</code>. This step has to be retried in case of a conflict, because now the only copy of those done tasks is in the script's memory.</li>
+</ol>
+<p>This still leaves room for some issues if the script crashes in the middle of running, but I figured if it happens I'd get a mail from cron, and there's a file history in Nextcloud so I can sort it out then. After running this a few months now it still hasn't happened.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">Implementation</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>Starting with imports and stuff of course:</p>
+<div class="src src-python">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#505050">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> argparse
+</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> configparser
+</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> requests</span></span></code></pre></div>
+</div>
+<p>In <a href="http://todotxt.org/">todo.txt</a>, tasks are marked as done by prepending the token <code class="verbatim">x</code> at the start of the line. For this purpose, that's really all we need to do, so I just create regexp to match these lines:</p>
+<div class="src src-python">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>DONE_LINE_RE <span style="color:#00538b">=</span> re<span style="color:#00538b">.</span>compile(<span style="color:#2544bb">r</span><span style="color:#2544bb">"^x\b"</span>)</span></span></code></pre></div>
+</div>
+<p>That's it for the parsing.</p>
+<p>Now, as this script will update two files, and I don't want to lose any tasks, I need to worry about race conditions. In other words, I'll need to use <a href="https://tools.ietf.org/html/rfc7232">ETags</a>.</p>
+<p>For the structure of the script, I at first wrote it using the <a href="https://plumbum.readthedocs.io/en/latest/cli.html">Plumbum CLI application</a>, but later found that it was adding so little benefit I didn't want that dependency. Instead I'll use <code class="verbatim">configparser</code> and <code class="verbatim">argparse</code> for the same thing. For error handling, I'll have functions return one of these values, and translate them to return codes at the end.</p>
+<div class="src src-python">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>SUCCESS <span style="color:#00538b">=</span> <span style="color:#8f0075">object</span>()
+</span></span><span style="display:flex;"><span>FAILURE <span style="color:#00538b">=</span> <span style="color:#8f0075">object</span>()</span></span></code></pre></div>
+</div>
+<p>It's time for the <code class="verbatim">main</code> function.</p>
+<div class="src src-python">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#5317ac">def</span> <span style="color:#721045">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#505050"># Parse command line arguments</span>
+</span></span><span style="display:flex;"><span>    argument_parser <span style="color:#00538b">=</span> argparse<span style="color:#00538b">.</span>ArgumentParser()
+</span></span><span style="display:flex;"><span>    argument_parser<span style="color:#00538b">.</span>add_argument(
+</span></span><span style="display:flex;"><span>        <span style="color:#2544bb">"-c"</span>, <span style="color:#2544bb">"--config"</span>, help<span style="color:#00538b">=</span><span style="color:#2544bb">"configuration filename"</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    arguments <span style="color:#00538b">=</span> argument_parser<span style="color:#00538b">.</span>parse_args()
+</span></span><span style="display:flex;"><span>    config_filename <span style="color:#00538b">=</span> arguments<span style="color:#00538b">.</span>config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#505050"># Parse configuration</span>
+</span></span><span style="display:flex;"><span>    config_parser <span style="color:#00538b">=</span> configparser<span style="color:#00538b">.</span>ConfigParser()
+</span></span><span style="display:flex;"><span>    config_parser<span style="color:#00538b">.</span>read(config_filename)
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">try</span>:
+</span></span><span style="display:flex;"><span>        username <span style="color:#00538b">=</span> config_parser<span style="color:#00538b">.</span>get(<span style="color:#2544bb">"Connection"</span>, <span style="color:#2544bb">"username"</span>)
+</span></span><span style="display:flex;"><span>        password <span style="color:#00538b">=</span> config_parser<span style="color:#00538b">.</span>get(<span style="color:#2544bb">"Connection"</span>, <span style="color:#2544bb">"password"</span>)
+</span></span><span style="display:flex;"><span>        hostname <span style="color:#00538b">=</span> config_parser<span style="color:#00538b">.</span>get(<span style="color:#2544bb">"Connection"</span>, <span style="color:#2544bb">"hostname"</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">except</span> configparser<span style="color:#00538b">.</span>Error:
+</span></span><span style="display:flex;"><span>        sys<span style="color:#00538b">.</span>stderr<span style="color:#00538b">.</span>write(
+</span></span><span style="display:flex;"><span>            <span style="color:#2544bb">'Missing configuration in "</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">".</span><span style="color:#2544bb">\n</span><span style="color:#2544bb">'</span><span style="color:#00538b">.</span>format(
+</span></span><span style="display:flex;"><span>                config_filename
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">return</span> FAILURE
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#505050"># Perform maintenance</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">return</span> archive_done_tasks(hostname, username, password)</span></span></code></pre></div>
+</div>
+<p>This allows you to pass a command line argument pointing you to a configfile containing something like this:</p>
+<div class="src src-ini">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#5317ac">[Connection]</span>
+</span></span><span style="display:flex;"><span>hostname <span style="color:#00538b">=</span> <span style="color:#2544bb">your.nextcloud.instance.net</span>
+</span></span><span style="display:flex;"><span>username <span style="color:#00538b">=</span> <span style="color:#2544bb">your_user_name</span>
+</span></span><span style="display:flex;"><span>password <span style="color:#00538b">=</span> <span style="color:#2544bb">v3ris3curep4ssworð</span></span></span></code></pre></div>
+</div>
+<p>Now, the function that's the meat of the script, which actually gets and updates the files, and moves the completed tasks over.</p>
+<p>The first loop will get the <code class="verbatim">todo.txt</code>, then put it back after filtering out the completed tasks.</p>
+<p>If the initial GET fails, it will return successfully, since that probably means the server is unavailable, and we are better off just waiting for the next time cron triggers the script.</p>
+<p>The next loop will retry up to ten times, because at that point <code class="verbatim">todo.txt</code> has been updated, so we should try a bit harder to get <code class="verbatim">done.txt</code> into a correct state.</p>
+<p>This function is a bit long and would benefit from refactoring. (Pull requests accepted.)</p>
+<div class="src src-python">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#5317ac">def</span> <span style="color:#721045">archive_done_tasks</span>(hostname, username, password):
+</span></span><span style="display:flex;"><span>    base_url <span style="color:#00538b">=</span> <span style="color:#2544bb">"https://</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">/remote.php/dav/files/</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">/"</span><span style="color:#00538b">.</span>format(
+</span></span><span style="display:flex;"><span>        hostname, username
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    session <span style="color:#00538b">=</span> requests<span style="color:#00538b">.</span>Session()
+</span></span><span style="display:flex;"><span>    session<span style="color:#00538b">.</span>auth <span style="color:#00538b">=</span> (username, password)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    todo_url <span style="color:#00538b">=</span> <span style="color:#2544bb">"</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">/todo.txt"</span><span style="color:#00538b">.</span>format(base_url)
+</span></span><span style="display:flex;"><span>    done_url <span style="color:#00538b">=</span> <span style="color:#2544bb">"</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">/done.txt"</span><span style="color:#00538b">.</span>format(base_url)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    todo_put <span style="color:#00538b">=</span> <span style="color:#0000c0">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">while</span> (todo_put <span style="color:#00538b">is</span> <span style="color:#0000c0">None</span>) <span style="color:#00538b">or</span> <span style="color:#00538b">not</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#0000c0">200</span> <span style="color:#00538b">&lt;=</span> todo_put<span style="color:#00538b">.</span>status_code <span style="color:#00538b">&lt;</span> <span style="color:#0000c0">300</span>
+</span></span><span style="display:flex;"><span>    ):
+</span></span><span style="display:flex;"><span>        todo_get <span style="color:#00538b">=</span> session<span style="color:#00538b">.</span>get(todo_url)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#505050"># If the first GET fails, just return and wait for next</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#505050"># time script is run.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> <span style="color:#00538b">not</span> (<span style="color:#0000c0">200</span> <span style="color:#00538b">&lt;=</span> todo_get<span style="color:#00538b">.</span>status_code <span style="color:#00538b">&lt;</span> <span style="color:#0000c0">300</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">return</span> SUCCESS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        todo_lines <span style="color:#00538b">=</span> todo_get<span style="color:#00538b">.</span>content<span style="color:#00538b">.</span>decode(
+</span></span><span style="display:flex;"><span>            encoding<span style="color:#00538b">=</span><span style="color:#2544bb">"utf8"</span>
+</span></span><span style="display:flex;"><span>        )<span style="color:#00538b">.</span>splitlines(<span style="color:#0000c0">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        updated_todo_lines <span style="color:#00538b">=</span> []
+</span></span><span style="display:flex;"><span>        added_done_lines <span style="color:#00538b">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">for</span> line <span style="color:#00538b">in</span> todo_lines:
+</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">if</span> DONE_LINE_RE<span style="color:#00538b">.</span><span style="color:#5317ac">match</span>(line):
+</span></span><span style="display:flex;"><span>                added_done_lines<span style="color:#00538b">.</span>append(line)
+</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">else</span>:
+</span></span><span style="display:flex;"><span>                updated_todo_lines<span style="color:#00538b">.</span>append(line)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> <span style="color:#00538b">not</span> added_done_lines:
+</span></span><span style="display:flex;"><span>            <span style="color:#505050"># Nothing to do.</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">return</span> SUCCESS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        todo_put <span style="color:#00538b">=</span> session<span style="color:#00538b">.</span>put(
+</span></span><span style="display:flex;"><span>            todo_url,
+</span></span><span style="display:flex;"><span>            <span style="color:#2544bb">""</span><span style="color:#00538b">.</span>join(updated_todo_lines)<span style="color:#00538b">.</span>encode(<span style="color:#2544bb">"UTF-8"</span>),
+</span></span><span style="display:flex;"><span>            headers<span style="color:#00538b">=</span>{<span style="color:#2544bb">"If-Match"</span>: get_etag(todo_get)},
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    done_put <span style="color:#00538b">=</span> <span style="color:#0000c0">None</span>
+</span></span><span style="display:flex;"><span>    i <span style="color:#00538b">=</span> <span style="color:#0000c0">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">while</span> (done_put <span style="color:#00538b">is</span> <span style="color:#0000c0">None</span>) <span style="color:#00538b">or</span> <span style="color:#00538b">not</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#0000c0">200</span> <span style="color:#00538b">&lt;=</span> done_put<span style="color:#00538b">.</span>status_code <span style="color:#00538b">&lt;</span> <span style="color:#0000c0">300</span>
+</span></span><span style="display:flex;"><span>    ):
+</span></span><span style="display:flex;"><span>        done_get <span style="color:#00538b">=</span> session<span style="color:#00538b">.</span>get(done_url)
+</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> <span style="color:#00538b">not</span> (<span style="color:#0000c0">200</span> <span style="color:#00538b">&lt;=</span> done_get<span style="color:#00538b">.</span>status_code <span style="color:#00538b">&lt;</span> <span style="color:#0000c0">300</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        done_lines <span style="color:#00538b">=</span> done_get<span style="color:#00538b">.</span>content<span style="color:#00538b">.</span>decode(<span style="color:#2544bb">"UTF-8"</span>)<span style="color:#00538b">.</span>splitlines(
+</span></span><span style="display:flex;"><span>            <span style="color:#0000c0">True</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        done_put <span style="color:#00538b">=</span> session<span style="color:#00538b">.</span>put(
+</span></span><span style="display:flex;"><span>            done_url,
+</span></span><span style="display:flex;"><span>            <span style="color:#2544bb">""</span><span style="color:#00538b">.</span>join(done_lines <span style="color:#00538b">+</span> added_done_lines)<span style="color:#00538b">.</span>encode(
+</span></span><span style="display:flex;"><span>                <span style="color:#2544bb">"UTF-8"</span>
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>            headers<span style="color:#00538b">=</span>{<span style="color:#2544bb">"If-Match"</span>: get_etag(done_get)},
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#505050"># Retry this a few times since we updated todo.txt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#505050">#  and want to get done.txt into a correct state.</span>
+</span></span><span style="display:flex;"><span>        i <span style="color:#00538b">+=</span> <span style="color:#0000c0">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> i <span style="color:#00538b">&gt;=</span> <span style="color:#0000c0">10</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">return</span> SUCCESS</span></span></code></pre></div>
+</div>
+<p>Here's the helper function to get the etag from a <code class="verbatim">requests.Response</code> object. I found that the ETags from Nextcloud has a content type suffix, so had to make another regexp to remove that :</p>
+<div class="src src-python">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ETAG_RE <span style="color:#00538b">=</span> re<span style="color:#00538b">.</span>compile(<span style="color:#2544bb">r</span><span style="color:#2544bb">'^"(.*)-gzip"$'</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#5317ac">def</span> <span style="color:#721045">get_etag</span>(response):
+</span></span><span style="display:flex;"><span>    tag <span style="color:#00538b">=</span> ETAG_RE<span style="color:#00538b">.</span><span style="color:#5317ac">match</span>(response<span style="color:#00538b">.</span>headers[<span style="color:#2544bb">"etag"</span>])<span style="color:#00538b">.</span>group(<span style="color:#0000c0">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">return</span> <span style="color:#2544bb">'"</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">"'</span><span style="color:#00538b">.</span>format(tag)</span></span></code></pre></div>
+</div>
+<p>Finally, we call the main function like this. The <code class="verbatim">SUCCESS=/=FAILURE</code> objects are converted into status codes and the script exits accordingly.</p>
+<div class="src src-python">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#5317ac">if</span> __name__ <span style="color:#00538b">==</span> <span style="color:#2544bb">"__main__"</span>:
+</span></span><span style="display:flex;"><span>    result <span style="color:#00538b">=</span> main()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">if</span> result <span style="color:#00538b">is</span> SUCCESS:
+</span></span><span style="display:flex;"><span>        sys<span style="color:#00538b">.</span>exit(<span style="color:#0000c0">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">elif</span> result <span style="color:#00538b">is</span> FAILURE:
+</span></span><span style="display:flex;"><span>        sys<span style="color:#00538b">.</span>exit(<span style="color:#0000c0">1</span>)</span></span></code></pre></div>
+</div>
+<p>Here is <a href="./todo_maintenance.py">the entire script</a>.</p>
+<p>This is just a start, if you want more advanced automation, handy things that could be added include (again, pull requests accepted):</p>
+<ul>
+<li>Parse tags indicating repeating tasks. When those are completed, move the current one to <code class="verbatim">done.txt</code>, but create a new task for the next occurance at the same time.</li>
+<li>Change it to keep completed tasks in <code class="verbatim">done.txt</code> for a certain numer of days after the completion date.</li>
+</ul>
+</div>
+</div>
+</article>
+</main>
+<footer>
+<p>© 2010–2024 Björn Lindström</p>
+</footer>
+</body>
+</html>

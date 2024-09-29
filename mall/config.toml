@@ -1,0 +1,8 @@
+[[gallery]]
+description = "Mall"
+filename = "mall.jpeg"
+featured = true
+
+[[gallery]]
+description = "Inside of another mall"
+filename = "another-mall.jpeg"

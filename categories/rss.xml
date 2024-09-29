@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+<title>Categories on Elektrubadur</title>
+<link>https://elektrubadur.se/categories/</link>
+<description>Recent content in Categories on Elektrubadur</description>
+<language>en</language>
+<copyright>© 2010–2024 Björn Lindström</copyright>
+<lastBuildDate>Sun, 28 May 2023 00:00:00 +0200</lastBuildDate>
+<atom:link href="https://elektrubadur.se/categories/rss.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Programming</title>
+<link>https://elektrubadur.se/categories/programming/</link>
+<pubDate>Sun, 28 May 2023 00:00:00 +0200</pubDate>
+<guid>https://elektrubadur.se/categories/programming/</guid>
+<description/>
+</item>
+<item>
+<title>Software</title>
+<link>https://elektrubadur.se/categories/software/</link>
+<pubDate>Sun, 03 May 2020 00:00:00 +0200</pubDate>
+<guid>https://elektrubadur.se/categories/software/</guid>
+<description/>
+</item>
+<item>
+<title>Photos</title>
+<link>https://elektrubadur.se/categories/photos/</link>
+<pubDate>Mon, 10 Dec 2018 00:00:00 +0100</pubDate>
+<guid>https://elektrubadur.se/categories/photos/</guid>
+<description/>
+</item>
+</channel>
+</rss>

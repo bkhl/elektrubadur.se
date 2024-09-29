@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+<title>WWW on Elektrubadur</title>
+<link>https://elektrubadur.se/tags/www/</link>
+<description>Recent content in WWW on Elektrubadur</description>
+<language>en</language>
+<copyright>© 2010–2024 Björn Lindström</copyright>
+<lastBuildDate>Sun, 28 May 2023 00:00:00 +0200</lastBuildDate>
+<atom:link href="https://elektrubadur.se/tags/www/rss.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Converting Sources of This Blog to Org format</title>
+<link>https://elektrubadur.se/converting_blog_to_org/</link>
+<pubDate>Sun, 28 May 2023 00:00:00 +0200</pubDate>
+<guid>https://elektrubadur.se/converting_blog_to_org/</guid>
+<description>&lt;p&gt;
+It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;#39;s in the interest of making it more enjoyable for me to write more that I&amp;#39;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
+&lt;p&gt;
+Here I&amp;#39;ll just share &lt;a href="https://elektrubadur.se/converting_blog_to_org/convert.py
+"&gt;the script&lt;/a&gt; I made to do the format conversion, in case it&amp;#39;s useful for anyone else. Actually, half the reason I&amp;#39;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;</description>
+</item>
+<item>
+<title>How This Blog Works</title>
+<link>https://elektrubadur.se/how_this_blog_works/</link>
+<pubDate>Sun, 03 May 2020 00:00:00 +0200</pubDate>
+<guid>https://elektrubadur.se/how_this_blog_works/</guid>
+<description>&lt;p&gt;
+This blog is created using the &lt;a href="https://www.getzola.org/"&gt;Zola static site engine&lt;/a&gt;. I use a combination of &lt;a href="https://docs.gitlab.com/ee/ci/"&gt;GitLab CI&lt;/a&gt; and &lt;code class="verbatim"&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the &lt;a href="https://git-scm.com/"&gt;Git&lt;/a&gt; &lt;code class="verbatim"&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
+&lt;p&gt;
+The &lt;code class="verbatim"&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2023-06-07: &lt;a href="https://git.sr.ht/~bkhl/elektrubadur.se/tree/d57ce94deec71c605ca62d4427befa8c59998d6f"&gt;elektrubadur.se sourcecode moved to Sourcehut&lt;/a&gt;]&lt;/em&gt;. While writing a post I just run &lt;code class="verbatim"&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;</description>
+</item>
+</channel>
+</rss>

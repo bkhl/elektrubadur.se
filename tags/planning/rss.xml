@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+<title>Planning on Elektrubadur</title>
+<link>https://elektrubadur.se/tags/planning/</link>
+<description>Recent content in Planning on Elektrubadur</description>
+<language>en</language>
+<copyright>© 2010–2024 Björn Lindström</copyright>
+<lastBuildDate>Sun, 05 May 2019 00:00:00 +0200</lastBuildDate>
+<atom:link href="https://elektrubadur.se/tags/planning/rss.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Simple Nextcloud To-Do List Automation with Python and WebDAV</title>
+<link>https://elektrubadur.se/nextcloud_to_do_automation/</link>
+<pubDate>Sun, 05 May 2019 00:00:00 +0200</pubDate>
+<guid>https://elektrubadur.se/nextcloud_to_do_automation/</guid>
+<description>&lt;p&gt;
+I keep a task list in a &lt;a href="http://todotxt.org/"&gt;todo.txt&lt;/a&gt; format in
+&lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt;. They are simply kept as two text
+files, &lt;code class="verbatim"&gt;todo.txt&lt;/code&gt; and &lt;code class="verbatim"&gt;done.txt&lt;/code&gt; in the root of my Nextcloud user
+directory.&lt;/p&gt;
+&lt;p&gt;
+Some clients already have the option to move tasks from &lt;code class="verbatim"&gt;todo.txt&lt;/code&gt; to
+&lt;code class="verbatim"&gt;done.txt&lt;/code&gt; when you mark a task as done. However, I would prefer they
+stick around in the &lt;code class="verbatim"&gt;todo.txt&lt;/code&gt; for a while, in case I change my mind.&lt;/p&gt;
+&lt;p&gt;
+At first I thought I&amp;#39;d just write a script to run as a cronjob on the
+server hosting Nextcloud, but that won&amp;#39;t work with syncrhonization, as
+it won&amp;#39;t let Nextcloud know the files have changed. I then thought there
+must be an API to read/write files to Nextcloud, and then quickly
+realized that this API is
+&lt;a href="https://tools.ietf.org/html/rfc2518"&gt;WebDAV&lt;/a&gt;. So, I should be able to
+make a Python script to do this, using
+&lt;a href="https://pypi.org/project/requests/"&gt;requests&lt;/a&gt;. A more full-featured
+WebDAV library would be overkill for this.&lt;/p&gt;</description>
+</item>
+</channel>
+</rss>

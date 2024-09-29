@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+<title>Software on Elektrubadur</title>
+<link>https://elektrubadur.se/categories/software/</link>
+<description>Recent content in Software on Elektrubadur</description>
+<language>en</language>
+<copyright>© 2010–2024 Björn Lindström</copyright>
+<lastBuildDate>Sun, 03 May 2020 00:00:00 +0200</lastBuildDate>
+<atom:link href="https://elektrubadur.se/categories/software/rss.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>How This Blog Works</title>
+<link>https://elektrubadur.se/how_this_blog_works/</link>
+<pubDate>Sun, 03 May 2020 00:00:00 +0200</pubDate>
+<guid>https://elektrubadur.se/how_this_blog_works/</guid>
+<description>&lt;p&gt;
+This blog is created using the &lt;a href="https://www.getzola.org/"&gt;Zola static site engine&lt;/a&gt;. I use a combination of &lt;a href="https://docs.gitlab.com/ee/ci/"&gt;GitLab CI&lt;/a&gt; and &lt;code class="verbatim"&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the &lt;a href="https://git-scm.com/"&gt;Git&lt;/a&gt; &lt;code class="verbatim"&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
+&lt;p&gt;
+The &lt;code class="verbatim"&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2023-06-07: &lt;a href="https://git.sr.ht/~bkhl/elektrubadur.se/tree/d57ce94deec71c605ca62d4427befa8c59998d6f"&gt;elektrubadur.se sourcecode moved to Sourcehut&lt;/a&gt;]&lt;/em&gt;. While writing a post I just run &lt;code class="verbatim"&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;</description>
+</item>
+<item>
+<title>First Month with Fedora Silverblue</title>
+<link>https://elektrubadur.se/first_month_with_fedora_silverblue/</link>
+<pubDate>Sat, 08 Feb 2020 00:00:00 +0100</pubDate>
+<guid>https://elektrubadur.se/first_month_with_fedora_silverblue/</guid>
+<description>&lt;p&gt;
+I decided during my midwinter vacation that I&amp;#39;d try out
+&lt;a href="https://fedoraproject.org/atomic-desktops/silverblue/"&gt;Fedora Silverblue&lt;/a&gt; on my
+desktop, and I liked it, so here I am still using it on my work laptop.&lt;/p&gt;
+&lt;p&gt;
+Silverblue is a version of Fedora using
+&lt;a href="https://coreos.github.io/rpm-ostree/"&gt;rpm-ostree&lt;/a&gt; to provide a minimal
+and immutable base OS, providing a platform for running applications in
+containers.&lt;/p&gt;
+&lt;p&gt;
+Previously I was using Ubuntu with a lot of Ansible playbooks for
+installing things both globally and in my home directory. I used to keep
+those playbooks in the same directory as my
+&lt;a href="https://git.sr.ht/~bkhl/dotfiles"&gt;dotfiles&lt;/a&gt;, but after the switch to
+Fedora I removed them. If anyone is curious about what that looked like,
+&lt;a href="https://gitlab.com/bkhl/workstation-playbooks/tree/065ce9ca0547ca4d9c1e574407ba6373fcc99b69"&gt;they
+are here&lt;/a&gt;.&lt;/p&gt;</description>
+</item>
+<item>
+<title>Emacs Configuration</title>
+<link>https://elektrubadur.se/emacs-configuration/</link>
+<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+<guid>https://elektrubadur.se/emacs-configuration/</guid>
+<description>Introduction This is my Emacs configuration. It is available online in these forms:
+Org mode source file in a Git repository. HTML article on my personal web page. Inspirations for this Emacs configuration include:
+Harry R. Schwartz&amp;#39; Emacs configuration and sensible-defaults.el. Phil Hagelberg&amp;#39;s better-defaults.el. EmacsCast. Protesilaos Stavrou&amp;#39;s blog and videos. Some interesting properties of this configuration:
+Almost all of the configuration is kept in an Org file. The startup time is quite fast.</description>
+</item>
+</channel>
+</rss>
