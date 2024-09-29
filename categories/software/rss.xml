@@ -46,10 +46,31 @@ are here&lt;/a&gt;.&lt;/p&gt;</description>
 <link>https://elektrubadur.se/emacs-configuration/</link>
 <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
 <guid>https://elektrubadur.se/emacs-configuration/</guid>
-<description>Introduction This is my Emacs configuration. It is available online in these forms:
-Org mode source file in a Git repository. HTML article on my personal web page. Inspirations for this Emacs configuration include:
-Harry R. Schwartz&amp;#39; Emacs configuration and sensible-defaults.el. Phil Hagelberg&amp;#39;s better-defaults.el. EmacsCast. Protesilaos Stavrou&amp;#39;s blog and videos. Some interesting properties of this configuration:
-Almost all of the configuration is kept in an Org file. The startup time is quite fast.</description>
+<description>&lt;div id="outline-container-introduction" class="outline-2"&gt;
+&lt;h2 id="introduction"&gt;
+Introduction
+&lt;/h2&gt;
+&lt;div id="outline-text-introduction" class="outline-text-2"&gt;
+&lt;p&gt;
+This is my Emacs configuration. It is available online in these forms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/configuration.org"&gt;Org mode source file&lt;/a&gt; in a Git repository.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elektrubadur.se/emacs-configuration"&gt;HTML article&lt;/a&gt; on my personal web page.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Inspirations for this Emacs configuration include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Harry R. Schwartz&amp;#39; &lt;a href="https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org"&gt;Emacs configuration&lt;/a&gt; and &lt;a href="https://github.com/hrs/sensible-defaults.el"&gt;sensible-defaults.el&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Phil Hagelberg&amp;#39;s &lt;a href="https://git.sr.ht/~technomancy/better-defaults"&gt;better-defaults.el&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://emacscast.org/"&gt;EmacsCast&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Protesilaos Stavrou&amp;#39;s &lt;a href="https://protesilaos.com/codelog/"&gt;blog&lt;/a&gt; and &lt;a href="https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g"&gt;videos&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some interesting properties of this configuration:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Almost all of the configuration is kept in an Org file.&lt;/li&gt;
+&lt;li&gt;The startup time is quite fast. There are some tweaks in &lt;a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/init.el"&gt;init.el&lt;/a&gt; and &lt;a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/early-init.el"&gt;early-init.el&lt;/a&gt; that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.&lt;/li&gt;
+&lt;li&gt;Add-on packages are managed manually as Git submodules.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in &lt;a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/site-lisp"&gt;~/.emacs.d/site-lisp/&lt;/a&gt;.&lt;/p&gt;</description>
 </item>
 </channel>
 </rss>
