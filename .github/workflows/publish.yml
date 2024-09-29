@@ -1,0 +1,93 @@
+
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOMAIN: "elektrubadur.se"
+
+jobs:
+  build:
+    name: Build web site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.135.0'
+          extended: true
+
+      - name: Install HTML Tidy and XMLStarlet
+        run: sudo apt-get -y install tidy xmlstarlet
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check out dotfiles repository
+        uses: actions/checkout@v4
+        with:
+          repository: bkhl/dotfiles
+          path: dotfiles
+          fetch-depth: 0
+
+      - name: Copy Emacs configuration into contents directory
+        run: >-
+          install -v -m 0644
+          dotfiles/.emacs.d/configuration.org
+          content/articles/emacs-configuration.org
+
+      - name: Build web site
+        run: bash build.sh
+        env:
+          DESTINATION: public
+
+      - name: Validate web site
+        uses: docker://ghcr.io/validator/validator:latest
+        with:
+          args: vnu --skip-non-html --also-check-css --also-check-svg public
+
+      - name: Upload web site as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: public
+          path: public
+          retention-days: 7
+
+  publish:
+    name: Publish web site
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository (current branch)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: "${{ github.workspace }}/${{ env.DOMAIN }}"
+
+      - name: Check out repository (public branch)
+        uses: actions/checkout@v4
+        with:
+          path: public-current
+          fetch-depth: 0
+          ref: public
+
+      - name: Download web site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: public
+          path: public
+
+      - name: Publish web site
+        run: bash "${{ github.workspace }}/${{ env.DOMAIN }}/publish.sh"
+        env:
+          SOURCE: "${{ github.workspace }}/${{ env.DOMAIN }}"
+          PREV_PUBLIC: "${{ github.workspace }}/public-current"
+          PUBLIC: "${{ github.workspace }}/public"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

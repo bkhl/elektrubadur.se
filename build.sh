@@ -2,11 +2,14 @@
 
 set -xeuo pipefail
 
-rm -rf "${OUTPUT_DIR}"
+: "${DOMAIN:=elektrubadur.se}"
+: "${DESTINATION:=public}"
 
-hugo --baseURL="https://${DOMAIN}"
+rm -rf "${DESTINATION}"
 
-find "${OUTPUT_DIR}" -type f -iname '*.html' \
+hugo --baseURL="https://${DOMAIN}" --destination="${DESTINATION}"
+
+find "${DESTINATION}" -type f -iname '*.html' \
     -exec tidy \
         --quiet yes \
         --show-warnings no \
@@ -17,7 +20,7 @@ find "${OUTPUT_DIR}" -type f -iname '*.html' \
         {} '+' \
         || (($?==1 ? 1 : 0))
 
-find "${OUTPUT_DIR}" -type f -iname '*.xml' | while read f; do
+find "${DESTINATION}" -type f -iname '*.xml' | while read f; do
     tempfile="$(mktemp -t "$(basename "${f}")".XXXXXXXX)"
     xmlstarlet fo \
         --noindent \
