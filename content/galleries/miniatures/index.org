@@ -1,4 +1,23 @@
 #+TITLE: Miniatures
 #+URL: /miniatures
+#+THUMBNAIL: workman.jpeg
 
 Some arranged photographs of miniatures.
+
+# more
+
+#+CAPTION: Workman
+#+ATTR_HTML: :alt Workman :title Workman
+[[workman.jpeg]]
+
+#+CAPTION: Sentry
+#+ATTR_HTML: :alt Sentry :title Sentry
+[[sentry.jpeg]]
+
+#+CAPTION: Come Prepared
+#+ATTR_HTML: :alt Come Prepared :title Come Prepared
+[[come_prepared.jpeg]]
+
+#+CAPTION: Strange Planets
+#+ATTR_HTML: :alt Strange Planets :title Strange Planets
+[[strange_planets.jpeg]]

@@ -1,0 +1,7 @@
+#+TITLE: Sunbird
+#+DATE: 2015-03-26
+#+CATEGORIES[]: Photos
+#+IMAGE: sunbird.jpeg
+#+ALIASES[]: /sunbird
+
+Olive-backed sunbird nesting on my balcony.

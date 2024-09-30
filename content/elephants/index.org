@@ -1,5 +1,0 @@
-#+TITLE: Elephants
-#+DATE: 2015-06-08
-#+CATEGORIES[]: Photos
-
-Painted elephants.

@@ -1,7 +1,3 @@
-{{- define "setup" -}}
-{{- $.Scratch.Set "paginator" (.Paginate .Pages) -}}
-{{- end -}}
-
 {{ define "site_subtitle" }}
 <p><em>{{ .Site.Params.description }}</em></p>
 {{end}}
@@ -14,10 +10,7 @@
 <header>
   <h1>{{ .Page.Title }}</h1>
 </header>
-
-{{ partial "article_list" (dict "Page" .Page "Paginator" ($.Scratch.Get "paginator") "Context" "section") }}
+{{ range sort .Pages ".Title" "asc" }}
+{{ partial "article_in_list" (dict "Page" .Page "Context" "section") }}
 {{ end }}
-
-{{ define "footer" }}
-{{ partial "rss_links" . }}
 {{ end }}

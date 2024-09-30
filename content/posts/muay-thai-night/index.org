@@ -1,0 +1,8 @@
+#+TITLE: Muay Thai Night
+#+DATE: 2016-04-02
+#+CATEGORIES[]: Photos
+#+IMAGE: muay-thai-night.jpeg
+#+ALIASES[]: /muay-thai-night
+
+A photo I took while waiting for someone at the National Stadium
+station.

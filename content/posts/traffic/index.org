@@ -1,0 +1,7 @@
+#+TITLE: Traffic
+#+DATE: 2017-09-15
+#+CATEGORIES[]: Photos
+#+IMAGE: traffic.jpeg
+#+ALIASES[]: /traffic
+
+Lower Parel, Mumbai.

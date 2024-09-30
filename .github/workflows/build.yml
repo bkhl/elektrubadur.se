@@ -1,10 +1,7 @@
 ---
 name: Build
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
   build:
@@ -58,6 +55,8 @@ jobs:
   publish:
     name: Publish web site
     needs: build
+    if: >-
+      github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -1,0 +1,7 @@
+#+TITLE: Elephants
+#+DATE: 2015-06-08
+#+CATEGORIES[]: Photos
+#+IMAGE: elephants.jpeg
+#+ALIASES[]: /elephants
+
+Painted elephants.

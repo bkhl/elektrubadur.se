@@ -1,0 +1,7 @@
+#+TITLE: Rain
+#+DATE: 2015-06-16
+#+CATEGORIES[]: Photos
+#+IMAGE: rain.jpeg
+#+ALIASES[]: /rain
+
+View from my office, with rain coming.

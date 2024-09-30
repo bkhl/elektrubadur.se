@@ -1,5 +1,0 @@
-#+TITLE: Cows
-#+DATE: 2016-07-31
-#+CATEGORIES[]: Photos
-
-Cows in Mumbai.

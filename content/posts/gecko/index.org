@@ -1,0 +1,7 @@
+#+TITLE: Gecko
+#+DATE: 2016-05-12
+#+CATEGORIES[]: Photos
+#+IMAGE: gecko.jpeg
+#+ALIASES[]: /gecko
+
+Gecko in paper envelope.

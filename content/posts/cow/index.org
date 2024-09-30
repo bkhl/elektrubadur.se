@@ -1,0 +1,7 @@
+#+TITLE: Cow
+#+DATE: 2017-05-11
+#+CATEGORIES[]: Photos
+#+IMAGE: cow.jpeg
+#+ALIASES[]: /cow
+
+Resort cow.

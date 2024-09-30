@@ -1,0 +1,7 @@
+#+TITLE: Minaret
+#+DATE: 2017-04-11
+#+CATEGORIES[]: Photos
+#+IMAGE: minaret.jpeg
+#+ALIASES[]: /minaret
+
+Mosque of Omar minaret, Jerusalem.

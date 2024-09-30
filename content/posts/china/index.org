@@ -1,0 +1,7 @@
+#+TITLE: China
+#+DATE: 2015-09-27
+#+CATEGORIES[]: Photos
+#+IMAGE: china.jpeg
+#+ALIASES[]: /china
+
+Collage of a trip to China.

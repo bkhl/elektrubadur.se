@@ -1,0 +1,7 @@
+#+TITLE: Valley
+#+DATE: 2016-08-18
+#+CATEGORIES[]: Photos
+#+IMAGE: valley.jpeg
+#+ALIASES[]: /valley
+
+View of Ragunda valley.

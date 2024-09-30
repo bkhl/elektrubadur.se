@@ -1,0 +1,7 @@
+#+TITLE: Jakarta
+#+DATE: 2015-03-09
+#+CATEGORIES[]: Photos
+#+IMAGE: jakarta.jpeg
+#+ALIASES[]: /jakarta
+
+Jakarta skyline.

@@ -1,0 +1,7 @@
+#+TITLE: Rubber Band Ball
+#+DATE: 2016-10-27
+#+CATEGORIES[]: Photos
+#+IMAGE: rubber-band-ball.jpeg
+#+ALIASES[]: /rubber-band-ball
+
+Home made rubber band ball.

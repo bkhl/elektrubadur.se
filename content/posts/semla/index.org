@@ -1,0 +1,7 @@
+#+TITLE: Semla
+#+DATE: 2015-03-01
+#+CATEGORIES[]: Photos
+#+IMAGE: semla.jpeg
+#+ALIASES[]: /semla
+
+Semla at Hotel Rembrandt, Bangkok.

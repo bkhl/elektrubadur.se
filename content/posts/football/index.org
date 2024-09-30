@@ -1,0 +1,7 @@
+#+TITLE: Football
+#+DATE: 2016-06-22
+#+CATEGORIES[]: Photos
+#+IMAGE: football.jpeg
+#+ALIASES[]: /football
+
+Osotspa football club fans visiting Muangthong.

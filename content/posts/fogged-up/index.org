@@ -1,0 +1,7 @@
+#+TITLE: Fogged up
+#+DATE: 2015-10-05
+#+CATEGORIES[]: Photos
+#+IMAGE: fogged-up.jpeg
+#+ALIASES[]: /fogged-up
+
+Fogged up glasses.

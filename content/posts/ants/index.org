@@ -1,0 +1,7 @@
+#+TITLE: Ants
+#+DATE: 2017-05-08
+#+CATEGORIES[]: Photos
+#+IMAGE: ants.jpeg
+#+ALIASES[]: /ants
+
+Fruit on the porch attracting ants.

@@ -1,8 +1,59 @@
 #+TITLE: Nära
 #+URL: /nara
+#+THUMBNAIL: nara-01.jpeg
 
 /Nära/ ("Near") is a series of close-up portraits of friends. They have
 all been made with my /ЛОМО T-43 40mm f/4 lens/ --- a surprisingly high
 quality glass triplet lens. They have also all been made at the same
 distance and depth of focus, in the 2:3 format of the /Smena 8m/ camera
 the lens was original made for, with no cropping.
+
+# more
+
+#+CAPTION:  Nära 1
+#+ATTR_HTML: :alt Nära 1 :title Nära 1
+[[nara-01.jpeg]]
+
+#+CAPTION:  Nära 2
+#+ATTR_HTML: :alt Nära 2 :title Nära 2
+[[nara-02.jpeg]]
+
+#+CAPTION:  Nära 3
+#+ATTR_HTML: :alt Nära 3 :title Nära 3
+[[nara-03.jpeg]]
+
+#+CAPTION:  Nära 4
+#+ATTR_HTML: :alt Nära 4 :title Nära 4
+[[nara-04.jpeg]]
+
+#+CAPTION:  Nära 5
+#+ATTR_HTML: :alt Nära 5 :title Nära 5
+[[nara-05.jpeg]]
+
+#+CAPTION:  Nära 6
+#+ATTR_HTML: :alt Nära 6 :title Nära 6
+[[nara-06.jpeg]]
+
+#+CAPTION:  Nära 7
+#+ATTR_HTML: :alt Nära 7 :title Nära 7
+[[nara-07.jpeg]]
+
+#+CAPTION:  Nära 8
+#+ATTR_HTML: :alt Nära 8 :title Nära 8
+[[nara-08.jpeg]]
+
+#+CAPTION:  Nära 9
+#+ATTR_HTML: :alt Nära 9 :title Nära 9
+[[nara-09.jpeg]]
+
+#+CAPTION:  Nära 10
+#+ATTR_HTML: :alt Nära 10 :title Nära 10
+[[nara-10.jpeg]]
+
+#+CAPTION:  Nära 11
+#+ATTR_HTML: :alt Nära 11 :title Nära 11
+[[nara-11.jpeg]]
+
+#+CAPTION:  Nära 12
+#+ATTR_HTML: :alt Nära 12 :title Nära 12
+[[nara-12.jpeg]]

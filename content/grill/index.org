@@ -1,5 +1,0 @@
-#+TITLE: Grill
-#+DATE: 2015-07-25
-#+CATEGORIES[]: Photos
-
-Grilling seafood.

@@ -1,0 +1,7 @@
+#+TITLE: Frog
+#+DATE: 2017-05-11
+#+CATEGORIES[]: Photos
+#+IMAGE: frog.jpeg
+#+ALIASES[]: /frog
+
+Bathroom decoration on Koh Lanta.

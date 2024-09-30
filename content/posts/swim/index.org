@@ -1,0 +1,7 @@
+#+TITLE: Swim
+#+DATE: 2016-05-02
+#+CATEGORIES[]: Photos
+#+IMAGE: swim.jpeg
+#+ALIASES[]: /swim
+
+With my parents on Koh Samet.

@@ -1,0 +1,7 @@
+#+TITLE: Strawberries
+#+DATE: 2017-02-13
+#+CATEGORIES[]: Photos
+#+IMAGE: strawberries.jpeg
+#+ALIASES[]: /strawberries
+
+Brought some strawberries home from Korea.

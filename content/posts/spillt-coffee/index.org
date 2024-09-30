@@ -1,0 +1,7 @@
+#+TITLE: Spillt Coffee
+#+DATE: 2017-01-12
+#+CATEGORIES[]: Photos
+#+IMAGE: spillt-coffee.jpeg
+#+ALIASES[]: /spillt-coffee
+
+Spillt coffee on my desk.

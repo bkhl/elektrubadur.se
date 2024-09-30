@@ -1,0 +1,17 @@
+#+TITLE: Mall
+#+DATE: 2015-02-14
+#+CATEGORIES[]: Photos
+#+THUMBNAIL: mall.jpeg
+#+ALIASES[]: /mall
+
+Inside of a mall.
+
+# more
+
+#+CAPTION: Mall
+#+ATTR_HTML: :alt Mall :title Mall
+[[mall.jpeg]]
+
+#+CAPTION: Another Mall
+#+ATTR_HTML: :alt Another Mall :title Another Mall
+[[another-mall.jpeg]]

@@ -1,0 +1,6 @@
+{{- range .Site.RegularPages -}}
+{{- $target := .Path -}}
+{{- range .Page.Aliases -}}
+{{ . }} {{ $target }} 301
+{{ end -}}
+{{- end -}}

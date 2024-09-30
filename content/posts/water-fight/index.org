@@ -1,0 +1,7 @@
+#+TITLE: Water Fight
+#+DATE: 2016-08-18
+#+CATEGORIES[]: Photos
+#+IMAGE: water-fight.jpeg
+#+ALIASES[]: /water-fight
+
+Dogs playing in water.

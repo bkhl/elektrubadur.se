@@ -1,7 +1,25 @@
 #+TITLE: Mechatronic
 #+URL: /mechatronic
+#+THUMBNAIL: mechatronic-1.jpeg
 
-A couple of friends of mine, who are also the synthpop duo
-[[https://mechatronicmusic.wordpress.com/][Mechatronic]], needed some
-promotional pictures, so here are some photographs of them looking hard
+A couple of friends of mine, who are also the synthpop duo [[https://mechatronicmusic.wordpress.com/][Mechatronic]], needed
+some promotional pictures, so here are some photographs of them looking hard
 around town.
+
+# more
+
+#+CAPTION: Mechatronic 1
+#+ATTR_HTML: :alt Mechatronic 1 :title Mechatronic 1
+[[mechatronic-1.jpeg]]
+
+#+CAPTION: Mechatronic 2
+#+ATTR_HTML: :alt Mechatronic 2 :title Mechatronic 2
+[[mechatronic-2.jpeg]]
+
+#+CAPTION: Mechatronic 3
+#+ATTR_HTML: :alt Mechatronic 3 :title Mechatronic 3
+[[mechatronic-3.jpeg]]
+
+#+CAPTION: Mechatronic 4
+#+ATTR_HTML: :alt Mechatronic 4 :title Mechatronic 4
+[[mechatronic-4.jpeg]]

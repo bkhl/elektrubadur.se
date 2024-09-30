@@ -1,0 +1,7 @@
+#+TITLE: Fire Extinguisher
+#+DATE: 2016-01-29
+#+CATEGORIES[]: Photos
+#+IMAGE: fire-extinguisher.jpeg
+#+ALIASES[]: /fire-extinguisher
+
+Fire extinguisher on public van.

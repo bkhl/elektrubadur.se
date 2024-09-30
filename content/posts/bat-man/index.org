@@ -1,0 +1,7 @@
+#+TITLE: Bat Man
+#+DATE: 2017-04-08
+#+CATEGORIES[]: Photos
+#+IMAGE: bat-man.jpeg
+#+ALIASES[]: /bat-man
+
+Bat Man in Bat Yam.

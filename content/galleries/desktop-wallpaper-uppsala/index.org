@@ -1,6 +1,27 @@
 #+TITLE: Desktop Wallpapers: Uppsala
 #+URL: /desktop-wallpaper-uppsala
+#+THUMBNAIL: artificial-sun.jpeg
 
 Here are some pictures of Uppsala meant for use as desktop wallpaper images. To use them, download [[file:{{< file "desktop-wallpapers-uppsala.zip" >}}][the archive file]]. The images below are lower resolution than the images in the archive.
 
 # more
+
+#+CAPTION: Artificial Sun
+#+ATTR_HTML: :alt Artificial Sun :title Artificial Sun
+[[artificial-sun.jpeg]]
+
+#+CAPTION: Bell Tower
+#+ATTR_HTML: :alt Bell Tower :title Bell Tower
+[[bell-tower.jpeg]]
+
+#+CAPTION: Off the Fence
+#+ATTR_HTML: :alt Off the Fence :title Off the Fence
+[[off-the-fence.jpeg]]
+
+#+CAPTION: Riverside
+#+ATTR_HTML: :alt Riverside :title Riverside
+[[riverside.jpeg]]
+
+#+CAPTION: The Party Line
+#+ATTR_HTML: :alt The Party Line :title The Party Line
+[[the-party-line.jpeg]]

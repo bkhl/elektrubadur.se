@@ -1,0 +1,7 @@
+#+TITLE: Peafowl
+#+DATE: 2015-08-17
+#+CATEGORIES[]: Photos
+#+IMAGE: peafowl.jpeg
+#+ALIASES[]: /peafowl
+
+Peafowl on Koh Munnork.

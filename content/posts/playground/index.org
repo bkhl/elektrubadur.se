@@ -1,0 +1,7 @@
+#+TITLE: Playground
+#+DATE: 2016-07-03
+#+CATEGORIES[]: Photos
+#+IMAGE: playground.jpeg
+#+ALIASES[]: /playground
+
+Playground in Mumbai.

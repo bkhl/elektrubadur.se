@@ -1,0 +1,7 @@
+#+TITLE: Cold Beach
+#+DATE: 2017-02-10
+#+CATEGORIES[]: Photos
+#+IMAGE: cold-beach.jpeg
+#+ALIASES[]: /cold-beach
+
+Busan beach in winter.

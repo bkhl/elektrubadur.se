@@ -1,4 +1,23 @@
 #+TITLE: Horror
 #+URL: /horror
+#+THUMBNAIL: attention.jpeg
 
 Some black and white pictures going for a horror movie look.
+
+# more
+
+#+CAPTION: Attention
+#+ATTR_HTML: :alt Attention :title Attention
+[[attention.jpeg]]
+
+#+CAPTION: Pause
+#+ATTR_HTML: :alt Pause :title Pause
+[[pause.jpeg]]
+
+#+CAPTION: Aim
+#+ATTR_HTML: :alt Aim :title Aim
+[[aim.jpeg]]
+
+#+CAPTION: Needlework
+#+ATTR_HTML: :alt Needlework :title Needlework
+[[needlework.jpeg]]

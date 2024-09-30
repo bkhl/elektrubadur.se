@@ -17,17 +17,15 @@ find "${DESTINATION}" -type f -iname '*.html' \
         --vertical-space no \
         --wrap 0 \
         --write-back yes \
+        --indent auto \
         {} '+' \
         || (($?==1 ? 1 : 0))
 
 find "${DESTINATION}" -type f -iname '*.xml' | while read f; do
     tempfile="$(mktemp -t "$(basename "${f}")".XXXXXXXX)"
     xmlstarlet fo \
-        --noindent \
         --nocdata  \
         --nsclean \
         --encode utf-8 \
         "${f}" > "${tempfile}" && mv -v "${tempfile}" "${f}"
 done
-
-install -v -m 0644 {statichost.yml,README.org} "${DESTINATION}"

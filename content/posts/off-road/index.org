@@ -1,0 +1,7 @@
+#+TITLE: Off-road
+#+DATE: 2010-09-11
+#+CATEGORIES[]: Photos
+#+IMAGE: off-road.jpeg
+#+ALIASES[]: /off-road
+
+Me and a sporty French car on a field outside of Uppsala.

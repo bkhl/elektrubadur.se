@@ -1,0 +1,17 @@
+#+TITLE: Road Trip
+#+DATE: 2017-03-18
+#+CATEGORIES[]: Photos
+#+THUMBNAIL: road-trip.jpeg
+#+ALIASES[]: /road-trip
+
+Isan road trip.
+
+# more
+
+#+CAPTION: Road Trip
+#+ATTR_HTML: Road Trip
+[[road-trip.jpeg]]
+
+#+CAPTION: Road Trip in Rain
+#+ATTR_HTML: :alt Road Trip in Rain :title Road Trip in Rain
+[[road-trip-in-rain.jpeg]]

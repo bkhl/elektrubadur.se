@@ -1,0 +1,7 @@
+#+TITLE: Seafood
+#+DATE: 2015-06-30
+#+CATEGORIES[]: Photos
+#+IMAGE: seafood.jpeg
+#+ALIASES[]: /seafood
+
+Seafood, ready to be grilled.

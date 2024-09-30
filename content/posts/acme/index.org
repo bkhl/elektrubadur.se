@@ -1,0 +1,7 @@
+#+TITLE: ACME
+#+DATE: 2017-03-22
+#+CATEGORIES[]: Photos
+#+IMAGE: acme.jpeg
+#+ALIASES[]: /acme
+
+Selfie outside of ACME building, Bangkok.

@@ -3,7 +3,7 @@
 
 * Copyright
 
-Copyright 2010--2023 Björn Lindström, except where stated otherwise.
+Copyright 2010--2024 Björn Lindström, except where stated otherwise.
 
 Articles and images on this page are licensed under a [[https://creativecommons.org/licenses/by-sa/4.0/][Creative Commons Attribution-ShareAlike 4.0 International License]], except where stated otherwise.
 
@@ -23,8 +23,12 @@ This page was created using the static site engine [[https://gohugo.io/][Hugo]].
 
 * Hosting
 
-This site is hosted at [[https://sr.ht/][Sourcehut]], the hacker's forge.
+This site is hosted at [[https://www.statichost.eu/][Statichost.eu]]:
+
+#+begin_quote
+Modern static site hosting with European servers and absolutely no personal data collection!
+#+end_quote
 
 * Source
 
-The source code for this web site is available [[https://git.sr.ht/~bkhl/elektrubadur.se][in this public Sourcehut repository]].
+The source code for this web site is available [[https://github.com/bkhl/elektrubadur.se][in this public GitHub repository]].

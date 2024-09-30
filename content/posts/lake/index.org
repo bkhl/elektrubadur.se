@@ -1,0 +1,7 @@
+#+TITLE: Lake
+#+DATE: 2015-10-11
+#+CATEGORIES[]: Photos
+#+IMAGE: lake.jpeg
+#+ALIASES[]: /lake
+
+View from my parents' cottage.

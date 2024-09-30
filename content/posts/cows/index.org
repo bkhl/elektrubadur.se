@@ -1,0 +1,7 @@
+#+TITLE: Cows
+#+DATE: 2016-07-31
+#+CATEGORIES[]: Photos
+#+IMAGE: cows.jpeg
+#+ALIASES[]: /cows
+
+Cows in Mumbai.

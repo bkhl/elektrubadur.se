@@ -1,5 +1,0 @@
-#+TITLE: Cow
-#+DATE: 2017-05-11
-#+CATEGORIES[]: Photos
-
-Resort cow.

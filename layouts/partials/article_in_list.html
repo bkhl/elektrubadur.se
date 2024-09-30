@@ -1,0 +1,26 @@
+<article>
+  <header>
+    <h2><a href="{{ .Page.Permalink }}" title="{{ .Page.Title }}">{{ .Page.Title }}</a></h2>
+    {{ with default .Page.Params.image .Page.Params.thumbnail }}
+    <p>
+      <a href="{{ $.Page.Permalink }}">
+        <img src="{{ ($.Page.Resources.GetMatch .).Permalink }}"
+             alt="{{ $.Page.Title }}"
+             title="{{ $.Page.Title }}"/>
+      </a>
+    </p>
+    {{ end }}
+    {{ if eq $.Context "blog" }}
+    {{ partial "dateline" (dict "Page" .Page "Context" "list") }}
+    {{ end }}
+  </header>
+  {{ .Page.Summary | safeHTML }}
+  <footer>
+    {{ if .Page.Truncated }}
+    <a href="{{ .Page.Permalink }}">
+      <p>[…]</p>
+      <p>Read more »</p>
+    </a>
+    {{ end }}
+  </footer>
+</article>

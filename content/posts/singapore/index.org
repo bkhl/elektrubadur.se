@@ -1,0 +1,7 @@
+#+TITLE: Singapore
+#+DATE: 2015-04-05
+#+CATEGORIES[]: Photos
+#+IMAGE: singapore.jpeg
+#+ALIASES[]: /singapore
+
+Singapore skyline.

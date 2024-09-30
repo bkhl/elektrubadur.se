@@ -1,0 +1,31 @@
+#+TITLE: Suphan Buri
+#+DATE: 2018-12-10
+#+CATEGORIES[]: Photos
+#+THUMBNAIL: buffalo.jpeg
+#+ALIASES[]: /suphan-buri
+
+I went on a work outing to Suphan Buri a little while back, here comes
+some photos. Most of the pictures are from the buffalo themed resort
+where we stayed.
+
+# more
+
+#+CAPTION: Buffalo.
+#+ATTR_HTML: :alt Buffalo :title Buffalo
+[[buffalo.jpeg]]
+
+#+CAPTION: Deer.
+#+ATTR_HTML: :alt Deer
+[[deer.jpeg]]
+
+#+CAPTION: Accomodations.
+#+ATTR_HTML: :alt Houses
+[[houses.jpeg]]
+
+#+CAPTION: Peacock.
+#+ATTR_HTML: :alt Peacock
+[[peacock.jpeg]]
+
+#+CAPTION: River flowing pas nearby Sam Chuk market.
+#+ATTR_HTML: :alt River
+[[river.jpeg]]

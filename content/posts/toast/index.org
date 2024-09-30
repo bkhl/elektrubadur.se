@@ -1,0 +1,7 @@
+#+TITLE: Toast
+#+DATE: 2015-11-08
+#+CATEGORIES[]: Photos
+#+IMAGE: toast.jpeg
+#+ALIASES[]: /toast
+
+Toast with coin for scale.

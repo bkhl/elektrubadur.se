@@ -1,7 +1,0 @@
-#+TITLE: Road Trip
-#+DATE: 2017-03-18
-#+CATEGORIES[]: Photos
-
-Isan road trip.
-
-# more

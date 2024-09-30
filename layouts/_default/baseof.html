@@ -1,4 +1,3 @@
-{{- block "setup" . -}}{{- end -}}
 <!DOCTYPE html>
 <html lang="{{ .Language.Lang }}">
   <head>
@@ -15,7 +14,7 @@
     <link href="/favicon-192x192.png" rel="icon" sizes="192x192">
     <link href="/favicon-32x32.png" rel="icon" sizes="32x32">
 
-    <title>{{ with .Page.Title }}{{ . }} – {{ end }}Elektrubadur</title>
+    <title>{{ if ne .Page.Title .Site.Title }}{{ .Page.Title }} – {{ end }}{{ .Site.Title }}</title>
 
     {{ with $.Site.Home.AlternativeOutputFormats.Get "rss" }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
@@ -35,9 +34,7 @@
   <body>
     <header>
       <h2>
-        {{ if and .Page.IsHome (eq (.Scratch.Get "paginator").PageNumber 1)}}
-        {{ .Site.Title }}
-        {{ else }}
+        {{ block "site_title" . }}
         <a href="/">{{ .Site.Title }}</a>
         {{ end }}
       </h2>

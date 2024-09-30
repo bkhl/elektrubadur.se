@@ -1,0 +1,7 @@
+#+TITLE: Hermit Crab
+#+DATE: 2017-05-06
+#+CATEGORIES[]: Photos
+#+IMAGE: hermit-crab.jpeg
+#+ALIASES[]: /hermit-crab
+
+Hermit crab on the beach.

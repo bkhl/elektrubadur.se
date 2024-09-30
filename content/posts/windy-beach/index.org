@@ -1,0 +1,7 @@
+#+TITLE: Windy Beach
+#+DATE: 2016-07-03
+#+CATEGORIES[]: Photos
+#+IMAGE: windy-beach.jpeg
+#+ALIASES[]: /windy-beach
+
+Bandra beach, Mumbai.

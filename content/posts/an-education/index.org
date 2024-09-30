@@ -1,0 +1,7 @@
+#+TITLE: An Education
+#+DATE: 2010-09-17
+#+CATEGORIES[]: Photos
+#+IMAGE: an-education.jpeg
+#+ALIASES[]: /an-education
+
+Friend's daughter reading an improving comic book.

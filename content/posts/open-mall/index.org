@@ -1,0 +1,7 @@
+#+TITLE: Open Mall
+#+DATE: 2015-03-29
+#+CATEGORIES[]: Photos
+#+IMAGE: open-mall.jpeg
+#+ALIASES[]: /open-mall
+
+Open-air mall in Bangkok.

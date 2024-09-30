@@ -2,8 +2,8 @@
   {{ range $index, $element := .Site.Menus.main }}
   {{ if ne $index 0 }}—{{ end }}
   {{ if and (eq $.Page.RelPermalink .PageRef)
-  (not (and (ne ($.Scratch.Get "paginator") nil)
-  ($.Scratch.Get "paginator").HasPrev)) }}
+            (or (eq $.Page.Kind "page")
+                (not $.Page.Paginator.HasPrev)) }}
   <strong>{{ .Name }}</strong>
   {{ else }}
   <a href="{{ .PageRef }}">{{ .Name }}</a>
