@@ -10,6 +10,7 @@ message="$(git log -1 --pretty='%B')"
 
 popd
 
+install -v -m 0644 "${SOURCE}/statichost.yml" "${PUBLIC}"
 mv "${PREV_PUBLIC}/.git" -t "${PUBLIC}"
 
 pushd "${PUBLIC}"

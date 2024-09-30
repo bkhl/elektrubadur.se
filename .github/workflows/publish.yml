@@ -37,7 +37,7 @@ jobs:
 
       - name: Copy Emacs configuration into contents directory
         run: >-
-          install -v -m 0644
+          install -v -m 0644 -T
           dotfiles/.emacs.d/configuration.org
           content/articles/emacs-configuration.org
 
