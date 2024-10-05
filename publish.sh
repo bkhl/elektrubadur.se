@@ -10,7 +10,8 @@ message="$(git log -1 --pretty='%B')"
 
 popd
 
-install -v -m 0644 "${SOURCE}/statichost.yml" "${PUBLIC}"
+install -v -m 0644 "${SOURCE}"/{statichost.yml,README.org} "${PUBLIC}"
+
 mv "${PREV_PUBLIC}/.git" -t "${PUBLIC}"
 
 pushd "${PUBLIC}"
@@ -20,7 +21,7 @@ if git diff-index --quiet HEAD --; then
     exit 0
 fi
 
-git remote set-url origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/bkhl/elektrubadur.se.git"
+git remote set-url origin "${PUSH_URL}"
 git add --all
 git commit --message="${message}"
 git push origin public:public
