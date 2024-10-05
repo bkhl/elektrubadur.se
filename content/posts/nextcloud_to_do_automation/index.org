@@ -228,7 +228,7 @@ def get_etag(response):
     return '"{}"'.format(tag)
 #+end_src
 
-Finally, we call the main function like this. The =SUCCESS=/=FAILURE=
+Finally, we call the main function like this. The =SUCCESS= and =FAILURE=
 objects are converted into status codes and the script exits
 accordingly.
 
