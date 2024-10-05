@@ -2,5 +2,7 @@
 {{- $target := .Path -}}
 {{- range .Page.Aliases -}}
 {{ . }} {{ $target }} 301
+{{ . }}/ {{ $target }} 301
+{{ . }}/index.html {{ $target }} 301
 {{ end -}}
 {{- end -}}
