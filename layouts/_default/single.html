@@ -6,7 +6,7 @@
 <article>
   <header>
     <h1>{{ .Page.Title }}</h1>
-    {{ if eq .Page.Section "" }}
+    {{ if eq .Page.Section "posts" }}
     {{ partial "dateline" (dict "Page" .Page "Context" "single") }}
     {{ end }}
   </header>

@@ -11,7 +11,7 @@
     </p>
     {{ end }}
     {{ if eq $.Context "blog" }}
-    {{ partial "dateline" (dict "Page" .Page "Context" "list") }}
+    {{ partial "dateline" (dict "Page" .Page "Context" "list" "FirstPage" .FirstPage "Category" .Category "Tag" .Tag) }}
     {{ end }}
   </header>
   {{ .Page.Summary | safeHTML }}

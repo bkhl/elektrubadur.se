@@ -1,6 +1,8 @@
+{{ $first_page := .FirstPage }}
+{{ $page_category := .Category }}
+{{ $page_tag := .Tag }}
 {{ $category_count := (.Page.GetTerms "categories").Len }}
 {{ $tag_count := (.Page.GetTerms "tags").Len }}
-
 <p>
 {{ if eq .Context "single" }}
 By <em>{{ or .Page.Params.author .Page.Site.Params.author}}</em> in
@@ -8,7 +10,7 @@ By <em>{{ or .Page.Params.author .Page.Site.Params.author}}</em> in
 In
 {{ end }}
 {{ range $index, $entry := .Page.GetTerms "categories"}}
-<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if lt (add $index 1) $category_count }}{{ if eq (add $index 2) $category_count }} and{{ else }},{{ end }} {{ end -}}{{ end }}
+{{ if and (eq $page_category .Title) $first_page }}<em>{{ .Title }}</em>{{ else }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ if lt (add $index 1) $category_count }}{{ if eq (add $index 2) $category_count }} and{{ else }},{{ end }} {{ end -}}{{ end }}
 {{ if gt $tag_count 0 }}
 {{ if lt $category_count 1 }}
 About
@@ -16,7 +18,7 @@ About
 about
 {{ end }}
 {{ range $index, $entry := .Page.GetTerms "tags" }}
-<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if lt (add $index 1) $tag_count }}{{ if eq (add $index 2) $tag_count }} and{{ else }},{{ end }} {{ end -}}
+{{ if and (eq $page_tag .Title) $first_page }}<em>{{ .Title }}</em>{{ else }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ if lt (add $index 1) $tag_count }}{{ if eq (add $index 2) $tag_count }} and{{ else }},{{ end }} {{ end -}}
 {{ end -}}
 {{ end }} —&nbsp;<time datetime="{{ .Page.Date | dateFormat "2006-01-02" }}">{{ .Page.Date | dateFormat "Monday Jan 2, 2006" }}</time>
 </p>

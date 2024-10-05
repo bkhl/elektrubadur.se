@@ -1,4 +1,4 @@
-/*
+ /*
  * Fonts
  */
 
@@ -98,6 +98,11 @@ article {
 
 article header h1 {
     font-size: xxx-large;
+}
+
+article header em {
+    font-style: italic;
+    font-weight: bold;
 }
 
 

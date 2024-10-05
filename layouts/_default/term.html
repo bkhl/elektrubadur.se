@@ -7,14 +7,16 @@
 {{ end }}
 
 {{ define "main" }}
+{{ $category := cond (and (eq .Kind "term") (eq .Type "categories")) .LinkTitle nil }}
+{{ $tag := cond (and (eq .Kind "term") (eq .Type "tags")) .LinkTitle nil }}
+{{ $first_page := not .Page.Paginator.HasPrev}}
 <header>
-  <h1>Entries on <em>{{ .Page.Title }}</em>:</h1>
+  <h1>Entries on <em>{{ .Page.Title }}</em></h1>
   <p><a href="/{{ .Page.Type }}/">All {{ .Page.Type }}</a></p>
-
   {{ partial "page_turner" .Page.Paginator }}
 </header>
 {{ range .Page.Paginator.Pages }}
-{{ partial "article_in_list" (dict "Page" .Page "Context" "blog") }}
+{{ partial "article_in_list" (dict "Page" .Page "Context" "blog" "FirstPage" $first_page "Category" $category "Tag" $tag) }}
 {{ end }}
 <footer>
   {{ partial "page_turner" .Page.Paginator }}
