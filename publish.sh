@@ -30,6 +30,12 @@ fi
 
 git remote set-url origin "${PUSH_URL}"
 git add --all
+
+if git diff --quiet HEAD --; then
+    # No changes
+    exit 0
+fi
+
 git commit --message="${message}"
 git push origin public:public
 
