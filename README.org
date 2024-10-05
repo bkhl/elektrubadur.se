@@ -1,0 +1,14 @@
+#+TITLE: Elektrubadur
+
+[[https://github.com/bkhl/elektrubadur.se/actions/workflows/publish.yml/badge.svg]]
+
+[[https://builder.statichost.eu/elektrubadur-se/status.svg]]
+
+This is the repository for my personal web site.
+
+For more information about the page, see [[https://elektrubadur.se/about_page/][About This Page]] on the web site.
+
+* Branches
+
+- [[https://github.com/bkhl/elektrubadur.se/tree/main][main]] :: the main branch that the web site is built from.
+- [[https://github.com/bkhl/elektrubadur.se/tree/public][public]] :: the rendered web site is pushed to this branch. Because [[https://www.statichost.eu/][Statichost.eu]] will pull the web site from the default Git branch, this branch is set as the default branch.
