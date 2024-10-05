@@ -4,7 +4,7 @@
   {{ if and (eq $.Page.RelPermalink .PageRef)
             (or (eq $.Page.Kind "page")
                 (not $.Page.Paginator.HasPrev)) }}
-  <strong>{{ .Name }}</strong>
+  <em>{{ .Name }}</em>
   {{ else }}
   <a href="{{ .PageRef }}">{{ .Name }}</a>
   {{ end }}
