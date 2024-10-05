@@ -60,6 +60,9 @@ Since 2022 I also wear the Scrum Master hat in my team.
 
 ** Certified ScrumMaster® (CSM®) (2022 --- present)
 
+#+ATTR_HTML: :width 150px :alt CSM Badge :title CSM Badge
+[[csm-badge.png]]
+
 - [[https://bcert.me/syjixfovh][CSM credential link]]
 
 --------------
