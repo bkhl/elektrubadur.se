@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-<channel>
-<title>Org on Elektrubadur</title>
-<link>https://elektrubadur.se/tags/org/</link>
-<description>Recent content in Org on Elektrubadur</description>
-<language>en</language>
-<copyright>© 2010–2024 Björn Lindström</copyright>
-<lastBuildDate>Sun, 28 May 2023 00:00:00 +0200</lastBuildDate>
-<atom:link href="https://elektrubadur.se/tags/org/rss.xml" rel="self" type="application/rss+xml"/>
-<item>
-<title>Converting Sources of This Blog to Org format</title>
-<link>https://elektrubadur.se/converting_blog_to_org/</link>
-<pubDate>Sun, 28 May 2023 00:00:00 +0200</pubDate>
-<guid>https://elektrubadur.se/converting_blog_to_org/</guid>
-<description>&lt;p&gt;
+  <channel>
+    <title>Org on Elektrubadur</title>
+    <link>https://elektrubadur.se/tags/org/</link>
+    <description>Recent content in Org on Elektrubadur</description>
+    <language>en</language>
+    <copyright>© 2010–2024 Björn Lindström</copyright>
+    <lastBuildDate>Sun, 28 May 2023 00:00:00 +0200</lastBuildDate>
+    <atom:link href="https://elektrubadur.se/tags/org/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Converting Sources of This Blog to Org format</title>
+      <link>https://elektrubadur.se/posts/converting_blog_to_org/</link>
+      <pubDate>Sun, 28 May 2023 00:00:00 +0200</pubDate>
+      <guid>https://elektrubadur.se/posts/converting_blog_to_org/</guid>
+      <description>&lt;p&gt;
 It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;#39;s in the interest of making it more enjoyable for me to write more that I&amp;#39;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
 &lt;p&gt;
-Here I&amp;#39;ll just share &lt;a href="https://elektrubadur.se/converting_blog_to_org/convert.py
+Here I&amp;#39;ll just share &lt;a href="https://elektrubadur.se/posts/converting_blog_to_org/convert.py
 "&gt;the script&lt;/a&gt; I made to do the format conversion, in case it&amp;#39;s useful for anyone else. Actually, half the reason I&amp;#39;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;</description>
-</item>
-<item>
-<title>Emacs Configuration</title>
-<link>https://elektrubadur.se/emacs-configuration/</link>
-<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-<guid>https://elektrubadur.se/emacs-configuration/</guid>
-<description>&lt;div id="outline-container-introduction" class="outline-2"&gt;
+    </item>
+    <item>
+      <title>Emacs Configuration</title>
+      <link>https://elektrubadur.se/emacs-configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://elektrubadur.se/emacs-configuration/</guid>
+      <description>&lt;div id="outline-container-introduction" class="outline-2"&gt;
 &lt;h2 id="introduction"&gt;
 Introduction
 &lt;/h2&gt;
@@ -49,6 +49,6 @@ This is my Emacs configuration. It is available online in these forms:&lt;/p&gt;
 &lt;li&gt;Add-on packages are managed manually as Git submodules.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in &lt;a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/site-lisp"&gt;~/.emacs.d/site-lisp/&lt;/a&gt;.&lt;/p&gt;</description>
-</item>
-</channel>
+    </item>
+  </channel>
 </rss>

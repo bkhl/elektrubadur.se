@@ -22,7 +22,7 @@
 <h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
 <p><em>Personal web page of Björn Lindström</em></p>
 <nav>
-<p><a href="https://elektrubadur.se/">Blog</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
+<p><a href="https://elektrubadur.se/">Posts</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
 </nav>
 </header>
 <main>
@@ -32,17 +32,17 @@
 </header>
 <article>
 <header>
-<h2><a href="https://elektrubadur.se/nextcloud_to_do_automation/" title="Simple Nextcloud To-Do List Automation with Python and WebDAV">Simple Nextcloud To-Do List Automation with Python and WebDAV</a></h2>
-<a href="https://elektrubadur.se/nextcloud_to_do_automation/"></a>
+<h2><a href="https://elektrubadur.se/posts/nextcloud_to_do_automation/" title="Simple Nextcloud To-Do List Automation with Python and WebDAV">Simple Nextcloud To-Do List Automation with Python and WebDAV</a></h2>
 <p>In <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/nextcloud/">Nextcloud</a> and <a href="https://elektrubadur.se/tags/planning/">Planning</a> —&nbsp;<time datetime="2019-05-05">Sunday&nbsp;May&nbsp;5,&nbsp;2019</time></p>
 </header>
 <p>I keep a task list in a <a href="http://todotxt.org/">todo.txt</a> format in <a href="https://nextcloud.com/">Nextcloud</a>. They are simply kept as two text files, <code class="verbatim">todo.txt</code> and <code class="verbatim">done.txt</code> in the root of my Nextcloud user directory.</p>
 <p>Some clients already have the option to move tasks from <code class="verbatim">todo.txt</code> to <code class="verbatim">done.txt</code> when you mark a task as done. However, I would prefer they stick around in the <code class="verbatim">todo.txt</code> for a while, in case I change my mind.</p>
 <p>At first I thought I'd just write a script to run as a cronjob on the server hosting Nextcloud, but that won't work with syncrhonization, as it won't let Nextcloud know the files have changed. I then thought there must be an API to read/write files to Nextcloud, and then quickly realized that this API is <a href="https://tools.ietf.org/html/rfc2518">WebDAV</a>. So, I should be able to make a Python script to do this, using <a href="https://pypi.org/project/requests/">requests</a>. A more full-featured WebDAV library would be overkill for this.</p>
-<footer><a href="https://elektrubadur.se/nextcloud_to_do_automation/">
+<footer>
+<a href="https://elektrubadur.se/posts/nextcloud_to_do_automation/">
 <p>[…]</p>
-<p>Read more »</p>
-</a></footer>
+<p>Read more »</p></a>
+</footer>
 </article>
 </main>
 <footer>

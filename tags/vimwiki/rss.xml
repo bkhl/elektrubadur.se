@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-<channel>
-<title>Vimwiki on Elektrubadur</title>
-<link>https://elektrubadur.se/tags/vimwiki/</link>
-<description>Recent content in Vimwiki on Elektrubadur</description>
-<language>en</language>
-<copyright>© 2010–2024 Björn Lindström</copyright>
-<lastBuildDate>Sat, 02 May 2020 00:00:00 +0200</lastBuildDate>
-<atom:link href="https://elektrubadur.se/tags/vimwiki/rss.xml" rel="self" type="application/rss+xml"/>
-<item>
-<title>Vimwiki + Nextcloud Notes</title>
-<link>https://elektrubadur.se/vimwiki_and_nextcloud/</link>
-<pubDate>Sat, 02 May 2020 00:00:00 +0200</pubDate>
-<guid>https://elektrubadur.se/vimwiki_and_nextcloud/</guid>
-<description>&lt;p&gt;
+  <channel>
+    <title>Vimwiki on Elektrubadur</title>
+    <link>https://elektrubadur.se/tags/vimwiki/</link>
+    <description>Recent content in Vimwiki on Elektrubadur</description>
+    <language>en</language>
+    <copyright>© 2010–2024 Björn Lindström</copyright>
+    <lastBuildDate>Sat, 02 May 2020 00:00:00 +0200</lastBuildDate>
+    <atom:link href="https://elektrubadur.se/tags/vimwiki/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Vimwiki + Nextcloud Notes</title>
+      <link>https://elektrubadur.se/posts/vimwiki_and_nextcloud/</link>
+      <pubDate>Sat, 02 May 2020 00:00:00 +0200</pubDate>
+      <guid>https://elektrubadur.se/posts/vimwiki_and_nextcloud/</guid>
+      <description>&lt;p&gt;
 I&amp;#39;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
 &lt;p&gt;
 For a while I&amp;#39;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
 &lt;p&gt;
 The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I&amp;#39;ve now finally automated that.&lt;/p&gt;</description>
-</item>
-</channel>
+    </item>
+  </channel>
 </rss>

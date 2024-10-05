@@ -20,7 +20,7 @@
 <header>
 <h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
 <nav>
-<p><a href="https://elektrubadur.se/">Blog</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
+<p><a href="https://elektrubadur.se/">Posts</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
 </nav>
 </header>
 <main>
@@ -31,261 +31,555 @@
 <aside>
 <nav id="TableOfContents">
 <ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#personal-information">Set personal information</a></li>
-<li><a href="#built-in">Built-in functionality</a>
-<ul>
-<li><a href="#start-up">Start-up</a>
-<ul>
-<li><a href="#use-package"><code>use-package</code></a>
-<ul>
-<li><a href="#use-package-default-load-path">Provide default <code>:load-path</code> pointing to location of submodules</a></li>
-<li><a href="#use-package-make-autoloads">Add <code>:make-autoloads</code> keyword extension to generate autoload files</a></li>
-</ul>
+<li>
+<a href="#introduction">Introduction</a>
 </li>
-<li><a href="#customize-separate">Keep customizations in separate file</a></li>
-<li><a href="#show-init-time">Show init time on startup</a></li>
-<li><a href="#minibuffer-disable-gc">Disable garbage collection when in minibuffer</a></li>
-</ul>
+<li>
+<a href="#personal-information">Set personal information</a>
 </li>
-<li><a href="#built-in-interface">Interface</a>
+<li>
+<a href="#built-in">Built-in functionality</a>
 <ul>
-<li><a href="#line-column-number">Show line and column number in mode line</a></li>
-<li><a href="#emoji-font">Emoji font</a></li>
-<li><a href="#disable-bell">Disable bell</a></li>
-<li><a href="#window-title">Set window title</a></li>
-<li><a href="#restore-exact-window-size">Enable restoring exact window size</a></li>
-<li><a href="#emacsclient-disable-message">Disable message on new <code>emacsclient</code> frames</a></li>
-<li><a href="#prompt-before-close">Prompt before closing Emacs</a></li>
-<li><a href="#date-format">Set preferred dateformat</a></li>
-<li><a href="#window-layout-undo">Allow undo of window layout changes</a></li>
-<li><a href="#m-x-command-history">Preserve <code>M-x</code> command history between sessions</a></li>
-<li><a href="#save-place">Use saved point position in previously opened files</a></li>
-<li><a href="#cursor-scrolling">Scrolling behaviour when moving cursor</a></li>
-<li><a href="#smooth-scrolling">Smooth scrolling with scroll wheel</a></li>
-<li><a href="#highlight-visited-error">Highlight error messages</a></li>
-<li><a href="#short-yes-no-prompts">Make yes/no prompts shorter</a></li>
-<li><a href="#hide-bookmarks">Don't show bookmarks in fringe</a></li>
-<li><a href="#bar-cursor">Use bar cursor</a></li>
-<li><a href="#show-matching-offscreen">Show matching parenthesis context when offscreen</a></li>
-<li><a href="#switch-windows-binding">Switch windows with <code>M-o</code></a></li>
-<li><a href="#directional-window-switch-binding">Switch between windows with <code>S-&lt;direction&gt;</code></a></li>
-</ul>
+<li>
+<a href="#start-up">Start-up</a>
+<ul>
+<li>
+<a href="#use-package"><code>use-package</code></a>
+<ul>
+<li>
+<a href="#use-package-default-load-path">Provide default <code>:load-path</code> pointing to location of submodules</a>
 </li>
-<li><a href="#key-bindings">Key bindings</a>
-<ul>
-<li><a href="#disable-c-z">Disable <code>C-z</code></a></li>
-<li><a href="#repeat-mode">Enable repeat maps for commands that have them</a></li>
-</ul>
-</li>
-<li><a href="#mouse-behaviour">Mouse behaviour</a>
-<ul>
-<li><a href="#middle-click-yank-at-point">Make middle-clicking mouse yank at point</a></li>
-<li><a href="#mouse-adjustement-to-kill-ring">Save to kill ring when adjusting region with mouse</a></li>
-</ul>
-</li>
-<li><a href="#documentation">Documentation and help</a>
-<ul>
-<li><a href="#apropos-do-all">Make <code>apropos</code> search more extensively</a></li>
-<li><a href="#info-variable-pitch">Use variable pitch in Info reader</a></li>
-<li><a href="#autoload-help">Autoload if documentation is missing from autoload objects</a></li>
-<li><a href="#bindings-help-outline">Show outlines in bindings description</a></li>
-<li><a href="#reuse-help-window">Reuse help window if already shown</a></li>
-</ul>
-</li>
-<li><a href="#buffers">Buffers</a>
-<ul>
-<li><a href="#empty-scratch">Start with an empty scratch buffer.</a></li>
-<li><a href="#uniquify-name-style">Use directory name in buffer names for files with same name</a></li>
-<li><a href="#remember-risky">Allow remembering risky local variables</a></li>
-<li><a href="#remote-dir-locals">Load <code>.dir-locals.el</code> files on remote hosts</a></li>
-<li><a href="#kill-bury-bindings">Key bindings to kill/bury current buffer</a></li>
-</ul>
-</li>
-<li><a href="#files">Files</a>
-<ul>
-<li><a href="#start-at-home">Start opening files from home directory</a></li>
-<li><a href="#backup-by-copy">Backup by copying</a></li>
-<li><a href="#backup-in-tmp">Store backups in tmp directory</a></li>
-<li><a href="#directory-create-on-save">Offer to create parent directories on save</a></li>
-<li><a href="#save-silently">Disable message when saving files</a></li>
-<li><a href="#sync-updated">Automatically sync updated files</a></li>
-<li><a href="#disable-emacs-lock">Disable Emacs lock files</a></li>
-<li><a href="#dired"><code>dired</code></a></li>
-<li><a href="#tramp"><code>tramp</code> remote editing</a></li>
-</ul>
-</li>
-<li><a href="#built-in-text-editing">Text editing</a>
-<ul>
-<li><a href="#home-end-bindings">Bind Home/End to move to start/end of line</a></li>
-<li><a href="#m-z-zap-to-char">Change behaviour of <code>M-z</code> for zapping to character</a></li>
-<li><a href="#cycle-spacing">Bind <code>cycle-spacing</code> to <code>M-S-SPC</code></a></li>
-<li><a href="#duplicate-dwim">Bind <code>duplicate-dwim</code> to <code>M-R</code></a></li>
-<li><a href="#single-space">Use single space to delimit sentences</a></li>
-<li><a href="#highlight-and-apply-to-region">Highlight selected region and apply changes to it</a></li>
-<li><a href="#headline-67">Disable indentation using tabs.</a></li>
-<li><a href="#default-line-length">Set default line length to 80</a></li>
-<li><a href="#char-name-in-description">Show character name in character description</a></li>
-<li><a href="#electric-pair-mode">Automatically pair matching characters like parenthesis</a></li>
-<li><a href="#save-clipboard-before-kill">Save existing clipboard text into kill ring before replacing it</a></li>
-<li><a href="#upcase-downcase-region">Enable <code>downcase-region</code> and <code>upcase-region</code></a></li>
-<li><a href="#replacements-case">Make replacements and completions preserve case</a></li>
-<li><a href="#built-in-completion">Completion</a>
-<ul>
-<li><a href="#dabbrev"><code>dabbrev</code> dynamic abbreviations</a></li>
-</ul>
+<li>
+<a href="#use-package-make-autoloads">Add <code>:make-autoloads</code> keyword extension to generate autoload files</a>
 </li>
 </ul>
 </li>
-<li><a href="#built-in-programming">Programming</a>
-<ul>
-<li><a href="#prettify">Render some keywords and operators as symbols</a></li>
-<li><a href="#subword-mode">In programming modes, treat words in camel case symbols as separate.</a></li>
-<li><a href="#compile-bindings">Bind key to trigger compilation/recompilation</a></li>
-<li><a href="#flymake"><code>flymake</code></a></li>
-<li><a href="#eglot">Eglot for language server protocol support</a></li>
-<li><a href="#built-in-programming-languages">Languages</a>
-<ul>
-<li><a href="#c">C</a></li>
-<li><a href="#containerfile">Containerfile/Dockerfile</a></li>
-<li><a href="#go">Go</a></li>
-<li><a href="#perl">Perl</a></li>
-<li><a href="#prolog">Prolog</a></li>
-</ul>
+<li>
+<a href="#customize-separate">Keep customizations in separate file</a>
+</li>
+<li>
+<a href="#show-init-time">Show init time on startup</a>
+</li>
+<li>
+<a href="#minibuffer-disable-gc">Disable garbage collection when in minibuffer</a>
 </li>
 </ul>
 </li>
-<li><a href="#built-in-version-control">Version control</a>
+<li>
+<a href="#built-in-interface">Interface</a>
 <ul>
-<li><a href="#vc-diff"><code>vc-diff</code></a></li>
-<li><a href="#ediff"><code>ediff</code></a></li>
-</ul>
+<li>
+<a href="#line-column-number">Show line and column number in mode line</a>
 </li>
-<li><a href="#project-management">Project management</a>
-<ul>
-<li><a href="#exercism-projects">Detect Exercism exercises as projects.</a></li>
-<li><a href="#bug-reference-mode">Bug reference mode</a></li>
-</ul>
+<li>
+<a href="#emoji-font">Emoji font</a>
 </li>
-<li><a href="#built-in-org">Org</a>
-<ul>
-<li><a href="#org-default-dir">Default <code>org-mode</code> directory</a></li>
-<li><a href="#org-scratch">Make initial scratch buffer use <code>org-mode</code></a></li>
-<li><a href="#org-editing">Editing</a></li>
-<li><a href="#org-display">Display</a></li>
-<li><a href="#org-bindings">Key bindings</a>
-<ul>
-<li><a href="#org-bindings-edit-header">Editing of headers</a></li>
-<li><a href="#org-bindings-store-links">Global key binding to store links for <code>org-mode</code></a></li>
-<li><a href="#org-bindings-navigate-windows">Navigation between windows in org-mode</a></li>
-<li><a href="#org-bindings-copy-link-location">Copy link location</a></li>
-</ul>
+<li>
+<a href="#disable-bell">Disable bell</a>
 </li>
-<li><a href="#org-capturing">Capturing</a></li>
-<li><a href="#org-refiling">Refiling</a></li>
-<li><a href="#org-agendas">Agendas</a></li>
-<li><a href="#org-open-at-point">Allow opening links to anchors with <code>org-open-at-point</code></a></li>
-<li><a href="#org-eval-shell">Allow evaluating Shell code blocks in Org</a></li>
-</ul>
+<li>
+<a href="#window-title">Set window title</a>
 </li>
-<li><a href="#eshell">Eshell</a>
-<ul>
-<li><a href="#headline-110">Disable banner</a></li>
-<li><a href="#headline-111">Aliases</a></li>
-</ul>
+<li>
+<a href="#restore-exact-window-size">Enable restoring exact window size</a>
 </li>
-</ul>
+<li>
+<a href="#emacsclient-disable-message">Disable message on new <code>emacsclient</code> frames</a>
 </li>
-<li><a href="#add-ons">Add-on packages</a>
-<ul>
-<li><a href="#dependencies">Dependencies</a>
-<ul>
-<li><a href="#compat">compat</a></li>
-<li><a href="#dash">dash</a></li>
-<li><a href="#transient">transient</a></li>
-<li><a href="#with-editor">with-editor</a></li>
-</ul>
+<li>
+<a href="#prompt-before-close">Prompt before closing Emacs</a>
 </li>
-<li><a href="#add-on-interface">Interface</a>
-<ul>
-<li><a href="#fontaine">fontaine font configuration</a></li>
-<li><a href="#modus-themes">modus-themes accessible themes</a></li>
-<li><a href="#auto-dark">auto-dark to follow desktop dark mode setting</a></li>
-<li><a href="#minions">minions mode line minor mode listing improvements</a></li>
-<li><a href="#lin">lin mode for highlight of current line.</a></li>
-<li><a href="#edit-server">edit-server to edit Firefox text areas</a></li>
-<li><a href="#sv-kalender">sv-kalender Swedish calendar localization</a></li>
-<li><a href="#vertico">vertico for minibuffer completion</a></li>
-<li><a href="#marginalia">marginalia minibuffer annotations</a></li>
-<li><a href="#consult">consult search and navigation commands</a></li>
-<li><a href="#embark">embark contextual actions</a></li>
-<li><a href="#pulsar">pulsar to temporarily highlight current line</a></li>
-<li><a href="#free-keys">free-keys to show free bindings</a></li>
-</ul>
+<li>
+<a href="#date-format">Set preferred dateformat</a>
 </li>
-<li><a href="#add-on-text-editing">Text editing</a>
-<ul>
-<li><a href="#substitute">substitute text replacement commands</a></li>
-<li><a href="#trimspace-mode">trimspace-mode for trimming trailing spaces and newlines</a></li>
-<li><a href="#whole-line-or-region">whole-line-or-region</a></li>
-<li><a href="#add-on-completion">Completion</a>
-<ul>
-<li><a href="#corfu">corfu for completion at point</a></li>
-<li><a href="#cape">cape completion at point extensions</a></li>
-<li><a href="#orderless">orderless completion style</a></li>
-</ul>
+<li>
+<a href="#window-layout-undo">Allow undo of window layout changes</a>
+</li>
+<li>
+<a href="#m-x-command-history">Preserve <code>M-x</code> command history between sessions</a>
+</li>
+<li>
+<a href="#save-place">Use saved point position in previously opened files</a>
+</li>
+<li>
+<a href="#cursor-scrolling">Scrolling behaviour when moving cursor</a>
+</li>
+<li>
+<a href="#smooth-scrolling">Smooth scrolling with scroll wheel</a>
+</li>
+<li>
+<a href="#highlight-visited-error">Highlight error messages</a>
+</li>
+<li>
+<a href="#short-yes-no-prompts">Make yes/no prompts shorter</a>
+</li>
+<li>
+<a href="#hide-bookmarks">Don't show bookmarks in fringe</a>
+</li>
+<li>
+<a href="#bar-cursor">Use bar cursor</a>
+</li>
+<li>
+<a href="#show-matching-offscreen">Show matching parenthesis context when offscreen</a>
+</li>
+<li>
+<a href="#switch-windows-binding">Switch windows with <code>M-o</code></a>
+</li>
+<li>
+<a href="#directional-window-switch-binding">Switch between windows with <code>S-&lt;direction&gt;</code></a>
 </li>
 </ul>
 </li>
-<li><a href="#add-on-programming">Programming</a>
+<li>
+<a href="#key-bindings">Key bindings</a>
 <ul>
-<li><a href="#fancy-compilation">fancy-compilation to improve compilation output buffers</a></li>
-<li><a href="#add-on-programming-languages">Languages</a>
-<ul>
-<li><a href="#add-on-emacs-lisp">Emacs Lisp</a>
-<ul>
-<li><a href="#package-lint">package-lint Emacs package linter</a></li>
-<li><a href="#xr">xr reverse rx</a></li>
-</ul>
+<li>
+<a href="#disable-c-z">Disable <code>C-z</code></a>
 </li>
-<li><a href="#lua">lua-mode</a></li>
-</ul>
+<li>
+<a href="#repeat-mode">Enable repeat maps for commands that have them</a>
 </li>
 </ul>
 </li>
-<li><a href="#headline-147">Writing</a>
+<li>
+<a href="#mouse-behaviour">Mouse behaviour</a>
 <ul>
-<li><a href="#headline-148">Jinx spell checking</a></li>
-<li><a href="#markdown">markdown-mode for Markdown support</a></li>
-<li><a href="#olivetti">olivetti to adjust margins of text</a></li>
+<li>
+<a href="#middle-click-yank-at-point">Make middle-clicking mouse yank at point</a>
+</li>
+<li>
+<a href="#mouse-adjustement-to-kill-ring">Save to kill ring when adjusting region with mouse</a>
+</li>
 </ul>
 </li>
-<li><a href="#file-formats">File formats</a>
+<li>
+<a href="#documentation">Documentation and help</a>
 <ul>
-<li><a href="#yaml">YAML</a>
-<ul>
-<li><a href="#yaml-mode">yaml-mode</a></li>
-<li><a href="#flymake-yamllint">flymake-yamllint</a></li>
+<li>
+<a href="#apropos-do-all">Make <code>apropos</code> search more extensively</a>
+</li>
+<li>
+<a href="#info-variable-pitch">Use variable pitch in Info reader</a>
+</li>
+<li>
+<a href="#autoload-help">Autoload if documentation is missing from autoload objects</a>
+</li>
+<li>
+<a href="#bindings-help-outline">Show outlines in bindings description</a>
+</li>
+<li>
+<a href="#reuse-help-window">Reuse help window if already shown</a>
+</li>
 </ul>
 </li>
-<li><a href="#headline-155">CMake</a></li>
+<li>
+<a href="#buffers">Buffers</a>
+<ul>
+<li>
+<a href="#empty-scratch">Start with an empty scratch buffer.</a>
+</li>
+<li>
+<a href="#uniquify-name-style">Use directory name in buffer names for files with same name</a>
+</li>
+<li>
+<a href="#remember-risky">Allow remembering risky local variables</a>
+</li>
+<li>
+<a href="#remote-dir-locals">Load <code>.dir-locals.el</code> files on remote hosts</a>
+</li>
+<li>
+<a href="#kill-bury-bindings">Key bindings to kill/bury current buffer</a>
+</li>
 </ul>
 </li>
-<li><a href="#add-on-version-control">Version control</a>
+<li>
+<a href="#files">Files</a>
 <ul>
-<li><a href="#magit">Magit Git interface</a>
-<ul>
-<li><a href="#magit-auto-commit">Automatic commit on save</a></li>
+<li>
+<a href="#start-at-home">Start opening files from home directory</a>
+</li>
+<li>
+<a href="#backup-by-copy">Backup by copying</a>
+</li>
+<li>
+<a href="#backup-in-tmp">Store backups in tmp directory</a>
+</li>
+<li>
+<a href="#directory-create-on-save">Offer to create parent directories on save</a>
+</li>
+<li>
+<a href="#save-silently">Disable message when saving files</a>
+</li>
+<li>
+<a href="#sync-updated">Automatically sync updated files</a>
+</li>
+<li>
+<a href="#disable-emacs-lock">Disable Emacs lock files</a>
+</li>
+<li>
+<a href="#dired"><code>dired</code></a>
+</li>
+<li>
+<a href="#tramp"><code>tramp</code> remote editing</a>
+</li>
 </ul>
 </li>
-<li><a href="#diff-hl">diff-hl to show uncommitted changes in gutter</a></li>
-<li><a href="#git-timemachine">git-timemachine file history browsing</a></li>
-<li><a href="#git-link">git-link to generate links to Git forges</a></li>
+<li>
+<a href="#built-in-text-editing">Text editing</a>
+<ul>
+<li>
+<a href="#home-end-bindings">Bind Home/End to move to start/end of line</a>
+</li>
+<li>
+<a href="#m-z-zap-to-char">Change behaviour of <code>M-z</code> for zapping to character</a>
+</li>
+<li>
+<a href="#cycle-spacing">Bind <code>cycle-spacing</code> to <code>M-S-SPC</code></a>
+</li>
+<li>
+<a href="#duplicate-dwim">Bind <code>duplicate-dwim</code> to <code>M-R</code></a>
+</li>
+<li>
+<a href="#single-space">Use single space to delimit sentences</a>
+</li>
+<li>
+<a href="#highlight-and-apply-to-region">Highlight selected region and apply changes to it</a>
+</li>
+<li>
+<a href="#headline-67">Disable indentation using tabs.</a>
+</li>
+<li>
+<a href="#default-line-length">Set default line length to 80</a>
+</li>
+<li>
+<a href="#char-name-in-description">Show character name in character description</a>
+</li>
+<li>
+<a href="#electric-pair-mode">Automatically pair matching characters like parenthesis</a>
+</li>
+<li>
+<a href="#save-clipboard-before-kill">Save existing clipboard text into kill ring before replacing it</a>
+</li>
+<li>
+<a href="#upcase-downcase-region">Enable <code>downcase-region</code> and <code>upcase-region</code></a>
+</li>
+<li>
+<a href="#replacements-case">Make replacements and completions preserve case</a>
+</li>
+<li>
+<a href="#built-in-completion">Completion</a>
+<ul>
+<li>
+<a href="#dabbrev"><code>dabbrev</code> dynamic abbreviations</a>
+</li>
 </ul>
 </li>
-<li><a href="#add-on-org">Org</a>
+</ul>
+</li>
+<li>
+<a href="#built-in-programming">Programming</a>
 <ul>
-<li><a href="#org-modern">org-modern styling for Org mode</a></li>
+<li>
+<a href="#prettify">Render some keywords and operators as symbols</a>
+</li>
+<li>
+<a href="#subword-mode">In programming modes, treat words in camel case symbols as separate.</a>
+</li>
+<li>
+<a href="#compile-bindings">Bind key to trigger compilation/recompilation</a>
+</li>
+<li>
+<a href="#flymake"><code>flymake</code></a>
+</li>
+<li>
+<a href="#eglot">Eglot for language server protocol support</a>
+</li>
+<li>
+<a href="#built-in-programming-languages">Languages</a>
+<ul>
+<li>
+<a href="#c">C</a>
+</li>
+<li>
+<a href="#containerfile">Containerfile/Dockerfile</a>
+</li>
+<li>
+<a href="#go">Go</a>
+</li>
+<li>
+<a href="#perl">Perl</a>
+</li>
+<li>
+<a href="#prolog">Prolog</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#built-in-version-control">Version control</a>
+<ul>
+<li>
+<a href="#vc-diff"><code>vc-diff</code></a>
+</li>
+<li>
+<a href="#ediff"><code>ediff</code></a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#project-management">Project management</a>
+<ul>
+<li>
+<a href="#exercism-projects">Detect Exercism exercises as projects.</a>
+</li>
+<li>
+<a href="#bug-reference-mode">Bug reference mode</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#built-in-org">Org</a>
+<ul>
+<li>
+<a href="#org-default-dir">Default <code>org-mode</code> directory</a>
+</li>
+<li>
+<a href="#org-scratch">Make initial scratch buffer use <code>org-mode</code></a>
+</li>
+<li>
+<a href="#org-editing">Editing</a>
+</li>
+<li>
+<a href="#org-display">Display</a>
+</li>
+<li>
+<a href="#org-bindings">Key bindings</a>
+<ul>
+<li>
+<a href="#org-bindings-edit-header">Editing of headers</a>
+</li>
+<li>
+<a href="#org-bindings-store-links">Global key binding to store links for <code>org-mode</code></a>
+</li>
+<li>
+<a href="#org-bindings-navigate-windows">Navigation between windows in org-mode</a>
+</li>
+<li>
+<a href="#org-bindings-copy-link-location">Copy link location</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#org-capturing">Capturing</a>
+</li>
+<li>
+<a href="#org-refiling">Refiling</a>
+</li>
+<li>
+<a href="#org-agendas">Agendas</a>
+</li>
+<li>
+<a href="#org-open-at-point">Allow opening links to anchors with <code>org-open-at-point</code></a>
+</li>
+<li>
+<a href="#org-eval-shell">Allow evaluating Shell code blocks in Org</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#eshell">Eshell</a>
+<ul>
+<li>
+<a href="#headline-110">Disable banner</a>
+</li>
+<li>
+<a href="#headline-111">Aliases</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#add-ons">Add-on packages</a>
+<ul>
+<li>
+<a href="#dependencies">Dependencies</a>
+<ul>
+<li>
+<a href="#compat">compat</a>
+</li>
+<li>
+<a href="#dash">dash</a>
+</li>
+<li>
+<a href="#transient">transient</a>
+</li>
+<li>
+<a href="#with-editor">with-editor</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#add-on-interface">Interface</a>
+<ul>
+<li>
+<a href="#fontaine">fontaine font configuration</a>
+</li>
+<li>
+<a href="#modus-themes">modus-themes accessible themes</a>
+</li>
+<li>
+<a href="#auto-dark">auto-dark to follow desktop dark mode setting</a>
+</li>
+<li>
+<a href="#minions">minions mode line minor mode listing improvements</a>
+</li>
+<li>
+<a href="#lin">lin mode for highlight of current line.</a>
+</li>
+<li>
+<a href="#edit-server">edit-server to edit Firefox text areas</a>
+</li>
+<li>
+<a href="#sv-kalender">sv-kalender Swedish calendar localization</a>
+</li>
+<li>
+<a href="#vertico">vertico for minibuffer completion</a>
+</li>
+<li>
+<a href="#marginalia">marginalia minibuffer annotations</a>
+</li>
+<li>
+<a href="#consult">consult search and navigation commands</a>
+</li>
+<li>
+<a href="#embark">embark contextual actions</a>
+</li>
+<li>
+<a href="#pulsar">pulsar to temporarily highlight current line</a>
+</li>
+<li>
+<a href="#free-keys">free-keys to show free bindings</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#add-on-text-editing">Text editing</a>
+<ul>
+<li>
+<a href="#substitute">substitute text replacement commands</a>
+</li>
+<li>
+<a href="#trimspace-mode">trimspace-mode for trimming trailing spaces and newlines</a>
+</li>
+<li>
+<a href="#whole-line-or-region">whole-line-or-region</a>
+</li>
+<li>
+<a href="#add-on-completion">Completion</a>
+<ul>
+<li>
+<a href="#corfu">corfu for completion at point</a>
+</li>
+<li>
+<a href="#cape">cape completion at point extensions</a>
+</li>
+<li>
+<a href="#orderless">orderless completion style</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#add-on-programming">Programming</a>
+<ul>
+<li>
+<a href="#fancy-compilation">fancy-compilation to improve compilation output buffers</a>
+</li>
+<li>
+<a href="#add-on-programming-languages">Languages</a>
+<ul>
+<li>
+<a href="#add-on-emacs-lisp">Emacs Lisp</a>
+<ul>
+<li>
+<a href="#package-lint">package-lint Emacs package linter</a>
+</li>
+<li>
+<a href="#xr">xr reverse rx</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#lua">lua-mode</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#headline-147">Writing</a>
+<ul>
+<li>
+<a href="#headline-148">Jinx spell checking</a>
+</li>
+<li>
+<a href="#markdown">markdown-mode for Markdown support</a>
+</li>
+<li>
+<a href="#olivetti">olivetti to adjust margins of text</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#file-formats">File formats</a>
+<ul>
+<li>
+<a href="#yaml">YAML</a>
+<ul>
+<li>
+<a href="#yaml-mode">yaml-mode</a>
+</li>
+<li>
+<a href="#flymake-yamllint">flymake-yamllint</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#headline-155">CMake</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#add-on-version-control">Version control</a>
+<ul>
+<li>
+<a href="#magit">Magit Git interface</a>
+<ul>
+<li>
+<a href="#magit-auto-commit">Automatic commit on save</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#diff-hl">diff-hl to show uncommitted changes in gutter</a>
+</li>
+<li>
+<a href="#git-timemachine">git-timemachine file history browsing</a>
+</li>
+<li>
+<a href="#git-link">git-link to generate links to Git forges</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#add-on-org">Org</a>
+<ul>
+<li>
+<a href="#org-modern">org-modern styling for Org mode</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -298,20 +592,30 @@
 <div id="outline-text-introduction" class="outline-text-2">
 <p>This is my Emacs configuration. It is available online in these forms:</p>
 <ul>
-<li><a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/configuration.org">Org mode source file</a> in a Git repository.</li>
-<li><a href="https://elektrubadur.se/emacs-configuration">HTML article</a> on my personal web page.</li>
+<li>
+<a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/configuration.org">Org mode source file</a> in a Git repository.
+</li>
+<li>
+<a href="https://elektrubadur.se/emacs-configuration">HTML article</a> on my personal web page.
+</li>
 </ul>
 <p>Inspirations for this Emacs configuration include:</p>
 <ul>
-<li>Harry R. Schwartz' <a href="https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org">Emacs configuration</a> and <a href="https://github.com/hrs/sensible-defaults.el">sensible-defaults.el</a>.</li>
-<li>Phil Hagelberg's <a href="https://git.sr.ht/~technomancy/better-defaults">better-defaults.el</a>.</li>
-<li><a href="https://emacscast.org/">EmacsCast</a>.</li>
-<li>Protesilaos Stavrou's <a href="https://protesilaos.com/codelog/">blog</a> and <a href="https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g">videos</a>.</li>
+<li>Harry R. Schwartz' <a href="https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org">Emacs configuration</a> and <a href="https://github.com/hrs/sensible-defaults.el">sensible-defaults.el</a>.
+</li>
+<li>Phil Hagelberg's <a href="https://git.sr.ht/~technomancy/better-defaults">better-defaults.el</a>.
+</li>
+<li>
+<a href="https://emacscast.org/">EmacsCast</a>.
+</li>
+<li>Protesilaos Stavrou's <a href="https://protesilaos.com/codelog/">blog</a> and <a href="https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g">videos</a>.
+</li>
 </ul>
 <p>Some interesting properties of this configuration:</p>
 <ul>
 <li>Almost all of the configuration is kept in an Org file.</li>
-<li>The startup time is quite fast. There are some tweaks in <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/init.el">init.el</a> and <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/early-init.el">early-init.el</a> that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.</li>
+<li>The startup time is quite fast. There are some tweaks in <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/init.el">init.el</a> and <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/early-init.el">early-init.el</a> that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
+</li>
 <li>Add-on packages are managed manually as Git submodules.</li>
 </ul>
 <p>The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/site-lisp">~/.emacs.d/site-lisp/</a>.</p>
@@ -324,7 +628,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'user-full-name</span> <span style="color:#2544bb">"Björn Lindström"</span>)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'user-mail-address</span> <span style="color:#2544bb">"bkhl@elektrubadur.se"</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'user-mail-address</span> <span style="color:#2544bb">"bkhl@elektrubadur.se"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -341,7 +646,8 @@
 <p>The <code>use-package</code> macro makes it easier to configure add-on packages without generally having to remember how to set up autoloading &amp;c.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">require</span> <span style="color:#2544bb">'use-package</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">require</span> <span style="color:#2544bb">'use-package</span>)</span></span></code></pre>
+</div>
 </div>
 <p>This section contains extensions to this macro to enable using packages from Git submodules without involving a package manager.</p>
 <div id="outline-container-use-package-default-load-path" class="outline-5">
@@ -357,7 +663,8 @@
 </span></span><span style="display:flex;"><span>                                                (<span style="color:#721045">symbol-name</span> <span style="color:#00538b">name</span>)))))
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">when</span> (<span style="color:#721045">file-exists-p</span> <span style="color:#00538b">path</span>)
 </span></span><span style="display:flex;"><span>              (<span style="color:#721045">list</span> <span style="color:#00538b">path</span>))))
-</span></span><span style="display:flex;"><span>        t))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>        t))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -394,18 +701,21 @@
 </span></span><span style="display:flex;"><span>                                   nil
 </span></span><span style="display:flex;"><span>                                   (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".el"</span> <span style="color:#00538b">eos</span>))))))
 </span></span><span style="display:flex;"><span>      (<span style="color:#00538b">make-directory-autoloads</span> <span style="color:#00538b">package-directory</span> <span style="color:#00538b">auto-file</span>))
-</span></span><span style="display:flex;"><span>    (<span style="color:#721045">load</span> <span style="color:#00538b">auto-file</span> <span style="color:#00538b">package-directory</span>)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>    (<span style="color:#721045">load</span> <span style="color:#00538b">auto-file</span> <span style="color:#00538b">package-directory</span>)))</span></span></code></pre>
+</div>
 </div>
 <p>Register the custom keyword. This is added first in the list, so that it will have access to the <code>:load-path</code> parameter, and so that it will load before <code>:defer</code> or other keywords that might cause this to run after the package is loaded.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'use-package-keywords</span> <span style="color:#8f0075">:make-autoloads</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'use-package-keywords</span> <span style="color:#8f0075">:make-autoloads</span>)</span></span></code></pre>
+</div>
 </div>
 <p>This makes the keyword take boolean parameters similar to other keywords like <code>:defer</code>.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">defalias</span> <span style="color:#2544bb">'use-package-normalize/:make-autoloads</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#2544bb">'use-package-normalize-predicate</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#2544bb">'use-package-normalize-predicate</span>)</span></span></code></pre>
+</div>
 </div>
 <p>The handler function is what injects the call to the function to generate the autoloads file when the <code>use-package</code> macro is expanded.</p>
 <div class="src src-emacs-lisp">
@@ -415,7 +725,8 @@
 </span></span><span style="display:flex;"><span>     (<span style="color:#721045">mapcar</span> <span style="color:#721045">#'</span>(<span style="color:#8f0075">lambda</span> (<span style="color:#00538b">path</span>)
 </span></span><span style="display:flex;"><span>                 <span style="color:#00538b">`</span>(<span style="color:#00538b">my/use-package-autoload-package</span> <span style="color:#2544bb">',name</span> <span style="color:#00538b">,</span><span style="color:#00538b">path</span>))
 </span></span><span style="display:flex;"><span>             (<span style="color:#721045">plist-get</span> <span style="color:#00538b">rest</span> <span style="color:#8f0075">:load-path</span>))
-</span></span><span style="display:flex;"><span>     (<span style="color:#00538b">use-package-process-keywords</span> <span style="color:#00538b">name</span> <span style="color:#00538b">rest</span> <span style="color:#00538b">state</span>)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>     (<span style="color:#00538b">use-package-process-keywords</span> <span style="color:#00538b">name</span> <span style="color:#00538b">rest</span> <span style="color:#00538b">state</span>)))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -428,7 +739,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'custom-file</span> (<span style="color:#721045">concat</span> <span style="color:#00538b">user-emacs-directory</span> <span style="color:#2544bb">"custom.el"</span>))
-</span></span><span style="display:flex;"><span>(<span style="color:#721045">load</span> <span style="color:#00538b">custom-file</span> <span style="color:#8f0075">:noerror</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#721045">load</span> <span style="color:#00538b">custom-file</span> <span style="color:#8f0075">:noerror</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -440,7 +752,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">advice-add</span> <span style="color:#2544bb">'display-startup-echo-area-message</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#8f0075">:after</span>
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/display-startup-echo-area-message</span> ()
-</span></span><span style="display:flex;"><span>              (<span style="color:#721045">message</span> <span style="color:#2544bb">"Emacs init time: %s"</span> (<span style="color:#00538b">emacs-init-time</span>))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>              (<span style="color:#721045">message</span> <span style="color:#2544bb">"Emacs init time: %s"</span> (<span style="color:#00538b">emacs-init-time</span>))))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -455,7 +768,8 @@
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq</span> <span style="color:#00538b">gc-cons-threshold</span> <span style="color:#00538b">most-positive-fixnum</span>)))
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'minibuffer-exit-hook</span>
 </span></span><span style="display:flex;"><span>          (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/default-gc</span> ()
-</span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq</span> <span style="color:#00538b">gc-cons-threshold</span> <span style="color:#00538b">my/default-gc-cons-threshold</span>)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq</span> <span style="color:#00538b">gc-cons-threshold</span> <span style="color:#00538b">my/default-gc-cons-threshold</span>)))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -470,7 +784,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">line-number-mode</span>)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">column-number-mode</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">column-number-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -492,7 +807,8 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'after-make-frame-functions</span> <span style="color:#721045">#'</span><span style="color:#00538b">my/set-fontset-fonts</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">my/set-fontset-fonts</span> (<span style="color:#721045">selected-frame</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">my/set-fontset-fonts</span> (<span style="color:#721045">selected-frame</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -502,7 +818,8 @@
 <p>Disable warning bell, both the default audio one and the visual one.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'ring-bell-function</span> <span style="color:#2544bb">'ignore</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'ring-bell-function</span> <span style="color:#2544bb">'ignore</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -516,7 +833,8 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#00538b">'</span>(
 </span></span><span style="display:flex;"><span>        <span style="color:#2544bb">"%b"</span>
 </span></span><span style="display:flex;"><span>        (<span style="color:#8f0075">:eval</span> (<span style="color:#8f0075">if</span> (<span style="color:#721045">buffer-modified-p</span>) <span style="color:#2544bb">" ⁓ "</span> <span style="color:#2544bb">" — "</span>))
-</span></span><span style="display:flex;"><span>        (<span style="color:#8f0075">:eval</span> (<span style="color:#721045">system-name</span>))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>        (<span style="color:#8f0075">:eval</span> (<span style="color:#721045">system-name</span>))))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -526,7 +844,8 @@
 <p>Setting this variable allows resizing window by pixels, rather than rounding to an exact number of lines or columns. This is needed to be able to restore back from fullscreen to original frame size in Gnome.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'frame-resize-pixelwise</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'frame-resize-pixelwise</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -535,7 +854,8 @@
 <div id="outline-text-emacsclient-disable-message" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'server-client-instructions</span> nil)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'server-client-instructions</span> nil)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -544,7 +864,8 @@
 <div id="outline-text-prompt-before-close" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'confirm-kill-emacs</span> <span style="color:#2544bb">'y-or-n-p</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'confirm-kill-emacs</span> <span style="color:#2544bb">'y-or-n-p</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -553,7 +874,8 @@
 <div id="outline-text-date-format" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">calendar-set-date-style</span> <span style="color:#2544bb">'iso</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">calendar-set-date-style</span> <span style="color:#2544bb">'iso</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -562,7 +884,8 @@
 <div id="outline-text-window-layout-undo" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">winner-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">winner-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -571,7 +894,8 @@
 <div id="outline-text-m-x-command-history" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">savehist-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">savehist-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -580,7 +904,8 @@
 <div id="outline-text-save-place" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">save-place-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">save-place-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -591,7 +916,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'scroll-conservatively</span> <span style="color:#0000c0">101</span>)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'scroll-margin</span> <span style="color:#0000c0">5</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'scroll-margin</span> <span style="color:#0000c0">5</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -600,7 +926,8 @@
 <div id="outline-text-smooth-scrolling" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">pixel-scroll-precision-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">pixel-scroll-precision-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -610,7 +937,8 @@
 <p>In <code>next-error</code> buffers, highligt the currently visited error.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'next-error-message-highlight</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'next-error-message-highlight</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -619,7 +947,8 @@
 <div id="outline-text-short-yes-no-prompts" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'use-short-answers</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'use-short-answers</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -628,7 +957,8 @@
 <div id="outline-text-hide-bookmarks" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'bookmark-set-fringe-mark</span> nil)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'bookmark-set-fringe-mark</span> nil)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -637,7 +967,8 @@
 <div id="outline-text-bar-cursor" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'cursor-type</span> <span style="color:#2544bb">'bar</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'cursor-type</span> <span style="color:#2544bb">'bar</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -646,7 +977,8 @@
 <div id="outline-text-show-matching-offscreen" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'show-paren-context-when-offscreen</span> <span style="color:#2544bb">'overlay</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'show-paren-context-when-offscreen</span> <span style="color:#2544bb">'overlay</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -656,7 +988,8 @@
 <p>Bind <code>M-o</code> (by default bound to a rarely used command) to <code>other-window</code>.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-o"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">other-window</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-o"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">other-window</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -665,7 +998,8 @@
 <div id="outline-text-directional-window-switch-binding" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">windmove-default-keybindings</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">windmove-default-keybindings</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -680,7 +1014,8 @@
 <p>Disabling <code>C-z</code>, which normally minimizes the window, which is rather distracting.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">keymap-global-unset</span> <span style="color:#2544bb">"C-z"</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">keymap-global-unset</span> <span style="color:#2544bb">"C-z"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -690,7 +1025,8 @@
 <p>This adds ability to repat some common commands by repeating the last key in its binding.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">repeat-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">repeat-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -704,7 +1040,8 @@
 <div id="outline-text-middle-click-yank-at-point" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'mouse-yank-at-point</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'mouse-yank-at-point</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -714,7 +1051,8 @@
 <p>Setting this to <code>non-empty</code> means this won't happen for empty strings, like when accidentally dragging for less than a character's width.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'mouse-drag-copy-region</span> <span style="color:#2544bb">'non-empty</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'mouse-drag-copy-region</span> <span style="color:#2544bb">'non-empty</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -728,7 +1066,8 @@
 <div id="outline-text-apropos-do-all" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'apropos-do-all</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'apropos-do-all</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -737,7 +1076,8 @@
 <div id="outline-text-info-variable-pitch" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'Info-mode-hook</span> <span style="color:#2544bb">'variable-pitch-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'Info-mode-hook</span> <span style="color:#2544bb">'variable-pitch-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -746,7 +1086,8 @@
 <div id="outline-text-autoload-help" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'help-enable-symbol-autoload</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'help-enable-symbol-autoload</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -755,7 +1096,8 @@
 <div id="outline-text-bindings-help-outline" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'describe-bindings-outline</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'describe-bindings-outline</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -764,7 +1106,8 @@
 <div id="outline-text-reuse-help-window" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'help-window-keep-selected</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'help-window-keep-selected</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -779,7 +1122,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'inhibit-startup-screen</span> t)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'initial-scratch-message</span> nil)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'initial-scratch-message</span> nil)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -788,7 +1132,8 @@
 <div id="outline-text-uniquify-name-style" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'uniquify-buffer-name-style</span> <span style="color:#2544bb">'forward</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'uniquify-buffer-name-style</span> <span style="color:#2544bb">'forward</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -798,7 +1143,8 @@
 <p>This overrides the Emacs settings that enforces having to accept local variables matching certain patterns every time they are used.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">advice-add</span> <span style="color:#2544bb">'risky-local-variable-p</span> <span style="color:#8f0075">:override</span> <span style="color:#721045">#'</span><span style="color:#00538b">ignore</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">advice-add</span> <span style="color:#2544bb">'risky-local-variable-p</span> <span style="color:#8f0075">:override</span> <span style="color:#721045">#'</span><span style="color:#00538b">ignore</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -807,7 +1153,8 @@
 <div id="outline-text-remote-dir-locals" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'enable-remote-dir-locals</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'enable-remote-dir-locals</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -825,7 +1172,8 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-x k"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">my/kill-this-buffer</span>)
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-x K"</span>) <span style="color:#721045">#'kill-buffer</span>)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-x M-k"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">bury-buffer</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-x M-k"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">bury-buffer</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -840,7 +1188,8 @@
 <p>Unless overridden by a buffer, when prompting to open a file, start in the home directory.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">setq</span> <span style="color:#00538b">default-directory</span> <span style="color:#2544bb">"~/"</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">setq</span> <span style="color:#00538b">default-directory</span> <span style="color:#2544bb">"~/"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -850,7 +1199,8 @@
 <p>The default method here can break hardlinks.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'backup-by-copying</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'backup-by-copying</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -863,7 +1213,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'backup-directory-alist</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#00538b">`</span>((<span style="color:#2544bb">".*"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">temporary-file-directory</span>)))
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'auto-save-file-name-transforms</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#00538b">`</span>((<span style="color:#2544bb">".*"</span> <span style="color:#00538b">,</span><span style="color:#00538b">temporary-file-directory</span> t)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>      <span style="color:#00538b">`</span>((<span style="color:#2544bb">".*"</span> <span style="color:#00538b">,</span><span style="color:#00538b">temporary-file-directory</span> t)))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -885,7 +1236,8 @@
 </span></span><span style="display:flex;"><span>             (<span style="color:#721045">format</span>
 </span></span><span style="display:flex;"><span>              <span style="color:#2544bb">"Directory %s does not exist. Create it?"</span>
 </span></span><span style="display:flex;"><span>              <span style="color:#00538b">dir</span>)))
-</span></span><span style="display:flex;"><span>         (<span style="color:#00538b">make-directory</span> <span style="color:#00538b">dir</span> t))))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>         (<span style="color:#00538b">make-directory</span> <span style="color:#00538b">dir</span> t))))))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -894,7 +1246,8 @@
 <div id="outline-text-save-silently" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'save-silently</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'save-silently</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -904,7 +1257,8 @@
 <p>If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-auto-revert-mode</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-auto-revert-mode</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -914,7 +1268,8 @@
 <p>Disable use of those lock files with a <code>.#</code> prefix that Emacs by default creates. Since my ways of using Emacs rarely involves multiple Emacs instances opening the same file, they cause me more problems than they solve.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'create-lockfiles</span> nil)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'create-lockfiles</span> nil)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -925,7 +1280,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'dired-listing-switches</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#2544bb">"-l --all --human-readable --group-directories-first"</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>      <span style="color:#2544bb">"-l --all --human-readable --group-directories-first"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -939,7 +1295,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">tramp-allow-unsafe-temporary-files</span> t)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'tramp-remote-path</span> <span style="color:#2544bb">'tramp-own-remote-path</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'tramp-remote-path</span> <span style="color:#2544bb">'tramp-own-remote-path</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -954,7 +1311,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"&lt;home&gt;"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">move-beginning-of-line</span>)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"&lt;end&gt;"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">move-end-of-line</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"&lt;end&gt;"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">move-end-of-line</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -964,7 +1322,8 @@
 <p>Make <code>M-z</code> kill characters up to the character <em>before</em> the next occurrence of the selected character, instead of including it, which is generally more useful.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-z"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">zap-up-to-char</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-z"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">zap-up-to-char</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -974,7 +1333,8 @@
 <p>This edits whitespace around point by cycling between leaving only one space, deleting the space, and going back to what was there before.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-S-SPC"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">cycle-spacing</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-S-SPC"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">cycle-spacing</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -984,7 +1344,8 @@
 <p>Duplicates current line or active region.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-R"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">duplicate-dwim</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-R"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">duplicate-dwim</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -993,7 +1354,8 @@
 <div id="outline-text-single-space" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'sentence-end-double-space</span> nil)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'sentence-end-double-space</span> nil)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1003,12 +1365,14 @@
 <p>Highlight the region when the mark is active.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">transient-mark-mode</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">transient-mark-mode</span> t)</span></span></code></pre>
+</div>
 </div>
 <p>Set it so that if a selection is active, typed text will replace the selection.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">delete-selection-mode</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">delete-selection-mode</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1017,7 +1381,8 @@
 <div id="outline-text-headline-67" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'indent-tabs-mode</span> nil)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'indent-tabs-mode</span> nil)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1026,7 +1391,8 @@
 <div id="outline-text-default-line-length" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'fill-column</span> <span style="color:#0000c0">80</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'fill-column</span> <span style="color:#0000c0">80</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1036,7 +1402,8 @@
 <p>When using <code>C-x =</code> to look up the character under the point, also show Unicode character name.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'what-cursor-show-names</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'what-cursor-show-names</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1046,7 +1413,8 @@
 <p>Enable <code>electric-pair-mode</code>, which enables automatic insert of matching characters for example for parentheses.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">electric-pair-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">electric-pair-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1056,7 +1424,8 @@
 <p>Prevents killing text in Emacs from irrevocably deleting things from the system clipboard.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'save-interprogram-paste-before-kill</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'save-interprogram-paste-before-kill</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1066,7 +1435,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#721045">put</span> <span style="color:#2544bb">'downcase-region</span> <span style="color:#2544bb">'disabled</span> nil)
-</span></span><span style="display:flex;"><span>(<span style="color:#721045">put</span> <span style="color:#2544bb">'upcase-region</span> <span style="color:#2544bb">'disabled</span> nil)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#721045">put</span> <span style="color:#2544bb">'upcase-region</span> <span style="color:#2544bb">'disabled</span> nil)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1076,7 +1446,8 @@
 <p>This also affects <code>dabbrev</code> completions.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'case-replace</span> nil)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'case-replace</span> nil)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1097,7 +1468,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'dabbrev-ignored-buffer-regexps</span> <span style="color:#2544bb">"\\` "</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'dabbrev-ignored-buffer-modes</span> <span style="color:#2544bb">'doc-view-mode</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'dabbrev-ignored-buffer-modes</span> <span style="color:#2544bb">'pdf-view-mode</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'dabbrev-ignored-buffer-modes</span> <span style="color:#2544bb">'tags-table-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'dabbrev-ignored-buffer-modes</span> <span style="color:#2544bb">'tags-table-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1114,7 +1486,8 @@
 <p>I use this to make <code class="verbatim">lambda</code> get rendered as <code class="verbatim">λ</code> in Emacs Lisp, and similar replacements in other languages.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-prettify-symbols-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-prettify-symbols-mode</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Some reusable character compositions.</p>
 <p>Most of these are double-wide characters in the font that I use, meaning that for example <code>→</code> will for me occupy the space of two normal characters.</p>
@@ -1132,13 +1505,15 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#00538b">my/prettify-double-colon</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#00538b">'</span>(<span style="color:#2544bb">?\s</span> (<span style="color:#00538b">Br</span> <span style="color:#00538b">.</span> <span style="color:#00538b">Bl</span>) <span style="color:#2544bb">?\s</span> (<span style="color:#00538b">Bc</span> <span style="color:#00538b">.</span> <span style="color:#00538b">Bc</span>) <span style="color:#2544bb">?∷</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#00538b">my/prettify-ellipsis</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#00538b">'</span>(<span style="color:#2544bb">?\s</span> (<span style="color:#00538b">Br</span> <span style="color:#00538b">.</span> <span style="color:#00538b">Bl</span>) <span style="color:#2544bb">?\s</span> (<span style="color:#00538b">Br</span> <span style="color:#00538b">.</span> <span style="color:#00538b">Bl</span>) <span style="color:#2544bb">?\s</span> (<span style="color:#00538b">Bc</span> <span style="color:#00538b">.</span> <span style="color:#00538b">Bc</span>) <span style="color:#2544bb">?…</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>      <span style="color:#00538b">'</span>(<span style="color:#2544bb">?\s</span> (<span style="color:#00538b">Br</span> <span style="color:#00538b">.</span> <span style="color:#00538b">Bl</span>) <span style="color:#2544bb">?\s</span> (<span style="color:#00538b">Br</span> <span style="color:#00538b">.</span> <span style="color:#00538b">Bl</span>) <span style="color:#2544bb">?\s</span> (<span style="color:#00538b">Bc</span> <span style="color:#00538b">.</span> <span style="color:#00538b">Bc</span>) <span style="color:#2544bb">?…</span>))</span></span></code></pre>
+</div>
 </div>
 <p>Simplified predicate to determine if a substitution should be applied, which makes them apply everywhere except for in strings. <code>prettify-symbols-compose-predicate</code> can be set to this to apply substitutions more liberally.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/prettify-symbols-compose-p</span> (<span style="color:#00538b">_start</span> <span style="color:#00538b">_end</span> <span style="color:#00538b">_match</span>)
-</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">not</span> (<span style="color:#721045">nth</span> <span style="color:#0000c0">3</span> (<span style="color:#00538b">syntax-ppss</span>))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">not</span> (<span style="color:#721045">nth</span> <span style="color:#0000c0">3</span> (<span style="color:#00538b">syntax-ppss</span>))))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1147,7 +1522,8 @@
 <div id="outline-text-subword-mode" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'prog-mode-hook</span> <span style="color:#2544bb">'subword-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'prog-mode-hook</span> <span style="color:#2544bb">'subword-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1157,7 +1533,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#721045">define-key</span> <span style="color:#00538b">prog-mode-map</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c b"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">compile</span>)
-</span></span><span style="display:flex;"><span>(<span style="color:#721045">define-key</span> <span style="color:#00538b">prog-mode-map</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c r"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">recompile</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#721045">define-key</span> <span style="color:#00538b">prog-mode-map</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c r"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">recompile</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1173,7 +1550,8 @@
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">eval-after-load</span> <span style="color:#2544bb">'flymake</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#00538b">'</span>(<span style="color:#8f0075">progn</span>
 </span></span><span style="display:flex;"><span>     (<span style="color:#721045">define-key</span> <span style="color:#00538b">flymake-mode-map</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-n"</span>) <span style="color:#2544bb">'flymake-goto-next-error</span>)
-</span></span><span style="display:flex;"><span>     (<span style="color:#721045">define-key</span> <span style="color:#00538b">flymake-mode-map</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-p"</span>) <span style="color:#2544bb">'flymake-goto-prev-error</span>)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>     (<span style="color:#721045">define-key</span> <span style="color:#00538b">flymake-mode-map</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"M-p"</span>) <span style="color:#2544bb">'flymake-goto-prev-error</span>)))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1185,7 +1563,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">eglot</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">bind-key</span> <span style="color:#2544bb">"C-c l f"</span> <span style="color:#2544bb">'eglot-format</span> <span style="color:#00538b">eglot-mode-map</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">bind-key</span> <span style="color:#2544bb">"C-c l r"</span> <span style="color:#2544bb">'eglot-rename</span> <span style="color:#00538b">eglot-mode-map</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">bind-key</span> <span style="color:#2544bb">"C-c l r"</span> <span style="color:#2544bb">'eglot-rename</span> <span style="color:#00538b">eglot-mode-map</span>))</span></span></code></pre>
+</div>
 </div>
 <p>This enables the <a href="https://github.com/joaotavora/eglot">Eglot</a> LSP client.</p>
 <p>See <a href="#c">C</a> for an example of how to configure it for a project.</p>
@@ -1224,7 +1603,8 @@
 </span></span><span style="display:flex;"><span>                                     (<span style="color:#00538b">statement-cont</span> <span style="color:#00538b">.</span> <span style="color:#721045">+</span>)))))
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-c-mode</span> ()
 </span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">prettify-symbols-alist</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#00538b">`</span>((<span style="color:#2544bb">"-&gt;"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-right-arrow</span>)))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>                <span style="color:#00538b">`</span>((<span style="color:#2544bb">"-&gt;"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-right-arrow</span>)))))</span></span></code></pre>
+</div>
 </div>
 <p>To use a language server through <a href="#eglot">Eglot</a> for C, you can create a <code>.dir-locals.el</code> file to run it in a container for C mode buffers, with the project directory mounted to the same path within the container to ensure paths sent to the LSP server matches those on the host system, and enable Eglot automatically when opening C mode buffers.</p>
 <pre class="example">
@@ -1238,7 +1618,8 @@
                          ,(concat "--workdir=" root)
                          "ghcr.io/bkhl/lsp-containers/ccls:latest")))
           (eglot-ensure))))))
-</pre></div>
+</pre>
+</div>
 </div>
 <div id="outline-container-containerfile" class="outline-5">
 <h5 id="containerfile">Containerfile/Dockerfile</h5>
@@ -1249,7 +1630,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"/"</span> <span style="color:#00538b">bos</span>)
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"Containerfile"</span> <span style="color:#2544bb">"Dockerfile"</span>)
 </span></span><span style="display:flex;"><span>            (<span style="color:#00538b">opt</span> <span style="color:#2544bb">"."</span> (<span style="color:#721045">*</span>  (<span style="color:#00538b">not</span> (<span style="color:#00538b">any</span> <span style="color:#2544bb">"/"</span>))))
-</span></span><span style="display:flex;"><span>            <span style="color:#00538b">eos</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>            <span style="color:#00538b">eos</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1271,7 +1653,8 @@
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">prettify-symbols-alist</span>
 </span></span><span style="display:flex;"><span>                        <span style="color:#00538b">`</span>((<span style="color:#2544bb">"&lt;-"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-left-arrow</span>)
 </span></span><span style="display:flex;"><span>                          (<span style="color:#2544bb">"..."</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-ellipsis</span>))))
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">go-ts-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-go-ts-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">go-ts-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-go-ts-mode</span>))</span></span></code></pre>
+</div>
 </div>
 <p>Example <code>.dir-locals.el</code> to use the <a href="https://cs.opensource.google/go/x/tools/+/master:gopls/">gopls</a> language server with Eglot, also using it for code formatting on save.</p>
 <pre class="example">
@@ -1286,7 +1669,8 @@
                          "docker.io/lspcontainers/gopls:latest")))
           (add-hook 'before-save-hook #'eglot-format-buffer nil t)
           (eglot-ensure))))))
-</pre></div>
+</pre>
+</div>
 </div>
 <div id="outline-container-perl" class="outline-5">
 <h5 id="perl">Perl</h5>
@@ -1307,7 +1691,8 @@
 </span></span><span style="display:flex;"><span>                  (<span style="color:#2544bb">"=&gt;"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-double-right-arrow</span>)
 </span></span><span style="display:flex;"><span>                  (<span style="color:#2544bb">"::"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-double-colon</span>))))
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">cperl-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-cperl-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">cperl-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-cperl-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1323,7 +1708,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-prolog-mode</span> ()
 </span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">prettify-symbols-alist</span>
 </span></span><span style="display:flex;"><span>                <span style="color:#00538b">`</span>((<span style="color:#2544bb">":-"</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-left-arrow</span>)
-</span></span><span style="display:flex;"><span>                  (<span style="color:#2544bb">"-&gt;"</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-right-arrow</span>)))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>                  (<span style="color:#2544bb">"-&gt;"</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-right-arrow</span>)))))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1340,7 +1726,8 @@
 <p>Make <code>vc-diff</code> imitate the diff format of Magit.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'diff-font-lock-prettify</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'diff-font-lock-prettify</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1351,7 +1738,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'ediff-window-setup-function</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#2544bb">'ediff-setup-windows-plain</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>                        <span style="color:#2544bb">'ediff-setup-windows-plain</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1369,7 +1757,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'project-find-functions</span>
 </span></span><span style="display:flex;"><span>          (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/project-try-exercism</span> (<span style="color:#00538b">path</span>)
 </span></span><span style="display:flex;"><span>            (<span style="color:#00538b">when-let</span> ((<span style="color:#00538b">root</span> (<span style="color:#00538b">locate-dominating-file</span> <span style="color:#00538b">path</span> <span style="color:#2544bb">".exercism"</span>)))
-</span></span><span style="display:flex;"><span>              (<span style="color:#721045">cons</span> <span style="color:#2544bb">'transient</span> (<span style="color:#721045">expand-file-name</span> <span style="color:#00538b">root</span>)))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>              (<span style="color:#721045">cons</span> <span style="color:#2544bb">'transient</span> (<span style="color:#721045">expand-file-name</span> <span style="color:#00538b">root</span>)))))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1390,7 +1779,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">:map</span> <span style="color:#00538b">bug-reference-map</span>
 </span></span><span style="display:flex;"><span>        (<span style="color:#2544bb">"C-c C-o"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">bug-reference-push-button</span>))
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">setq</span> <span style="color:#00538b">bug-reference-auto-setup-functions</span> nil))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">setq</span> <span style="color:#00538b">bug-reference-auto-setup-functions</span> nil))</span></span></code></pre>
+</div>
 </div>
 <p>To make this work in a project, a couple of variables need to be set, for example in <code>.dir-locals.el</code> like this:</p>
 <pre class="example">
@@ -1399,7 +1789,8 @@
       . "\\&lt;\\(\\(\\(?:PROJECTA\\|PROJECTB\\)-[[:digit:]]+\\)\\)\\&gt;")
      (bug-reference-url-format
       . "https://tracker.company.example/issue/%s"))))
-</pre></div>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -1412,7 +1803,8 @@
 <p>Set a custom variable for the notes directory, so that it can be referred to later.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-directory</span> <span style="color:#2544bb">"~/Documents/Notes/"</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-directory</span> <span style="color:#2544bb">"~/Documents/Notes/"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1421,7 +1813,8 @@
 <div id="outline-text-org-scratch" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'initial-major-mode</span> <span style="color:#2544bb">'org-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'initial-major-mode</span> <span style="color:#2544bb">'org-mode</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1431,34 +1824,40 @@
 <p>Edit src blocks in current window.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-src-window-setup</span> <span style="color:#2544bb">'current-window</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-src-window-setup</span> <span style="color:#2544bb">'current-window</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Make indentation and fonts in code blocks work according to mode for the language in the block.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-src-tab-acts-natively</span> t)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-src-fontify-natively</span> t)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-src-fontify-natively</span> t)</span></span></code></pre>
+</div>
 </div>
 <p>Disable the extra indentation in src blocks.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-edit-src-content-indentation</span> <span style="color:#0000c0">0</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-edit-src-content-indentation</span> <span style="color:#0000c0">0</span>)</span></span></code></pre>
+</div>
 </div>
 <p>This prevents accidental editing in invisible regions.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-catch-invisible-edits</span> <span style="color:#2544bb">'error</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-catch-invisible-edits</span> <span style="color:#2544bb">'error</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Shortcut for inserting a block of Elisp.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'org-structure-template-alist</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#00538b">'</span>(<span style="color:#2544bb">"el"</span> <span style="color:#00538b">.</span> <span style="color:#2544bb">"src emacs-lisp"</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>             <span style="color:#00538b">'</span>(<span style="color:#2544bb">"el"</span> <span style="color:#00538b">.</span> <span style="color:#2544bb">"src emacs-lisp"</span>))</span></span></code></pre>
+</div>
 </div>
 <p>When trying to edit in an hidden area, expand it before throwing an error.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-catch-invisible-edits</span> <span style="color:#2544bb">'show-and-error</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-catch-invisible-edits</span> <span style="color:#2544bb">'show-and-error</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1468,33 +1867,39 @@
 <p>Enable <code>org-indent</code> mode, which makes org-mode indent sections visually, but not in the saved files.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-startup-indented</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-startup-indented</span> t)</span></span></code></pre>
+</div>
 </div>
 <p>Use variable fonts in <code>org-mode</code> buffers.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'org-mode-hook</span> <span style="color:#2544bb">'variable-pitch-mode</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'org-mode-hook</span> <span style="color:#2544bb">'variable-pitch-mode</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Hide the characters surrounding emphasized phrases</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-hide-emphasis-markers</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-hide-emphasis-markers</span> t)</span></span></code></pre>
+</div>
 </div>
 <p>Use real ellipsis character for collapsed subtrees, and prefix it with a space.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-ellipsis</span> <span style="color:#2544bb">"…"</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-ellipsis</span> <span style="color:#2544bb">"…"</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Put tags right after headline. This causes fewer conflicts with add-on packages affecting Org-mode style.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-tags-column</span> <span style="color:#0000c0">0</span>)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-auto-align-tags</span> nil)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-auto-align-tags</span> nil)</span></span></code></pre>
+</div>
 </div>
 <p>Show Latex-style entities as Unicode characters.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-pretty-entities</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-pretty-entities</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1507,12 +1912,14 @@
 <p>When point is on a headline, make <code>C-a</code> and <code>C-e</code> go to beginning/end of headline text.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-special-ctrl-a/e</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-special-ctrl-a/e</span> t)</span></span></code></pre>
+</div>
 </div>
 <p>Insert new headlines after current subtree.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-insert-heading-respect-content</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-insert-heading-respect-content</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1521,7 +1928,8 @@
 <div id="outline-text-org-bindings-store-links" class="outline-text-5">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c l"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">org-store-link</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c l"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">org-store-link</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1534,7 +1942,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'org-shiftup-final-hook</span> <span style="color:#2544bb">'windmove-up</span>)
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'org-shiftleft-final-hook</span> <span style="color:#2544bb">'windmove-left</span>)
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'org-shiftdown-final-hook</span> <span style="color:#2544bb">'windmove-down</span>)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'org-shiftright-final-hook</span> <span style="color:#2544bb">'windmove-right</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'org-shiftright-final-hook</span> <span style="color:#2544bb">'windmove-right</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1556,7 +1965,8 @@
 </span></span><span style="display:flex;"><span>          (<span style="color:#721045">message</span> <span style="color:#00538b">url</span>))
 </span></span><span style="display:flex;"><span>      (<span style="color:#721045">message</span> <span style="color:#2544bb">"Not a link"</span>))))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#721045">define-key</span> <span style="color:#00538b">org-mode-map</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c y"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">my/org-copy-link</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#721045">define-key</span> <span style="color:#00538b">org-mode-map</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c y"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">my/org-copy-link</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1573,12 +1983,14 @@
 </span></span><span style="display:flex;"><span>         <span style="color:#2544bb">"Inbox"</span>
 </span></span><span style="display:flex;"><span>         <span style="color:#00538b">entry</span>
 </span></span><span style="display:flex;"><span>         (<span style="color:#00538b">file</span> <span style="color:#00538b">,</span>(<span style="color:#721045">concat</span> <span style="color:#00538b">org-directory</span> <span style="color:#2544bb">"Inbox.org"</span>))
-</span></span><span style="display:flex;"><span>         <span style="color:#2544bb">"* TODO %?"</span>)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>         <span style="color:#2544bb">"* TODO %?"</span>)))</span></span></code></pre>
+</div>
 </div>
 <p>Bind <code>C-c c</code> to <code>org-capture</code> to quickly add notes.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c c"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">org-capture</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c c"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">org-capture</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1592,7 +2004,8 @@
 </span></span><span style="display:flex;"><span>                        <span style="color:#00538b">'</span>((nil <span style="color:#8f0075">:maxlevel</span> <span style="color:#00538b">.</span> <span style="color:#0000c0">9</span>)
 </span></span><span style="display:flex;"><span>                          (<span style="color:#00538b">org-agenda-files</span> <span style="color:#8f0075">:maxlevel</span> <span style="color:#00538b">.</span> <span style="color:#0000c0">9</span>)))
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-outline-path-complete-in-steps</span> nil)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-refile-use-outline-path</span> <span style="color:#2544bb">'file</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-refile-use-outline-path</span> <span style="color:#2544bb">'file</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1602,28 +2015,33 @@
 <p>Search all files in the notes directory when creating agendas.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-files</span> <span style="color:#00538b">`</span>(<span style="color:#00538b">,</span><span style="color:#00538b">org-directory</span>))</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-files</span> <span style="color:#00538b">`</span>(<span style="color:#00538b">,</span><span style="color:#00538b">org-directory</span>))</span></span></code></pre>
+</div>
 </div>
 <p>Key binding to open an agenda view.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c a"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">org-agenda</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">global-set-key</span> (<span style="color:#00538b">kbd</span> <span style="color:#2544bb">"C-c a"</span>) <span style="color:#721045">#'</span><span style="color:#00538b">org-agenda</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Hide done tasks from the agenda.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-skip-scheduled-if-done</span> t)
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-skip-deadline-if-done</span> t)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-skip-deadline-if-done</span> t)</span></span></code></pre>
+</div>
 </div>
 <p>Hide already scheduled tasks from the agenda.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-todo-ignore-scheduled</span> <span style="color:#2544bb">'all</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-todo-ignore-scheduled</span> <span style="color:#2544bb">'all</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Show tags right after headline. Reduces conflicts with packages that affect Org agenda style.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-tags-column</span> <span style="color:#0000c0">0</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-tags-column</span> <span style="color:#0000c0">0</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Some agenda visual styling.</p>
 <div class="src src-emacs-lisp">
@@ -1634,7 +2052,8 @@
 </span></span><span style="display:flex;"><span>        (<span style="color:#0000c0">800</span> <span style="color:#0000c0">1000</span> <span style="color:#0000c0">1200</span> <span style="color:#0000c0">1400</span> <span style="color:#0000c0">1600</span> <span style="color:#0000c0">1800</span>)
 </span></span><span style="display:flex;"><span>        <span style="color:#2544bb">" ┄┄┄"</span> <span style="color:#2544bb">""</span>))
 </span></span><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-agenda-current-time-string</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#2544bb">"🠨"</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>      <span style="color:#2544bb">"🠨"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1646,7 +2065,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">with-eval-after-load</span> <span style="color:#2544bb">'org-ctags</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-open-link-functions</span> nil))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'org-open-link-functions</span> nil))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1656,7 +2076,8 @@
 <p>Loading <code>ob-shell</code> will implicitly enable using source blocks in languages supported by <code>shell-mode</code>.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">ob-shell</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">ob-shell</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1670,7 +2091,8 @@
 <div id="outline-text-headline-110" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'eshell-banner-message</span> <span style="color:#2544bb">""</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'eshell-banner-message</span> <span style="color:#2544bb">""</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1680,7 +2102,8 @@
 <p>Alias to open file for editing</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">defun</span> <span style="color:#00538b">eshell/e</span> (<span style="color:#00538b">f</span>) (<span style="color:#00538b">find-file</span> <span style="color:#00538b">f</span>))</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">defun</span> <span style="color:#00538b">eshell/e</span> (<span style="color:#00538b">f</span>) (<span style="color:#00538b">find-file</span> <span style="color:#00538b">f</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1700,19 +2123,36 @@
 <h4 id="compat"><a href="https://github.com/emacs-compat/compat">compat</a></h4>
 <div id="outline-text-compat" class="outline-text-4">
 <ul>
-<li><a href="#cape">cape</a></li>
-<li><a href="#consult">consult</a></li>
-<li><a href="#corfu">corfu</a></li>
-<li><a href="#embark">embark</a></li>
-<li><a href="#magit">Magit</a></li>
-<li><a href="#marginalia">marginalia</a></li>
-<li><a href="#org-modern">org-modern</a></li>
-<li><a href="#vertico">vertico</a></li>
+<li>
+<a href="#cape">cape</a>
+</li>
+<li>
+<a href="#consult">consult</a>
+</li>
+<li>
+<a href="#corfu">corfu</a>
+</li>
+<li>
+<a href="#embark">embark</a>
+</li>
+<li>
+<a href="#magit">Magit</a>
+</li>
+<li>
+<a href="#marginalia">marginalia</a>
+</li>
+<li>
+<a href="#org-modern">org-modern</a>
+</li>
+<li>
+<a href="#vertico">vertico</a>
+</li>
 </ul>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">compat</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:defer</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:defer</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1720,12 +2160,15 @@
 <h4 id="dash"><a href="https://github.com/magnars/dash.el">dash</a></h4>
 <div id="outline-text-dash" class="outline-text-4">
 <ul>
-<li><a href="#magit">Magit</a></li>
+<li>
+<a href="#magit">Magit</a>
+</li>
 </ul>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">dash</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:defer</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:defer</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1733,12 +2176,15 @@
 <h4 id="transient"><a href="https://github.com/magit/transient">transient</a></h4>
 <div id="outline-text-transient" class="outline-text-4">
 <ul>
-<li><a href="#magit">Magit</a></li>
+<li>
+<a href="#magit">Magit</a>
+</li>
 </ul>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">transient</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:load-path</span> <span style="color:#2544bb">"site-lisp/transient/lisp"</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:load-path</span> <span style="color:#2544bb">"site-lisp/transient/lisp"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1746,12 +2192,15 @@
 <h4 id="with-editor"><a href="https://github.com/magit/with-editor">with-editor</a></h4>
 <div id="outline-text-with-editor" class="outline-text-4">
 <ul>
-<li><a href="#magit">Magit</a></li>
+<li>
+<a href="#magit">Magit</a>
+</li>
 </ul>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">with-editor</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:load-path</span> <span style="color:#2544bb">"site-lisp/with-editor/lisp"</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:load-path</span> <span style="color:#2544bb">"site-lisp/with-editor/lisp"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1779,7 +2228,8 @@
 </span></span><span style="display:flex;"><span>     (t <span style="color:#8f0075">:default-height</span> <span style="color:#0000c0">130</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#8f0075">:default-weight</span> <span style="color:#00538b">normal</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#8f0075">:variable-pitch-weight</span> <span style="color:#00538b">normal</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f0075">:fixed-pitch-weight</span> <span style="color:#00538b">normal</span>))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f0075">:fixed-pitch-weight</span> <span style="color:#00538b">normal</span>))))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1793,7 +2243,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">modus-themes-bold-constructs</span> t)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">modus-themes-italic-constructs</span> t)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">modus-themes-mixed-fonts</span> t)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">modus-themes-common-palette-overrides</span> <span style="color:#00538b">'</span>((<span style="color:#00538b">fringe</span> <span style="color:#00538b">unspecified</span>))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">modus-themes-common-palette-overrides</span> <span style="color:#00538b">'</span>((<span style="color:#00538b">fringe</span> <span style="color:#00538b">unspecified</span>))))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1816,7 +2267,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'auto-dark-light-mode-hook</span>
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-light-mode</span> ()
 </span></span><span style="display:flex;"><span>              (<span style="color:#00538b">fontaine-set-preset</span> <span style="color:#2544bb">'light</span>)))
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">auto-dark-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">auto-dark-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1830,7 +2282,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">minions-prominent-modes</span> <span style="color:#00538b">'</span>(<span style="color:#00538b">trimspace-mode</span>))
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">minions-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">minions-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1844,7 +2297,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">lin-face</span> <span style="color:#2544bb">'lin-yellow</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">lin-global-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">lin-global-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1861,7 +2315,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">when</span> (<span style="color:#8f0075">and</span> (<span style="color:#721045">daemonp</span>)
 </span></span><span style="display:flex;"><span>             (<span style="color:#00538b">not</span> (<span style="color:#721045">process-status</span> <span style="color:#2544bb">"edit-server"</span>)))
-</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">edit-server-start</span>)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">edit-server-start</span>)))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1870,7 +2325,8 @@
 <div id="outline-text-sv-kalender" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">sv-kalender</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">sv-kalender</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1882,7 +2338,8 @@
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">vertico</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">vertico-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">vertico-mode</span>))</span></span></code></pre>
+</div>
 </div>
 <p>Do not allow the cursor in the minibuffer prompt.</p>
 <div class="src src-emacs-lisp">
@@ -1891,7 +2348,8 @@
 </span></span><span style="display:flex;"><span>                        <span style="color:#00538b">'</span>(<span style="color:#00538b">read-only</span> t
 </span></span><span style="display:flex;"><span>                          <span style="color:#00538b">cursor-intangible</span> t
 </span></span><span style="display:flex;"><span>                          <span style="color:#00538b">face</span> <span style="color:#721045">minibuffer-prompt</span>))
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'minibuffer-setup-hook</span> <span style="color:#721045">#'</span><span style="color:#00538b">cursor-intangible-mode</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'minibuffer-setup-hook</span> <span style="color:#721045">#'</span><span style="color:#00538b">cursor-intangible-mode</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Add prompt indicator to <code>completing-read-multiple</code>.</p>
 <div class="src src-emacs-lisp">
@@ -1909,17 +2367,20 @@
 </span></span><span style="display:flex;"><span>                 <span style="color:#00538b">crm-separator</span>)
 </span></span><span style="display:flex;"><span>                (<span style="color:#721045">car</span> <span style="color:#00538b">args</span>))
 </span></span><span style="display:flex;"><span>        (<span style="color:#721045">cdr</span> <span style="color:#00538b">args</span>)))
-</span></span><span style="display:flex;"><span>(<span style="color:#00538b">advice-add</span> <span style="color:#721045">#'</span><span style="color:#00538b">completing-read-multiple</span> <span style="color:#8f0075">:filter-args</span> <span style="color:#721045">#'</span><span style="color:#00538b">my/crm-indicator</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>(<span style="color:#00538b">advice-add</span> <span style="color:#721045">#'</span><span style="color:#00538b">completing-read-multiple</span> <span style="color:#8f0075">:filter-args</span> <span style="color:#721045">#'</span><span style="color:#00538b">my/crm-indicator</span>)</span></span></code></pre>
+</div>
 </div>
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'read-extended-command-predicate</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#721045">#'</span><span style="color:#00538b">command-completion-default-include-p</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>                        <span style="color:#721045">#'</span><span style="color:#00538b">command-completion-default-include-p</span>)</span></span></code></pre>
+</div>
 </div>
 <p>Allow minibuffer commands while in the minibuffer.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'enable-recursive-minibuffers</span> t)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'enable-recursive-minibuffers</span> t)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1930,7 +2391,8 @@
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">marginalia</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">marginalia-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">marginalia-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2005,7 +2467,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'xref-show-xrefs-function</span> <span style="color:#721045">#'</span><span style="color:#00538b">consult-xref</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'xref-show-definitions-function</span> <span style="color:#721045">#'</span><span style="color:#00538b">consult-xref</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'consult-narrow-key</span> <span style="color:#2544bb">"&lt;"</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">customize-set-variable</span> <span style="color:#2544bb">'consult-narrow-key</span> <span style="color:#2544bb">"&lt;"</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2031,7 +2494,8 @@
 </span></span><span style="display:flex;"><span>                      (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"Live"</span> <span style="color:#2544bb">"Completions"</span>)
 </span></span><span style="display:flex;"><span>                      <span style="color:#2544bb">"*"</span>)
 </span></span><span style="display:flex;"><span>                 nil
-</span></span><span style="display:flex;"><span>                 (<span style="color:#721045">window-parameters</span> (<span style="color:#00538b">mode-line-format</span> <span style="color:#00538b">.</span> <span style="color:#00538b">none</span>)))))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>                 (<span style="color:#721045">window-parameters</span> (<span style="color:#00538b">mode-line-format</span> <span style="color:#00538b">.</span> <span style="color:#00538b">none</span>)))))</span></span></code></pre>
+</div>
 </div>
 <p>This adds some extra integration between Embark and Consult.</p>
 <div class="src src-emacs-lisp">
@@ -2040,7 +2504,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:after</span> (<span style="color:#00538b">embark</span> <span style="color:#00538b">consult</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:demand</span> t
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">embark-collect-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">consult-preview-at-point-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">embark-collect-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">consult-preview-at-point-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2061,7 +2526,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">next-error</span> <span style="color:#00538b">.</span> <span style="color:#00538b">pulsar-pulse-line</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">push</span> <span style="color:#2544bb">'next-error</span> <span style="color:#00538b">pulsar-pulse-functions</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">pulsar-global-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">pulsar-global-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2072,7 +2538,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">free-keys</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:commands</span> <span style="color:#00538b">free-keys</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:commands</span> <span style="color:#00538b">free-keys</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2093,7 +2560,8 @@
 </span></span><span style="display:flex;"><span>  ((<span style="color:#2544bb">"M-# s"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">substitute-target-below-point</span>)
 </span></span><span style="display:flex;"><span>   (<span style="color:#2544bb">"M-# r"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">substitute-target-above-point</span>)
 </span></span><span style="display:flex;"><span>   (<span style="color:#2544bb">"M-# d"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">substitute-target-in-defun</span>)
-</span></span><span style="display:flex;"><span>   (<span style="color:#2544bb">"M-# b"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">substitute-target-in-buffer</span>)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>   (<span style="color:#2544bb">"M-# b"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">substitute-target-in-buffer</span>)))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2106,7 +2574,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">trimspace-mode</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">prog-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">trimspace-mode-maybe</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">text-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">trimspace-mode-maybe</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">text-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">trimspace-mode-maybe</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2118,7 +2587,8 @@
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">whole-line-or-region</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">whole-line-or-region-global-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">whole-line-or-region-global-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2135,7 +2605,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:bind</span>
 </span></span><span style="display:flex;"><span>  ((<span style="color:#2544bb">"C-&lt;tab&gt;"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">complete-symbol</span>))
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">global-corfu-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">global-corfu-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2164,7 +2635,8 @@
 </span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p r"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-rfc1345</span>))
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:init</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'completion-at-point-functions</span> <span style="color:#721045">#'</span><span style="color:#00538b">cape-dabbrev</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'completion-at-point-functions</span> <span style="color:#721045">#'</span><span style="color:#00538b">cape-file</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'completion-at-point-functions</span> <span style="color:#721045">#'</span><span style="color:#00538b">cape-file</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2183,7 +2655,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">let</span> ((<span style="color:#00538b">hook</span> (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/minibuffer-setup</span> ()
 </span></span><span style="display:flex;"><span>                (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">completion-styles</span> <span style="color:#00538b">'</span>(<span style="color:#00538b">orderless</span> <span style="color:#00538b">basic</span>)))))
 </span></span><span style="display:flex;"><span>    (<span style="color:#00538b">remove-hook</span> <span style="color:#2544bb">'minibuffer-setup-hook</span> <span style="color:#00538b">hook</span>)
-</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'minibuffer-setup-hook</span> <span style="color:#00538b">hook</span> <span style="color:#0000c0">1</span>)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'minibuffer-setup-hook</span> <span style="color:#00538b">hook</span> <span style="color:#0000c0">1</span>)))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2203,7 +2676,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">fancy-compilation-override-colors</span> nil)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">fancy-compilation-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">fancy-compilation-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2220,7 +2694,8 @@
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">package-lint</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:commands</span> (<span style="color:#00538b">package-lint-buffer</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#00538b">package-lint-current-buffer</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>             <span style="color:#00538b">package-lint-current-buffer</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2237,7 +2712,8 @@
 </span></span><span style="display:flex;"><span>             <span style="color:#00538b">xr-skip-set</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#00538b">xr-skip-set-pp</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#00538b">xr-skip-set-lint</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#00538b">xr-pp-rx-to-str</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>             <span style="color:#00538b">xr-pp-rx-to-str</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2251,7 +2727,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">lua-mode</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".lua"</span> <span style="color:#00538b">eos</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">lua-indent-level</span> <span style="color:#0000c0">4</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">lua-indent-level</span> <span style="color:#0000c0">4</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2276,7 +2753,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#2544bb">"M-$"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">jinx-correct</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:commands</span> (<span style="color:#00538b">jinx-mode</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#00538b">global-jinx-mode</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#00538b">jinx-correct</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>             <span style="color:#00538b">jinx-correct</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2286,7 +2764,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">markdown-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".md"</span> <span style="color:#00538b">eos</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".md"</span> <span style="color:#00538b">eos</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2302,7 +2781,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">Info-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">olivetti-mode</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">org-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">olivetti-mode</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">ewww</span> <span style="color:#00538b">.</span> <span style="color:#00538b">olivetti-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">ewww</span> <span style="color:#00538b">.</span> <span style="color:#00538b">olivetti-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2320,7 +2800,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">yaml-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".y"</span> (<span style="color:#00538b">opt</span> <span style="color:#2544bb">"a"</span>) <span style="color:#2544bb">"ml"</span> <span style="color:#00538b">eos</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".y"</span> (<span style="color:#00538b">opt</span> <span style="color:#2544bb">"a"</span>) <span style="color:#2544bb">"ml"</span> <span style="color:#00538b">eos</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2329,7 +2810,8 @@
 <div id="outline-text-flymake-yamllint" class="outline-text-5">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">flymake-yamllint</span>)</span></span></code></pre></div>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">flymake-yamllint</span>)</span></span></code></pre>
+</div>
 </div>
 <p>To use this in a project a <code>.dir-locals.el</code> file is needed, looking something like this:</p>
 <pre class="example">
@@ -2339,7 +2821,8 @@
       . ("run" "--rm" "--interactive" "docker.io/cytopia/yamllint"))
      (eval . (progn (flymake-yamllint-setup)
                     (flymake-mode))))))
-</pre></div>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -2349,7 +2832,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cmake-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:load-path</span> <span style="color:#2544bb">"site-lisp/cmake/Auxiliary"</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:load-path</span> <span style="color:#2544bb">"site-lisp/cmake/Auxiliary"</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2401,7 +2885,8 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#2544bb">"-L"</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#2544bb">"Set skip tests label"</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#2544bb">"-o merge_request.unlabel=test::all \
-</span></span></span><span style="display:flex;"><span><span style="color:#2544bb">-o merge_request.label=test::skip"</span>)))</span></span></code></pre></div>
+</span></span></span><span style="display:flex;"><span><span style="color:#2544bb">-o merge_request.label=test::skip"</span>)))</span></span></code></pre>
+</div>
 </div>
 <div id="outline-container-magit-auto-commit" class="outline-5">
 <h5 id="magit-auto-commit">Automatic commit on save</h5>
@@ -2416,7 +2901,8 @@
 </span></span><span style="display:flex;"><span>                  <span style="color:#2544bb">"-m"</span>
 </span></span><span style="display:flex;"><span>                  (<span style="color:#721045">format</span> <span style="color:#2544bb">"Automatic commit on save of %s"</span>
 </span></span><span style="display:flex;"><span>                          <span style="color:#721045">buffer-file-name</span>))
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-refresh</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-refresh</span>))</span></span></code></pre>
+</div>
 </div>
 <p>To use this as an <code>after-save-hook</code> in a project, create a <code>.dir-locals.el</code> with something like this:</p>
 <pre class="example">
@@ -2424,7 +2910,8 @@
                        'after-save-hook
                        'my/magic-commit-current-buffer
                        nil t)))))
-</pre></div>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -2446,7 +2933,8 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">diff-hl-flydiff</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">diff-hl-flydiff-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">diff-hl-flydiff-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2456,7 +2944,8 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">git-timemachine</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:commands</span> <span style="color:#00538b">git-timemachine</span>)</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:commands</span> <span style="color:#00538b">git-timemachine</span>)</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2467,7 +2956,8 @@
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">git-link</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f0075">:bind</span>
-</span></span><span style="display:flex;"><span>    (<span style="color:#2544bb">"C-c g l"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">git-link</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>    (<span style="color:#2544bb">"C-c g l"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">git-link</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2485,7 +2975,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">dolist</span> (<span style="color:#00538b">face</span> <span style="color:#00538b">'</span>(<span style="color:#00538b">org-modern-symbol</span> <span style="color:#00538b">org-modern-label</span>))
 </span></span><span style="display:flex;"><span>    (<span style="color:#00538b">set-face-attribute</span> <span style="color:#00538b">face</span> nil <span style="color:#8f0075">:family</span> <span style="color:#2544bb">"Iosevka BKHL Sans Normal"</span>))
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">global-org-modern-mode</span>))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">global-org-modern-mode</span>))</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>

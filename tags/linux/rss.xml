@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-<channel>
-<title>Linux on Elektrubadur</title>
-<link>https://elektrubadur.se/tags/linux/</link>
-<description>Recent content in Linux on Elektrubadur</description>
-<language>en</language>
-<copyright>© 2010–2024 Björn Lindström</copyright>
-<lastBuildDate>Sat, 08 Feb 2020 00:00:00 +0100</lastBuildDate>
-<atom:link href="https://elektrubadur.se/tags/linux/rss.xml" rel="self" type="application/rss+xml"/>
-<item>
-<title>First Month with Fedora Silverblue</title>
-<link>https://elektrubadur.se/first_month_with_fedora_silverblue/</link>
-<pubDate>Sat, 08 Feb 2020 00:00:00 +0100</pubDate>
-<guid>https://elektrubadur.se/first_month_with_fedora_silverblue/</guid>
-<description>&lt;p&gt;
+  <channel>
+    <title>Linux on Elektrubadur</title>
+    <link>https://elektrubadur.se/tags/linux/</link>
+    <description>Recent content in Linux on Elektrubadur</description>
+    <language>en</language>
+    <copyright>© 2010–2024 Björn Lindström</copyright>
+    <lastBuildDate>Sat, 08 Feb 2020 00:00:00 +0100</lastBuildDate>
+    <atom:link href="https://elektrubadur.se/tags/linux/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>First Month with Fedora Silverblue</title>
+      <link>https://elektrubadur.se/posts/first_month_with_fedora_silverblue/</link>
+      <pubDate>Sat, 08 Feb 2020 00:00:00 +0100</pubDate>
+      <guid>https://elektrubadur.se/posts/first_month_with_fedora_silverblue/</guid>
+      <description>&lt;p&gt;
 I decided during my midwinter vacation that I&amp;#39;d try out
 &lt;a href="https://fedoraproject.org/atomic-desktops/silverblue/"&gt;Fedora Silverblue&lt;/a&gt; on my
 desktop, and I liked it, so here I am still using it on my work laptop.&lt;/p&gt;
@@ -30,6 +30,6 @@ those playbooks in the same directory as my
 Fedora I removed them. If anyone is curious about what that looked like,
 &lt;a href="https://gitlab.com/bkhl/workstation-playbooks/tree/065ce9ca0547ca4d9c1e574407ba6373fcc99b69"&gt;they
 are here&lt;/a&gt;.&lt;/p&gt;</description>
-</item>
-</channel>
+    </item>
+  </channel>
 </rss>

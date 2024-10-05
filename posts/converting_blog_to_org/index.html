@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://elektrubadur.se/style.min.css">
+<link href="https://elektrubadur.se/favicon.ico" rel="icon">
+<link href="https://elektrubadur.se/favicon-16x16.png" rel="icon" sizes="16x16">
+<link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
+<link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
+<link href="https://elektrubadur.se/favicon-32x32.png" rel="icon" sizes="32x32">
+<title>Converting Sources of This Blog to Org format – Elektrubadur</title>
+<link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
+<link rel="sitemap" type="application/xml" title="Elektrubadur Sitemap" href="https://elektrubadur.se/sitemap.xml">
+<link rel="me" href="https://emacs.ch/@bkhl">
+<meta name="description" content="Personal web page of Björn Lindström">
+<meta name="author" content="Björn Lindström">
+</head>
+<body>
+<header>
+<h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
+<nav>
+<p><a href="https://elektrubadur.se/">Posts</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
+</nav>
+</header>
+<main>
+<article>
+<header>
+<h1>Converting Sources of This Blog to Org format</h1>
+</header>
+<p>It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it's in the interest of making it more enjoyable for me to write more that I've switched from <a href="https://www.getzola.org/">Zola</a> to <a href="https://gohugo.io/">Hugo</a> in order to be able to keep the sources in Org format.</p>
+<p>Here I'll just share <a href="https://elektrubadur.se/posts/converting_blog_to_org/convert.py">the script</a> I made to do the format conversion, in case it's useful for anyone else. Actually, half the reason I'm even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.</p>
+<p>At the same time I've moved the sources from <a href="https://gitlab.com/">GitLab</a> to <a href="https://sr.ht/">Sourcehut</a> [Update 2024-11-05: I have since moved them to <a href="https://github.com/">GitHub</a>].</p>
+<p>I won't delve deeper into the reasons for that, but I thought I'd post the Python script I used for the conversion in case it's useful for anyone else. It's not particularly pretty and has special casing for various things that were particular to my Zola theme, so if anyone else were to use it, they would in all likelyhood need to do some changes. I made a few manual fixes in the Org source after the conversion, of things that occurred to rarely to mke it worth automating.</p>
+<p>The script does the following:</p>
+<ul>
+<li>Clears out the target content directory. That's the <code class="verbatim">content/</code> directory under your current working directory.</li>
+<li>Copy any non-Markdown files into the same location from the old content directory, assumed to be <code class="verbatim">content.old/</code> in your current working directory.</li>
+<li>Extract TOML front matter from the old source files and convert into Org front matter.</li>
+<li>Run the remainder of the Markdown file through <a href="https://pandoc.org/">Pandoc</a> to convert it from Markdown to Org.
+</li>
+<li>Apply various substitutions to the body to fix some things Pandoc doesn't handle, or just according to my preferences.</li>
+<li>Write some metadata that can not be nicely encoded as Org front matter and put it in a <code class="verbatim">config.toml</code> file next to the Org file instead.</li>
+</ul>
+<p>Then I just needed to go ahead and write a Hugo templates that works with this new content directory. Getting the same general structure of the page as in Zola isn't difficult, as Zola is inspired by Hugo and uses a lot of the same conventions. I didn't have to do much to be able to preserve mostly the same hierarchy of the source files for equivalent output.</p>
+<p>If you are curious about the Hugo templates used to render this page, they are in <a href="https://github.com/bkhl/elektrubadur.se/">the repository with the sources for this page</a>.</p>
+<p>Finally, if you want to use the script I've been talking about, you can download it here: <a href="https://elektrubadur.se/posts/converting_blog_to_org/convert.py">convert.py</a></p>
+</article>
+</main>
+<footer>
+<p>© 2010–2024 Björn Lindström</p>
+</footer>
+</body>
+</html>

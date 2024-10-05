@@ -22,7 +22,7 @@
 <h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
 <p><em>Personal web page of Björn Lindström</em></p>
 <nav>
-<p><a href="https://elektrubadur.se/">Blog</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
+<p><a href="https://elektrubadur.se/">Posts</a> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
 </nav>
 </header>
 <main>
@@ -32,21 +32,20 @@
 </header>
 <article>
 <header>
-<h2><a href="https://elektrubadur.se/converting_blog_to_org/" title="Converting Sources of This Blog to Org format">Converting Sources of This Blog to Org format</a></h2>
-<a href="https://elektrubadur.se/converting_blog_to_org/"></a>
+<h2><a href="https://elektrubadur.se/posts/converting_blog_to_org/" title="Converting Sources of This Blog to Org format">Converting Sources of This Blog to Org format</a></h2>
 <p>In <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/www/">WWW</a>, <a href="https://elektrubadur.se/tags/markdown/">Markdown</a>, <a href="https://elektrubadur.se/tags/org/">Org</a>, <a href="https://elektrubadur.se/tags/hugo/">Hugo</a>, <a href="https://elektrubadur.se/tags/python/">Python</a> and <a href="https://elektrubadur.se/tags/emacs/">Emacs</a> —&nbsp;<time datetime="2023-05-28">Sunday&nbsp;May&nbsp;28,&nbsp;2023</time></p>
 </header>
 <p>It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it's in the interest of making it more enjoyable for me to write more that I've switched from <a href="https://www.getzola.org/">Zola</a> to <a href="https://gohugo.io/">Hugo</a> in order to be able to keep the sources in Org format.</p>
-<p>Here I'll just share <a href="https://elektrubadur.se/converting_blog_to_org/convert.py">the script</a> I made to do the format conversion, in case it's useful for anyone else. Actually, half the reason I'm even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.</p>
-<footer><a href="https://elektrubadur.se/converting_blog_to_org/">
+<p>Here I'll just share <a href="https://elektrubadur.se/posts/converting_blog_to_org/convert.py">the script</a> I made to do the format conversion, in case it's useful for anyone else. Actually, half the reason I'm even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.</p>
+<footer>
+<a href="https://elektrubadur.se/posts/converting_blog_to_org/">
 <p>[…]</p>
-<p>Read more »</p>
-</a></footer>
+<p>Read more »</p></a>
+</footer>
 </article>
 <article>
 <header>
 <h2><a href="https://elektrubadur.se/emacs-configuration/" title="Emacs Configuration">Emacs Configuration</a></h2>
-<a href="https://elektrubadur.se/emacs-configuration/"></a>
 <p>In <a href="https://elektrubadur.se/categories/software/">Software</a> about <a href="https://elektrubadur.se/tags/org/">Org</a> and <a href="https://elektrubadur.se/tags/emacs/">Emacs</a> —&nbsp;<time datetime="0001-01-01">Monday&nbsp;Jan&nbsp;1,&nbsp;0001</time></p>
 </header>
 <div id="outline-container-introduction" class="outline-2">
@@ -54,27 +53,38 @@
 <div id="outline-text-introduction" class="outline-text-2">
 <p>This is my Emacs configuration. It is available online in these forms:</p>
 <ul>
-<li><a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/configuration.org">Org mode source file</a> in a Git repository.</li>
-<li><a href="https://elektrubadur.se/emacs-configuration">HTML article</a> on my personal web page.</li>
+<li>
+<a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/configuration.org">Org mode source file</a> in a Git repository.
+</li>
+<li>
+<a href="https://elektrubadur.se/emacs-configuration">HTML article</a> on my personal web page.
+</li>
 </ul>
 <p>Inspirations for this Emacs configuration include:</p>
 <ul>
-<li>Harry R. Schwartz' <a href="https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org">Emacs configuration</a> and <a href="https://github.com/hrs/sensible-defaults.el">sensible-defaults.el</a>.</li>
-<li>Phil Hagelberg's <a href="https://git.sr.ht/~technomancy/better-defaults">better-defaults.el</a>.</li>
-<li><a href="https://emacscast.org/">EmacsCast</a>.</li>
-<li>Protesilaos Stavrou's <a href="https://protesilaos.com/codelog/">blog</a> and <a href="https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g">videos</a>.</li>
+<li>Harry R. Schwartz' <a href="https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org">Emacs configuration</a> and <a href="https://github.com/hrs/sensible-defaults.el">sensible-defaults.el</a>.
+</li>
+<li>Phil Hagelberg's <a href="https://git.sr.ht/~technomancy/better-defaults">better-defaults.el</a>.
+</li>
+<li>
+<a href="https://emacscast.org/">EmacsCast</a>.
+</li>
+<li>Protesilaos Stavrou's <a href="https://protesilaos.com/codelog/">blog</a> and <a href="https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g">videos</a>.
+</li>
 </ul>
 <p>Some interesting properties of this configuration:</p>
 <ul>
 <li>Almost all of the configuration is kept in an Org file.</li>
-<li>The startup time is quite fast. There are some tweaks in <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/init.el">init.el</a> and <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/early-init.el">early-init.el</a> that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.</li>
+<li>The startup time is quite fast. There are some tweaks in <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/init.el">init.el</a> and <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/early-init.el">early-init.el</a> that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
+</li>
 <li>Add-on packages are managed manually as Git submodules.</li>
 </ul>
 <p>The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in <a href="https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/site-lisp">~/.emacs.d/site-lisp/</a>.</p>
-<footer><a href="https://elektrubadur.se/emacs-configuration/">
+<footer>
+<a href="https://elektrubadur.se/emacs-configuration/">
 <p>[…]</p>
-<p>Read more »</p>
-</a></footer>
+<p>Read more »</p></a>
+</footer>
 </div>
 </div>
 </article>

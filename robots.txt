@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://elektrubadur.se//sitemap.xml
+Sitemap: https://elektrubadur.se/sitemap.xml
