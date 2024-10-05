@@ -40,4 +40,5 @@ popd
 curl \
     --no-progress-meter \
     --fail \
+    --request POST \
     "https://builder.statichost.eu/${SITE_NAME}"
