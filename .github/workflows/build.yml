@@ -1,10 +1,10 @@
-
-name: Publish
+---
+name: Build
 
 on:
   push:
     branches:
-      - main
+      - trigger-statichost
 
 jobs:
   build:
@@ -89,3 +89,4 @@ jobs:
           PUBLIC: "${{ github.workspace }}/public"
           PUSH_URL: >-
             https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git
+          SITE_NAME: elektrubadur-se

@@ -2,6 +2,9 @@
 
 set -xeuo pipefail
 
+
+# Get Git committer and commit message.
+
 pushd "${SOURCE}"
 
 git config --global user.name "$(git log -1 --pretty='%an')"
@@ -10,9 +13,13 @@ message="$(git log -1 --pretty='%B')"
 
 popd
 
-install -v -m 0644 "${SOURCE}"/{statichost.yml,README.org} "${PUBLIC}"
+
+# Move .git repo into artifact directory.
 
 mv "${PREV_PUBLIC}/.git" -t "${PUBLIC}"
+
+
+# Commit and push changes
 
 pushd "${PUBLIC}"
 
@@ -27,3 +34,10 @@ git commit --message="${message}"
 git push origin public:public
 
 popd
+
+
+# Trigger publication at Statichost.eu
+curl \
+    --no-progress-meter \
+    --fail \
+    "https://builder.statichost.eu/${SITE_NAME}"

@@ -29,3 +29,5 @@ find "${DESTINATION}" -type f -iname '*.xml' | while read f; do
         --encode utf-8 \
         "${f}" > "${tempfile}" && mv -v "${tempfile}" "${f}"
 done
+
+install -v -m 0644 {statichost.yml,README.org} "${DESTINATION}"

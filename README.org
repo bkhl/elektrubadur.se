@@ -1,6 +1,6 @@
 #+TITLE: Elektrubadur
 
-[[https://github.com/bkhl/elektrubadur.se/actions/workflows/publish.yml/badge.svg]]
+[[https://github.com/bkhl/elektrubadur.se/actions/workflows/build.yml/badge.svg]]
 
 [[https://builder.statichost.eu/elektrubadur-se/status.svg]]
 
