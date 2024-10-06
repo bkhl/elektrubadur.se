@@ -38,12 +38,7 @@
         <a href="/">{{ .Site.Title }}</a>
         {{ end }}
       </h2>
-      {{ block "site_subtitle" . }}
-      {{ end }}
-      <nav>
-        {{ block "site_nav" . }}
-        {{ end }}
-      </nav>
+      <p><em>{{ .Site.Params.description }}</em></p>
     </header>
 
     <main>

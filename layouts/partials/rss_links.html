@@ -1,5 +1,5 @@
 <p>
-  {{ if eq $.Site.Home .Page }}
+  {{ if or (eq .Page $.Site.Home) (eq .Page.Type "posts") }}
   {{ with $.Site.Home.AlternativeOutputFormats.Get "rss" }}
   <a href="{{ .RelPermalink }}" rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="RSS feed">Subscribe by RSS</a>
   {{ end }}

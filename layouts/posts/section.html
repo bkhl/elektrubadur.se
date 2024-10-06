@@ -1,6 +1,12 @@
 {{ define "main" }}
 <header>
-  <h1>{{ .Page.Title }}</em></h1>
+  <h1>
+    {{ if .Page.Paginator.HasPrev }}
+    <a href="{{ .Page.Paginator.First.URL }}"><em>{{ .Page.Title }}</em></a>
+    {{ else }}
+    <em>{{ .Page.Title }}</em>
+    {{ end }}
+  </h1>
   {{ partial "page_turner" .Page.Paginator }}
 </header>
 {{ range .Page.Paginator.Pages }}

@@ -1,31 +1,9 @@
 {{ define "site_title" }}
-{{ $paginator := .Paginate (where site.RegularPages "Type" "posts") }}
-{{ if $paginator.HasPrev }}
-<a href="/">{{ .Site.Title }}</a>
-{{ else }}
 {{ .Site.Title }}
-{{ end }}
-{{ end }}
-
-{{ define "site_subtitle" }}
-<p><em>{{ .Site.Params.description }}</em></p>
-{{ end }}
-
-{{ define "site_nav" }}
-{{ partial "main_menu" . }}
 {{ end }}
 
 {{ define "main" }}
-{{ $paginator := .Paginator }}
-<header>
-  {{ partial "page_turner" $paginator }}
-</header>
-{{ range $paginator.Pages }}
-{{ partial "article_in_list" (dict "Page" .Page "Context" "blog") }}
-{{ end }}
-<footer>
- {{ partial "page_turner" $paginator }}
-</footer>
+{{ .Content }}
 {{ end }}
 
 {{ define "footer" }}

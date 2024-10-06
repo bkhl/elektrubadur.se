@@ -6,7 +6,7 @@
 <p>
 {{ if eq .Context "single" }}
 By <em>{{ or .Page.Params.author .Page.Site.Params.author}}</em> in
-{{ else }}
+{{ else  }}
 In
 {{ end }}
 {{ range $index, $entry := .Page.GetTerms "categories"}}

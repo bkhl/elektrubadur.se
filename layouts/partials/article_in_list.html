@@ -10,8 +10,8 @@
       </a>
     </p>
     {{ end }}
-    {{ if eq $.Context "blog" }}
-    {{ partial "dateline" (dict "Page" .Page "Context" "list" "FirstPage" .FirstPage "Category" .Category "Tag" .Tag) }}
+    {{ if eq .Page.Type "posts" }}
+    {{ partial "dateline" (dict "Page" .Page "FirstPage" .FirstPage "Category" .Category "Tag" .Tag) }}
     {{ end }}
   </header>
   {{ .Page.Summary | safeHTML }}

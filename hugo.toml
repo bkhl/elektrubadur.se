@@ -32,28 +32,3 @@ style = "modus-operandi"
 [params]
 description = "Personal web page of Björn Lindström"
 author = "Björn Lindström"
-
-[[menu.main]]
-name = "Posts"
-pageRef = "/"
-weight = 10
-
-[[menu.main]]
-name = "Galleries"
-pageRef = "/galleries/"
-weight = 20
-
-[[menu.main]]
-name = "About Me"
-pageRef = "/about_me/"
-weight = 30
-
-[[menu.main]]
-name = "Resumé"
-pageRef = "/resume/"
-weight = 30
-
-[[menu.main]]
-name = "About This Page"
-pageRef = "/about_page/"
-weight = 40

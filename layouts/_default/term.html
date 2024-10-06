@@ -1,22 +1,21 @@
-{{ define "site_subtitle" }}
-<p><em>{{ .Site.Params.description }}</em></p>
-{{end}}
-
-{{ define "site_nav" }}
-{{ partial "main_menu" . }}
-{{ end }}
-
 {{ define "main" }}
 {{ $category := cond (and (eq .Kind "term") (eq .Type "categories")) .LinkTitle nil }}
 {{ $tag := cond (and (eq .Kind "term") (eq .Type "tags")) .LinkTitle nil }}
 {{ $first_page := not .Page.Paginator.HasPrev}}
 <header>
-  <h1>Entries on <em>{{ .Page.Title }}</em></h1>
+  <h1>
+    Entries on
+    {{ if  $first_page }}
+    <em>{{ .Page.Title }}</em>
+    {{ else }}
+    <a href="{{ .Page.Paginator.First.URL }}"><em>{{ .Page.Title }}</em></a>
+    {{ end }}
+  </h1>
   <p><a href="/{{ .Page.Type }}/">All {{ .Page.Type }}</a></p>
   {{ partial "page_turner" .Page.Paginator }}
 </header>
 {{ range .Page.Paginator.Pages }}
-{{ partial "article_in_list" (dict "Page" .Page "Context" "blog" "FirstPage" $first_page "Category" $category "Tag" $tag) }}
+{{ partial "article_in_list" (dict "Page" .Page "FirstPage" $first_page "Category" $category "Tag" $tag) }}
 {{ end }}
 <footer>
   {{ partial "page_turner" .Page.Paginator }}

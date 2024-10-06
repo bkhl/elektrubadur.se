@@ -1,27 +1,38 @@
-#+TITLE: About Me
+#+TITLE: Elektrubadur
 
-{{< image file="box.jpeg" title="Portrait" alt="Portrait" >}}
+- [[/posts/][Posts]] :: Blog posts on miscellaneous subjects.
+- [[/galleries/][Galleries]] :: Some photo galleries.
+- [[/emacs/][Emacs]] :: My Emacs configuration and packages.
 
-Björn, a programmer living in Sweden. My interests include:
+[[./portrait.jpeg]]
+
+* About Me
+
+I am a programmer living in Sweden. My interests include:
 
 - playing go.
 - reading science fiction.
 - tie knots.
-- hacking on [[https://www.gnu.org/software/emacs/][Emacs]].
+- hacking on [[/emacs/][Emacs]].
 
 I moved back from Bangkok a couple of years ago. If you wish to contact me, send an e-mail to [[mailto:bkhl@elektrubadur.se][bkhl@elektrubadur.se]].
 
-* Online presence
+* Links
 
 - [[https://social.sdfeu.org/@bkhl][Mastodon on SDF EU]]
 - [[https://github.com/bkhl][GitHub]]
 - [[https://exercism.org/profiles/bkhl][Exercism]]
 - [[https://online-go.com/player/52248/][Online-Go.com]]
 - [[https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/][LinkedIn]]
+- [[/resume/][Resumé]]
 
-* Elektrubadur
+* Elektrubadur?
 
 This is a name I've used for various projects in the past, including:
 
 - [[https://www.jamendo.com/artist/4363/elektrubadur][A band]]
 - [[https://archive.org/details/ElektrubadurPodcast][A podcast]]
+
+* Information
+
+- [[/about_page/][About This Page]]

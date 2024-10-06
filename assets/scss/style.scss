@@ -78,6 +78,14 @@ a:hover {
  * Headers and footers
  */
 
+body > header {
+    border-bottom-style: dotted;
+}
+
+body > footer {
+    border-top-style: dotted;
+}
+
 header p, footer p {
     font-size: smaller;
 }
