@@ -1,10 +1,11 @@
-# These give 'connection failed' for unclear reason.
-
-^https://www.\jamendo\.com/artist/4363/elektrubadur$
-^https://creativecommons\.org/licenses/by-sa/4.0/$
+# Blocks crawler in robots.txt
+^https://www\.linkedin\.com(/|$)
+^https://tools\.ietf\.org(/|$)
 
 # Expected redirects.
-
 ^https://bcert\.me/syjixfovh$
 ^https://gitlab\.com/$
-^https://www\.youtube\.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g$
+
+# These give 'connection failed' for unclear reason.
+^https://www.\jamendo\.com/artist/4363/elektrubadur$
+^https://creativecommons\.org/licenses/by-sa/4.0/$
