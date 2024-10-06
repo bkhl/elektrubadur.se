@@ -14,11 +14,6 @@ message="$(git log -1 --pretty='%B')"
 popd
 
 
-# Move .git repo into artifact directory.
-
-mv "${PREV_PUBLIC}/.git" -t "${PUBLIC}"
-
-
 # Commit and push changes
 
 pushd "${PUBLIC}"
@@ -28,7 +23,6 @@ if git diff-index --quiet HEAD --; then
     exit 0
 fi
 
-git remote set-url origin "${PUSH_URL}"
 git add --all
 
 if git diff --quiet HEAD --; then

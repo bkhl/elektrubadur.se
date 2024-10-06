@@ -4,11 +4,6 @@
 
 [[https://builder.statichost.eu/elektrubadur-se/status.svg]]
 
-This is the repository for my personal web site.
+This is the repository for my personal web site. It is built and the output is stored in [[https://github.com/bkhl/elektrubadur.se-public][the elektrubadur.se-public repository]].
 
 For more information about the page, see [[https://elektrubadur.se/about_page/][About This Page]] on the web site.
-
-* Branches
-
-- [[https://github.com/bkhl/elektrubadur.se/tree/main][main]] :: the main branch that the web site is built from.
-- [[https://github.com/bkhl/elektrubadur.se/tree/public][public]] :: the rendered web site is pushed to this branch. Because [[https://www.statichost.eu/][Statichost.eu]] will pull the web site from the default Git branch, this branch is set as the default branch.

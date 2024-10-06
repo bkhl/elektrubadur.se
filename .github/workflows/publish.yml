@@ -1,0 +1,53 @@
+---
+name: Publish
+
+on: push
+
+jobs:
+  build:
+    name: Publish web site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.135.0'
+          extended: true
+
+      - name: Install HTML Tidy and XMLStarlet
+        run: sudo apt-get -y install tidy xmlstarlet
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          path: source
+          fetch-depth: 0
+
+      - name: Check out public destination repository
+        uses: actions/checkout@v4
+        with:
+          repository: bkhl/elektrubadur.se-public
+          token: "${{ secrets.ELEKTRUBADUR_SE_PUBLIC_TOKEN }}"
+          path: public
+          fetch-depth: 0
+
+      - name: Build web site
+        working-directory: source
+        env:
+          DESTINATION: "${{ github.workspace }}/public"
+        run: bash build/build.sh
+
+      - name: Validate web site
+        uses: docker://ghcr.io/validator/validator:latest
+        with:
+          args: vnu --skip-non-html --also-check-css --also-check-svg public
+
+      - name: Publish web site
+        if: >-
+          github.ref == 'refs/heads/main'
+        working-directory: source
+        env:
+          SOURCE: "${{ github.workspace }}/source"
+          PUBLIC: "${{ github.workspace }}/public"
+          SITE_NAME: elektrubadur-se
+        run: bash build/publish.sh"

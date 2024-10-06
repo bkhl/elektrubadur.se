@@ -5,7 +5,7 @@ set -xeuo pipefail
 : "${DOMAIN:=elektrubadur.se}"
 : "${DESTINATION:=public}"
 
-rm -rf "${DESTINATION}"
+find "${DESTINATION}" -depth -mindepth 1 -name .git -prune -o -delete
 
 hugo --baseURL="https://${DOMAIN}" --destination="${DESTINATION}"
 
