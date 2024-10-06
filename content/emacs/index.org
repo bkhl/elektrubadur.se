@@ -1,5 +1,6 @@
 #+TITLE: Emacs
 
+#+ATTR_HTML: :title Emacs :alt Screenshot of Emacs showing my configuration file
 [[./emacs.png]]
 
 Here are some configuration and packages for the [[https://www.gnu.org/software/emacs/][Emacs]] text editor.
