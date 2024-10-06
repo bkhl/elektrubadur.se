@@ -22,7 +22,7 @@ Inspirations for this Emacs configuration include:
 - [[https://emacscast.org/][EmacsCast]].
 - Protesilaos Stavrou's [[https://protesilaos.com/codelog/][blog]] and [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
 
-Some interesting properties of this configuration:
+These are some interesting properties of this configuration:
 
 - Almost all of the configuration is kept in an Org file.
 - The startup time is quite fast. There are some tweaks in [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/init.el][init.el]] and [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/early-init.el][early-init.el]] that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
