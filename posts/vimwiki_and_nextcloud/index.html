@@ -32,7 +32,7 @@
 <p>I've been using <a href="http://vimwiki.github.io/">Vimwiki</a> for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.</p>
 <p>For a while I've also kept these synced to my phone via the <a href="https://apps.nextcloud.com/apps/notes/">Nextcloud Notes</a> application. I have a self-hosted <a href="https://nextcloud.com/">Nextcloud</a> instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.</p>
 <p>The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I've now finally automated that.</p>
-<p>To start with, I added the function <code class="verbatim">SetWikiHeader</code> to <a href="https://git.sr.ht/~bkhl/dotfiles/tree/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/item/.vim/plugin/config/vimwiki.vim">my ~/.vim/plugin/config/vim.wiki</a>:</p>
+<p>To start with, I added the function <code class="verbatim">SetWikiHeader</code> to <a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim">my ~/.vim/plugin/config/vim.wiki</a>:</p>
 <div class="src src-vim">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#5317ac">if</span> &amp;runtimepath !~? <span style="color:#2544bb">"vimwiki"</span>
@@ -75,7 +75,7 @@
 </div>
 </div>
 <p>Vim script is pretty weird, had to search in documentation for how to do most things in there. Props to people who write entire programs in it, like let's say <a href="https://github.com/orgs/vimwiki/people">those people that wrote Vimwiki</a>.</p>
-<p>Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in <a href="https://git.sr.ht/~bkhl/dotfiles/tree/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/item/.vim/ftplugin/vimwiki.vim">my ~/.vim/ftplugin/vimwiki.vim</a>:</p>
+<p>Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in <a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim">my ~/.vim/ftplugin/vimwiki.vim</a>:</p>
 <div class="src src-vim">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#505050">" Set header to match filename when opening or saving file, for</span>
