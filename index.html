@@ -20,134 +20,86 @@
 <header>
 <h2>Elektrubadur</h2>
 <p><em>Personal web page of Björn Lindström</em></p>
-<nav>
-<p><em>Posts</em> — <a href="https://elektrubadur.se/galleries/">Galleries</a> — <a href="https://elektrubadur.se/about_me/">About Me</a> — <a href="https://elektrubadur.se/resume/">Resumé</a> — <a href="https://elektrubadur.se/about_page/">About This Page</a></p>
-</nav>
 </header>
 <main>
-<header>
-<nav>
-<p>First page — <a href="https://elektrubadur.se/page/2/">Older »</a></p>
-</nav>
-</header>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/converting_blog_to_org/" title="Converting Sources of This Blog to Org format">Converting Sources of This Blog to Org format</a></h2>
-<p>In <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/www/">WWW</a>, <a href="https://elektrubadur.se/tags/markdown/">Markdown</a>, <a href="https://elektrubadur.se/tags/org/">Org</a>, <a href="https://elektrubadur.se/tags/hugo/">Hugo</a>, <a href="https://elektrubadur.se/tags/python/">Python</a> and <a href="https://elektrubadur.se/tags/emacs/">Emacs</a> —&nbsp;<time datetime="2023-05-28">Sunday&nbsp;May&nbsp;28,&nbsp;2023</time></p>
-</header>
-<p>It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it's in the interest of making it more enjoyable for me to write more that I've switched from <a href="https://www.getzola.org/">Zola</a> to <a href="https://gohugo.io/">Hugo</a> in order to be able to keep the sources in Org format.</p>
-<p>Here I'll just share <a href="https://elektrubadur.se/posts/converting_blog_to_org/convert.py">the script</a> I made to do the format conversion, in case it's useful for anyone else. Actually, half the reason I'm even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.</p>
-<footer>
-<a href="https://elektrubadur.se/posts/converting_blog_to_org/">
-<p>[…]</p>
-<p>Read more »</p></a>
-</footer>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/how_this_blog_works/" title="How This Blog Works">How This Blog Works</a></h2>
-<p>In <a href="https://elektrubadur.se/categories/software/">Software</a> about <a href="https://elektrubadur.se/tags/www/">WWW</a>, <a href="https://elektrubadur.se/tags/hcoop/">HCoop</a>, <a href="https://elektrubadur.se/tags/git/">Git</a> and <a href="https://elektrubadur.se/tags/automation/">Automation</a> —&nbsp;<time datetime="2020-05-03">Sunday&nbsp;May&nbsp;3,&nbsp;2020</time></p>
-</header>
-<p>This blog is created using the <a href="https://www.getzola.org/">Zola static site engine</a>. I use a combination of <a href="https://docs.gitlab.com/ee/ci/">GitLab CI</a> and <code class="verbatim">cron</code> to automatically upload it to my web server whenever I merge a change to the <a href="https://git-scm.com/">Git</a> <code class="verbatim">master</code> branch of the home page.</p>
-<p>The <code class="verbatim">elektrubadur.se</code> source code is kept <em>here in GitLab</em> <em>[Update 2024-11-05: <a href="https://github.com/bkhl/elektrubadur.se/">elektrubadur.se source code since moved to GitHub</a>]</em>. While writing a post I just run <code class="verbatim">zola serve</code> on my computer and can look at a dynamically updated website on a local web server.</p>
-<footer>
-<a href="https://elektrubadur.se/posts/how_this_blog_works/">
-<p>[…]</p>
-<p>Read more »</p></a>
-</footer>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/vimwiki_and_nextcloud/" title="Vimwiki + Nextcloud Notes">Vimwiki + Nextcloud Notes</a></h2>
-<p>In <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/vim/">Vim</a>, <a href="https://elektrubadur.se/tags/vimwiki/">Vimwiki</a>, <a href="https://elektrubadur.se/tags/nextcloud/">Nextcloud</a> and <a href="https://elektrubadur.se/tags/notes/">Notes</a> —&nbsp;<time datetime="2020-05-02">Saturday&nbsp;May&nbsp;2,&nbsp;2020</time></p>
-</header>
-<p>I've been using <a href="http://vimwiki.github.io/">Vimwiki</a> for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.</p>
-<p>For a while I've also kept these synced to my phone via the <a href="https://apps.nextcloud.com/apps/notes/">Nextcloud Notes</a> application. I have a self-hosted <a href="https://nextcloud.com/">Nextcloud</a> instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.</p>
-<p>The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I've now finally automated that.</p>
-<footer>
-<a href="https://elektrubadur.se/posts/vimwiki_and_nextcloud/">
-<p>[…]</p>
-<p>Read more »</p></a>
-</footer>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/first_month_with_fedora_silverblue/" title="First Month with Fedora Silverblue">First Month with Fedora Silverblue</a></h2>
-<p>In <a href="https://elektrubadur.se/categories/software/">Software</a> about <a href="https://elektrubadur.se/tags/linux/">Linux</a>, <a href="https://elektrubadur.se/tags/fedora/">Fedora</a>, <a href="https://elektrubadur.se/tags/silverblue/">Silverblue</a> and <a href="https://elektrubadur.se/tags/containers/">Containers</a> —&nbsp;<time datetime="2020-02-08">Saturday&nbsp;Feb&nbsp;8,&nbsp;2020</time></p>
-</header>
-<p>I decided during my midwinter vacation that I'd try out <a href="https://fedoraproject.org/atomic-desktops/silverblue/">Fedora Silverblue</a> on my desktop, and I liked it, so here I am still using it on my work laptop.</p>
-<p>Silverblue is a version of Fedora using <a href="https://coreos.github.io/rpm-ostree/">rpm-ostree</a> to provide a minimal and immutable base OS, providing a platform for running applications in containers.</p>
-<p>Previously I was using Ubuntu with a lot of Ansible playbooks for installing things both globally and in my home directory. I used to keep those playbooks in the same directory as my <a href="https://github.com/bkhl/dotfiles">dotfiles</a>, but after the switch to Fedora I removed them. If anyone is curious about what that looked like, <a href="https://gitlab.com/bkhl/workstation-playbooks/tree/065ce9ca0547ca4d9c1e574407ba6373fcc99b69">they are here</a>.</p>
-<footer>
-<a href="https://elektrubadur.se/posts/first_month_with_fedora_silverblue/">
-<p>[…]</p>
-<p>Read more »</p></a>
-</footer>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/nextcloud_to_do_automation/" title="Simple Nextcloud To-Do List Automation with Python and WebDAV">Simple Nextcloud To-Do List Automation with Python and WebDAV</a></h2>
-<p>In <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/nextcloud/">Nextcloud</a> and <a href="https://elektrubadur.se/tags/planning/">Planning</a> —&nbsp;<time datetime="2019-05-05">Sunday&nbsp;May&nbsp;5,&nbsp;2019</time></p>
-</header>
-<p>I keep a task list in a <a href="http://todotxt.org/">todo.txt</a> format in <a href="https://nextcloud.com/">Nextcloud</a>. They are simply kept as two text files, <code class="verbatim">todo.txt</code> and <code class="verbatim">done.txt</code> in the root of my Nextcloud user directory.</p>
-<p>Some clients already have the option to move tasks from <code class="verbatim">todo.txt</code> to <code class="verbatim">done.txt</code> when you mark a task as done. However, I would prefer they stick around in the <code class="verbatim">todo.txt</code> for a while, in case I change my mind.</p>
-<p>At first I thought I'd just write a script to run as a cronjob on the server hosting Nextcloud, but that won't work with syncrhonization, as it won't let Nextcloud know the files have changed. I then thought there must be an API to read/write files to Nextcloud, and then quickly realized that this API is <a href="https://tools.ietf.org/html/rfc2518">WebDAV</a>. So, I should be able to make a Python script to do this, using <a href="https://pypi.org/project/requests/">requests</a>. A more full-featured WebDAV library would be overkill for this.</p>
-<footer>
-<a href="https://elektrubadur.se/posts/nextcloud_to_do_automation/">
-<p>[…]</p>
-<p>Read more »</p></a>
-</footer>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/suphan-buri/" title="Suphan Buri">Suphan Buri</a></h2>
-<p><a href="https://elektrubadur.se/posts/suphan-buri/"><img src="https://elektrubadur.se/posts/suphan-buri/buffalo.jpeg" alt="Suphan Buri" title="Suphan Buri"></a></p>
-<p>In <a href="https://elektrubadur.se/categories/photos/">Photos</a> —&nbsp;<time datetime="2018-12-10">Monday&nbsp;Dec&nbsp;10,&nbsp;2018</time></p>
-</header>
-<p>I went on a work outing to Suphan Buri a little while back, here comes some photos. Most of the pictures are from the buffalo themed resort where we stayed.</p>
-<footer>
-<a href="https://elektrubadur.se/posts/suphan-buri/">
-<p>[…]</p>
-<p>Read more »</p></a>
-</footer>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/traffic/" title="Traffic">Traffic</a></h2>
-<p><a href="https://elektrubadur.se/posts/traffic/"><img src="https://elektrubadur.se/posts/traffic/traffic.jpeg" alt="Traffic" title="Traffic"></a></p>
-<p>In <a href="https://elektrubadur.se/categories/photos/">Photos</a> —&nbsp;<time datetime="2017-09-15">Friday&nbsp;Sep&nbsp;15,&nbsp;2017</time></p>
-</header>
-<p>Lower Parel, Mumbai.</p>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/gecko-on-window/" title="Gecko on Window">Gecko on Window</a></h2>
-<p><a href="https://elektrubadur.se/posts/gecko-on-window/"><img src="https://elektrubadur.se/posts/gecko-on-window/gecko-on-window.jpeg" alt="Gecko on Window" title="Gecko on Window"></a></p>
-<p>In <a href="https://elektrubadur.se/categories/photos/">Photos</a> —&nbsp;<time datetime="2017-05-31">Wednesday&nbsp;May&nbsp;31,&nbsp;2017</time></p>
-</header>
-<p>Gecko climbing outside of my window.</p>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/cow/" title="Cow">Cow</a></h2>
-<p><a href="https://elektrubadur.se/posts/cow/"><img src="https://elektrubadur.se/posts/cow/cow.jpeg" alt="Cow" title="Cow"></a></p>
-<p>In <a href="https://elektrubadur.se/categories/photos/">Photos</a> —&nbsp;<time datetime="2017-05-11">Thursday&nbsp;May&nbsp;11,&nbsp;2017</time></p>
-</header>
-<p>Resort cow.</p>
-</article>
-<article>
-<header>
-<h2><a href="https://elektrubadur.se/posts/frog/" title="Frog">Frog</a></h2>
-<p><a href="https://elektrubadur.se/posts/frog/"><img src="https://elektrubadur.se/posts/frog/frog.jpeg" alt="Frog" title="Frog"></a></p>
-<p>In <a href="https://elektrubadur.se/categories/photos/">Photos</a> —&nbsp;<time datetime="2017-05-11">Thursday&nbsp;May&nbsp;11,&nbsp;2017</time></p>
-</header>
-<p>Bathroom decoration on Koh Lanta.</p>
-</article>
-<footer>
-<nav>
-<p>First page — <a href="https://elektrubadur.se/page/2/">Older »</a></p>
-</nav>
-</footer>
+<dl>
+<dt>
+<a href="https://elektrubadur.se/posts/">Posts</a>
+</dt>
+<dd>Blog posts on miscellaneous subjects.</dd>
+<dt>
+<a href="https://elektrubadur.se/galleries/">Galleries</a>
+</dt>
+<dd>Some photo galleries.</dd>
+<dt>
+<a href="https://elektrubadur.se/emacs/">Emacs</a>
+</dt>
+<dd>My Emacs configuration and packages.</dd>
+</dl>
+<p><img src="./portrait.jpeg" alt="./portrait.jpeg" title="./portrait.jpeg"></p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">About Me</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>I am a programmer living in Sweden. My interests include:</p>
+<ul>
+<li>playing go.</li>
+<li>reading science fiction.</li>
+<li>tie knots.</li>
+<li>hacking on <a href="https://elektrubadur.se/emacs/">Emacs</a>.
+</li>
+</ul>
+<p>I moved back from Bangkok a couple of years ago. If you wish to contact me, send an e-mail to <a href="mailto:bkhl@elektrubadur.se">bkhl@elektrubadur.se</a>.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">Links</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<ul>
+<li>
+<a href="https://social.sdfeu.org/@bkhl">Mastodon on SDF EU</a>
+</li>
+<li>
+<a href="https://github.com/bkhl">GitHub</a>
+</li>
+<li>
+<a href="https://exercism.org/profiles/bkhl">Exercism</a>
+</li>
+<li>
+<a href="https://online-go.com/player/52248/">Online-Go.com</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/">LinkedIn</a>
+</li>
+<li>
+<a href="https://elektrubadur.se/resume/">Resumé</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-2">
+<h2 id="headline-3">Elektrubadur?</h2>
+<div id="outline-text-headline-3" class="outline-text-2">
+<p>This is a name I've used for various projects in the past, including:</p>
+<ul>
+<li>
+<a href="https://www.jamendo.com/artist/4363/elektrubadur">A band</a>
+</li>
+<li>
+<a href="https://archive.org/details/ElektrubadurPodcast">A podcast</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">Information</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
+<ul>
+<li>
+<a href="https://elektrubadur.se/about_page/">About This Page</a>
+</li>
+</ul>
+</div>
+</div>
 </main>
 <footer>
 <p><a href="https://elektrubadur.se/rss.xml" rel="alternate" type="application/rss+xml" title="RSS feed">Subscribe by RSS</a></p>

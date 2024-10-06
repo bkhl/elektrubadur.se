@@ -9,10 +9,6 @@
     <lastmod>2024-09-30T20:32:09+02:00</lastmod>
   </url>
   <url>
-    <loc>https://elektrubadur.se/</loc>
-    <lastmod>2024-10-06T10:42:18+02:00</lastmod>
-  </url>
-  <url>
     <loc>https://elektrubadur.se/tags/emacs/</loc>
     <lastmod>2024-09-30T20:32:09+02:00</lastmod>
   </url>
@@ -27,10 +23,6 @@
   <url>
     <loc>https://elektrubadur.se/tags/org/</loc>
     <lastmod>2024-09-30T20:32:09+02:00</lastmod>
-  </url>
-  <url>
-    <loc>https://elektrubadur.se/posts/</loc>
-    <lastmod>2024-10-06T10:42:18+02:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/categories/programming/</loc>
@@ -477,23 +469,28 @@
     <lastmod>2024-09-30T20:32:09+02:00</lastmod>
   </url>
   <url>
-    <loc>https://elektrubadur.se/about_me/</loc>
-    <lastmod>2024-10-05T23:14:13+02:00</lastmod>
-  </url>
-  <url>
     <loc>https://elektrubadur.se/about_page/</loc>
-    <lastmod>2024-09-30T20:32:09+02:00</lastmod>
+    <lastmod>2024-10-06T14:44:16+02:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/desktop-wallpaper-uppsala/</loc>
     <lastmod>2024-09-30T20:32:09+02:00</lastmod>
   </url>
   <url>
+    <loc>https://elektrubadur.se/</loc>
+    <lastmod>2024-10-06T17:34:16+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/emacs/</loc>
+    <lastmod>2024-10-06T17:44:52+02:00</lastmod>
+  </url>
+  <url>
     <loc>https://elektrubadur.se/emacs-configuration/</loc>
+    <lastmod>2024-10-06T17:13:07+00:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/galleries/</loc>
-    <lastmod>2024-09-30T20:32:09+02:00</lastmod>
+    <lastmod>2024-10-06T17:34:16+02:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/horror/</loc>
@@ -512,7 +509,11 @@
     <lastmod>2024-09-30T20:32:09+02:00</lastmod>
   </url>
   <url>
+    <loc>https://elektrubadur.se/posts/</loc>
+    <lastmod>2024-10-06T17:34:16+02:00</lastmod>
+  </url>
+  <url>
     <loc>https://elektrubadur.se/resume/</loc>
-    <lastmod>2024-10-05T21:38:41+02:00</lastmod>
+    <lastmod>2024-10-06T14:44:16+02:00</lastmod>
   </url>
 </urlset>
