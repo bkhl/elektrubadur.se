@@ -13,7 +13,7 @@
 This is my Emacs configuration. It is available online in these forms:
 
 - [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/configuration.org][Org mode source file]] in a Git repository.
-- [[https://elektrubadur.se/emacs-configuration][HTML article]] on my personal web page.
+- [[https://elektrubadur.se/emacs-configuration/][Exported as HTML]] on my personal web page.
 
 Inspirations for this Emacs configuration include:
 
