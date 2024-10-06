@@ -18,11 +18,6 @@ popd
 
 pushd "${PUBLIC}"
 
-if git diff-index --quiet HEAD --; then
-    # No changes to commit.
-    exit 0
-fi
-
 git add --all
 
 if git diff --quiet HEAD --; then

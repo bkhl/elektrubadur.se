@@ -50,4 +50,4 @@ jobs:
           SOURCE: "${{ github.workspace }}/source"
           PUBLIC: "${{ github.workspace }}/public"
           SITE_NAME: elektrubadur-se
-        run: bash build/publish.sh"
+        run: bash build/publish.sh
