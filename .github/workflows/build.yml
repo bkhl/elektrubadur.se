@@ -22,19 +22,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check out dotfiles repository
-        uses: actions/checkout@v4
-        with:
-          repository: bkhl/dotfiles
-          path: dotfiles
-          fetch-depth: 0
-
-      - name: Copy Emacs configuration into contents directory
-        run: >-
-          install -v -m 0644 -T
-          dotfiles/.emacs.d/configuration.org
-          content/articles/emacs-configuration.org
-
       - name: Build web site
         run: bash build/build.sh
         env:

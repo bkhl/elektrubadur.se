@@ -1,0 +1,9 @@
+#+TITLE: Emacs
+
+[[./emacs.png]]
+
+Here are some configuration and packages for the [[https://www.gnu.org/software/emacs/][Emacs]] text editor.
+
+- [[/emacs-configuration/][My Emacs configuration]] :: My Emacs configuration, exported to HTML from Org mode.
+- [[https://github.com/bkhl/trimspace-mode][trimspace-mode]] :: Minor mode to trim trailing whitespace/newlines on save. Also available in [[https://melpa.org/][MELPA]].
+- [[https://github.com/bkhl/ob-jira][ob-jira]] :: Prototype Org Babel functions to evaluate Jira JQL.

@@ -1,0 +1,2317 @@
+#+TITLE: Emacs Configuration
+#+AUTHOR: Björn Lindström
+#+EMAIL: bkhl@elektrubadur.se
+#+STARTUP: overview
+#+PROPERTY: header-args :results silent
+#+TOC: t
+
+* Introduction
+:PROPERTIES:
+:CUSTOM_ID: introduction
+:END:
+
+This is my Emacs configuration. It is available online in these forms:
+
+- [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/configuration.org][Org mode source file]] in a Git repository.
+- [[https://elektrubadur.se/emacs-configuration][HTML article]] on my personal web page.
+
+Inspirations for this Emacs configuration include:
+
+- Harry R. Schwartz' [[https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
+- Phil Hagelberg's [[https://git.sr.ht/~technomancy/better-defaults][better-defaults.el]].
+- [[https://emacscast.org/][EmacsCast]].
+- Protesilaos Stavrou's [[https://protesilaos.com/codelog/][blog]] and [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
+
+Some interesting properties of this configuration:
+
+- Almost all of the configuration is kept in an Org file.
+- The startup time is quite fast. There are some tweaks in [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/init.el][init.el]] and [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/early-init.el][early-init.el]] that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
+- Add-on packages are managed manually as Git submodules.
+
+The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in [[https://github.com/bkhl/dotfiles/tree/main/.emacs.d/site-lisp][~/.emacs.d/site-lisp/]].
+
+Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
+
+* Set personal information
+:PROPERTIES:
+:CUSTOM_ID: personal-information
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'user-full-name "Björn Lindström")
+(customize-set-variable 'user-mail-address "bkhl@elektrubadur.se")
+#+end_src
+
+* Built-in functionality
+:PROPERTIES:
+:CUSTOM_ID: built-in
+:END:
+
+Configuration of built-in Emacs behaviour and packages bundled with Emacs.
+
+** Start-up
+:PROPERTIES:
+:CUSTOM_ID: start-up
+:END:
+
+*** ~use-package~
+:PROPERTIES:
+:CUSTOM_ID: use-package
+:END:
+
+The ~use-package~ macro makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
+
+#+begin_src emacs-lisp
+(require 'use-package)
+#+end_src
+
+This section contains extensions to this macro to enable using packages from Git submodules without involving a package manager.
+
+**** Provide default ~:load-path~ pointing to location of submodules
+:PROPERTIES:
+:CUSTOM_ID: use-package-default-load-path
+:END:
+
+This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported, if such a directory exists. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
+
+#+begin_src emacs-lisp
+(setf (alist-get :load-path use-package-defaults)
+      '((lambda (name args)
+          (let ((path (expand-file-name (concat user-emacs-directory
+                                                "site-lisp/"
+                                                (symbol-name name)))))
+            (when (file-exists-p path)
+              (list path))))
+        t))
+#+end_src
+
+**** Add ~:make-autoloads~ keyword extension to generate autoload files
+:PROPERTIES:
+:CUSTOM_ID: use-package-make-autoloads
+:END:
+
+Some packages rely on ~package.el~ (or equivalent) to generate and register an autoloads file. This custom keyword will do that for packages included without a package manager.
+
+This is the function that actually generates the autoload file (if needed) and loads it.
+
+Since ~make-directory-autoloads~ has no logic to work out if the file needs to be regenerated, this function will skip calling it the file exists already, and is newer than all the other ~.el~ files in the directory.
+
+If a package has additional files in subdirectories and such, this function would not handle it, but then neither would ~package-generate-autoloads~, as far as I can tell, so this should work for any packages supported by ~package.el~.
+
+#+begin_src emacs-lisp
+(defun my/use-package-autoload-package (name package-directory)
+  "Set up autoloading for package NAME in directory PACKAGE-DIRECTORY."
+  (let* ((name (symbol-name name))
+         (auto-file (expand-file-name (format "%s/%s-autoloads.el"
+                                              package-directory
+                                              name))))
+    (when (or (not (file-exists-p auto-file))
+              (let* ((autoloads-attributes
+                      (file-attributes auto-file))
+                     (autoloads-age
+                      (file-attribute-modification-time
+                       autoloads-attributes))
+                     (autoloads-inode-number
+                      (file-attribute-inode-number autoloads-attributes)))
+                (seq-find (lambda (attributes)
+                            (time-less-p autoloads-age
+                                         (file-attribute-modification-time
+                                          attributes)))
+                          (mapcar #'cdr
+                                  (directory-files-and-attributes
+                                   package-directory
+                                   nil
+                                   (rx ".el" eos))))))
+      (make-directory-autoloads package-directory auto-file))
+    (load auto-file package-directory)))
+#+end_src
+
+Register the custom keyword. This is added first in the list, so that it will have access to the ~:load-path~ parameter, and so that it will load before ~:defer~ or other keywords that might cause this to run after the package is loaded.
+
+#+begin_src emacs-lisp
+(add-to-list 'use-package-keywords :make-autoloads)
+#+end_src
+
+This makes the keyword take boolean parameters similar to other keywords like ~:defer~.
+
+#+begin_src emacs-lisp
+(defalias 'use-package-normalize/:make-autoloads
+  'use-package-normalize-predicate)
+#+end_src
+
+The handler function is what injects the call to the function to generate the autoloads file when the ~use-package~ macro is expanded.
+
+#+begin_src emacs-lisp
+(defun use-package-handler/:make-autoloads (name _keyword arg rest state)
+  (use-package-concat
+     (mapcar #'(lambda (path)
+                 `(my/use-package-autoload-package ',name ,path))
+             (plist-get rest :load-path))
+     (use-package-process-keywords name rest state)))
+#+end_src
+
+*** Keep customizations in separate file
+:PROPERTIES:
+:CUSTOM_ID: customize-separate
+:END:
+
+This makes the Emacs customization interface store values in a separate file, instead of in ~init.el~.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file :noerror)
+#+end_src
+
+*** Show init time on startup
+:PROPERTIES:
+:CUSTOM_ID: show-init-time
+:END:
+
+#+begin_src emacs-lisp
+(advice-add 'display-startup-echo-area-message
+            :after
+            (defun my/display-startup-echo-area-message ()
+              (message "Emacs init time: %s" (emacs-init-time))))
+#+end_src
+
+*** Disable garbage collection when in minibuffer
+:PROPERTIES:
+:CUSTOM_ID: minibuffer-disable-gc
+:END:
+
+Disable GC while minibuffer is open, and enabled again when it is closed. This helps prevent hanging while working in the minibuffer.
+
+#+begin_src emacs-lisp
+(add-hook 'minibuffer-setup-hook
+          (defun my/disable-gc ()
+            (setq gc-cons-threshold most-positive-fixnum)))
+(add-hook 'minibuffer-exit-hook
+          (defun my/default-gc ()
+            (setq gc-cons-threshold my/default-gc-cons-threshold)))
+#+end_src
+
+** Interface
+:PROPERTIES:
+:CUSTOM_ID: built-in-interface
+:END:
+
+*** Show line and column number in mode line
+:PROPERTIES:
+:CUSTOM_ID: line-column-number
+:END:
+
+#+begin_src emacs-lisp
+(line-number-mode)
+(column-number-mode)
+#+end_src
+
+*** Emoji font
+:PROPERTIES:
+:CUSTOM_ID: emoji-font
+:END:
+
+Enable Emoji font if available. ☃
+
+This is run as a hook after the first graphical frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
+
+#+begin_src emacs-lisp
+(defun my/set-fontset-fonts (frame)
+  (when (display-graphic-p frame)
+    (dolist (font-spec '((#x2600 . #x26ff)
+                         emoji))
+      (set-fontset-font t font-spec
+                        "Noto Color Emoji"))
+    (remove-hook 'after-make-frame-functions
+                 'my/set-fontset-fonts)))
+
+(add-hook 'after-make-frame-functions #'my/set-fontset-fonts)
+
+(my/set-fontset-fonts (selected-frame))
+#+end_src
+
+
+*** Disable bell
+:PROPERTIES:
+:CUSTOM_ID: disable-bell
+:END:
+
+Disable warning bell, both the default audio one and the visual one.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'ring-bell-function 'ignore)
+#+end_src
+
+*** Set window title
+:PROPERTIES:
+:CUSTOM_ID: window-title
+:END:
+
+Set window title including current buffer or filename, along with system name. Use a straight or squiggly line to show if the buffer has modifications.
+
+#+begin_src emacs-lisp
+(setq frame-title-format
+      '(
+        "%b"
+        (:eval (if (buffer-modified-p) " ⁓ " " — "))
+        (:eval (system-name))))
+#+end_src
+
+*** Enable restoring exact window size
+:PROPERTIES:
+:CUSTOM_ID: restore-exact-window-size
+:END:
+
+Setting this variable allows resizing window by pixels, rather than rounding to an exact number of lines or columns. This is needed to be able to restore back from fullscreen to original frame size in Gnome.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'frame-resize-pixelwise t)
+#+end_src
+
+*** Disable message on new ~emacsclient~ frames
+:PROPERTIES:
+:CUSTOM_ID: emacsclient-disable-message
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'server-client-instructions nil)
+#+end_src
+
+*** Prompt before closing Emacs
+:PROPERTIES:
+:CUSTOM_ID: prompt-before-close
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'confirm-kill-emacs 'y-or-n-p)
+#+end_src
+
+*** Set preferred dateformat
+:PROPERTIES:
+:CUSTOM_ID: date-format
+:END:
+
+#+begin_src emacs-lisp
+(calendar-set-date-style 'iso)
+#+end_src
+
+*** Allow undo of window layout changes
+:PROPERTIES:
+:CUSTOM_ID: window-layout-undo
+:END:
+
+#+begin_src emacs-lisp
+(winner-mode)
+#+end_src
+
+*** Preserve ~M-x~ command history between sessions
+:PROPERTIES:
+:CUSTOM_ID: m-x-command-history
+:END:
+
+#+begin_src emacs-lisp
+(savehist-mode)
+#+end_src
+
+*** Use saved point position in previously opened files
+:PROPERTIES:
+:CUSTOM_ID: save-place
+:END:
+
+#+begin_src emacs-lisp
+(save-place-mode)
+#+end_src
+
+*** Scrolling behaviour when moving cursor
+:PROPERTIES:
+:CUSTOM_ID: cursor-scrolling
+:END:
+
+When the cursor moves close to the edge of the screen, scroll only one line at time, but try to keep 5 rows within view.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'scroll-conservatively 101)
+(customize-set-variable 'scroll-margin 5)
+#+end_src
+
+*** Smooth scrolling with scroll wheel
+:PROPERTIES:
+:CUSTOM_ID: smooth-scrolling
+:END:
+
+#+begin_src emacs-lisp
+(pixel-scroll-precision-mode)
+#+end_src
+
+*** Highlight error messages
+:PROPERTIES:
+:CUSTOM_ID: highlight-visited-error
+:END:
+
+In ~next-error~ buffers, highligt the currently visited error.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'next-error-message-highlight t)
+#+end_src
+
+*** Make yes/no prompts shorter
+:PROPERTIES:
+:CUSTOM_ID: short-yes-no-prompts
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'use-short-answers t)
+#+end_src
+
+*** Don't show bookmarks in fringe
+:PROPERTIES:
+:CUSTOM_ID: hide-bookmarks
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'bookmark-set-fringe-mark nil)
+#+end_src
+
+*** Use bar cursor
+:PROPERTIES:
+:CUSTOM_ID: bar-cursor
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'cursor-type 'bar)
+#+end_src
+
+*** Show matching parenthesis context when offscreen
+:PROPERTIES:
+:CUSTOM_ID: show-matching-offscreen
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'show-paren-context-when-offscreen 'overlay)
+#+end_src
+
+*** Switch windows with ~M-o~
+:PROPERTIES:
+:CUSTOM_ID: switch-windows-binding
+:END:
+
+Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-o") #'other-window)
+#+end_src
+
+*** Switch between windows with ~S-<direction>~
+:PROPERTIES:
+:CUSTOM_ID: directional-window-switch-binding
+:END:
+
+#+begin_src emacs-lisp
+(windmove-default-keybindings)
+#+end_src
+
+** Key bindings
+:PROPERTIES:
+:CUSTOM_ID: key-bindings
+:END:
+
+*** Disable ~C-z~
+:PROPERTIES:
+:CUSTOM_ID: disable-c-z
+:END:
+
+Disabling ~C-z~, which normally minimizes the window, which is rather distracting.
+
+#+begin_src emacs-lisp
+(keymap-global-unset "C-z")
+#+end_src
+
+*** Enable repeat maps for commands that have them
+:PROPERTIES:
+:CUSTOM_ID: repeat-mode
+:END:
+
+This adds ability to repat some common commands by repeating the last key in its binding.
+
+#+begin_src emacs-lisp
+(repeat-mode)
+#+end_src
+
+** Mouse behaviour
+:PROPERTIES:
+:CUSTOM_ID: mouse-behaviour
+:END:
+
+*** Make middle-clicking mouse yank at point
+:PROPERTIES:
+:CUSTOM_ID: middle-click-yank-at-point
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'mouse-yank-at-point t)
+#+end_src
+
+*** Save to kill ring when adjusting region with mouse
+:PROPERTIES:
+:CUSTOM_ID: mouse-adjustement-to-kill-ring
+:END:
+
+Setting this to ~non-empty~ means this won't happen for empty strings, like when accidentally dragging for less than a character's width.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'mouse-drag-copy-region 'non-empty)
+#+end_src
+
+** Documentation and help
+:PROPERTIES:
+:CUSTOM_ID: documentation
+:END:
+
+*** Make ~apropos~ search more extensively
+:PROPERTIES:
+:CUSTOM_ID: apropos-do-all
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'apropos-do-all t)
+#+end_src
+
+*** Use variable pitch in Info reader
+:PROPERTIES:
+:CUSTOM_ID: info-variable-pitch
+:END:
+
+#+begin_src emacs-lisp
+(add-hook 'Info-mode-hook 'variable-pitch-mode)
+#+end_src
+
+*** Autoload if documentation is missing from autoload objects
+:PROPERTIES:
+:CUSTOM_ID: autoload-help
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'help-enable-symbol-autoload t)
+#+end_src
+
+*** Show outlines in bindings description
+:PROPERTIES:
+:CUSTOM_ID: bindings-help-outline
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'describe-bindings-outline t)
+#+end_src
+
+*** Reuse help window if already shown
+:PROPERTIES:
+:CUSTOM_ID: reuse-help-window
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'help-window-keep-selected t)
+#+end_src
+
+** Buffers
+:PROPERTIES:
+:CUSTOM_ID: buffers
+:END:
+
+*** Start with an empty scratch buffer.
+:PROPERTIES:
+:CUSTOM_ID: empty-scratch
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'inhibit-startup-screen t)
+(customize-set-variable 'initial-scratch-message nil)
+#+end_src
+
+*** Use directory name in buffer names for files with same name
+:PROPERTIES:
+:CUSTOM_ID: uniquify-name-style
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'uniquify-buffer-name-style 'forward)
+#+end_src
+
+*** Allow remembering risky local variables
+:PROPERTIES:
+:CUSTOM_ID: remember-risky
+:END:
+
+This overrides the Emacs settings that enforces having to accept local variables matching certain patterns every time they are used.
+
+#+begin_src emacs-lisp
+(advice-add 'risky-local-variable-p :override #'ignore)
+#+end_src
+
+*** Load  ~.dir-locals.el~ files on remote hosts
+:PROPERTIES:
+:CUSTOM_ID: remote-dir-locals
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'enable-remote-dir-locals t)
+#+end_src
+
+*** Key bindings to kill/bury current buffer
+:PROPERTIES:
+:CUSTOM_ID: kill-bury-bindings
+:END:
+
+Change the default keybinding for killing a buffer, ~C-x k~, so that it kills the current buffer rather than prompting for a buffer. Instead ~C-x K~ is used for the previous default.
+
+Also binds ~C-x M-k~ to bury the current buffer, a command that's not bound to any key by default.
+
+#+begin_src emacs-lisp
+(defun my/kill-this-buffer ()
+  "Kill current buffer, prompting if there are unsaved changes."
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+(global-set-key (kbd "C-x k") #'my/kill-this-buffer)
+(global-set-key (kbd "C-x K") #'kill-buffer)
+(global-set-key (kbd "C-x M-k") #'bury-buffer)
+#+end_src
+
+** Files
+:PROPERTIES:
+:CUSTOM_ID: files
+:END:
+
+*** Start opening files from home directory
+:PROPERTIES:
+:CUSTOM_ID: start-at-home
+:END:
+
+Unless overridden by a buffer, when prompting to open a file, start in the home directory.
+
+#+begin_src emacs-lisp
+(setq default-directory "~/")
+#+end_src
+
+*** Backup by copying
+:PROPERTIES:
+:CUSTOM_ID: backup-by-copy
+:END:
+
+The default method here can break hardlinks.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'backup-by-copying t)
+#+end_src
+
+*** Store backups in tmp directory
+:PROPERTIES:
+:CUSTOM_ID: backup-in-tmp
+:END:
+
+Store backups and autosaves in ~temporary-file-directory~. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(customize-set-variable 'auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+#+end_src
+
+*** Offer to create parent directories on save
+:PROPERTIES:
+:CUSTOM_ID: directory-create-on-save
+:END:
+
+When saving a file to a directory that doesn't exist, offer to create it.
+
+#+begin_src emacs-lisp
+(add-hook
+ 'before-save-hook
+ (defun my/ask-create-directory ()
+   (when buffer-file-name
+     (let ((dir (file-name-directory buffer-file-name)))
+       (when
+           (and
+            (not (file-exists-p dir))
+            (y-or-n-p
+             (format
+              "Directory %s does not exist. Create it?"
+              dir)))
+         (make-directory dir t))))))
+#+end_src
+
+*** Disable message when saving files
+:PROPERTIES:
+:CUSTOM_ID: save-silently
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'save-silently t)
+#+end_src
+
+*** Automatically sync updated files
+:PROPERTIES:
+:CUSTOM_ID: sync-updated
+:END:
+
+If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
+
+#+begin_src emacs-lisp
+(global-auto-revert-mode t)
+#+end_src
+
+*** Disable Emacs lock files
+:PROPERTIES:
+:CUSTOM_ID: disable-emacs-lock
+:END:
+
+Disable use of those lock files with a ~.#~ prefix that Emacs by default creates. Since my ways of using Emacs rarely involves multiple Emacs instances opening the same file, they cause me more problems than they solve.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'create-lockfiles nil)
+#+end_src
+
+*** ~dired~
+:PROPERTIES:
+:CUSTOM_ID: dired
+:END:
+
+Make file sizes shown in dired human readable.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'dired-listing-switches
+      "-l --all --human-readable --group-directories-first")
+#+end_src
+
+*** ~tramp~ remote editing
+:PROPERTIES:
+:CUSTOM_ID: tramp
+:END:
+
+Allow Tramp to write backups of root-owned files in ~/tmp~, and ensure that Tramp uses path of remote shell on remote hosts.
+
+#+begin_src emacs-lisp
+(use-package tramp
+  :custom
+  (tramp-allow-unsafe-temporary-files t)
+  :config
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+#+end_src
+
+** Text editing
+:PROPERTIES:
+:CUSTOM_ID: built-in-text-editing
+:END:
+
+*** Bind Home/End to move to start/end of line
+:PROPERTIES:
+:CUSTOM_ID: home-end-bindings
+:END:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "<home>") #'move-beginning-of-line)
+(global-set-key (kbd "<end>") #'move-end-of-line)
+#+end_src
+
+*** Change behaviour of ~M-z~ for zapping to character
+:PROPERTIES:
+:CUSTOM_ID: m-z-zap-to-char
+:END:
+
+Make ~M-z~ kill characters up to the character /before/ the next occurrence of the selected character, instead of including it, which is generally more useful.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-z") #'zap-up-to-char)
+#+end_src
+
+*** Bind ~cycle-spacing~ to ~M-S-SPC~
+:PROPERTIES:
+:CUSTOM_ID: cycle-spacing
+:END:
+
+This edits whitespace around point by cycling between leaving only one space, deleting the space, and going back to what was there before.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-S-SPC") #'cycle-spacing)
+#+end_src
+
+*** Bind ~duplicate-dwim~ to ~M-R~
+:PROPERTIES:
+:CUSTOM_ID: duplicate-dwim
+:END:
+
+Duplicates current line or active region.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-R") #'duplicate-dwim)
+#+end_src
+
+*** Use single space to delimit sentences
+:PROPERTIES:
+:CUSTOM_ID: single-space
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'sentence-end-double-space nil)
+#+end_src
+
+*** Highlight selected region and apply changes to it
+:PROPERTIES:
+:CUSTOM_ID: highlight-and-apply-to-region
+:END:
+
+Highlight the region when the mark is active.
+
+#+begin_src emacs-lisp
+(transient-mark-mode t)
+#+end_src
+
+Set it so that if a selection is active, typed text will replace the selection.
+
+#+begin_src emacs-lisp
+(delete-selection-mode t)
+#+end_src
+
+*** Disable indentation using tabs.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'indent-tabs-mode nil)
+#+end_src
+
+*** Set default line length to 80
+:PROPERTIES:
+:CUSTOM_ID: default-line-length
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'fill-column 80)
+#+end_src
+
+*** Show character name in character description
+:PROPERTIES:
+:CUSTOM_ID: char-name-in-description
+:END:
+
+When using ~C-x =~ to look up the character under the point, also show Unicode
+character name.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'what-cursor-show-names t)
+#+end_src
+
+*** Automatically pair matching characters like parenthesis
+:PROPERTIES:
+:CUSTOM_ID: electric-pair-mode
+:END:
+
+Enable ~electric-pair-mode~, which enables automatic insert of matching characters for example for parentheses.
+
+#+begin_src emacs-lisp
+(electric-pair-mode)
+#+end_src
+
+*** Save existing clipboard text into kill ring before replacing it
+:PROPERTIES:
+:CUSTOM_ID: save-clipboard-before-kill
+:END:
+
+Prevents killing text in Emacs from irrevocably deleting things from the system clipboard.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'save-interprogram-paste-before-kill t)
+#+end_src
+
+*** Enable ~downcase-region~ and ~upcase-region~
+:PROPERTIES:
+:CUSTOM_ID: upcase-downcase-region
+:END:
+
+#+begin_src emacs-lisp
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+#+end_src
+
+*** Make replacements and completions preserve case
+:PROPERTIES:
+:CUSTOM_ID: replacements-case
+:END:
+
+This also affects ~dabbrev~ completions.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'case-replace nil)
+#+end_src
+
+*** Completion
+:PROPERTIES:
+:CUSTOM_ID: built-in-completion
+:END:
+
+**** ~dabbrev~ dynamic abbreviations
+:PROPERTIES:
+:CUSTOM_ID: dabbrev
+:END:
+
+Swap ~dabbrev-completion~ and ~dabbrev-expand~, which works nicer with Corfu.
+
+Also make it ignore some buffers where it does not make sense.
+
+#+begin_src emacs-lisp
+(use-package dabbrev
+  :bind (("M-/" . dabbrev-completion)
+         ("C-M-/" . dabbrev-expand))
+  :config
+  (add-to-list 'dabbrev-ignored-buffer-regexps "\\` ")
+  (add-to-list 'dabbrev-ignored-buffer-modes 'doc-view-mode)
+  (add-to-list 'dabbrev-ignored-buffer-modes 'pdf-view-mode)
+  (add-to-list 'dabbrev-ignored-buffer-modes 'tags-table-mode))
+#+end_src
+
+** Programming
+:PROPERTIES:
+:CUSTOM_ID: built-in-programming
+:END:
+
+*** Render some keywords and operators as symbols
+:PROPERTIES:
+:CUSTOM_ID: prettify
+:END:
+
+I use this to make =lambda= get rendered as =λ= in Emacs Lisp, and similar replacements in other languages.
+
+#+begin_src emacs-lisp
+(global-prettify-symbols-mode)
+#+end_src
+
+Some reusable character compositions.
+
+Most of these are double-wide characters in the font that I use, meaning that for example ~→~ will for me occupy the space of two normal characters.
+
+In principle I should then be able to replace two characters with that one and everything should line up, but I've sometimes seen subtle alignment issues when doing that, so now use this method where you first draw the correct number of spaces, and then the character on top of them.
+
+This also works when the replacement character is not actually the same width as the characters I'm replacing, like with ~∷~ and ~…~ in my case.
+
+This also incidentally means this should work regardless of the width of the glyph in your font.
+
+#+begin_src emacs-lisp
+(setq my/prettify-right-arrow
+      '(?\s (Br . Bl) ?\s (Bc . Bc) ?→)
+      my/prettify-double-right-arrow
+      '(?\s (Br . Bl) ?\s (Bc . Bc) ?⇒)
+      my/prettify-left-arrow
+      '(?\s (Br . Bl) ?\s (Bc . Bc) ?←)
+      my/prettify-double-colon
+      '(?\s (Br . Bl) ?\s (Bc . Bc) ?∷)
+      my/prettify-ellipsis
+      '(?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?…))
+#+end_src
+
+Simplified predicate to determine if a substitution should be applied, which makes them apply everywhere except for in strings. ~prettify-symbols-compose-predicate~ can be set to this to apply substitutions more liberally.
+
+#+begin_src emacs-lisp
+(defun my/prettify-symbols-compose-p (_start _end _match)
+    (not (nth 3 (syntax-ppss))))
+#+end_src
+
+*** In programming modes, treat words in camel case symbols as separate.
+:PROPERTIES:
+:CUSTOM_ID: subword-mode
+:END:
+
+#+begin_src emacs-lisp
+(add-hook 'prog-mode-hook 'subword-mode)
+#+end_src
+
+*** Bind key to trigger compilation/recompilation
+:PROPERTIES:
+:CUSTOM_ID: compile-bindings
+:END:
+
+#+begin_src emacs-lisp
+(define-key prog-mode-map (kbd "C-c b") #'compile)
+(define-key prog-mode-map (kbd "C-c r") #'recompile)
+#+end_src
+
+*** ~flymake~
+:PROPERTIES:
+:CUSTOM_ID: flymake
+:END:
+
+Package for showing diagnostics from linters and similar interactively.
+
+#+begin_src emacs-lisp
+(autoload #'flymake-goto-next-error "flymake" nil t)
+(autoload #'flymake-goto-prev-error "flymake" nil t)
+
+(eval-after-load 'flymake
+  '(progn
+     (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+     (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)))
+#+end_src
+
+*** Eglot for language server protocol support
+:PROPERTIES:
+:CUSTOM_ID: eglot
+:END:
+
+#+begin_src emacs-lisp
+(use-package eglot
+  :config
+  (bind-key "C-c l f" 'eglot-format eglot-mode-map)
+  (bind-key "C-c l r" 'eglot-rename eglot-mode-map))
+#+end_src
+
+This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client.
+
+See [[#c][C]] for an example of how to configure it for a project.
+
+*** Languages
+:PROPERTIES:
+:CUSTOM_ID: built-in-programming-languages
+:END:
+
+**** C
+:PROPERTIES:
+:CUSTOM_ID: c
+:END:
+
+#+begin_src emacs-lisp
+(use-package cc-mode
+  :custom
+  (c-default-style '((java-mode . "java")
+                     (awk-mode . "awk")
+                     (other . "my")))
+  :hook
+  (c-mode . my/config-c-mode)
+  :config
+  (c-add-style "my"
+               '((c-basic-offset . 2)
+                 (c-comment-only-line-offset . 0)
+                 (c-hanging-braces-alist . ((brace-list-open)
+				            (brace-entry-open)
+				            (substatement-open after)
+				            (block-close . c-snug-do-while)
+				            (arglist-cont-nonempty)))
+                 (c-cleanup-list . (brace-else-brace))
+                 (c-offsets-alist . ((statement-block-intro . +)
+			             (knr-argdecl-intro . 0)
+			             (substatement-open . 0)
+			             (substatement-label . 0)
+			             (label . 0)
+			             (statement-cont . +)))))
+  (defun my/config-c-mode ()
+    (setq-local prettify-symbols-alist
+                `(("->" . ,my/prettify-right-arrow)))))
+#+end_src
+
+To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir-locals.el~ file to run it in a container for C mode buffers, with the project directory mounted to the same path within the container to ensure paths sent to the LSP server matches those on the host system, and enable Eglot automatically when opening C mode buffers.
+
+#+begin_example emacs-lisp
+((c-mode
+  . ((eval
+      . (let ((root (project-root (project-current))))
+          (setq-local eglot-server-programs
+                      `((c-mode
+                         "podman" "run" "--rm" "--interactive"
+                         ,(concat "--volume=" root ":" root ":z")
+                         ,(concat "--workdir=" root)
+                         "ghcr.io/bkhl/lsp-containers/ccls:latest")))
+          (eglot-ensure))))))
+#+end_example
+
+**** Containerfile/Dockerfile
+:PROPERTIES:
+:CUSTOM_ID: containerfile
+:END:
+
+#+begin_src emacs-lisp
+(use-package dockerfile-ts-mode
+  :mode (rx (or "/" bos)
+            (or "Containerfile" "Dockerfile")
+            (opt "." (*  (not (any "/"))))
+            eos))
+#+end_src
+
+**** Go
+:PROPERTIES:
+:CUSTOM_ID: go
+:END:
+
+#+begin_src emacs-lisp
+(use-package go-ts-mode
+  :init
+  (defalias 'go-mode 'go-ts-mode)
+  (defalias 'go-mod-mode 'go-mod-ts-mode)
+  :mode
+  ((rx ".go" eos) . go-mode)
+  ((rx (or "/" bos) "go.mod" eos) . go-mod-mode)
+  :custom (go-ts-mode-indent-offset 4)
+  :config (defun my/config-go-ts-mode ()
+            (setq-local tab-width 4)
+            (setq-local prettify-symbols-alist
+                        `(("<-" . ,my/prettify-left-arrow)
+                          ("..." . ,my/prettify-ellipsis))))
+  :hook (go-ts-mode . my/config-go-ts-mode))
+#+end_src
+
+Example ~.dir-locals.el~ to use the [[https://cs.opensource.google/go/x/tools/+/master:gopls/][gopls]] language server with Eglot, also using it for code formatting on save.
+
+#+begin_example emacs-lisp
+((go-ts-mode
+  . ((eval
+      . (let ((root (project-root (project-current))))
+          (setq-local eglot-server-programs
+                      `((go-ts-mode
+                         "podman" "run" "--rm" "--interactive"
+                         ,(concat "--volume=" root ":" root ":z")
+                         ,(concat "--workdir=" root)
+                         "docker.io/lspcontainers/gopls:latest")))
+          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
+          (eglot-ensure))))))
+#+end_example
+
+**** Perl
+:PROPERTIES:
+:CUSTOM_ID: perl
+:END:
+
+#+begin_src emacs-lisp
+(use-package cperl-mode
+  :custom
+  (cperl-file-style "PBP")
+  :init
+  (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
+  :config
+  (defun my/config-cperl-mode ()
+    (setq-local prettify-symbols-compose-predicate
+                #'my/prettify-symbols-compose-p
+                prettify-symbols-alist
+                `(("->" . ,my/prettify-right-arrow)
+                  ("=>" . ,my/prettify-double-right-arrow)
+                  ("::" . ,my/prettify-double-colon))))
+  :hook
+  (cperl-mode . my/config-cperl-mode))
+#+end_src
+
+**** Prolog
+:PROPERTIES:
+:CUSTOM_ID: prolog
+:END:
+
+#+begin_src emacs-lisp
+(use-package prolog
+  :hook
+  (prolog-mode . my/config-prolog-mode)
+  :config
+  (defun my/config-prolog-mode ()
+    (setq-local prettify-symbols-alist
+                `((":-" ,my/prettify-left-arrow)
+                  ("->" ,my/prettify-right-arrow)))))
+#+end_src
+
+** Version control
+:PROPERTIES:
+:CUSTOM_ID: built-in-version-control
+:END:
+
+*** ~vc-diff~
+:PROPERTIES:
+:CUSTOM_ID: vc-diff
+:END:
+
+Make ~vc-diff~ imitate the diff format of Magit.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'diff-font-lock-prettify t)
+#+end_src
+
+*** ~ediff~
+:PROPERTIES:
+:CUSTOM_ID: ediff
+:END:
+
+Make ediff use existing frame instead of creating new one
+
+#+begin_src emacs-lisp
+(customize-set-variable 'ediff-window-setup-function
+                        'ediff-setup-windows-plain)
+#+end_src
+
+** Project management
+:PROPERTIES:
+:CUSTOM_ID: project-management
+:END:
+
+*** Detect [[https://exercism.org/][Exercism]] exercises as projects.
+:PROPERTIES:
+:CUSTOM_ID: exercism-projects
+:END:
+
+This will make e.g. ~project-compile~ run commands with the appropriate working directory for Exercism excercises.
+
+#+begin_src emacs-lisp
+(add-hook 'project-find-functions
+          (defun my/project-try-exercism (path)
+            (when-let ((root (locate-dominating-file path ".exercism")))
+              (cons 'transient (expand-file-name root)))))
+#+end_src
+
+*** Bug reference mode
+:PROPERTIES:
+:CUSTOM_ID: bug-reference-mode
+:END:
+
+Enable bug reference mode, and in Org mode override the keybinding to open links in the bug reference overlays.
+
+#+begin_src emacs-lisp
+(use-package bug-reference
+  :custom
+  (bug-reference-bug-regexp nil)
+  (bug-reference-url-format nil)
+  :hook
+  (text-mode . bug-reference-mode)
+  (prog-mode . bug-reference-prog-mode)
+  :bind
+  (:map bug-reference-map
+        ("C-c C-o" . bug-reference-push-button))
+  :config
+  (setq bug-reference-auto-setup-functions nil))
+#+end_src
+
+To make this work in a project, a couple of variables need to be set, for example in ~.dir-locals.el~ like this:
+
+#+begin_example emacs-lisp
+((nil
+  . ((bug-reference-bug-regexp
+      . "\\<\\(\\(\\(?:PROJECTA\\|PROJECTB\\)-[[:digit:]]+\\)\\)\\>")
+     (bug-reference-url-format
+      . "https://tracker.company.example/issue/%s"))))
+#+end_example
+
+** Org
+:PROPERTIES:
+:CUSTOM_ID: built-in-org
+:END:
+
+*** Default ~org-mode~ directory
+:PROPERTIES:
+:CUSTOM_ID: org-default-dir
+:END:
+
+Set a custom variable for the notes directory, so that it can be referred to
+later.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-directory "~/Documents/Notes/")
+#+end_src
+
+*** Make initial scratch buffer use ~org-mode~
+:PROPERTIES:
+:CUSTOM_ID: org-scratch
+:END:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'initial-major-mode 'org-mode)
+#+end_src
+
+*** Editing
+:PROPERTIES:
+:CUSTOM_ID: org-editing
+:END:
+
+Edit src blocks in current window.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-src-window-setup 'current-window)
+#+end_src
+
+Make indentation and fonts in code blocks work according to mode for the language in the block.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-src-tab-acts-natively t)
+(customize-set-variable 'org-src-fontify-natively t)
+#+end_src
+
+Disable the extra indentation in src blocks.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-edit-src-content-indentation 0)
+#+end_src
+
+This prevents accidental editing in invisible regions.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-catch-invisible-edits 'error)
+#+end_src
+
+Shortcut for inserting a block of Elisp.
+
+#+begin_src emacs-lisp
+(add-to-list 'org-structure-template-alist
+             '("el" . "src emacs-lisp"))
+#+end_src
+
+When trying to edit in an hidden area, expand it before throwing an error.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-catch-invisible-edits 'show-and-error)
+#+end_src
+
+*** Display
+:PROPERTIES:
+:CUSTOM_ID: org-display
+:END:
+
+Enable ~org-indent~ mode, which makes org-mode indent sections visually, but not in the saved files.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-startup-indented t)
+#+end_src
+
+Use variable fonts in ~org-mode~ buffers.
+
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+#+end_src
+
+Hide the characters surrounding emphasized phrases
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-hide-emphasis-markers t)
+#+end_src
+
+Use real ellipsis character for collapsed subtrees, and prefix it with a space.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-ellipsis "…")
+#+end_src
+
+Put tags right after headline. This causes fewer conflicts with add-on packages affecting Org-mode style.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-tags-column 0)
+(customize-set-variable 'org-auto-align-tags nil)
+#+end_src
+
+Show Latex-style entities as Unicode characters.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-pretty-entities t)
+#+end_src
+
+*** Key bindings
+:PROPERTIES:
+:CUSTOM_ID: org-bindings
+:END:
+
+****  Editing of headers
+:PROPERTIES:
+:CUSTOM_ID: org-bindings-edit-header
+:END:
+
+When point is on a headline, make ~C-a~ and ~C-e~ go to beginning/end of headline text.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-special-ctrl-a/e t)
+#+end_src
+
+Insert new headlines after current subtree.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-insert-heading-respect-content t)
+#+end_src
+
+**** Global key binding to store links for ~org-mode~
+:PROPERTIES:
+:CUSTOM_ID: org-bindings-store-links
+:END:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c l") #'org-store-link)
+#+end_src
+
+**** Navigation between windows in org-mode
+:PROPERTIES:
+:CUSTOM_ID: org-bindings-navigate-windows
+:END:
+
+Reduce conflict with the global ~windmove~ key bindings.
+
+#+begin_src emacs-lisp
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+#+end_src
+
+**** Copy link location
+:PROPERTIES:
+:CUSTOM_ID: org-bindings-copy-link-location
+:END:
+
+Function to copy the destination of a link in Org.
+
+I'd like to extend this to work more generally for example for ~bug-reference-mode~.
+
+#+begin_src emacs-lisp
+(defun my/org-copy-link (&optional arg)
+  (interactive "P")
+  (let* ((link (org-element-lineage (org-element-context) '(link) t))
+         (type (org-element-property :type link))
+         (path (org-element-property :path link)))
+    (if (and type path)
+        (let ((url (concat type ":" path)))
+          (kill-new url)
+          (message url))
+      (message "Not a link"))))
+
+(define-key org-mode-map (kbd "C-c y") #'my/org-copy-link)
+#+end_src
+
+*** Capturing
+:PROPERTIES:
+:CUSTOM_ID: org-capturing
+:END:
+
+Add templates for use by ~org-capture~.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-capture-templates
+      `(("i"
+         "Inbox"
+         entry
+         (file ,(concat org-directory "Inbox.org"))
+         "* TODO %?")))
+#+end_src
+
+Bind ~C-c c~ to ~org-capture~ to quickly add notes.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c c") #'org-capture)
+#+end_src
+
+*** Refiling
+:PROPERTIES:
+:CUSTOM_ID: org-refiling
+:END:
+
+This allows refiling within the current buffer, or any agenda files.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-refile-targets
+                        '((nil :maxlevel . 9)
+                          (org-agenda-files :maxlevel . 9)))
+(customize-set-variable 'org-outline-path-complete-in-steps nil)
+(customize-set-variable 'org-refile-use-outline-path 'file)
+#+end_src
+
+*** Agendas
+:PROPERTIES:
+:CUSTOM_ID: org-agendas
+:END:
+
+Search all files in the notes directory when creating agendas.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-agenda-files `(,org-directory))
+#+end_src
+
+Key binding to open an agenda view.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c a") #'org-agenda)
+#+end_src
+
+Hide done tasks from the agenda.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-agenda-skip-scheduled-if-done t)
+(customize-set-variable 'org-agenda-skip-deadline-if-done t)
+#+end_src
+
+Hide already scheduled tasks from the agenda.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-agenda-todo-ignore-scheduled 'all)
+#+end_src
+
+Show tags right after headline. Reduces conflicts with packages that affect Org agenda style.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-agenda-tags-column 0)
+#+end_src
+
+Some agenda visual styling.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'org-agenda-block-separator ?-)
+(customize-set-variable 'org-agenda-time-grid
+      '((daily today require-timed)
+        (800 1000 1200 1400 1600 1800)
+        " ┄┄┄" ""))
+(customize-set-variable 'org-agenda-current-time-string
+      "🠨")
+#+end_src
+
+*** Allow opening links to anchors with ~org-open-at-point~
+:PROPERTIES:
+:CUSTOM_ID: org-open-at-point
+:END:
+
+~org-ctags~ otherwise breaks this functionality if it's loaded, which happens if you open some other filetype that uses ctags.
+
+This is caused by a [[https://lists.gnu.org/archive/html/emacs-orgmode/2023-03/msg00299.html][bug discussed on mailing list here]].
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'org-ctags
+  (customize-set-variable 'org-open-link-functions nil))
+#+end_src
+
+*** Allow evaluating Shell code blocks in Org
+:PROPERTIES:
+:CUSTOM_ID: org-eval-shell
+:END:
+
+Loading ~ob-shell~ will implicitly enable using source blocks in languages supported by ~shell-mode~.
+
+#+begin_src emacs-lisp
+(use-package ob-shell)
+#+end_src
+
+** Eshell
+:PROPERTIES:
+:CUSTOM_ID: eshell
+:END:
+
+*** Disable banner
+
+#+begin_src emacs-lisp
+(customize-set-variable 'eshell-banner-message "")
+#+end_src
+
+*** Aliases
+Alias to open file for editing
+
+#+begin_src emacs-lisp
+(defun eshell/e (f) (find-file f))
+#+end_src
+
+* Add-on packages
+:PROPERTIES:
+:CUSTOM_ID: add-ons
+:END:
+
+Configuration of add-on packages.
+
+** Dependencies
+:PROPERTIES:
+:CUSTOM_ID: dependencies
+:END:
+
+These are add-on packages that are dependencies of other packages further down, as listed under each one.
+
+*** [[https://github.com/emacs-compat/compat][compat]]
+:PROPERTIES:
+:CUSTOM_ID: compat
+:END:
+
+- [[#cape][cape]]
+- [[#consult][consult]]
+- [[#corfu][corfu]]
+- [[#embark][embark]]
+- [[#magit][Magit]]
+- [[#marginalia][marginalia]]
+- [[#org-modern][org-modern]]
+- [[#vertico][vertico]]
+
+#+begin_src emacs-lisp
+(use-package compat
+  :defer)
+#+end_src
+
+*** [[https://github.com/magnars/dash.el][dash]]
+:PROPERTIES:
+:CUSTOM_ID: dash
+:END:
+
+- [[#magit][Magit]]
+
+#+begin_src emacs-lisp
+(use-package dash
+  :defer)
+#+end_src
+
+*** [[https://github.com/magit/transient][transient]]
+:PROPERTIES:
+:CUSTOM_ID: transient
+:END:
+
+- [[#magit][Magit]]
+
+#+begin_src emacs-lisp
+(use-package transient
+  :load-path "site-lisp/transient/lisp")
+#+end_src
+
+*** [[https://github.com/magit/with-editor][with-editor]]
+:PROPERTIES:
+:CUSTOM_ID: with-editor
+:END:
+
+- [[#magit][Magit]]
+
+#+begin_src emacs-lisp
+(use-package with-editor
+  :load-path "site-lisp/with-editor/lisp")
+#+end_src
+
+** Interface
+:PROPERTIES:
+:CUSTOM_ID: add-on-interface
+:END:
+
+*** [[https://protesilaos.com/emacs/fontaine][fontaine]] font configuration
+:properties:
+:custom_id: fontaine
+:end:
+
+This package provides a concise way to define multiple font configurations and switch between them.
+
+#+begin_src emacs-lisp
+(use-package fontaine
+  :custom
+  (fontaine-presets
+   '((light :default-family "Iosevka BKHL Sans Normal"
+            :variable-pitch-family "Charis SIL"
+            :fixed-pitch-family "Iosevka BKHL Serif Normal")
+     (dark :default-family "Iosevka BKHL Sans Normal"
+           :variable-pitch-family "Inter BKHL Variable"
+           :variable-pitch-weight medium
+           :fixed-pitch-family "Iosevka BKHL Sans Normal")
+     (t :default-height 130
+        :default-weight normal
+        :variable-pitch-weight normal
+        :fixed-pitch-weight normal))))
+#+end_src
+
+*** [[https://protesilaos.com/emacs/modus-themes][modus-themes]] accessible themes
+:PROPERTIES:
+:CUSTOM_ID: modus-themes
+:END:
+
+#+begin_src emacs-lisp
+(use-package modus-themes
+  :custom
+  (modus-themes-bold-constructs t)
+  (modus-themes-italic-constructs t)
+  (modus-themes-mixed-fonts t)
+  (modus-themes-common-palette-overrides '((fringe unspecified))))
+#+end_src
+
+*** [[https://github.com/LionyxML/auto-dark-emacs][auto-dark]] to follow desktop dark mode setting
+:PROPERTIES:
+:CUSTOM_ID: auto-dark
+:END:
+
+This mode switches Emacs theme triggered by /dark style/ setting of the desktop.
+
+To get this to also change menu bar theme in Fedora, I need to install the [[https://packages.fedoraproject.org/pkgs/gnome-themes-extra/gnome-themes-extra/][gnome-themes-extra]] package, and the [[https://extensions.gnome.org/extension/4998/legacy-gtk3-theme-scheme-auto-switcher/][Legacy (GTK3) Theme Scheme Auto Switcher]] Gnome extension.
+
+#+begin_src emacs-lisp
+(use-package auto-dark
+  :demand t
+  :custom
+  (auto-dark-dark-theme 'modus-vivendi-tritanopia)
+  (auto-dark-light-theme 'modus-operandi)
+  :config
+  (add-hook 'auto-dark-dark-mode-hook
+            (defun my/config-dark-mode ()
+              (fontaine-set-preset 'dark)))
+  (add-hook 'auto-dark-light-mode-hook
+            (defun my/config-light-mode ()
+              (fontaine-set-preset 'light)))
+  (auto-dark-mode))
+#+end_src
+
+*** [[https://github.com/tarsius/minions][minions]] mode line minor mode listing improvements
+:PROPERTIES:
+:CUSTOM_ID: minions
+:END:
+
+Hides minor modes in a popup menu to preserve space and make the mode line less noisy.
+
+#+begin_src emacs-lisp
+(use-package minions
+  :custom
+  (minions-prominent-modes '(trimspace-mode))
+  :config
+  (minions-mode))
+#+end_src
+
+*** [[https://protesilaos.com/emacs/lin][lin]] mode for highlight of current line.
+:PROPERTIES:
+:CUSTOM_ID: lin
+:END:
+
+Enable higlight of current line in selected modes.
+
+#+begin_src emacs-lisp
+(use-package lin
+  :custom
+  (lin-face 'lin-yellow)
+  :config
+  (lin-global-mode))
+#+end_src
+
+*** [[https://github.com/stsquad/emacs_chrome][edit-server]] to edit Firefox text areas
+:PROPERTIES:
+:CUSTOM_ID: edit-server
+:END:
+
+This module provides the server allowing the [[https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/][Edit with Emacs]] Firefox add-on to open Emacs buffers where you can edit the content of text areas.
+
+#+begin_src emacs-lisp
+(use-package edit-server
+  :load-path "site-lisp/edit-server/servers"
+  :custom
+  (edit-server-new-frame nil)
+  :config
+  (when (and (daemonp)
+             (not (process-status "edit-server")))
+    (edit-server-start)))
+#+end_src
+
+*** [[https://www.emacswiki.org/emacs/sv-kalender.el][sv-kalender]] Swedish calendar localization
+:PROPERTIES:
+:CUSTOM_ID: sv-kalender
+:END:
+
+#+begin_src emacs-lisp
+(use-package sv-kalender)
+#+end_src
+
+*** [[https://github.com/minad/vertico][vertico]] for minibuffer completion
+:PROPERTIES:
+:CUSTOM_ID: vertico
+:END:
+
+This is a library for completion in the minibuffer, which integrates with the emacs ~completing-read~ functionality.
+
+#+begin_src emacs-lisp
+(use-package vertico
+  :config
+  (vertico-mode))
+#+end_src
+
+Do not allow the cursor in the minibuffer prompt.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'minibuffer-prompt-properties
+                        '(read-only t
+                          cursor-intangible t
+                          face minibuffer-prompt))
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+#+end_src
+
+Add prompt indicator to ~completing-read-multiple~.
+
+#+begin_src emacs-lisp
+(defun my/crm-indicator (args)
+  (cons (format "[CRM %s] %s"
+                (replace-regexp-in-string
+                 (rx (or (seq bos "["
+                              (*? nonl)
+                              "]*")
+                         (seq "["
+                              (*? nonl)
+                              "]*" eos)))
+                 ""
+                 crm-separator)
+                (car args))
+        (cdr args)))
+(advice-add #'completing-read-multiple :filter-args #'my/crm-indicator)
+#+end_src
+
+#+begin_src emacs-lisp
+(customize-set-variable 'read-extended-command-predicate
+                        #'command-completion-default-include-p)
+#+end_src
+
+Allow minibuffer commands while in the minibuffer.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'enable-recursive-minibuffers t)
+#+end_src
+
+*** [[https://github.com/minad/marginalia][marginalia]] minibuffer annotations
+:PROPERTIES:
+:CUSTOM_ID: marginalia
+:END:
+
+#+begin_src emacs-lisp
+(use-package marginalia
+  :config
+  (marginalia-mode))
+#+end_src
+
+*** [[https://github.com/minad/consult][consult]] search and navigation commands
+:PROPERTIES:
+:CUSTOM_ID: consult
+:END:
+
+#+begin_src emacs-lisp
+(use-package consult
+  :make-autoloads
+  :bind (;; C-c bindings (mode-specific-map)
+         ("C-c h" . consult-history)
+         ("C-c m" . consult-mode-command)
+         ("C-c k" . consult-kmacro)
+
+         ;; C-x bindings (ctl-x-map)
+         ("C-x M-:" . consult-complex-command)  ;; replaces `nrepeat-complex-command'
+         ("C-x b" . consult-buffer)  ;; replaces `switch-to-buffer'
+         ("C-x 4 b" . consult-buffer-other-window)  ;; replaces `switch-to-buffer-other-window'
+         ("C-x 5 b" . consult-buffer-other-frame) ;; replaces `switch-to-buffer-other-frame'
+         ("C-x r b" . consult-bookmark)  ;; replaces `bookmark-jump'
+         ("C-x p b" . consult-project-buffer)  ;; replaces `project-switch-to-buffer'
+
+         ;; Custom bindings for quick register access
+         ("M-\"" . consult-register-store)
+         ("M-'" . consult-register-load)  ;; replaces `abbrev-prefix-mark' (unrelated)
+
+         ;; Other custom bindings
+         ("M-y" . consult-yank-pop)  ;; replaces `yank-pop'
+
+         ;; M-g bindings (goto-map)
+         ("M-g e" . consult-compile-error)
+         ("M-g f" . consult-flymake)
+         ("M-g g" . consult-goto-line)  ;; replaces `goto-line'
+         ("M-g M-g" . consult-goto-line)  ;; replaces `goto-line'
+         ("M-g o" . consult-outline)
+         ("M-g a" . consult-org-agenda)
+         ("M-g h" . consult-org-heading)
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi)
+
+         ;; M-s bindings (search-map)
+         ("M-s d" . consult-find)
+         ("M-s D" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s l" . consult-line)
+         ("M-s L" . consult-line-multi)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+         ("M-s '" . consult-register)
+
+         ;; Isearch integration
+         ("M-s e" . consult-isearch-history)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch-history)  ;; replaces isearch-edit-string
+         ("M-s e" . consult-isearch-history)  ;; replaces isearch-edit-string
+         ("M-s l" . consult-line)  ;; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi)  ;; needed by consult-line to detect isearch
+
+         ;; Minibuffer history
+         :map minibuffer-local-map
+         ("M-s" . consult-history)  ;; replaces next-matching-history-element
+         ("M-r" . consult-history))  ;; replaces previous-matching-history-element
+  :init
+  (customize-set-variable 'register-preview-delay 0.5)
+  (customize-set-variable 'register-preview-function
+                          #'consult-register-format)
+  (advice-add #'register-preview :override #'consult-register-window)
+  (customize-set-variable 'xref-show-xrefs-function #'consult-xref)
+  (customize-set-variable 'xref-show-definitions-function #'consult-xref)
+  :config
+  (customize-set-variable 'consult-narrow-key "<"))
+#+end_src
+
+*** [[https://github.com/oantolin/embark][embark]] contextual actions
+:PROPERTIES:
+:CUSTOM_ID: embark
+:END:
+
+Embark provides ways to trigger commands based on the entity at point or the region, in both regular buffers and minibuffers.
+
+#+begin_src emacs-lisp
+(use-package embark
+  :bind
+  (("C-." . embark-act)
+   ("C-;" . embark-dwim)
+   ("C-h B" . embark-bindings)) ;; replaces `describe-bindings'
+  :commands embark-prefix-help-command
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command)
+  :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               `(,(rx bos
+                      "*Embark Collect "
+                      (or "Live" "Completions")
+                      "*")
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+#+end_src
+
+This adds some extra integration between Embark and Consult.
+
+#+begin_src emacs-lisp
+(use-package embark-consult
+  :after (embark consult)
+  :demand t
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+#+end_src
+
+*** [[https://protesilaos.com/emacs/pulsar][pulsar]] to temporarily highlight current line
+:PROPERTIES:
+:CUSTOM_ID: pulsar
+:END:
+
+Press to flash line of point where the currently active cursor is.
+
+The ~M-p~ binding conflicts with my custom binding for ~flymake-mode~, but we can then use ~M-P~ as long as that is free.
+
+#+begin_src emacs-lisp
+(use-package pulsar
+  :demand t
+  :custom
+  (pulsar-face 'pulsar-yellow)
+  :bind
+  (("M-p" . pulsar-pulse-line))
+  :hook
+  (next-error . pulsar-pulse-line)
+  :config
+  (push 'next-error pulsar-pulse-functions)
+  (pulsar-global-mode))
+#+end_src
+
+*** [[https://github.com/Fuco1/free-keys][free-keys]] to show free bindings
+:PROPERTIES:
+:CUSTOM_ID: free-keys
+:END:
+
+This package can show available bindings in the current buffer.
+
+#+begin_src emacs-lisp
+(use-package free-keys
+  :commands free-keys)
+#+end_src
+
+** Text editing
+:PROPERTIES:
+:CUSTOM_ID: add-on-text-editing
+:END:
+
+*** [[https://protesilaos.com/emacs/substitute][substitute]] text replacement commands
+:PROPERTIES:
+:CUSTOM_ID: substitute
+:END:
+
+#+begin_src emacs-lisp
+(use-package substitute
+  :custom
+  (substitute-highlight t)
+  :bind
+  (("M-# s" . substitute-target-below-point)
+   ("M-# r" . substitute-target-above-point)
+   ("M-# d" . substitute-target-in-defun)
+   ("M-# b" . substitute-target-in-buffer)))
+#+end_src
+
+*** [[https://github.com/bkhl/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
+:PROPERTIES:
+:CUSTOM_ID: trimspace-mode
+:END:
+
+~trimspace-mode~ sets things up so that when a file is opened, it enables deleting trailing whitespace and newlines before saving the file, unless the file when first opened already has traling whitespace of each type.
+
+#+begin_src emacs-lisp
+(use-package trimspace-mode
+  :hook
+  (prog-mode . trimspace-mode-maybe)
+  (text-mode . trimspace-mode-maybe))
+#+end_src
+
+*** [[https://github.com/purcell/whole-line-or-region][whole-line-or-region]]
+:PROPERTIES:
+:CUSTOM_ID: whole-line-or-region
+:END:
+
+This module allows a number of functions to operate on the current line if no region is selected.
+
+#+begin_src emacs-lisp
+(use-package whole-line-or-region
+  :config
+  (whole-line-or-region-global-mode))
+#+end_src
+
+*** Completion
+:PROPERTIES:
+:CUSTOM_ID: add-on-completion
+:END:
+
+**** [[https://github.com/minad/corfu][corfu]] for completion at point
+:PROPERTIES:
+:CUSTOM_ID: corfu
+:END:
+
+#+begin_src emacs-lisp
+(use-package corfu
+  :demand t
+  :bind
+  (("C-<tab>" . complete-symbol))
+  :config
+  (global-corfu-mode))
+#+end_src
+
+**** [[https://github.com/minad/cape][cape]] completion at point extensions
+:PROPERTIES:
+:CUSTOM_ID: cape
+:END:
+
+#+begin_src emacs-lisp
+(use-package cape
+  :make-autoloads
+  :bind (("C-c p p" . completion-at-point)
+         ("C-c p t" . complete-tag)
+         ("C-c p d" . cape-dabbrev)
+         ("C-c p h" . cape-hist)
+         ("C-c p f" . cape-file)
+         ("C-c p k" . cape-keyword)
+         ("C-c p s" . cape-symbol)
+         ("C-c p a" . cape-abbrev)
+         ("C-c p i" . cape-ispell)
+         ("C-c p l" . cape-line)
+         ("C-c p w" . cape-dict)
+         ("C-c p \\" . cape-tex)
+         ("C-c p _" . cape-tex)
+         ("C-c p ^" . cape-tex)
+         ("C-c p &" . cape-sgml)
+         ("C-c p r" . cape-rfc1345))
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file))
+#+end_src
+
+**** [[https://github.com/oantolin/orderless][orderless]] completion style
+:PROPERTIES:
+:CUSTOM_ID: orderless
+:END:
+
+[[https://github.com/oantolin/orderless][Orderless]] provides a completion style that allows typing components of a canditate out of order.
+
+#+begin_src emacs-lisp
+(use-package orderless
+  :custom
+  (completition-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion))))
+  :config
+  (let ((hook (defun my/minibuffer-setup ()
+                (setq-local completion-styles '(orderless basic)))))
+    (remove-hook 'minibuffer-setup-hook hook)
+    (add-hook 'minibuffer-setup-hook hook 1)))
+#+end_src
+
+** Programming
+:PROPERTIES:
+:CUSTOM_ID: add-on-programming
+:END:
+
+*** [[https://codeberg.org/ideasman42/emacs-fancy-compilation.git][fancy-compilation]] to improve compilation output buffers
+:PROPERTIES:
+:CUSTOM_ID: fancy-compilation
+:END:
+
+#+begin_src emacs-lisp
+(use-package fancy-compilation
+  :custom
+  (fancy-compilation-override-colors nil)
+  :config
+  (fancy-compilation-mode))
+#+end_src
+
+*** Languages
+:PROPERTIES:
+:CUSTOM_ID: add-on-programming-languages
+:END:
+
+**** Emacs Lisp
+:PROPERTIES:
+:CUSTOM_ID: add-on-emacs-lisp
+:END:
+
+***** [[https://github.com/purcell/package-lint][package-lint]] Emacs package linter
+:PROPERTIES:
+:CUSTOM_ID: package-lint
+:END:
+
+#+begin_src emacs-lisp
+(use-package package-lint
+  :commands (package-lint-buffer
+             package-lint-current-buffer))
+#+end_src
+
+***** [[https://github.com/mattiase/xr][xr]] reverse rx
+:PROPERTIES:
+:CUSTOM_ID: xr
+:END:
+
+Helpful functions for refactoring regular expressions to ~rx~ expressions.
+
+#+begin_src emacs-lisp
+(use-package xr
+  :commands (xr
+             xr-pp
+             xr-lint
+             xr-skip-set
+             xr-skip-set-pp
+             xr-skip-set-lint
+             xr-pp-rx-to-str))
+#+end_src
+
+**** [[https://github.com/immerrr/lua-mode][lua-mode]]
+:PROPERTIES:
+:CUSTOM_ID: lua
+:END:
+
+#+begin_src emacs-lisp
+(use-package lua-mode
+  :mode (rx ".lua" eos)
+  :custom
+  (lua-indent-level 4))
+#+end_src
+
+** Writing
+*** [[https://github.com/minad/jinx][Jinx]] spell checking
+
+#+begin_src emacs-lisp
+(use-package jinx
+  :custom
+  (jinx-languages "sv_SE en_GB en_US th_TH")
+  :config
+  (add-to-list 'jinx--syntax-overrides '(?: . "."))
+  :bind
+  ("M-$" . jinx-correct)
+  :commands (jinx-mode
+             global-jinx-mode
+             jinx-correct))
+#+end_src
+
+*** [[https://jblevins.org/projects/markdown-mode/][markdown-mode]] for Markdown support
+:PROPERTIES:
+:CUSTOM_ID: markdown
+:END:
+
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :mode (rx ".md" eos))
+#+end_src
+
+*** [[https://github.com/rnkn/olivetti][olivetti]] to adjust margins of text
+:PROPERTIES:
+:CUSTOM_ID: olivetti
+:END:
+
+A minor mode that automatically adjusts margins &c. for reading and writing prose.
+
+#+begin_src emacs-lisp
+(use-package olivetti
+  :custom
+  (olivetti-style nil)
+  :hook
+  (Info-mode . olivetti-mode)
+  (org-mode . olivetti-mode)
+  (ewww . olivetti-mode))
+#+end_src
+
+** File formats
+:PROPERTIES:
+:CUSTOM_ID: file-formats
+:END:
+
+*** YAML
+:PROPERTIES:
+:CUSTOM_ID: yaml
+:END:
+
+**** [[https://github.com/yoshiki/yaml-mode][yaml-mode]]
+:PROPERTIES:
+:CUSTOM_ID: yaml-mode
+:END:
+
+#+begin_src emacs-lisp
+(use-package yaml-mode
+  :mode (rx ".y" (opt "a") "ml" eos))
+#+end_src
+
+**** [[https://github.com/shaohme/flymake-yamllint][flymake-yamllint]]
+:PROPERTIES:
+:CUSTOM_ID: flymake-yamllint
+:END:
+
+#+begin_src emacs-lisp
+(use-package flymake-yamllint)
+#+end_src
+
+To use this in a project a ~.dir-locals.el~ file is needed, looking something like this:
+
+#+begin_example emacs-lisp
+((yaml-mode
+  . ((flymake-yamllint-program . "podman")
+     (flymake-yamllint-arguments
+      . ("run" "--rm" "--interactive" "docker.io/cytopia/yamllint"))
+     (eval . (progn (flymake-yamllint-setup)
+                    (flymake-mode))))))
+#+end_example
+
+*** CMake
+
+#+begin_src emacs-lisp
+(use-package cmake-mode
+  :load-path "site-lisp/cmake/Auxiliary")
+#+end_src
+
+** Version control
+:PROPERTIES:
+:CUSTOM_ID: add-on-version-control
+:END:
+
+*** [[https://magit.vc/][Magit]] Git interface
+:PROPERTIES:
+:CUSTOM_ID: magit
+:END:
+
+#+begin_src emacs-lisp
+(use-package magit
+  :load-path "site-lisp/magit/lisp"
+  :bind
+  ("C-x g" . magit-status)
+
+  :commands
+  magit-refresh
+
+  :custom
+  (magit-push-always-verify nil)
+  (git-commit-summary-max-length 50)
+
+  :config
+  (transient-append-suffix 'magit-push "-t"
+    '(4
+      "-s"
+      "Skip pipeline"
+      "-o ci.skip"))
+  (transient-append-suffix 'magit-push "-s"
+    '(4
+      "-m"
+      "Create merge request"
+      "-o merge_request.create"))
+  (transient-append-suffix 'magit-push "-m"
+    '(4
+      "-M"
+      "Create merge request with target"
+      "-o merge_request.create -o merge_request.target="))
+  (transient-append-suffix 'magit-push "-M"
+    '(4
+      "-l"
+      "Set all tests label"
+      "-o merge_request.unlabel=test::skip -o merge_request.label=test::all"))
+  (transient-append-suffix 'magit-push "-l"
+    '(4
+      "-L"
+      "Set skip tests label"
+      "-o merge_request.unlabel=test::all \
+-o merge_request.label=test::skip")))
+#+end_src
+
+**** Automatic commit on save
+:PROPERTIES:
+:CUSTOM_ID: magit-auto-commit
+:END:
+
+Function to do automatic commit on save in certain repos. This is for use with for example ~org-mode~, to enable finding things after accidental changes.
+
+#+begin_src emacs-lisp
+(defun my/magic-commit-current-buffer ()
+  (magit-refresh)
+  (magit-call-git "add" buffer-file-name)
+  (magit-call-git "commit"
+                  "-m"
+                  (format "Automatic commit on save of %s"
+                          buffer-file-name))
+  (magit-refresh))
+#+end_src
+
+To use this as an ~after-save-hook~ in a project, create a ~.dir-locals.el~ with something like this:
+
+#+begin_example
+((org-mode . ((eval . (add-hook
+                       'after-save-hook
+                       'my/magic-commit-current-buffer
+                       nil t)))))
+#+end_example
+
+*** [[https://github.com/dgutov/diff-hl][diff-hl]] to show uncommitted changes in gutter
+:PROPERTIES:
+:CUSTOM_ID: diff-hl
+:END:
+
+Shows changes that are not committed to the version control system for the file open in a buffer in the gutter.
+
+#+begin_src emacs-lisp
+(use-package diff-hl
+  :custom
+  (diff-hl-draw-borders nil)
+  :config
+  (global-diff-hl-mode)
+  (add-hook 'magit-pre-refresh-hook
+            'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook
+            'diff-hl-magit-post-refresh))
+
+(use-package diff-hl-flydiff
+  :config
+  (diff-hl-flydiff-mode))
+#+end_src
+
+*** [[https://codeberg.org/pidu/git-timemachine.git][git-timemachine]] file history browsing
+:PROPERTIES:
+:CUSTOM_ID: git-timemachine
+:END:
+
+#+begin_src emacs-lisp
+(use-package git-timemachine
+  :commands git-timemachine)
+#+end_src
+
+*** [[https://github.com/sshaw/git-link][git-link]] to generate links to Git forges
+:PROPERTIES:
+:CUSTOM_ID: git-link
+:END:
+
+#+begin_src emacs-lisp
+(use-package git-link
+    :bind
+    ("C-c g l" . git-link))
+#+end_src
+
+** Org
+:PROPERTIES:
+:CUSTOM_ID: add-on-org
+:END:
+
+*** [[https://github.com/minad/org-modern][org-modern]] styling for Org mode
+:PROPERTIES:
+:CUSTOM_ID: org-modern
+:END:
+
+#+begin_src emacs-lisp
+(use-package org-modern
+  :config
+  (dolist (face '(org-modern-symbol org-modern-label))
+    (set-face-attribute face nil :family "Iosevka BKHL Sans Normal"))
+  (global-org-modern-mode))
+#+end_src
