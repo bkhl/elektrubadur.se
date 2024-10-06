@@ -36,7 +36,7 @@ jobs:
           content/articles/emacs-configuration.org
 
       - name: Build web site
-        run: bash build.sh
+        run: bash build/build.sh
         env:
           DESTINATION: public
 
@@ -81,7 +81,7 @@ jobs:
           path: "${{ github.workspace }}/public"
 
       - name: Publish web site
-        run: bash "${{ github.workspace }}/${{ github.event.repository.name }}/publish.sh"
+        run: bash "${{ github.workspace }}/${{ github.event.repository.name }}/build/publish.sh"
         env:
           SOURCE: "${{ github.workspace }}/${{ github.event.repository.name }}"
           PREV_PUBLIC: "${{ github.workspace }}/${{ github.event.repository.name }}-public"

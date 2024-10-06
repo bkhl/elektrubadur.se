@@ -15,10 +15,10 @@ all:
 	make --print-targets
 
 image:
-	podman build -f Containerfile -t $(IMAGE) .
+	podman build -f build/Containerfile -t $(IMAGE) .
 
 build: image
-	$(run) --env DOMAIN --env DESTINATION $(IMAGE) bash build.sh
+	$(run) --env DOMAIN --env DESTINATION $(IMAGE) bash build/build.sh
 
 serve: image
 	$(run) --publish '1313:1313' $(IMAGE) hugo serve --bind 0.0.0.0
@@ -27,4 +27,4 @@ validate: build
 	$(run) ghcr.io/validator/validator:latest vnu --skip-non-html --also-check-css --also-check-svg public
 
 check_links:
-	$(run) docker.io/tennox/linkcheck:latest --show-redirects --check-anchors --skip-file linkcheck_skipfile.txt --external "https://$(DOMAIN)"
+	$(run) docker.io/tennox/linkcheck:latest --show-redirects --check-anchors --skip-file build/linkcheck_skipfile.txt --external "https://$(DOMAIN)"
