@@ -13,20 +13,19 @@ message="$(git log -1 --pretty='%B')"
 
 popd
 
-
 # Commit and push changes
 
 pushd "${PUBLIC}"
 
 git add --all
 
-if git diff --quiet HEAD --; then
-    # No changes
+if git diff-index --quiet HEAD --; then
+    # No changes to commit.
     exit 0
 fi
 
 git commit --message="${message}"
-git push origin public:public
+git push
 
 popd
 

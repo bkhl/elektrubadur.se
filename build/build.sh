@@ -5,7 +5,9 @@ set -xeuo pipefail
 : "${DOMAIN:=elektrubadur.se}"
 : "${DESTINATION:=public}"
 
-find "${DESTINATION}" -depth -mindepth 1 -name .git -prune -o -delete
+if [[ -d $DESTINATION ]]; then
+    find "${DESTINATION}" -depth -mindepth 1 -maxdepth 1 -name .git -prune -o -exec rm -r '{}' '+'
+fi
 
 hugo --baseURL="https://${DOMAIN}" --destination="${DESTINATION}"
 
