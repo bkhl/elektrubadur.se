@@ -1,5 +1,4 @@
 #+TITLE: Resumé
-#+URL: /resume
 
 /Björn Lindström/, programmer and scrum master
 

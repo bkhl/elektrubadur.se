@@ -1,5 +1,4 @@
 #+TITLE: About Me
-#+URL: /about_me
 
 {{< image file="box.jpeg" title="Portrait" alt="Portrait" >}}
 

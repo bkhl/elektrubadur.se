@@ -1,5 +1,5 @@
 <p>
-  {{ range $index, $element := .Site.Menus.main }}
+  {{ range $index, $element := .Site.Menus.main.ByWeight }}
   {{ if ne $index 0 }}—{{ end }}
   {{ if and (eq $.Page.RelPermalink .PageRef)
             (or (eq $.Page.Kind "page")

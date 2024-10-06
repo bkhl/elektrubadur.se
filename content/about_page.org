@@ -1,5 +1,4 @@
 #+TITLE: About This Page
-#+URL: /about_page
 
 * Copyright
 
