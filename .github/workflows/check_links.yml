@@ -22,5 +22,5 @@ jobs:
             --show-redirects
             --check-anchors
             --external
-            --skip-file linkcheck_skipfile.txt
+            --skip-file build/linkcheck_skipfile.txt
             "https://elektrubadur.se"
