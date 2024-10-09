@@ -1,6 +1,4 @@
 ---
-image: ~
-command: ~
 public: .
 domains:
   - elektrubadur.se

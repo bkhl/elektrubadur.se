@@ -1,9 +1,0 @@
-#+TITLE: Elektrubadur (public)
-
-[[https://github.com/bkhl/elektrubadur.se/actions/workflows/build.yml/badge.svg]]
-
-[[https://builder.statichost.eu/elektrubadur-se/status.svg]]
-
-This is the repository for my personal web site. It is built from the sources in [[https://github.com/bkhl/elektrubadur.se][the elektrubadur.se repository]].
-
-For more information about the page, see [[https://elektrubadur.se/about_page/][About This Page]] on the web site.
