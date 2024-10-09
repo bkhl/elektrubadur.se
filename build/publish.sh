@@ -23,12 +23,13 @@ mv "${PREV_PUBLIC}/.git" -t "${PUBLIC}"
 
 pushd "${PUBLIC}"
 
+git add --all
+
 if git diff-index --quiet HEAD --; then
     # No changes
     exit 0
 fi
 
-git add --all
 git commit --message="${message}"
 git push
 
