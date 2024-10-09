@@ -1,11 +1,14 @@
 ---
 name: Publish
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-    name: Publish web site
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Set up Hugo
@@ -20,21 +23,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          path: source
-          fetch-depth: 0
-
-      - name: Check out public destination repository
-        uses: actions/checkout@v4
-        with:
-          repository: bkhl/elektrubadur.se-public
-          token: "${{ secrets.ELEKTRUBADUR_SE_PUBLIC_TOKEN }}"
-          path: public
           fetch-depth: 0
 
       - name: Build web site
-        working-directory: source
-        env:
-          DESTINATION: "${{ github.workspace }}/public"
         run: bash build/build.sh
 
       - name: Validate web site
@@ -42,12 +33,46 @@ jobs:
         with:
           args: vnu --skip-non-html --also-check-css --also-check-svg public
 
+      - name: Upload web site as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: public
+          path: public
+          retention-days: 7
+
+  publish:
+    name: Publish
+    needs: build
+    if: >-
+      github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository (current branch)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: source
+
+      - name: Check out repository (public branch)
+        uses: actions/checkout@v4
+        with:
+          ref: public
+          path: prev-public
+          token: "${{ github.token }}"
+          fetch-depth: 0
+
+      - name: Download web site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: public
+          path: "${{ github.workspace }}/public"
+
       - name: Publish web site
-        if: >-
-          github.ref == 'refs/heads/main'
-        working-directory: source
+        run: bash source/build/publish.sh
         env:
           SOURCE: "${{ github.workspace }}/source"
+          PREV_PUBLIC: "${{ github.workspace }}/prev-public"
           PUBLIC: "${{ github.workspace }}/public"
           SITE_NAME: elektrubadur-se
-        run: bash build/publish.sh

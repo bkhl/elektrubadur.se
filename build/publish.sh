@@ -13,17 +13,22 @@ message="$(git log -1 --pretty='%B')"
 
 popd
 
+
+# Move .git repo into artifact directory.
+
+mv "${PREV_PUBLIC}/.git" -t "${PUBLIC}"
+
+
 # Commit and push changes
 
 pushd "${PUBLIC}"
 
-git add --all
-
 if git diff-index --quiet HEAD --; then
-    # No changes to commit.
+    # No changes
     exit 0
 fi
 
+git add --all
 git commit --message="${message}"
 git push
 
