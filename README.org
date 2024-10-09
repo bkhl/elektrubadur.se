@@ -4,6 +4,6 @@
 
 [[https://builder.statichost.eu/elektrubadur-se/status.svg]]
 
-This is the repository for my personal web site. It is built and the output is stored in [[https://github.com/bkhl/elektrubadur.se-public][the elektrubadur.se-public repository]].
+This is the repository for my personal web site at [[https://elektrubadur.se/]].
 
-For more information about the page, see [[https://elektrubadur.se/about_page/][About This Page]] on the web site.
+For more information, see [[https://elektrubadur.se/about_page/][About This Page]] on the web site.
