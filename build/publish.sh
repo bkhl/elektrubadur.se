@@ -26,7 +26,7 @@ pushd "${PUBLIC}"
 git add --all
 
 if git diff-index --quiet HEAD --; then
-    # No changes
+    echo "No changes to publish"
     exit 0
 fi
 
