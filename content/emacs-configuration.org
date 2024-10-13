@@ -2073,6 +2073,20 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
              xr-pp-rx-to-str))
 #+end_src
 
+**** [[https://git.sr.ht/~technomancy/fennel-mode][fennel-mode]] for [[https://fennel-lang.org/][Fennel]]
+:PROPERTIES:
+:CUSTOM_ID: fennel
+:END:
+
+#+begin_src emacs-lisp
+(use-package fennel-mode
+  :mode (rx ".fnl" eos)
+  :init
+  (defun my/config-fennel-mode ()
+    (setq prettify-symbols-alist '(("lambda" . ?λ))))
+  :hook (fennel-mode . my/config-fennel-mode))
+#+end_src
+
 **** [[https://github.com/immerrr/lua-mode][lua-mode]]
 :PROPERTIES:
 :CUSTOM_ID: lua
