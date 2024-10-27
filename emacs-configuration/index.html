@@ -515,6 +515,9 @@
 <a href="#fennel">fennel-mode for Fennel</a>
 </li>
 <li>
+<a href="#gdscript">gdscript-mode for Godot</a>
+</li>
+<li>
 <a href="#lua">lua-mode</a>
 </li>
 </ul>
@@ -522,10 +525,10 @@
 </ul>
 </li>
 <li>
-<a href="#headline-148">Writing</a>
+<a href="#headline-149">Writing</a>
 <ul>
 <li>
-<a href="#headline-149">Jinx spell checking</a>
+<a href="#headline-150">Jinx spell checking</a>
 </li>
 <li>
 <a href="#markdown">markdown-mode for Markdown support</a>
@@ -550,7 +553,7 @@
 </ul>
 </li>
 <li>
-<a href="#headline-156">CMake</a>
+<a href="#headline-157">CMake</a>
 </li>
 </ul>
 </li>
@@ -2731,15 +2734,17 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:init</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-fennel-mode</span> ()
 </span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">setq</span> <span style="color:#00538b">prettify-symbols-alist</span> <span style="color:#00538b">'</span>((<span style="color:#2544bb">"lambda"</span> <span style="color:#00538b">.</span> <span style="color:#2544bb">?λ</span>))))
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">fennel-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-fennel-mode</span>))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>**** [[<span style="color:#00538b">https://github.com/godotengine/emacs-gdscript-mode</span>][<span style="color:#00538b">gdscript-mode</span>]] <span style="color:#00538b">for</span> <span style="color:#00538b">Godot</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f0075">:PROPERTIES:</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f0075">:CUSTOM_ID:</span> <span style="color:#00538b">gdscript</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f0075">:END:</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>#<span style="color:#00538b">+begin_src</span> <span style="color:#00538b">emacs-lisp</span>
-</span></span><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">gdscript-mode</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">fennel-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-fennel-mode</span>))</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-gdscript" class="outline-5">
+<h5 id="gdscript"><a href="https://github.com/godotengine/emacs-gdscript-mode">gdscript-mode</a> for Godot</h5>
+<div id="outline-text-gdscript" class="outline-text-5">
+<div class="src src-emacs-lisp">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">gdscript-mode</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".gd"</span> <span style="color:#00538b">eos</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:init</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-gdscript-mode</span> ()
@@ -2767,12 +2772,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-148" class="outline-3">
-<h3 id="headline-148">Writing</h3>
-<div id="outline-text-headline-148" class="outline-text-3">
-<div id="outline-container-headline-149" class="outline-4">
-<h4 id="headline-149"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
-<div id="outline-text-headline-149" class="outline-text-4">
+<div id="outline-container-headline-149" class="outline-3">
+<h3 id="headline-149">Writing</h3>
+<div id="outline-text-headline-149" class="outline-text-3">
+<div id="outline-container-headline-150" class="outline-4">
+<h4 id="headline-150"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
+<div id="outline-text-headline-150" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">jinx</span>
@@ -2857,9 +2862,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-156" class="outline-4">
-<h4 id="headline-156">CMake</h4>
-<div id="outline-text-headline-156" class="outline-text-4">
+<div id="outline-container-headline-157" class="outline-4">
+<h4 id="headline-157">CMake</h4>
+<div id="outline-text-headline-157" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cmake-mode</span>
