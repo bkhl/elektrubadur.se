@@ -2731,7 +2731,21 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:init</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-fennel-mode</span> ()
 </span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">setq</span> <span style="color:#00538b">prettify-symbols-alist</span> <span style="color:#00538b">'</span>((<span style="color:#2544bb">"lambda"</span> <span style="color:#00538b">.</span> <span style="color:#2544bb">?λ</span>))))
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">fennel-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-fennel-mode</span>))</span></span></code></pre>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">fennel-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-fennel-mode</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>**** [[<span style="color:#00538b">https://github.com/godotengine/emacs-gdscript-mode</span>][<span style="color:#00538b">gdscript-mode</span>]] <span style="color:#00538b">for</span> <span style="color:#00538b">Godot</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f0075">:PROPERTIES:</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f0075">:CUSTOM_ID:</span> <span style="color:#00538b">gdscript</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f0075">:END:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#<span style="color:#00538b">+begin_src</span> <span style="color:#00538b">emacs-lisp</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">gdscript-mode</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".gd"</span> <span style="color:#00538b">eos</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:init</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-gdscript-mode</span> ()
+</span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">prettify-symbols-alist</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00538b">`</span>((<span style="color:#2544bb">"-&gt;"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-right-arrow</span>))))
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">gdscript-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-gdscript-mode</span>))</span></span></code></pre>
 </div>
 </div>
 </div>
