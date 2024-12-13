@@ -1879,6 +1879,7 @@ The ~M-p~ binding conflicts with my custom binding for ~flymake-mode~, but we ca
   :demand t
   :custom
   (pulsar-face 'pulsar-yellow)
+  (pulsar-pulse-region-functions pulsar-pulse-region-common-functions)
   :bind
   (("M-p" . pulsar-pulse-line))
   :hook
