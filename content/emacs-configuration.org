@@ -1580,7 +1580,7 @@ This package provides a concise way to define multiple font configurations and s
 (use-package fontaine
   :custom
   (fontaine-presets
-   '((light :default-family "Iosevka BKHL Sans Normal"
+   '((light :default-family "Iosevka BKHL Serif Normal"
             :variable-pitch-family "Charis SIL"
             :fixed-pitch-family "Iosevka BKHL Serif Normal")
      (dark :default-family "Iosevka BKHL Sans Normal"
