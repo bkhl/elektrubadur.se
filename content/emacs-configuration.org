@@ -2088,21 +2088,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   :hook (fennel-mode . my/config-fennel-mode))
 #+end_src
 
-**** [[https://github.com/godotengine/emacs-gdscript-mode][gdscript-mode]] for Godot
-:PROPERTIES:
-:CUSTOM_ID: gdscript
-:END:
-
-#+begin_src emacs-lisp
-(use-package gdscript-mode
-  :mode (rx ".gd" eos)
-  :init
-  (defun my/config-gdscript-mode ()
-    (setq-local prettify-symbols-alist
-                `(("->" . ,my/prettify-right-arrow))))
-  :hook (gdscript-mode . my/config-gdscript-mode))
-#+end_src
-
 **** [[https://github.com/immerrr/lua-mode][lua-mode]]
 :PROPERTIES:
 :CUSTOM_ID: lua
