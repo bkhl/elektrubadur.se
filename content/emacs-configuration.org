@@ -1518,6 +1518,18 @@ These are add-on packages that are dependencies of other packages further down, 
   :defer)
 #+end_src
 
+*** [[https://github.com/tarsius/llama][llama]]
+:PROPERTIES:
+:CUSTOM_ID: llama
+:END:
+
+- [[#magit][Magit]]
+
+#+begin_src emacs-lisp
+(use-package llama
+  :defer)
+#+end_src
+
 *** [[https://github.com/magit/transient][transient]]
 :PROPERTIES:
 :CUSTOM_ID: transient
