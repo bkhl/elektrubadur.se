@@ -1430,22 +1430,6 @@ Hide already scheduled tasks from the agenda.
 (setopt org-agenda-todo-ignore-scheduled 'all)
 #+end_src
 
-Show tags right after headline. Reduces conflicts with packages that affect Org agenda style.
-
-#+begin_src emacs-lisp
-(setopt org-agenda-tags-column 0)
-#+end_src
-
-Some agenda visual styling.
-
-#+begin_src emacs-lisp
-(setopt org-agenda-block-separator ?-
-        org-agenda-time-grid '((daily today require-timed)
-                               (800 1000 1200 1400 1600 1800)
-                               " ┄┄┄" "")
-        org-agenda-current-time-string "🠨")
-#+end_src
-
 *** Allow opening links to anchors with ~org-open-at-point~
 :PROPERTIES:
 :CUSTOM_ID: org-open-at-point
