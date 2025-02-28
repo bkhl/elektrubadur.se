@@ -2886,16 +2886,17 @@
 <div id="outline-container-magit-auto-commit" class="outline-5">
 <h5 id="magit-auto-commit">Automatic commit on save</h5>
 <div id="outline-text-magit-auto-commit" class="outline-text-5">
-<p>Function to do automatic commit on save in certain repos. This is for use with for example <code>org-mode</code>, to enable finding things after accidental changes.</p>
+<p>Function to do automatic commit and push on save in certain repos. This is for use with for example <code>org-mode</code>, to enable finding things after accidental changes.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/magic-commit-current-buffer</span> ()
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/magit-commit-current-buffer</span> ()
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-refresh</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-call-git</span> <span style="color:#2544bb">"add"</span> <span style="color:#721045">buffer-file-name</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-call-git</span> <span style="color:#2544bb">"commit"</span>
 </span></span><span style="display:flex;"><span>                  <span style="color:#2544bb">"-m"</span>
 </span></span><span style="display:flex;"><span>                  (<span style="color:#721045">format</span> <span style="color:#2544bb">"Automatic commit on save of %s"</span>
 </span></span><span style="display:flex;"><span>                          <span style="color:#721045">buffer-file-name</span>))
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-call-git</span> <span style="color:#2544bb">"push"</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-refresh</span>))</span></span></code></pre>
 </div>
 </div>
@@ -2903,7 +2904,7 @@
 <pre class="example">
 ((org-mode . ((eval . (add-hook
                        'after-save-hook
-                       'my/magic-commit-current-buffer
+                       'my/magit-commit-current-buffer
                        nil t)))))
 </pre>
 </div>
