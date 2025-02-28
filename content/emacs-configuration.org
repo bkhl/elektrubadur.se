@@ -2221,16 +2221,17 @@ To use this in a project a ~.dir-locals.el~ file is needed, looking something li
 :CUSTOM_ID: magit-auto-commit
 :END:
 
-Function to do automatic commit on save in certain repos. This is for use with for example ~org-mode~, to enable finding things after accidental changes.
+Function to do automatic commit and push on save in certain repos. This is for use with for example ~org-mode~, to enable finding things after accidental changes.
 
 #+begin_src emacs-lisp
-(defun my/magic-commit-current-buffer ()
+(defun my/magit-commit-current-buffer ()
   (magit-refresh)
   (magit-call-git "add" buffer-file-name)
   (magit-call-git "commit"
                   "-m"
                   (format "Automatic commit on save of %s"
                           buffer-file-name))
+  (magit-call-git "push")
   (magit-refresh))
 #+end_src
 
@@ -2239,7 +2240,7 @@ To use this as an ~after-save-hook~ in a project, create a ~.dir-locals.el~ with
 #+begin_example
 ((org-mode . ((eval . (add-hook
                        'after-save-hook
-                       'my/magic-commit-current-buffer
+                       'my/magit-commit-current-buffer
                        nil t)))))
 #+end_example
 
