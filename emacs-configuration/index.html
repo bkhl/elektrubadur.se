@@ -330,6 +330,12 @@
 <a href="#project-management">Project management</a>
 <ul>
 <li>
+<a href="#headline-92">Show current project in mode line</a>
+</li>
+<li>
+<a href="#headline-93">Show paths relative to current project in file name history</a>
+</li>
+<li>
 <a href="#exercism-projects">Detect Exercism exercises as projects.</a>
 </li>
 <li>
@@ -390,10 +396,10 @@
 <a href="#eshell">Eshell</a>
 <ul>
 <li>
-<a href="#headline-110">Disable banner</a>
+<a href="#headline-112">Disable banner</a>
 </li>
 <li>
-<a href="#headline-111">Aliases</a>
+<a href="#headline-113">Aliases</a>
 </li>
 </ul>
 </li>
@@ -522,10 +528,10 @@
 </ul>
 </li>
 <li>
-<a href="#headline-148">Writing</a>
+<a href="#headline-150">Writing</a>
 <ul>
 <li>
-<a href="#headline-149">Jinx spell checking</a>
+<a href="#headline-151">Jinx spell checking</a>
 </li>
 <li>
 <a href="#markdown">markdown-mode for Markdown support</a>
@@ -550,7 +556,7 @@
 </ul>
 </li>
 <li>
-<a href="#headline-156">CMake</a>
+<a href="#headline-158">CMake</a>
 </li>
 </ul>
 </li>
@@ -1747,6 +1753,26 @@
 <div id="outline-container-project-management" class="outline-3">
 <h3 id="project-management">Project management</h3>
 <div id="outline-text-project-management" class="outline-text-3">
+<div id="outline-container-headline-92" class="outline-4">
+<h4 id="headline-92">Show current project in mode line</h4>
+<div id="outline-text-headline-92" class="outline-text-4">
+<div class="src src-emacs-lisp">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">setopt</span> <span style="color:#00538b">project-mode-line</span> t)</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-93" class="outline-4">
+<h4 id="headline-93">Show paths relative to current project in file name history</h4>
+<div id="outline-text-headline-93" class="outline-text-4">
+<div class="src src-emacs-lisp">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">setopt</span> <span style="color:#00538b">project-file-history-behavior</span> <span style="color:#2544bb">'relativize</span>)</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
 <div id="outline-container-exercism-projects" class="outline-4">
 <h4 id="exercism-projects">Detect <a href="https://exercism.org/">Exercism</a> exercises as projects.</h4>
 <div id="outline-text-exercism-projects" class="outline-text-4">
@@ -2066,9 +2092,9 @@
 <div id="outline-container-eshell" class="outline-3">
 <h3 id="eshell">Eshell</h3>
 <div id="outline-text-eshell" class="outline-text-3">
-<div id="outline-container-headline-110" class="outline-4">
-<h4 id="headline-110">Disable banner</h4>
-<div id="outline-text-headline-110" class="outline-text-4">
+<div id="outline-container-headline-112" class="outline-4">
+<h4 id="headline-112">Disable banner</h4>
+<div id="outline-text-headline-112" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">setopt</span> <span style="color:#00538b">eshell-banner-message</span> <span style="color:#2544bb">""</span>)</span></span></code></pre>
@@ -2076,9 +2102,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-111" class="outline-4">
-<h4 id="headline-111">Aliases</h4>
-<div id="outline-text-headline-111" class="outline-text-4">
+<div id="outline-container-headline-113" class="outline-4">
+<h4 id="headline-113">Aliases</h4>
+<div id="outline-text-headline-113" class="outline-text-4">
 <p>Alias to open file for editing</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
@@ -2724,12 +2750,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-148" class="outline-3">
-<h3 id="headline-148">Writing</h3>
-<div id="outline-text-headline-148" class="outline-text-3">
-<div id="outline-container-headline-149" class="outline-4">
-<h4 id="headline-149"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
-<div id="outline-text-headline-149" class="outline-text-4">
+<div id="outline-container-headline-150" class="outline-3">
+<h3 id="headline-150">Writing</h3>
+<div id="outline-text-headline-150" class="outline-text-3">
+<div id="outline-container-headline-151" class="outline-4">
+<h4 id="headline-151"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
+<div id="outline-text-headline-151" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">jinx</span>
@@ -2814,9 +2840,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-156" class="outline-4">
-<h4 id="headline-156">CMake</h4>
-<div id="outline-text-headline-156" class="outline-text-4">
+<div id="outline-container-headline-158" class="outline-4">
+<h4 id="headline-158">CMake</h4>
+<div id="outline-text-headline-158" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cmake-mode</span>
