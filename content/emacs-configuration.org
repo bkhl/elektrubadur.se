@@ -204,8 +204,10 @@ Disable GC while minibuffer is open, and enabled again when it is closed. This h
 :END:
 
 #+begin_src emacs-lisp
-(line-number-mode)
-(column-number-mode)
+(use-package simple
+  :config
+  (line-number-mode)
+  (column-number-mode))
 #+end_src
 
 *** Emoji font
@@ -213,23 +215,23 @@ Disable GC while minibuffer is open, and enabled again when it is closed. This h
 :CUSTOM_ID: emoji-font
 :END:
 
-Enable Emoji font if available. ☃
+Enable Emoji font if available. This is a test emoji: ☃
 
 This is run as a hook after the first graphical frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
 
 #+begin_src emacs-lisp
-(defun my/set-fontset-fonts (frame)
-  (when (display-graphic-p frame)
-    (dolist (font-spec '((#x2600 . #x26ff)
-                         emoji))
-      (set-fontset-font t font-spec
-                        "Noto Color Emoji"))
-    (remove-hook 'after-make-frame-functions
-                 'my/set-fontset-fonts)))
-
-(add-hook 'after-make-frame-functions #'my/set-fontset-fonts)
-
-(my/set-fontset-fonts (selected-frame))
+(use-package frame
+  :config
+  (defun my/set-fontset-fonts (frame)
+    (when (display-graphic-p frame)
+      (dolist (font-spec '((#x2600 . #x26ff)
+                           emoji))
+        (set-fontset-font t font-spec
+                          "Noto Color Emoji"))
+      (remove-hook 'after-make-frame-functions
+                   'my/set-fontset-fonts)))
+  (add-hook 'after-make-frame-functions #'my/set-fontset-fonts)
+  (my/set-fontset-fonts (selected-frame)))
 #+end_src
 
 
@@ -276,7 +278,9 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 :END:
 
 #+begin_src emacs-lisp
-(setopt server-client-instructions nil)
+(use-package server
+  :custom
+  (server-client-instructions nil))
 #+end_src
 
 *** Prompt before closing Emacs
@@ -285,7 +289,9 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 :END:
 
 #+begin_src emacs-lisp
-(setopt confirm-kill-emacs 'y-or-n-p)
+(use-package files
+  :custom
+  (confirm-kill-emacs 'y-or-n-p))
 #+end_src
 
 *** Set preferred dateformat
@@ -294,7 +300,9 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 :END:
 
 #+begin_src emacs-lisp
-(calendar-set-date-style 'iso)
+(use-package calendar
+  :config
+  (calendar-set-date-style 'iso))
 #+end_src
 
 *** Allow undo of window layout changes
@@ -303,7 +311,9 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 :END:
 
 #+begin_src emacs-lisp
-(winner-mode)
+(use-package winner
+  :config
+  (winner-mode))
 #+end_src
 
 *** Preserve ~M-x~ command history between sessions
@@ -312,7 +322,9 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 :END:
 
 #+begin_src emacs-lisp
-(savehist-mode)
+(use-package savehist
+  :config
+  (savehist-mode))
 #+end_src
 
 *** Use saved point position in previously opened files
@@ -321,7 +333,9 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 :END:
 
 #+begin_src emacs-lisp
-(save-place-mode)
+(use-package saveplace
+  :config
+  (save-place-mode))
 #+end_src
 
 *** Scrolling behaviour when moving cursor
@@ -342,7 +356,9 @@ When the cursor moves close to the edge of the screen, scroll only one line at t
 :END:
 
 #+begin_src emacs-lisp
-(pixel-scroll-precision-mode)
+(use-package pixel-scroll
+  :config
+  (pixel-scroll-precision-mode))
 #+end_src
 
 *** Highlight error messages
@@ -353,7 +369,9 @@ When the cursor moves close to the edge of the screen, scroll only one line at t
 In ~next-error~ buffers, highligt the currently visited error.
 
 #+begin_src emacs-lisp
-(setopt next-error-message-highlight t)
+(use-package simple
+  :custom
+  (setopt next-error-message-highlight t))
 #+end_src
 
 *** Make yes/no prompts shorter
@@ -371,7 +389,9 @@ In ~next-error~ buffers, highligt the currently visited error.
 :END:
 
 #+begin_src emacs-lisp
-(setopt bookmark-set-fringe-mark nil)
+(use-package bookmark
+  :custom
+  (bookmark-set-fringe-mark nil))
 #+end_src
 
 *** Use bar cursor
@@ -389,7 +409,9 @@ In ~next-error~ buffers, highligt the currently visited error.
 :END:
 
 #+begin_src emacs-lisp
-(setopt show-paren-context-when-offscreen 'overlay)
+(use-package paren
+  :custom
+  (setopt show-paren-context-when-offscreen 'overlay))
 #+end_src
 
 *** Switch windows with ~M-o~
@@ -400,7 +422,8 @@ In ~next-error~ buffers, highligt the currently visited error.
 Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "M-o") #'other-window)
+(use-package window
+  :bind (("M-o" . other-window)))
 #+end_src
 
 *** Switch between windows with ~S-<direction>~
@@ -409,7 +432,9 @@ Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
 :END:
 
 #+begin_src emacs-lisp
-(windmove-default-keybindings)
+(use-package windmove
+  :config
+  (windmove-default-keybindings))
 #+end_src
 
 ** Key bindings
@@ -425,7 +450,9 @@ Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
 Disabling ~C-z~, which normally minimizes the window, which is rather distracting.
 
 #+begin_src emacs-lisp
-(keymap-global-unset "C-z")
+(use-package keymap
+  :config
+  (keymap-global-unset "C-z"))
 #+end_src
 
 *** Enable repeat maps for commands that have them
@@ -436,7 +463,9 @@ Disabling ~C-z~, which normally minimizes the window, which is rather distractin
 This adds ability to repat some common commands by repeating the last key in its binding.
 
 #+begin_src emacs-lisp
-(repeat-mode)
+(use-package repeat
+  :config
+  (repeat-mode))
 #+end_src
 
 ** Mouse behaviour
@@ -450,7 +479,9 @@ This adds ability to repat some common commands by repeating the last key in its
 :END:
 
 #+begin_src emacs-lisp
-(setopt mouse-yank-at-point t)
+(use-package mouse
+  :custom
+  (mouse-yank-at-point t))
 #+end_src
 
 *** Save to kill ring when adjusting region with mouse
@@ -461,7 +492,9 @@ This adds ability to repat some common commands by repeating the last key in its
 Setting this to ~non-empty~ means this won't happen for empty strings, like when accidentally dragging for less than a character's width.
 
 #+begin_src emacs-lisp
-(setopt mouse-drag-copy-region 'non-empty)
+(use-package mouse
+  :custom
+  (mouse-drag-copy-region 'non-empty))
 #+end_src
 
 ** Documentation and help
@@ -475,7 +508,9 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 :END:
 
 #+begin_src emacs-lisp
-(setopt apropos-do-all t)
+(use-package apropos
+  :custom
+  (apropos-do-all t))
 #+end_src
 
 *** Use variable pitch in Info reader
@@ -484,7 +519,9 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 :END:
 
 #+begin_src emacs-lisp
-(add-hook 'Info-mode-hook 'variable-pitch-mode)
+(use-package info
+  :config
+  (add-hook 'Info-mode-hook 'variable-pitch-mode))
 #+end_src
 
 *** Autoload if documentation is missing from autoload objects
@@ -493,7 +530,9 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 :END:
 
 #+begin_src emacs-lisp
-(setopt help-enable-symbol-autoload t)
+(use-package help-fns
+  :custom
+  (help-enable-symbol-autoload t))
 #+end_src
 
 *** Show outlines in bindings description
@@ -502,7 +541,9 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 :END:
 
 #+begin_src emacs-lisp
-(setopt describe-bindings-outline t)
+(use-package help
+  :custom
+  (describe-bindings-outline t))
 #+end_src
 
 *** Reuse help window if already shown
@@ -511,7 +552,9 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 :END:
 
 #+begin_src emacs-lisp
-(setopt help-window-keep-selected t)
+(use-package help
+  :custom
+  (help-window-keep-selected t))
 #+end_src
 
 ** Buffers
@@ -535,7 +578,9 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 :END:
 
 #+begin_src emacs-lisp
-(setopt uniquify-buffer-name-style 'forward)
+(use-package uniquify
+  :custom
+  (uniquify-buffer-name-style 'forward))
 #+end_src
 
 *** Allow remembering risky local variables
@@ -546,7 +591,9 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 This overrides the Emacs settings that enforces having to accept local variables matching certain patterns every time they are used.
 
 #+begin_src emacs-lisp
-(advice-add 'risky-local-variable-p :override #'ignore)
+(use-package files
+  :config
+  (advice-add 'risky-local-variable-p :override #'ignore))
 #+end_src
 
 *** Load  ~.dir-locals.el~ files on remote hosts
@@ -555,7 +602,9 @@ This overrides the Emacs settings that enforces having to accept local variables
 :END:
 
 #+begin_src emacs-lisp
-(setopt enable-remote-dir-locals t)
+(use-package files
+  :custom
+  (enable-remote-dir-locals t))
 #+end_src
 
 *** Key bindings to kill/bury current buffer
@@ -565,8 +614,6 @@ This overrides the Emacs settings that enforces having to accept local variables
 
 Change the default keybinding for killing a buffer, ~C-x k~, so that it kills the current buffer rather than prompting for a buffer. Instead ~C-x K~ is used for the previous default.
 
-Also binds ~C-x M-k~ to bury the current buffer, a command that's not bound to any key by default.
-
 #+begin_src emacs-lisp
 (global-set-key
  (kbd "C-x k")
@@ -575,7 +622,13 @@ Also binds ~C-x M-k~ to bury the current buffer, a command that's not bound to a
    (interactive)
    (kill-buffer)))
 (global-set-key (kbd "C-x K") #'kill-buffer)
-(global-set-key (kbd "C-x M-k") #'bury-buffer)
+#+end_src
+
+Also bind ~C-x M-k~ to bury the current buffer, a command that's not bound to any key by default.
+
+#+begin_src emacs-lisp
+(use-package window
+  :bind ("C-x M-k". bury-buffer))
 #+end_src
 
 ** Files
@@ -602,7 +655,9 @@ Unless overridden by a buffer, when prompting to open a file, start in the home 
 The default method here can break hardlinks.
 
 #+begin_src emacs-lisp
-(setopt backup-by-copying t)
+(use-package files
+  :custom
+  (backup-by-copying t))
 #+end_src
 
 *** Store backups in tmp directory
@@ -613,8 +668,10 @@ The default method here can break hardlinks.
 Store backups and autosaves in ~temporary-file-directory~. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
 
 #+begin_src emacs-lisp
-(setopt backup-directory-alist `((".*" . ,temporary-file-directory))
-        auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+(use-package files
+  :custom
+  (backup-directory-alist `((".*" . ,temporary-file-directory)))
+  (auto-save-file-name-transforms `((".*" ,temporary-file-directory t))))
 #+end_src
 
 *** Offer to create parent directories on save
@@ -625,19 +682,21 @@ Store backups and autosaves in ~temporary-file-directory~. This risks losing som
 When saving a file to a directory that doesn't exist, offer to create it.
 
 #+begin_src emacs-lisp
-(add-hook
- 'before-save-hook
- (defun my/ask-create-directory ()
-   (when buffer-file-name
-     (let ((dir (file-name-directory buffer-file-name)))
-       (when
-           (and
-            (not (file-exists-p dir))
-            (y-or-n-p
-             (format
-              "Directory %s does not exist. Create it?"
-              dir)))
-         (make-directory dir t))))))
+(use-package files
+  :config
+  (add-hook
+   'before-save-hook
+   (defun my/ask-create-directory ()
+     (when buffer-file-name
+       (let ((dir (file-name-directory buffer-file-name)))
+         (when
+             (and
+              (not (file-exists-p dir))
+              (y-or-n-p
+               (format
+                "Directory %s does not exist. Create it?"
+                dir)))
+           (make-directory dir t)))))))
 #+end_src
 
 *** Disable message when saving files
@@ -646,7 +705,9 @@ When saving a file to a directory that doesn't exist, offer to create it.
 :END:
 
 #+begin_src emacs-lisp
-(setopt save-silently t)
+(use-package files
+  :custom
+  (save-silently t))
 #+end_src
 
 *** Automatically sync updated files
@@ -657,7 +718,9 @@ When saving a file to a directory that doesn't exist, offer to create it.
 If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
 
 #+begin_src emacs-lisp
-(global-auto-revert-mode t)
+(use-package autorevert
+  :config
+  (global-auto-revert-mode))
 #+end_src
 
 *** Disable Emacs lock files
@@ -679,8 +742,10 @@ Disable use of those lock files with a ~.#~ prefix that Emacs by default creates
 Make file sizes shown in dired human readable.
 
 #+begin_src emacs-lisp
-(setopt dired-listing-switches
-        "-l --all --human-readable --group-directories-first")
+(use-package dired
+  :custom
+  (dired-listing-switches
+   "-l --all --human-readable --group-directories-first"))
 #+end_src
 
 *** ~tramp~ remote editing
@@ -709,8 +774,10 @@ Allow Tramp to write backups of root-owned files in ~/tmp~, and ensure that Tram
 :END:
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "<home>") #'move-beginning-of-line)
-(global-set-key (kbd "<end>") #'move-end-of-line)
+(use-package simple
+  :bind
+  ("<home>" . move-beginning-of-line)
+  ("<end>" . move-end-of-line))
 #+end_src
 
 *** Change behaviour of ~M-z~ for zapping to character
@@ -721,7 +788,9 @@ Allow Tramp to write backups of root-owned files in ~/tmp~, and ensure that Tram
 Make ~M-z~ kill characters up to the character /before/ the next occurrence of the selected character, instead of including it, which is generally more useful.
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "M-z") #'zap-up-to-char)
+(use-package misc
+  :bind
+  ("M-z" . zap-up-to-char))
 #+end_src
 
 *** Bind ~cycle-spacing~ to ~M-S-SPC~
@@ -732,7 +801,9 @@ Make ~M-z~ kill characters up to the character /before/ the next occurrence of t
 This edits whitespace around point by cycling between leaving only one space, deleting the space, and going back to what was there before.
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "M-S-SPC") #'cycle-spacing)
+(use-package simple
+  :bind
+  ("M-S-SPC" . cycle-spacing))
 #+end_src
 
 *** Bind ~duplicate-dwim~ to ~M-R~
@@ -743,7 +814,9 @@ This edits whitespace around point by cycling between leaving only one space, de
 Duplicates current line or active region.
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "M-R") #'duplicate-dwim)
+(use-package misc
+  :bind
+  ("M-R" . duplicate-dwim))
 #+end_src
 
 *** Use single space to delimit sentences
@@ -763,19 +836,25 @@ Duplicates current line or active region.
 Highlight the region when the mark is active.
 
 #+begin_src emacs-lisp
-(transient-mark-mode t)
+(use-package simple
+  :config
+  (transient-mark-mode))
 #+end_src
 
 Set it so that if a selection is active, typed text will replace the selection.
 
 #+begin_src emacs-lisp
-(delete-selection-mode t)
+(use-package delsel
+  :config
+  (delete-selection-mode))
 #+end_src
 
 *** Disable indentation using tabs.
 
 #+begin_src emacs-lisp
-(setopt indent-tabs-mode nil)
+(use-package simple
+  :custom
+  (indent-tabs-mode nil))
 #+end_src
 
 *** Set default line length to 80
@@ -796,7 +875,9 @@ When using ~C-x =~ to look up the character under the point, also show Unicode
 character name.
 
 #+begin_src emacs-lisp
-(setopt what-cursor-show-names t)
+(use-package simple
+  :custom
+  (what-cursor-show-names t))
 #+end_src
 
 *** Automatically pair matching characters like parenthesis
@@ -807,7 +888,9 @@ character name.
 Enable ~electric-pair-mode~, which enables automatic insert of matching characters for example for parentheses.
 
 #+begin_src emacs-lisp
-(electric-pair-mode)
+(use-package elec-pair
+  :config
+  (electric-pair-mode))
 #+end_src
 
 *** Save existing clipboard text into kill ring before replacing it
@@ -818,7 +901,9 @@ Enable ~electric-pair-mode~, which enables automatic insert of matching characte
 Prevents killing text in Emacs from irrevocably deleting things from the system clipboard.
 
 #+begin_src emacs-lisp
-(setopt save-interprogram-paste-before-kill t)
+(use-package simple
+  :custom
+  (save-interprogram-paste-before-kill t))
 #+end_src
 
 *** Enable ~downcase-region~ and ~upcase-region~
@@ -839,7 +924,9 @@ Prevents killing text in Emacs from irrevocably deleting things from the system 
 This also affects ~dabbrev~ completions.
 
 #+begin_src emacs-lisp
-(setopt case-replace nil)
+(use-package replace
+  :custom
+  (case-replace nil))
 #+end_src
 
 *** Completion
@@ -880,7 +967,9 @@ Also make it ignore some buffers where it does not make sense.
 I use this to make =lambda= get rendered as =λ= in Emacs Lisp, and similar replacements in other languages.
 
 #+begin_src emacs-lisp
-(global-prettify-symbols-mode)
+(use-package prog-mode
+  :config
+  (global-prettify-symbols-mode))
 #+end_src
 
 Some reusable character compositions.
@@ -919,7 +1008,8 @@ Simplified predicate to determine if a substitution should be applied, which mak
 :END:
 
 #+begin_src emacs-lisp
-(add-hook 'prog-mode-hook 'subword-mode)
+(use-package subword
+  :hook (prog-mode . subword-mode))
 #+end_src
 
 *** Bind key to trigger compilation/recompilation
@@ -928,8 +1018,11 @@ Simplified predicate to determine if a substitution should be applied, which mak
 :END:
 
 #+begin_src emacs-lisp
-(define-key prog-mode-map (kbd "C-c b") #'compile)
-(define-key prog-mode-map (kbd "C-c r") #'recompile)
+(use-package prog-mode
+  :bind
+  (:map prog-mode-map
+        ("C-c b" . compile)
+        ("C-c r" . recompile)))
 #+end_src
 
 *** ~flymake~
@@ -940,13 +1033,10 @@ Simplified predicate to determine if a substitution should be applied, which mak
 Package for showing diagnostics from linters and similar interactively.
 
 #+begin_src emacs-lisp
-(autoload #'flymake-goto-next-error "flymake" nil t)
-(autoload #'flymake-goto-prev-error "flymake" nil t)
-
-(eval-after-load 'flymake
-  '(progn
-     (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-     (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)))
+(use-package flymake
+  :bind (:map flymake-mode-map
+              ("M-n" . flymake-goto-next-error)
+              ("M-p" . flymake-goto-prev-error)))
 #+end_src
 
 *** Eglot for language server protocol support
@@ -956,9 +1046,9 @@ Package for showing diagnostics from linters and similar interactively.
 
 #+begin_src emacs-lisp
 (use-package eglot
-  :config
-  (bind-key "C-c l f" 'eglot-format eglot-mode-map)
-  (bind-key "C-c l r" 'eglot-rename eglot-mode-map))
+  :bind (:map eglot-mode-map
+              ("C-c l f" . eglot-format)
+              ("C-c l r" . eglot-rename)))
 #+end_src
 
 This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client.
@@ -1122,7 +1212,9 @@ Example ~.dir-locals.el~ to use the [[https://cs.opensource.google/go/x/tools/+/
 Make ~vc-diff~ imitate the diff format of Magit.
 
 #+begin_src emacs-lisp
-(setopt diff-font-lock-prettify t)
+(use-package diff-mode
+  :custom
+  (diff-font-lock-prettify t))
 #+end_src
 
 *** ~ediff~
@@ -1133,7 +1225,9 @@ Make ~vc-diff~ imitate the diff format of Magit.
 Make ediff use existing frame instead of creating new one
 
 #+begin_src emacs-lisp
-(setopt ediff-window-setup-function 'ediff-setup-windows-plain)
+(use-package ediff-wind
+  :custom
+  (ediff-window-setup-function 'ediff-setup-windows-plain))
 #+end_src
 
 ** Project management
@@ -1144,13 +1238,17 @@ Make ediff use existing frame instead of creating new one
 *** Show current project in mode line
 
 #+begin_src emacs-lisp
-(setopt project-mode-line t)
+(use-package project
+  :custom
+  (project-mode-line t))
 #+end_src
 
 *** Show paths relative to current project in file name history
 
 #+begin_src emacs-lisp
-(setopt project-file-history-behavior 'relativize)
+(use-package project
+  :custom
+  (project-file-history-behavior 'relativize))
 #+end_src
 
 *** Detect [[https://exercism.org/][Exercism]] exercises as projects.
@@ -1161,10 +1259,12 @@ Make ediff use existing frame instead of creating new one
 This will make e.g. ~project-compile~ run commands with the appropriate working directory for Exercism excercises.
 
 #+begin_src emacs-lisp
-(add-hook 'project-find-functions
-          (defun my/project-try-exercism (path)
-            (when-let ((root (locate-dominating-file path ".exercism")))
-              (cons 'transient (expand-file-name root)))))
+(use-package project
+  :config
+  (add-hook 'project-find-functions
+            (defun my/project-try-exercism (path)
+              (when-let ((root (locate-dominating-file path ".exercism")))
+                (cons 'transient (expand-file-name root))))))
 #+end_src
 
 *** Bug reference mode
@@ -1213,7 +1313,9 @@ Set a custom variable for the notes directory, so that it can be referred to
 later.
 
 #+begin_src emacs-lisp
-(setopt org-directory "~/Documents/Notes/")
+(use-package org
+  :custom
+  (org-directory "~/Documents/Notes/"))
 #+end_src
 
 *** Make initial scratch buffer use ~org-mode~
@@ -1233,39 +1335,43 @@ later.
 Edit src blocks in current window.
 
 #+begin_src emacs-lisp
-(setopt org-src-window-setup 'current-window)
+(use-package org-src
+  :custom
+  (org-src-window-setup 'current-window))
 #+end_src
 
 Make indentation and fonts in code blocks work according to mode for the language in the block.
 
 #+begin_src emacs-lisp
-(setopt org-src-tab-acts-natively t
-        org-src-fontify-natively t)
+(use-package org-src
+  :custom
+  (org-src-tab-acts-natively t)
+  (org-src-fontify-natively t))
 #+end_src
 
 Disable the extra indentation in src blocks.
 
 #+begin_src emacs-lisp
-(setopt org-edit-src-content-indentation 0)
+(use-package org-src
+  :custom
+  (org-edit-src-content-indentation 0))
 #+end_src
 
 This prevents accidental editing in invisible regions.
 
 #+begin_src emacs-lisp
-(setopt org-catch-invisible-edits 'error)
+(use-package org-fold
+  :custom
+  (org-fold-catch-invisible-edits 'show-and-error))
 #+end_src
 
 Shortcut for inserting a block of Elisp.
 
 #+begin_src emacs-lisp
-(add-to-list 'org-structure-template-alist
-             '("el" . "src emacs-lisp"))
-#+end_src
-
-When trying to edit in an hidden area, expand it before throwing an error.
-
-#+begin_src emacs-lisp
-(setopt org-catch-invisible-edits 'show-and-error)
+(use-package org
+  :config
+  (add-to-list 'org-structure-template-alist
+               '("el" . "src emacs-lisp")))
 #+end_src
 
 *** Display
@@ -1276,38 +1382,50 @@ When trying to edit in an hidden area, expand it before throwing an error.
 Enable ~org-indent~ mode, which makes org-mode indent sections visually, but not in the saved files.
 
 #+begin_src emacs-lisp
-(setopt org-startup-indented t)
+(use-package org
+  :custom
+  (org-startup-indented t))
 #+end_src
 
 Use variable fonts in ~org-mode~ buffers.
 
 #+begin_src emacs-lisp
-(add-hook 'org-mode-hook 'variable-pitch-mode)
+(use-package org
+  :config
+  (add-hook 'org-mode-hook 'variable-pitch-mode))
 #+end_src
 
 Hide the characters surrounding emphasized phrases
 
 #+begin_src emacs-lisp
-(setopt org-hide-emphasis-markers t)
+(use-package org
+  :custom
+  (org-hide-emphasis-markers t))
 #+end_src
 
 Use real ellipsis character for collapsed subtrees, and prefix it with a space.
 
 #+begin_src emacs-lisp
-(setopt org-ellipsis "…")
+(use-package org
+  :custom
+  (org-ellipsis "…"))
 #+end_src
 
 Put tags right after headline. This causes fewer conflicts with add-on packages affecting Org-mode style.
 
 #+begin_src emacs-lisp
-(setopt org-tags-column 0
-        org-auto-align-tags nil)
+(use-package org
+  :custom
+  (org-tags-column 0)
+  (org-auto-align-tags nil))
 #+end_src
 
 Show Latex-style entities as Unicode characters.
 
 #+begin_src emacs-lisp
-(setopt org-pretty-entities t)
+(use-package org
+  :custom
+  (org-pretty-entities t))
 #+end_src
 
 *** Key bindings
@@ -1323,13 +1441,17 @@ Show Latex-style entities as Unicode characters.
 When point is on a headline, make ~C-a~ and ~C-e~ go to beginning/end of headline text.
 
 #+begin_src emacs-lisp
-(setopt org-special-ctrl-a/e t)
+(use-package org
+  :custom
+  (org-special-ctrl-a/e t))
 #+end_src
 
 Insert new headlines after current subtree.
 
 #+begin_src emacs-lisp
-(setopt org-insert-heading-respect-content t)
+(use-package org
+  :custom
+  (org-insert-heading-respect-content t))
 #+end_src
 
 **** Global key binding to store links for ~org-mode~
@@ -1338,7 +1460,9 @@ Insert new headlines after current subtree.
 :END:
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "C-c l") #'org-store-link)
+(use-package ol
+  :bind
+  ("C-c l" . org-store-link))
 #+end_src
 
 **** Navigation between windows in org-mode
@@ -1349,10 +1473,12 @@ Insert new headlines after current subtree.
 Reduce conflict with the global ~windmove~ key bindings.
 
 #+begin_src emacs-lisp
-(add-hook 'org-shiftup-final-hook 'windmove-up)
-(add-hook 'org-shiftleft-final-hook 'windmove-left)
-(add-hook 'org-shiftdown-final-hook 'windmove-down)
-(add-hook 'org-shiftright-final-hook 'windmove-right)
+(use-package org
+  :config
+  (add-hook 'org-shiftup-final-hook 'windmove-up)
+  (add-hook 'org-shiftleft-final-hook 'windmove-left)
+  (add-hook 'org-shiftdown-final-hook 'windmove-down)
+  (add-hook 'org-shiftright-final-hook 'windmove-right))
 #+end_src
 
 **** Copy link location
@@ -1365,18 +1491,20 @@ Function to copy the destination of a link in Org.
 I'd like to extend this to work more generally for example for ~bug-reference-mode~.
 
 #+begin_src emacs-lisp
-(defun my/org-copy-link (&optional arg)
-  (interactive "P")
-  (let* ((link (org-element-lineage (org-element-context) '(link) t))
-         (type (org-element-property :type link))
-         (path (org-element-property :path link)))
-    (if (and type path)
-        (let ((url (concat type ":" path)))
-          (kill-new url)
-          (message url))
-      (message "Not a link"))))
-
-(define-key org-mode-map (kbd "C-c y") #'my/org-copy-link)
+(use-package org
+  :config
+  (defun my/org-copy-link (&optional arg)
+    (interactive "P")
+    (let* ((link (org-element-lineage (org-element-context) '(link) t))
+           (type (org-element-property :type link))
+           (path (org-element-property :path link)))
+      (if (and type path)
+          (let ((url (concat type ":" path)))
+            (kill-new url)
+            (message url))
+        (message "Not a link"))))
+  :bind (:map org-mode-map
+              ("C-c y" . my/org-copy-link)))
 #+end_src
 
 *** Capturing
@@ -1387,18 +1515,21 @@ I'd like to extend this to work more generally for example for ~bug-reference-mo
 Add templates for use by ~org-capture~.
 
 #+begin_src emacs-lisp
-(setopt org-capture-templates
-        `(("i"
-           "Inbox"
-           entry
-           (file ,(concat org-directory "Inbox.org"))
-           "* TODO %?")))
+(use-package org-capture
+  :custom
+  (org-capture-templates `(("i"
+                            "Inbox"
+                            entry
+                            (file ,(concat org-directory "Inbox.org"))
+                            "* TODO %?"))))
 #+end_src
 
 Bind ~C-c c~ to ~org-capture~ to quickly add notes.
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "C-c c") #'org-capture)
+(use-package org-capture
+  :bind
+  ("C-c c" . org-capture))
 #+end_src
 
 *** Refiling
@@ -1409,10 +1540,12 @@ Bind ~C-c c~ to ~org-capture~ to quickly add notes.
 This allows refiling within the current buffer, or any agenda files.
 
 #+begin_src emacs-lisp
-(setopt org-refile-targets '((nil :maxlevel . 9)
-                             (org-agenda-files :maxlevel . 9))
-        org-outline-path-complete-in-steps nil
-        org-refile-use-outline-path 'file)
+(use-package org-refile
+  :custom
+  (org-refile-targets '((nil :maxlevel . 9)
+                        (org-agenda-files :maxlevel . 9)))
+  (org-outline-path-complete-in-steps nil)
+  (org-refile-use-outline-path 'file))
 #+end_src
 
 *** Agendas
@@ -1423,26 +1556,34 @@ This allows refiling within the current buffer, or any agenda files.
 Search all files in the notes directory when creating agendas.
 
 #+begin_src emacs-lisp
-(setopt org-agenda-files `(,org-directory))
+(use-package org
+  :custom
+  (org-agenda-files `(,org-directory)))
 #+end_src
 
 Key binding to open an agenda view.
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "C-c a") #'org-agenda)
+(use-package org-agenda
+  :bind
+  ("C-c a" . org-agenda))
 #+end_src
 
 Hide done tasks from the agenda.
 
 #+begin_src emacs-lisp
-(setopt org-agenda-skip-scheduled-if-done t
-        org-agenda-skip-deadline-if-done t)
+(use-package org-agenda
+  :custom
+  (org-agenda-skip-scheduled-if-done t)
+  (org-agenda-skip-deadline-if-done t))
 #+end_src
 
 Hide already scheduled tasks from the agenda.
 
 #+begin_src emacs-lisp
-(setopt org-agenda-todo-ignore-scheduled 'all)
+(use-package org-agenda
+  :custom
+  (org-agenda-todo-ignore-scheduled 'all))
 #+end_src
 
 *** Allow opening links to anchors with ~org-open-at-point~
@@ -1455,8 +1596,9 @@ Hide already scheduled tasks from the agenda.
 This is caused by a [[https://lists.gnu.org/archive/html/emacs-orgmode/2023-03/msg00299.html][bug discussed on mailing list here]].
 
 #+begin_src emacs-lisp
-(with-eval-after-load 'org-ctags
-  (setopt org-open-link-functions nil))
+(use-package org-ctags
+  :custom
+  (org-open-link-functions nil))
 #+end_src
 
 *** Allow evaluating Shell code blocks in Org
@@ -1478,14 +1620,18 @@ Loading ~ob-shell~ will implicitly enable using source blocks in languages suppo
 *** Disable banner
 
 #+begin_src emacs-lisp
-(setopt eshell-banner-message "")
+(use-package em-banner
+  :custom
+  (eshell-banner-message ""))
 #+end_src
 
 *** Aliases
 Alias to open file for editing
 
 #+begin_src emacs-lisp
-(defun eshell/e (f) (find-file f))
+(use-package eshell
+  :config
+  (defun eshell/e (f) (find-file f)))
 #+end_src
 
 * Add-on packages
@@ -1713,7 +1859,9 @@ Do not allow the cursor in the minibuffer prompt.
 (setopt minibuffer-prompt-properties '(read-only t
                                        cursor-intangible t
                                        face minibuffer-prompt))
-(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+(use-package cursor-sensor
+  :config
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 #+end_src
 
 Add prompt indicator to ~completing-read-multiple~.
@@ -1732,12 +1880,16 @@ Add prompt indicator to ~completing-read-multiple~.
                  crm-separator)
                 (car args))
         (cdr args)))
-(advice-add #'completing-read-multiple :filter-args #'my/crm-indicator)
+
+(use-package crm
+  :config
+  (advice-add #'completing-read-multiple :filter-args #'my/crm-indicator))
 #+end_src
 
 #+begin_src emacs-lisp
-(setopt read-extended-command-predicate
-        #'command-completion-default-include-p)
+(use-package simple
+  :custom
+  (read-extended-command-predicate #'command-completion-default-include-p))
 #+end_src
 
 Allow minibuffer commands while in the minibuffer.
