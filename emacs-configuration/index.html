@@ -2912,14 +2912,12 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/magit-commit-current-buffer</span> ()
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-refresh</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-run-git-async</span> <span style="color:#2544bb">"add"</span> <span style="color:#721045">buffer-file-name</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-run-git-async</span> <span style="color:#2544bb">"commit"</span>
-</span></span><span style="display:flex;"><span>                       <span style="color:#2544bb">"-m"</span>
-</span></span><span style="display:flex;"><span>                       (<span style="color:#721045">format</span> <span style="color:#2544bb">"Automatic commit on save of %s"</span>
-</span></span><span style="display:flex;"><span>                               <span style="color:#721045">buffer-file-name</span>))
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-run-git-async</span> <span style="color:#2544bb">"push"</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-refresh</span>))</span></span></code></pre>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-run-git</span> <span style="color:#2544bb">"add"</span> <span style="color:#721045">buffer-file-name</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-run-git</span> <span style="color:#2544bb">"commit"</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#2544bb">"-m"</span>
+</span></span><span style="display:flex;"><span>                 (<span style="color:#721045">format</span> <span style="color:#2544bb">"Automatic commit on save of %s"</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#721045">buffer-file-name</span>))
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">magit-run-git-async</span> <span style="color:#2544bb">"push"</span>))</span></span></code></pre>
 </div>
 </div>
 <p>To use this as an <code>after-save-hook</code> in a project, create a <code>.dir-locals.el</code> with something like this:</p>
