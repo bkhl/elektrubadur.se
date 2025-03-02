@@ -2231,12 +2231,12 @@ Function to do automatic commit and push on save in certain repos. This is for u
 #+begin_src emacs-lisp
 (defun my/magit-commit-current-buffer ()
   (magit-refresh)
-  (magit-call-git "add" buffer-file-name)
-  (magit-call-git "commit"
-                  "-m"
-                  (format "Automatic commit on save of %s"
-                          buffer-file-name))
-  (magit-call-git "push")
+  (magit-run-git-async "add" buffer-file-name)
+  (magit-run-git-async "commit"
+                       "-m"
+                       (format "Automatic commit on save of %s"
+                               buffer-file-name))
+  (magit-run-git-async "push")
   (magit-refresh))
 #+end_src
 
