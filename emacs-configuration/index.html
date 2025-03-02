@@ -485,7 +485,7 @@
 <a href="#corfu">corfu for completion at point</a>
 </li>
 <li>
-<a href="#cape">cape completion at point extensions</a>
+<a href="#cape">cape completion at point extension</a>
 </li>
 <li>
 <a href="#orderless">orderless completion style</a>
@@ -2606,28 +2606,21 @@
 </div>
 </div>
 <div id="outline-container-cape" class="outline-5">
-<h5 id="cape"><a href="https://github.com/minad/cape">cape</a> completion at point extensions</h5>
+<h5 id="cape"><a href="https://github.com/minad/cape">cape</a> completion at point extension</h5>
 <div id="outline-text-cape" class="outline-text-5">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cape</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:make-autoloads</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:bind</span> ((<span style="color:#2544bb">"C-c p p"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">completion-at-point</span>)
-</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p t"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">complete-tag</span>)
 </span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p d"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-dabbrev</span>)
 </span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p h"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-history</span>)
 </span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p f"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-file</span>)
 </span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p k"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-keyword</span>)
 </span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p s"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-symbol</span>)
 </span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p a"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-abbrev</span>)
-</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p i"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-ispell</span>)
 </span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p l"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-line</span>)
-</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p w"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-dict</span>)
-</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p \\"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-tex</span>)
-</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p _"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-tex</span>)
-</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p ^"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-tex</span>)
-</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p &amp;"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-sgml</span>)
-</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p r"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-rfc1345</span>))
+</span></span><span style="display:flex;"><span>         (<span style="color:#2544bb">"C-c p w"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">cape-dict</span>))
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:init</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'completion-at-point-functions</span> <span style="color:#721045">#'</span><span style="color:#00538b">cape-dabbrev</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-to-list</span> <span style="color:#2544bb">'completion-at-point-functions</span> <span style="color:#721045">#'</span><span style="color:#00538b">cape-file</span>))</span></span></code></pre>
