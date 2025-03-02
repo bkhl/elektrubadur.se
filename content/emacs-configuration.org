@@ -1138,6 +1138,18 @@ Make ediff use existing frame instead of creating new one
 :CUSTOM_ID: project-management
 :END:
 
+*** Show current project in mode line
+
+#+begin_src emacs-lisp
+(setopt project-mode-line t)
+#+end_src
+
+*** Show paths relative to current project in file name history
+
+#+begin_src emacs-lisp
+(setopt project-file-history-behavior 'relativize)
+#+end_src
+
 *** Detect [[https://exercism.org/][Exercism]] exercises as projects.
 :PROPERTIES:
 :CUSTOM_ID: exercism-projects
