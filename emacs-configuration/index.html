@@ -746,8 +746,11 @@
 <p>This makes the Emacs customization interface store values in a separate file, instead of in <code>init.el</code>.</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#00538b">setopt</span> <span style="color:#00538b">custom-file</span> (<span style="color:#721045">concat</span> <span style="color:#00538b">user-emacs-directory</span> <span style="color:#2544bb">"custom.el"</span>))
-</span></span><span style="display:flex;"><span>(<span style="color:#721045">load</span> <span style="color:#00538b">custom-file</span> <span style="color:#8f0075">:noerror</span>)</span></span></code></pre>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cus-edit</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">custom-file</span> (<span style="color:#721045">concat</span> <span style="color:#00538b">user-emacs-directory</span> <span style="color:#2544bb">"custom.el"</span>))
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#721045">load</span> <span style="color:#00538b">custom-file</span> <span style="color:#8f0075">:noerror</span>))</span></span></code></pre>
 </div>
 </div>
 </div>
