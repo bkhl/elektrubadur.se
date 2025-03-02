@@ -2189,39 +2189,11 @@ To use this in a project a ~.dir-locals.el~ file is needed, looking something li
   ("C-x g" . magit-status)
 
   :commands
-  magit-refresh
+  magit-run-git
+  magit-run-git-async
 
   :custom
-  (magit-push-always-verify nil)
-  (git-commit-summary-max-length 50)
-
-  :config
-  (transient-append-suffix 'magit-push "-t"
-    '(4
-      "-s"
-      "Skip pipeline"
-      "-o ci.skip"))
-  (transient-append-suffix 'magit-push "-s"
-    '(4
-      "-m"
-      "Create merge request"
-      "-o merge_request.create"))
-  (transient-append-suffix 'magit-push "-m"
-    '(4
-      "-M"
-      "Create merge request with target"
-      "-o merge_request.create -o merge_request.target="))
-  (transient-append-suffix 'magit-push "-M"
-    '(4
-      "-l"
-      "Set all tests label"
-      "-o merge_request.unlabel=test::skip -o merge_request.label=test::all"))
-  (transient-append-suffix 'magit-push "-l"
-    '(4
-      "-L"
-      "Set skip tests label"
-      "-o merge_request.unlabel=test::all \
--o merge_request.label=test::skip")))
+  (git-commit-summary-max-length 50))
 #+end_src
 
 **** Automatic commit on save
