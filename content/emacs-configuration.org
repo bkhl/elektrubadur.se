@@ -158,8 +158,11 @@ The handler function is what injects the call to the function to generate the au
 This makes the Emacs customization interface store values in a separate file, instead of in ~init.el~.
 
 #+begin_src emacs-lisp
-(setopt custom-file (concat user-emacs-directory "custom.el"))
-(load custom-file :noerror)
+(use-package cus-edit
+  :custom
+  (custom-file (concat user-emacs-directory "custom.el"))
+  :config
+  (load custom-file :noerror))
 #+end_src
 
 *** Show init time on startup
