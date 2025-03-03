@@ -77,9 +77,10 @@ This makes the ~:load-package~ keyword in ~use-package~ calls default to a direc
 #+begin_src emacs-lisp
 (setf (alist-get :load-path use-package-defaults)
       '((lambda (name args)
-          (let ((path (expand-file-name (concat user-emacs-directory
-                                                "site-lisp/"
-                                                (symbol-name name)))))
+          (let ((path (expand-file-name (symbol-name name)
+                                        (expand-file-name
+                                         "site-lisp"
+                                         user-emacs-directory))))
             (when (file-exists-p path)
               (list path))))
         t))
@@ -102,9 +103,8 @@ If a package has additional files in subdirectories and such, this function woul
 (defun my/use-package-autoload-package (name package-directory)
   "Set up autoloading for package NAME in directory PACKAGE-DIRECTORY."
   (let* ((name (symbol-name name))
-         (auto-file (expand-file-name (format "%s/%s-autoloads.el"
-                                              package-directory
-                                              name))))
+         (auto-file (expand-file-name (concat name "-autoloads.el")
+                                      package-directory)))
     (when (or (not (file-exists-p auto-file))
               (let* ((autoloads-attributes
                       (file-attributes auto-file))
