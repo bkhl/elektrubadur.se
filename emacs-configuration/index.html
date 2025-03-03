@@ -666,9 +666,10 @@
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">setf</span> (<span style="color:#00538b">alist-get</span> <span style="color:#8f0075">:load-path</span> <span style="color:#00538b">use-package-defaults</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#00538b">'</span>((<span style="color:#8f0075">lambda</span> (<span style="color:#00538b">name</span> <span style="color:#00538b">args</span>)
-</span></span><span style="display:flex;"><span>          (<span style="color:#8f0075">let</span> ((<span style="color:#00538b">path</span> (<span style="color:#721045">expand-file-name</span> (<span style="color:#721045">concat</span> <span style="color:#00538b">user-emacs-directory</span>
-</span></span><span style="display:flex;"><span>                                                <span style="color:#2544bb">"site-lisp/"</span>
-</span></span><span style="display:flex;"><span>                                                (<span style="color:#721045">symbol-name</span> <span style="color:#00538b">name</span>)))))
+</span></span><span style="display:flex;"><span>          (<span style="color:#8f0075">let</span> ((<span style="color:#00538b">path</span> (<span style="color:#721045">expand-file-name</span> (<span style="color:#721045">symbol-name</span> <span style="color:#00538b">name</span>)
+</span></span><span style="display:flex;"><span>                                        (<span style="color:#721045">expand-file-name</span>
+</span></span><span style="display:flex;"><span>                                         <span style="color:#2544bb">"site-lisp"</span>
+</span></span><span style="display:flex;"><span>                                         <span style="color:#00538b">user-emacs-directory</span>))))
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">when</span> (<span style="color:#721045">file-exists-p</span> <span style="color:#00538b">path</span>)
 </span></span><span style="display:flex;"><span>              (<span style="color:#721045">list</span> <span style="color:#00538b">path</span>))))
 </span></span><span style="display:flex;"><span>        t))</span></span></code></pre>
@@ -688,9 +689,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/use-package-autoload-package</span> (<span style="color:#00538b">name</span> <span style="color:#00538b">package-directory</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#2544bb">"Set up autoloading for package NAME in directory PACKAGE-DIRECTORY."</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">let*</span> ((<span style="color:#00538b">name</span> (<span style="color:#721045">symbol-name</span> <span style="color:#00538b">name</span>))
-</span></span><span style="display:flex;"><span>         (<span style="color:#00538b">auto-file</span> (<span style="color:#721045">expand-file-name</span> (<span style="color:#721045">format</span> <span style="color:#2544bb">"%s/%s-autoloads.el"</span>
-</span></span><span style="display:flex;"><span>                                              <span style="color:#00538b">package-directory</span>
-</span></span><span style="display:flex;"><span>                                              <span style="color:#00538b">name</span>))))
+</span></span><span style="display:flex;"><span>         (<span style="color:#00538b">auto-file</span> (<span style="color:#721045">expand-file-name</span> (<span style="color:#721045">concat</span> <span style="color:#00538b">name</span> <span style="color:#2544bb">"-autoloads.el"</span>)
+</span></span><span style="display:flex;"><span>                                      <span style="color:#00538b">package-directory</span>)))
 </span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">when</span> (<span style="color:#8f0075">or</span> (<span style="color:#00538b">not</span> (<span style="color:#721045">file-exists-p</span> <span style="color:#00538b">auto-file</span>))
 </span></span><span style="display:flex;"><span>              (<span style="color:#8f0075">let*</span> ((<span style="color:#00538b">autoloads-attributes</span>
 </span></span><span style="display:flex;"><span>                      (<span style="color:#721045">file-attributes</span> <span style="color:#00538b">auto-file</span>))
