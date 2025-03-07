@@ -1741,12 +1741,9 @@
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">go-ts-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:init</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defalias</span> <span style="color:#2544bb">'go-mode</span> <span style="color:#2544bb">'go-ts-mode</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defalias</span> <span style="color:#2544bb">'go-mod-mode</span> <span style="color:#2544bb">'go-mod-ts-mode</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span>
-</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".go"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">go-mode</span>)
-</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"/"</span> <span style="color:#00538b">bos</span>) <span style="color:#2544bb">"go.mod"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">go-mod-mode</span>)
+</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".go"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">go-ts-mode</span>)
+</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"/"</span> <span style="color:#00538b">bos</span>) <span style="color:#2544bb">"go.mod"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">go-mod-ts-mode</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span> (<span style="color:#00538b">go-ts-mode-indent-offset</span> <span style="color:#0000c0">4</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span> (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-go-ts-mode</span> ()
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">tab-width</span> <span style="color:#0000c0">4</span>)
