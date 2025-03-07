@@ -1129,12 +1129,9 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
 
 #+begin_src emacs-lisp
 (use-package go-ts-mode
-  :init
-  (defalias 'go-mode 'go-ts-mode)
-  (defalias 'go-mod-mode 'go-mod-ts-mode)
   :mode
-  ((rx ".go" eos) . go-mode)
-  ((rx (or "/" bos) "go.mod" eos) . go-mod-mode)
+  ((rx ".go" eos) . go-ts-mode)
+  ((rx (or "/" bos) "go.mod" eos) . go-mod-ts-mode)
   :custom (go-ts-mode-indent-offset 4)
   :config (defun my/config-go-ts-mode ()
             (setq-local tab-width 4)
