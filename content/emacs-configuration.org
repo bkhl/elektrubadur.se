@@ -2354,6 +2354,7 @@ Function to do automatic commit and push on save in certain repos. This is for u
 
 #+begin_src emacs-lisp
 (defun my/magit-commit-current-buffer ()
+  (magit-run-git "pull")
   (magit-run-git "add" buffer-file-name)
   (magit-run-git "commit"
                  "-m"
