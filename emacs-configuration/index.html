@@ -521,6 +521,9 @@
 </ul>
 </li>
 <li>
+<a href="#gdscript">gdscript-mode for Godot</a>
+</li>
+<li>
 <a href="#lua">lua-mode</a>
 </li>
 </ul>
@@ -528,10 +531,10 @@
 </ul>
 </li>
 <li>
-<a href="#headline-150">Writing</a>
+<a href="#headline-151">Writing</a>
 <ul>
 <li>
-<a href="#headline-151">Jinx spell checking</a>
+<a href="#headline-152">Jinx spell checking</a>
 </li>
 <li>
 <a href="#markdown">markdown-mode for Markdown support</a>
@@ -556,7 +559,7 @@
 </ul>
 </li>
 <li>
-<a href="#headline-158">CMake</a>
+<a href="#headline-159">CMake</a>
 </li>
 </ul>
 </li>
@@ -2886,6 +2889,22 @@
 </div>
 </div>
 </div>
+<div id="outline-container-gdscript" class="outline-5">
+<h5 id="gdscript"><a href="https://github.com/godotengine/emacs-gdscript-mode">gdscript-mode</a> for Godot</h5>
+<div id="outline-text-gdscript" class="outline-text-5">
+<div class="src src-emacs-lisp">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">gdscript-mode</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".gd"</span> <span style="color:#00538b">eos</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:init</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-gdscript-mode</span> ()
+</span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">prettify-symbols-alist</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00538b">`</span>((<span style="color:#2544bb">"-&gt;"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-right-arrow</span>))))
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">gdscript-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-gdscript-mode</span>))</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
 <div id="outline-container-lua" class="outline-5">
 <h5 id="lua"><a href="https://github.com/immerrr/lua-mode">lua-mode</a></h5>
 <div id="outline-text-lua" class="outline-text-5">
@@ -2903,12 +2922,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-150" class="outline-3">
-<h3 id="headline-150">Writing</h3>
-<div id="outline-text-headline-150" class="outline-text-3">
-<div id="outline-container-headline-151" class="outline-4">
-<h4 id="headline-151"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
-<div id="outline-text-headline-151" class="outline-text-4">
+<div id="outline-container-headline-151" class="outline-3">
+<h3 id="headline-151">Writing</h3>
+<div id="outline-text-headline-151" class="outline-text-3">
+<div id="outline-container-headline-152" class="outline-4">
+<h4 id="headline-152"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
+<div id="outline-text-headline-152" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">jinx</span>
@@ -2993,9 +3012,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-158" class="outline-4">
-<h4 id="headline-158">CMake</h4>
-<div id="outline-text-headline-158" class="outline-text-4">
+<div id="outline-container-headline-159" class="outline-4">
+<h4 id="headline-159">CMake</h4>
+<div id="outline-text-headline-159" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cmake-mode</span>
