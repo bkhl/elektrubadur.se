@@ -1065,6 +1065,8 @@ See [[#c][C]] for an example of how to configure it for a project.
 :CUSTOM_ID: c
 :END:
 
+The custom style defined here is meant to work well enough together with Clang-Format using its default LLVM style.
+
 #+begin_src emacs-lisp
 (use-package cc-mode
   :custom
