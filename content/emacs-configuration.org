@@ -2221,9 +2221,14 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
              xr-pp-rx-to-str))
 #+end_src
 
-**** [[https://github.com/immerrr/lua-mode][lua-mode]]
+**** Lua
 :PROPERTIES:
-:CUSTOM_ID: lua
+:CUSTOM_ID: add-on-lua
+:END:
+
+***** [[https://github.com/immerrr/lua-mode][lua-mode]]
+:PROPERTIES:
+:CUSTOM_ID: lua-mode
 :END:
 
 #+begin_src emacs-lisp
