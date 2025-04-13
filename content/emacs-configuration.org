@@ -2250,9 +2250,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 
 #+begin_src emacs-lisp
 (use-package racket-mode
-  :mode (rx ".rkt" eos)
-  :custom
-  (racket-repl-buffer-name-function 'racket-repl-buffer-name-project))
+  :mode (rx ".rkt" eos))
 #+end_src
 
 To use =racket-mode= with a Podman container I use something like the following in a =.dir-locals.el= file.
