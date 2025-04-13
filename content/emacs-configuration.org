@@ -2269,8 +2269,8 @@ Also that Docker image doesn't really work out of the box, as the REPL can only 
                                      user-emacs-directory)))
           (racket-add-back-end
            root
-           :racket-program "podman"
-           :racket-flags `("run" "--rm" "--interactive"
+           :racket-program
+           (string-join  `("podman" "run" "--rm" "--interactive"
                            ,(concat "--volume="
                                     user-emacs-directory
                                     ":"
@@ -2279,8 +2279,7 @@ Also that Docker image doesn't really work out of the box, as the REPL can only 
 			   ,(concat "--volume=" root ":" root ":z")
 			   ,(concat "--workdir=" root)
 			   "docker.io/racket/racket:8.9-full"
-                           "racket")))))))
-
+                           "racket") " ")))))))
 #+end_example
 
 ** Writing
