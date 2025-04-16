@@ -2238,48 +2238,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   (lua-indent-level 4))
 #+end_src
 
-**** Racket
-:PROPERTIES:
-:CUSTOM_ID: add-on-racket
-:END:
-
-***** [[https://www.racket-mode.com/][racket-mode]]
-:PROPERTIES:
-:CUSTOM_ID: racket-mode
-:END:
-
-#+begin_src emacs-lisp
-(use-package racket-mode
-  :mode (rx ".rkt" eos))
-#+end_src
-
-To use =racket-mode= with a Podman container I use something like the following in a =.dir-locals.el= file.
-
-Currently this depends on using a branch of =racket-mode= connected to [[https://github.com/greghendershott/racket-mode/pull/748][this open pull request]].
-
-Also that Docker image doesn't really work out of the box, as the REPL can only be loaded if =rackunit= is available.
-
-#+begin_example emacs-lisp
-((racket-mode
-  . ((eval
-      . (let ((root (project-root (project-current)))
-              (user-emacs-directory (expand-file-name
-                                     user-emacs-directory)))
-          (racket-add-back-end
-           root
-           :racket-program
-           (string-join  `("podman" "run" "--rm" "--interactive"
-                           ,(concat "--volume="
-                                    user-emacs-directory
-                                    ":"
-                                    user-emacs-directory
-                                    ":z")
-			   ,(concat "--volume=" root ":" root ":z")
-			   ,(concat "--workdir=" root)
-			   "docker.io/racket/racket:8.9-full"
-                           "racket") " ")))))))
-#+end_example
-
 ** Writing
 *** [[https://github.com/minad/jinx][Jinx]] spell checking
 
