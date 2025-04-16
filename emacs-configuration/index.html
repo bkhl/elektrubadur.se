@@ -528,23 +528,15 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
 <li>
-<a href="#add-on-racket">Racket</a>
+<a href="#headline-151">Writing</a>
 <ul>
 <li>
-<a href="#racket-mode">racket-mode</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#headline-153">Writing</a>
-<ul>
-<li>
-<a href="#headline-154">Jinx spell checking</a>
+<a href="#headline-152">Jinx spell checking</a>
 </li>
 <li>
 <a href="#markdown">markdown-mode for Markdown support</a>
@@ -569,7 +561,7 @@
 </ul>
 </li>
 <li>
-<a href="#headline-161">CMake</a>
+<a href="#headline-159">CMake</a>
 </li>
 </ul>
 </li>
@@ -2918,55 +2910,16 @@
 </div>
 </div>
 </div>
-<div id="outline-container-add-on-racket" class="outline-5">
-<h5 id="add-on-racket">Racket</h5>
-<div id="outline-text-add-on-racket" class="outline-text-5">
-<div id="outline-container-racket-mode" class="outline-6">
-<h6 id="racket-mode"><a href="https://www.racket-mode.com/">racket-mode</a></h6>
-<div id="outline-text-racket-mode" class="outline-text-6">
-<div class="src src-emacs-lisp">
-<div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">racket-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".rkt"</span> <span style="color:#00538b">eos</span>))</span></span></code></pre>
-</div>
-</div>
-<p>To use <code class="verbatim">racket-mode</code> with a Podman container I use something like the following in a <code class="verbatim">.dir-locals.el</code> file.</p>
-<p>Currently this depends on using a branch of <code class="verbatim">racket-mode</code> connected to <a href="https://github.com/greghendershott/racket-mode/pull/748">this open pull request</a>.</p>
-<p>Also that Docker image doesn't really work out of the box, as the REPL can only be loaded if <code class="verbatim">rackunit</code> is available.</p>
-<pre class="example">
-((racket-mode
-  . ((eval
-      . (let ((root (project-root (project-current)))
-              (user-emacs-directory (expand-file-name
-                                     user-emacs-directory)))
-          (racket-add-back-end
-           root
-           :racket-program
-           (string-join  `("podman" "run" "--rm" "--interactive"
-                           ,(concat "--volume="
-                                    user-emacs-directory
-                                    ":"
-                                    user-emacs-directory
-                                    ":z")
-                           ,(concat "--volume=" root ":" root ":z")
-                           ,(concat "--workdir=" root)
-                           "docker.io/racket/racket:8.9-full"
-                           "racket") " ")))))))
-</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-153" class="outline-3">
-<h3 id="headline-153">Writing</h3>
-<div id="outline-text-headline-153" class="outline-text-3">
-<div id="outline-container-headline-154" class="outline-4">
-<h4 id="headline-154"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
-<div id="outline-text-headline-154" class="outline-text-4">
+<div id="outline-container-headline-151" class="outline-3">
+<h3 id="headline-151">Writing</h3>
+<div id="outline-text-headline-151" class="outline-text-3">
+<div id="outline-container-headline-152" class="outline-4">
+<h4 id="headline-152"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
+<div id="outline-text-headline-152" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">jinx</span>
@@ -3051,9 +3004,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-161" class="outline-4">
-<h4 id="headline-161">CMake</h4>
-<div id="outline-text-headline-161" class="outline-text-4">
+<div id="outline-container-headline-159" class="outline-4">
+<h4 id="headline-159">CMake</h4>
+<div id="outline-text-headline-159" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cmake-mode</span>
