@@ -1730,11 +1730,11 @@ This package provides a concise way to define multiple font configurations and s
 (use-package fontaine
   :custom
   (fontaine-presets
-   '((light :default-family "Iosevka BKHL Serif Normal"
+   '((light :default-family "Iosevka BKHL Sans Normal"
             :variable-pitch-family "Charis SIL"
-            :fixed-pitch-family "Iosevka BKHL Serif Normal")
+            :fixed-pitch-family "Iosevka BKHL Sans Normal")
      (dark :default-family "Iosevka BKHL Sans Normal"
-           :variable-pitch-family "Inter BKHL Variable"
+           :variable-pitch-family "Adwaita Sans"
            :variable-pitch-weight medium
            :fixed-pitch-family "Iosevka BKHL Sans Normal")
      (t :default-height 130
