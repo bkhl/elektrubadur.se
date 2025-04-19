@@ -1763,7 +1763,7 @@
 <pre class="example">
 ((go-ts-mode
   . ((eval
-      . (let ((root (project-root (project-current))))
+      . (let ((root (expand-file-name (project-root (project-current)))))
           (setq-local eglot-server-programs
                       `((go-ts-mode
                          "podman" "run" "--rm" "--interactive"
