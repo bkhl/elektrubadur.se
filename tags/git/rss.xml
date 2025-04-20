@@ -14,7 +14,7 @@
       <pubDate>Sun, 03 May 2020 00:00:00 +0200</pubDate>
       <guid>https://elektrubadur.se/posts/how_this_blog_works/</guid>
       <description>&lt;p&gt;
-This blog is created using the &lt;a href="https://www.getzola.org/"&gt;Zola static site engine&lt;/a&gt;. I use a combination of &lt;a href="https://docs.gitlab.com/ee/ci/"&gt;GitLab CI&lt;/a&gt; and &lt;code class="verbatim"&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the &lt;a href="https://git-scm.com/"&gt;Git&lt;/a&gt; &lt;code class="verbatim"&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
+This blog is created using the &lt;a href="https://www.getzola.org/"&gt;Zola static site engine&lt;/a&gt;. I use a combination of &lt;a href="https://docs.gitlab.com/ci/"&gt;GitLab CI&lt;/a&gt; and &lt;code class="verbatim"&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the &lt;a href="https://git-scm.com/"&gt;Git&lt;/a&gt; &lt;code class="verbatim"&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
 &lt;p&gt;
 The &lt;code class="verbatim"&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2024-11-05: &lt;a href="https://github.com/bkhl/elektrubadur.se/"&gt;elektrubadur.se source code since moved to GitHub&lt;/a&gt;]&lt;/em&gt;. While writing a post I just run &lt;code class="verbatim"&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;</description>
     </item>
