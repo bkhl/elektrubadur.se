@@ -4,7 +4,7 @@
 #+TAGS[]: WWW HCoop Git Automation
 #+ALIASES[]: /how_this_blog_works
 
-This blog is created using the [[https://www.getzola.org/][Zola static site engine]]. I use a combination of [[https://docs.gitlab.com/ee/ci/][GitLab CI]] and =cron= to automatically upload it to my web server whenever I merge a change to the [[https://git-scm.com/][Git]] =master= branch of the home page.
+This blog is created using the [[https://www.getzola.org/][Zola static site engine]]. I use a combination of [[https://docs.gitlab.com/ci/][GitLab CI]] and =cron= to automatically upload it to my web server whenever I merge a change to the [[https://git-scm.com/][Git]] =master= branch of the home page.
 
 The =elektrubadur.se= source code is kept /here in GitLab/ /[Update 2024-11-05: [[https://github.com/bkhl/elektrubadur.se/][elektrubadur.se source code since moved to GitHub]]]/. While writing a post I just run =zola serve= on my computer and can look at a dynamically updated website on a local web server.
 
