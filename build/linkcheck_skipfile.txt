@@ -7,6 +7,8 @@
 ^https://gitlab\.com/$
 ^https://www\.youtube\.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g$
 
-# These give 'connection failed' for unclear reason.
-^https://www.\jamendo\.com/artist/4363/elektrubadur$
+# These give 'connection failed' more or less frequently. Check manually
+# sometimes instead.
+^https://www\.jamendo\.com/artist/4363/elektrubadur$
 ^https://creativecommons\.org/licenses/by-sa/4.0/$
+^https://www\.gnu\.org/software/emacs/$
