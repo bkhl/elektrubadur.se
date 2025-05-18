@@ -1812,24 +1812,6 @@ Enable higlight of current line in selected modes.
   (lin-global-mode))
 #+end_src
 
-*** [[https://github.com/stsquad/emacs_chrome][edit-server]] to edit Firefox text areas
-:PROPERTIES:
-:CUSTOM_ID: edit-server
-:END:
-
-This module provides the server allowing the [[https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/][Edit with Emacs]] Firefox add-on to open Emacs buffers where you can edit the content of text areas.
-
-#+begin_src emacs-lisp
-(use-package edit-server
-  :load-path "site-lisp/edit-server/servers"
-  :custom
-  (edit-server-new-frame nil)
-  :config
-  (when (and (daemonp)
-             (not (process-status "edit-server")))
-    (edit-server-start)))
-#+end_src
-
 *** [[https://www.emacswiki.org/emacs/sv-kalender.el][sv-kalender]] Swedish calendar localization
 :PROPERTIES:
 :CUSTOM_ID: sv-kalender
