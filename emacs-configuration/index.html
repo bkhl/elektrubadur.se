@@ -447,9 +447,6 @@
 <a href="#lin">lin mode for highlight of current line.</a>
 </li>
 <li>
-<a href="#edit-server">edit-server to edit Firefox text areas</a>
-</li>
-<li>
 <a href="#sv-kalender">sv-kalender Swedish calendar localization</a>
 </li>
 <li>
@@ -533,10 +530,10 @@
 </ul>
 </li>
 <li>
-<a href="#headline-151">Writing</a>
+<a href="#headline-150">Writing</a>
 <ul>
 <li>
-<a href="#headline-152">Jinx spell checking</a>
+<a href="#headline-151">Jinx spell checking</a>
 </li>
 <li>
 <a href="#markdown">markdown-mode for Markdown support</a>
@@ -561,7 +558,7 @@
 </ul>
 </li>
 <li>
-<a href="#headline-159">CMake</a>
+<a href="#headline-158">CMake</a>
 </li>
 </ul>
 </li>
@@ -2477,24 +2474,6 @@
 </div>
 </div>
 </div>
-<div id="outline-container-edit-server" class="outline-4">
-<h4 id="edit-server"><a href="https://github.com/stsquad/emacs_chrome">edit-server</a> to edit Firefox text areas</h4>
-<div id="outline-text-edit-server" class="outline-text-4">
-<p>This module provides the server allowing the <a href="https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/">Edit with Emacs</a> Firefox add-on to open Emacs buffers where you can edit the content of text areas.</p>
-<div class="src src-emacs-lisp">
-<div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">edit-server</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:load-path</span> <span style="color:#2544bb">"site-lisp/edit-server/servers"</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">edit-server-new-frame</span> nil)
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">when</span> (<span style="color:#8f0075">and</span> (<span style="color:#721045">daemonp</span>)
-</span></span><span style="display:flex;"><span>             (<span style="color:#00538b">not</span> (<span style="color:#721045">process-status</span> <span style="color:#2544bb">"edit-server"</span>)))
-</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">edit-server-start</span>)))</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
 <div id="outline-container-sv-kalender" class="outline-4">
 <h4 id="sv-kalender"><a href="https://www.emacswiki.org/emacs/sv-kalender.el">sv-kalender</a> Swedish calendar localization</h4>
 <div id="outline-text-sv-kalender" class="outline-text-4">
@@ -2914,12 +2893,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-151" class="outline-3">
-<h3 id="headline-151">Writing</h3>
-<div id="outline-text-headline-151" class="outline-text-3">
-<div id="outline-container-headline-152" class="outline-4">
-<h4 id="headline-152"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
-<div id="outline-text-headline-152" class="outline-text-4">
+<div id="outline-container-headline-150" class="outline-3">
+<h3 id="headline-150">Writing</h3>
+<div id="outline-text-headline-150" class="outline-text-3">
+<div id="outline-container-headline-151" class="outline-4">
+<h4 id="headline-151"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
+<div id="outline-text-headline-151" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">jinx</span>
@@ -3004,9 +2983,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-159" class="outline-4">
-<h4 id="headline-159">CMake</h4>
-<div id="outline-text-headline-159" class="outline-text-4">
+<div id="outline-container-headline-158" class="outline-4">
+<h4 id="headline-158">CMake</h4>
+<div id="outline-text-headline-158" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cmake-mode</span>
