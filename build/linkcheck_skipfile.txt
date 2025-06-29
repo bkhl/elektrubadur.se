@@ -14,3 +14,4 @@
 ^https://www\.emacswiki\.org/emacs/sv-kalender\.el$
 ^https://www\.gnu\.org/software/emacs/$
 ^https://www\.jamendo\.com/artist/4363/elektrubadur$
+^https://klingonska\.org/dict/$
