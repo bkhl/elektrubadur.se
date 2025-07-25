@@ -19,7 +19,7 @@ I moved back from Bangkok a couple of years ago. If you wish to contact me, send
 
 * Links
 
-- [[https://social.sdfeu.org/@bkhl][Mastodon on SDF EU]]
+- [[https://tilde.zone/@bkhl][Mastodon on tilde.zone]]
 - [[https://github.com/bkhl][GitHub]]
 - [[https://exercism.org/profiles/bkhl][Exercism]]
 - [[https://online-go.com/player/52248/][Online-Go.com]]
