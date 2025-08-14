@@ -7,6 +7,9 @@
 ^https://gitlab\.com/$
 ^https://www\.youtube\.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g$
 
+# I don't think we need to check the Wayback Machine.
+^https://web\.archive\.org/
+
 # These give 'connection failed' more or less frequently. Check manually
 # sometimes instead.
 ^https://creativecommons\.org/licenses/by-sa/4.0/$
