@@ -1592,7 +1592,7 @@ Hide already scheduled tasks from the agenda.
 
 ~org-ctags~ otherwise breaks this functionality if it's loaded, which happens if you open some other filetype that uses ctags.
 
-This is caused by a [[https://lists.gnu.org/archive/html/emacs-orgmode/2023-03/msg00299.html][bug discussed on mailing list here]].
+This is caused by a [[https://web.archive.org/web/20250617022615/https://lists.gnu.org/archive/html/emacs-orgmode/2023-03/msg00299.html][bug discussed on mailing list here]].
 
 #+begin_src emacs-lisp
 (use-package org-ctags
