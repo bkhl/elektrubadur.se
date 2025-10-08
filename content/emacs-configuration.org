@@ -1666,6 +1666,18 @@ These are add-on packages that are dependencies of other packages further down, 
   :defer)
 #+end_src
 
+*** [[https://github.com/tarsius/cond-let][cond-let]]
+:PROPERTIES:
+:CUSTOM_ID: cond-let
+:END:
+
+- [[#magit][Magit]]
+
+#+begin_src emacs-lisp
+(use-package cond-let
+  :defer)
+#+end_src
+
 *** [[https://github.com/magnars/dash.el][dash]]
 :PROPERTIES:
 :CUSTOM_ID: dash
