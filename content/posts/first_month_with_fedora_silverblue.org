@@ -37,7 +37,7 @@ The benefits I was hoping for was
 ** Applications
 For applications, I'm using mostly Flatpak. I found after a while that
 applications I had installed from the Fedora Flatpak repository was more
-buggy than the ones I had from [[https://flathub.org/][Flathub]], so at
+buggy than the ones I had from [[https://flathub.org/en][Flathub]], so at
 one point I made a switch to get all my applications from Flathub.
 
 Here's the entire command line to get =rpm-ostree= into the current
