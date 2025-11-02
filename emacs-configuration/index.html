@@ -2449,8 +2449,8 @@
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">auto-dark</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:demand</span> t
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">auto-dark-dark-theme</span> <span style="color:#2544bb">'modus-vivendi-tritanopia</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">auto-dark-light-theme</span> <span style="color:#2544bb">'modus-operandi</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">auto-dark-themes</span> <span style="color:#00538b">'</span>((<span style="color:#00538b">modus-vivendi-tritanopia</span>)
+</span></span><span style="display:flex;"><span>                      (<span style="color:#00538b">modus-operandi</span>)))
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'auto-dark-dark-mode-hook</span>
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-dark-mode</span> ()
@@ -2458,6 +2458,8 @@
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">add-hook</span> <span style="color:#2544bb">'auto-dark-light-mode-hook</span>
 </span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-light-mode</span> ()
 </span></span><span style="display:flex;"><span>              (<span style="color:#00538b">fontaine-set-preset</span> <span style="color:#2544bb">'light</span>)))
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">load-theme</span> <span style="color:#2544bb">'modus-operandi</span> nil t)
+</span></span><span style="display:flex;"><span>  (<span style="color:#00538b">load-theme</span> <span style="color:#2544bb">'modus-vivendi-tritanopia</span> nil t)
 </span></span><span style="display:flex;"><span>  (<span style="color:#00538b">auto-dark-mode</span>))</span></span></code></pre>
 </div>
 </div>
