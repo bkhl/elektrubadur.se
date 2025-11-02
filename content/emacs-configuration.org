@@ -1782,8 +1782,8 @@ To get this to also change menu bar theme in Fedora, I need to install the [[htt
 (use-package auto-dark
   :demand t
   :custom
-  (auto-dark-dark-theme 'modus-vivendi-tritanopia)
-  (auto-dark-light-theme 'modus-operandi)
+  (auto-dark-themes '((modus-vivendi-tritanopia)
+                      (modus-operandi)))
   :config
   (add-hook 'auto-dark-dark-mode-hook
             (defun my/config-dark-mode ()
@@ -1791,6 +1791,8 @@ To get this to also change menu bar theme in Fedora, I need to install the [[htt
   (add-hook 'auto-dark-light-mode-hook
             (defun my/config-light-mode ()
               (fontaine-set-preset 'light)))
+  (load-theme 'modus-operandi nil t)
+  (load-theme 'modus-vivendi-tritanopia nil t)
   (auto-dark-mode))
 #+end_src
 
