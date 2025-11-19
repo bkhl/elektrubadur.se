@@ -2029,11 +2029,10 @@ The ~M-p~ binding conflicts with my custom binding for ~flymake-mode~, but we ca
   :demand t
   :custom
   (pulsar-face 'pulsar-yellow)
-  (pulsar-pulse-region-functions pulsar-pulse-region-common-functions)
   :bind
-  (("M-p" . pulsar-pulse-line))
+  (("M-p" . pulsar-highlight-pulse))
   :hook
-  (next-error . pulsar-pulse-line)
+  (next-error . pulsar-highlight-pulse)
   :config
   (push 'next-error pulsar-pulse-functions)
   (pulsar-global-mode))
