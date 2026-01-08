@@ -2233,12 +2233,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   (lua-indent-level 4))
 #+end_src
 
-**** [[https://github.com/sogaiu/janet-ts-mode][janet-ts-mode]]
-
-#+begin_src emacs-lisp
-(use-package janet-ts-mode)
-#+end_src
-
 ** Writing
 *** [[https://github.com/minad/jinx][Jinx]] spell checking
 
