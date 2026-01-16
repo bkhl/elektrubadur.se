@@ -2234,6 +2234,35 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 #+end_src
 
 ** Writing
+*** Markup languages
+**** Markdown
+***** [[https://jblevins.org/projects/markdown-mode/][markdown-mode]]
+:PROPERTIES:
+:CUSTOM_ID: markdown
+:END:
+
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :mode (rx ".md" eos))
+#+end_src
+
+**** Typst
+***** [[https://codeberg.org/meow_king/typst-ts-mode][typst-ts-mode]] for Typst
+
+#+begin_src emacs-lisp
+(use-package typst-ts-mode
+  :mode
+  ((rx ".typ" eos) . typst-ts-mode)
+  :config
+  (defun my/config-typst-ts-mode ()
+    (setq-local eglot-server-programs
+                '((typst-ts-mode . ("tinymist"
+                                    :initializationOptions
+                                    (:preview (:background (:enabled t))))))
+    (eglot-ensure))
+  :hook (typst-ts-mode . my/config-typst-ts-mode))
+#+end_src
+
 *** [[https://github.com/minad/jinx][Jinx]] spell checking
 
 #+begin_src emacs-lisp
@@ -2247,16 +2276,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   :commands (jinx-mode
              global-jinx-mode
              jinx-correct))
-#+end_src
-
-*** [[https://jblevins.org/projects/markdown-mode/][markdown-mode]] for Markdown support
-:PROPERTIES:
-:CUSTOM_ID: markdown
-:END:
-
-#+begin_src emacs-lisp
-(use-package markdown-mode
-  :mode (rx ".md" eos))
 #+end_src
 
 *** [[https://github.com/rnkn/olivetti][olivetti]] to adjust margins of text
