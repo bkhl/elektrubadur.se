@@ -2258,7 +2258,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
     (setq-local eglot-server-programs
                 '((typst-ts-mode . ("tinymist"
                                     :initializationOptions
-                                    (:preview (:background (:enabled t))))))
+                                    (:preview (:background (:enabled t)))))))
     (eglot-ensure))
   :hook (typst-ts-mode . my/config-typst-ts-mode))
 #+end_src
