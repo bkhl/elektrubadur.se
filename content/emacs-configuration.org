@@ -2230,9 +2230,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 (use-package lua-mode
   :mode (rx ".lua" eos)
   :custom
-  (lua-indent-level 4)
-  :hook
-  (lua-mode . flymake-mode))
+  (lua-indent-level 4))
 #+end_src
 
 ** Writing
