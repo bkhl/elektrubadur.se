@@ -11,7 +11,6 @@
 <link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
 <title>Emacs Configuration – Elektrubadur</title>
 <link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
-<link rel="sitemap" type="application/xml" title="Elektrubadur Sitemap" href="https://elektrubadur.se/sitemap.xml">
 <link rel="me" href="https://tilde.zone/@bkhl">
 <meta name="fediverse:creator" content="@bkhl@tilde.zone">
 <meta name="description" content="Personal web page of Björn Lindström">
@@ -528,21 +527,36 @@
 </li>
 </ul>
 </li>
-<li>
-<a href="#headline-151">janet-ts-mode</a>
-</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<a href="#headline-152">Writing</a>
+<a href="#headline-151">Writing</a>
 <ul>
 <li>
-<a href="#headline-153">Jinx spell checking</a>
+<a href="#headline-152">Markup languages</a>
+<ul>
+<li>
+<a href="#headline-153">Markdown</a>
+<ul>
+<li>
+<a href="#markdown">markdown-mode</a>
+</li>
+</ul>
 </li>
 <li>
-<a href="#markdown">markdown-mode for Markdown support</a>
+<a href="#headline-155">Typst</a>
+<ul>
+<li>
+<a href="#headline-156">typst-ts-mode for Typst</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#headline-157">Jinx spell checking</a>
 </li>
 <li>
 <a href="#olivetti">olivetti to adjust margins of text</a>
@@ -564,7 +578,7 @@
 </ul>
 </li>
 <li>
-<a href="#headline-160">CMake</a>
+<a href="#headline-163">CMake</a>
 </li>
 </ul>
 </li>
@@ -2912,12 +2926,51 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-151" class="outline-5">
-<h5 id="headline-151"><a href="https://github.com/sogaiu/janet-ts-mode">janet-ts-mode</a></h5>
-<div id="outline-text-headline-151" class="outline-text-5">
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-151" class="outline-3">
+<h3 id="headline-151">Writing</h3>
+<div id="outline-text-headline-151" class="outline-text-3">
+<div id="outline-container-headline-152" class="outline-4">
+<h4 id="headline-152">Markup languages</h4>
+<div id="outline-text-headline-152" class="outline-text-4">
+<div id="outline-container-headline-153" class="outline-5">
+<h5 id="headline-153">Markdown</h5>
+<div id="outline-text-headline-153" class="outline-text-5">
+<div id="outline-container-markdown" class="outline-6">
+<h6 id="markdown"><a href="https://jblevins.org/projects/markdown-mode/">markdown-mode</a></h6>
+<div id="outline-text-markdown" class="outline-text-6">
 <div class="src src-emacs-lisp">
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">janet-ts-mode</span>)</span></span></code></pre>
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">markdown-mode</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".md"</span> <span style="color:#00538b">eos</span>))</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-155" class="outline-5">
+<h5 id="headline-155">Typst</h5>
+<div id="outline-text-headline-155" class="outline-text-5">
+<div id="outline-container-headline-156" class="outline-6">
+<h6 id="headline-156"><a href="https://codeberg.org/meow_king/typst-ts-mode">typst-ts-mode</a> for Typst</h6>
+<div id="outline-text-headline-156" class="outline-text-6">
+<div class="src src-emacs-lisp">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">typst-ts-mode</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span>
+</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".typ"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">typst-ts-mode</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-typst-ts-mode</span> ()
+</span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">eglot-server-programs</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00538b">'</span>((<span style="color:#00538b">typst-ts-mode</span> <span style="color:#00538b">.</span> (<span style="color:#2544bb">"tinymist"</span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#8f0075">:initializationOptions</span>
+</span></span><span style="display:flex;"><span>                                    (<span style="color:#8f0075">:preview</span> (<span style="color:#8f0075">:background</span> (<span style="color:#8f0075">:enabled</span> t)))))))
+</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">eglot-ensure</span>))
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">typst-ts-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-typst-ts-mode</span>))</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -2926,12 +2979,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-152" class="outline-3">
-<h3 id="headline-152">Writing</h3>
-<div id="outline-text-headline-152" class="outline-text-3">
-<div id="outline-container-headline-153" class="outline-4">
-<h4 id="headline-153"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
-<div id="outline-text-headline-153" class="outline-text-4">
+<div id="outline-container-headline-157" class="outline-4">
+<h4 id="headline-157"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
+<div id="outline-text-headline-157" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">jinx</span>
@@ -2944,17 +2994,6 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:commands</span> (<span style="color:#00538b">jinx-mode</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#00538b">global-jinx-mode</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#00538b">jinx-correct</span>))</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-markdown" class="outline-4">
-<h4 id="markdown"><a href="https://jblevins.org/projects/markdown-mode/">markdown-mode</a> for Markdown support</h4>
-<div id="outline-text-markdown" class="outline-text-4">
-<div class="src src-emacs-lisp">
-<div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">markdown-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".md"</span> <span style="color:#00538b">eos</span>))</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -3016,9 +3055,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-160" class="outline-4">
-<h4 id="headline-160">CMake</h4>
-<div id="outline-text-headline-160" class="outline-text-4">
+<div id="outline-container-headline-163" class="outline-4">
+<h4 id="headline-163">CMake</h4>
+<div id="outline-text-headline-163" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cmake-mode</span>

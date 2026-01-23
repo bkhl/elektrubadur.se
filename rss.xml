@@ -46,22 +46,11 @@ The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use tha
       <pubDate>Sat, 08 Feb 2020 00:00:00 +0100</pubDate>
       <guid>https://elektrubadur.se/posts/first_month_with_fedora_silverblue/</guid>
       <description>&lt;p&gt;
-I decided during my midwinter vacation that I&amp;#39;d try out
-&lt;a href="https://fedoraproject.org/atomic-desktops/silverblue/"&gt;Fedora Silverblue&lt;/a&gt; on my
-desktop, and I liked it, so here I am still using it on my work laptop.&lt;/p&gt;
+I decided during my midwinter vacation that I&amp;#39;d try out &lt;a href="https://fedoraproject.org/atomic-desktops/silverblue/"&gt;Fedora Silverblue&lt;/a&gt; on my desktop, and I liked it, so here I am still using it on my work laptop.&lt;/p&gt;
 &lt;p&gt;
-Silverblue is a version of Fedora using
-&lt;a href="https://coreos.github.io/rpm-ostree/"&gt;rpm-ostree&lt;/a&gt; to provide a minimal
-and immutable base OS, providing a platform for running applications in
-containers.&lt;/p&gt;
+Silverblue is a version of Fedora using &lt;a href="https://coreos.github.io/rpm-ostree/"&gt;rpm-ostree&lt;/a&gt; to provide a minimal and immutable base OS, providing a platform for running applications in containers.&lt;/p&gt;
 &lt;p&gt;
-Previously I was using Ubuntu with a lot of Ansible playbooks for
-installing things both globally and in my home directory. I used to keep
-those playbooks in the same directory as my
-&lt;a href="https://github.com/bkhl/dotfiles"&gt;dotfiles&lt;/a&gt;, but after the switch to
-Fedora I removed them. If anyone is curious about what that looked like,
-&lt;a href="https://gitlab.com/bkhl/workstation-playbooks/tree/065ce9ca0547ca4d9c1e574407ba6373fcc99b69"&gt;they
-are here&lt;/a&gt;.&lt;/p&gt;</description>
+Previously I was using Ubuntu with a lot of Ansible playbooks for installing things both globally and in my home directory. I used to keep those playbooks in the same directory as my &lt;a href="https://github.com/bkhl/dotfiles"&gt;dotfiles&lt;/a&gt;, but after the switch to Fedora I removed them. If anyone is curious about what that looked like, &lt;a href="https://gitlab.com/bkhl/workstation-playbooks/tree/065ce9ca0547ca4d9c1e574407ba6373fcc99b69"&gt;they are here&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Simple Nextcloud To-Do List Automation with Python and WebDAV</title>

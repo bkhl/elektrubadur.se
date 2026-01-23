@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://elektrubadur.se/categories/</loc>
-    <lastmod>2025-10-18T12:03:29+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/posts/converting_blog_to_org/</loc>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/</loc>
-    <lastmod>2025-10-18T12:03:29+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/www/</loc>
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://elektrubadur.se/categories/software/</loc>
-    <lastmod>2025-10-18T12:03:29+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/nextcloud/</loc>
@@ -82,23 +82,23 @@
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/containers/</loc>
-    <lastmod>2025-10-18T12:03:29+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/fedora/</loc>
-    <lastmod>2025-10-18T12:03:29+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/posts/first_month_with_fedora_silverblue/</loc>
-    <lastmod>2025-10-18T12:03:29+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/linux/</loc>
-    <lastmod>2025-10-18T12:03:29+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/silverblue/</loc>
-    <lastmod>2025-10-18T12:03:29+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/planning/</loc>
@@ -486,7 +486,7 @@
   </url>
   <url>
     <loc>https://elektrubadur.se/emacs-configuration/</loc>
-    <lastmod>2025-12-23T08:44:45+00:00</lastmod>
+    <lastmod>2026-01-21T08:01:26+00:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/galleries/</loc>
@@ -514,6 +514,6 @@
   </url>
   <url>
     <loc>https://elektrubadur.se/resume/</loc>
-    <lastmod>2024-10-06T14:44:16+02:00</lastmod>
+    <lastmod>2026-01-23T20:52:49+01:00</lastmod>
   </url>
 </urlset>

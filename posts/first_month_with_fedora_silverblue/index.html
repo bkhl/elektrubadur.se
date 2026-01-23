@@ -11,7 +11,6 @@
 <link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
 <title>First Month with Fedora Silverblue – Elektrubadur</title>
 <link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
-<link rel="sitemap" type="application/xml" title="Elektrubadur Sitemap" href="https://elektrubadur.se/sitemap.xml">
 <link rel="me" href="https://tilde.zone/@bkhl">
 <meta name="fediverse:creator" content="@bkhl@tilde.zone">
 <meta name="description" content="Personal web page of Björn Lindström">
@@ -38,9 +37,9 @@
 <li>Plain Gnome desktop without custom themes.</li>
 <li>RPM-based. This is not an advantage in itself, but makes things a bit easier as I mostly deal with RHEL and Centos for work.</li>
 </ul>
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">Applications</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">Applications</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
 <p>For applications, I'm using mostly Flatpak. I found after a while that applications I had installed from the Fedora Flatpak repository was more buggy than the ones I had from <a href="https://flathub.org/en">Flathub</a>, so at one point I made a switch to get all my applications from Flathub.</p>
 <p>Here's the entire command line to get <code class="verbatim">rpm-ostree</code> into the current state of my laptop:</p>
 <div class="src src-sh">
@@ -78,16 +77,16 @@
 <p>As you can see, there's just a few things that has to be added as RPMs. Not a lot, considering that in the default installation, Silverblue just comes with a terminal, a file manager, and Firefox, in terms of applications.</p>
 </div>
 </div>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">Development environments</h3>
-<div id="outline-text-headline-2" class="outline-text-3">
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">Development environments</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
 <p>The main thing I've done so far to make it convenient for me to use as a development system is to create container images for use with <a href="https://github.com/containers/toolbox">Toolbox</a>. I keep these images <a href="https://gitlab.com/bkhl/toolboxes">here in GitLab</a>. I'll write more about that in a future article.</p>
 <p>For now I'll summarize it by saying I've created some Toolbox environments for various languages, configured to keep caches and such in the container, rather than my <code class="verbatim">$HOME</code>, and it's working quite nicely so far.</p>
 </div>
 </div>
-<div id="outline-container-headline-3" class="outline-3">
-<h3 id="headline-3">Gnome</h3>
-<div id="outline-text-headline-3" class="outline-text-3">
+<div id="outline-container-headline-3" class="outline-2">
+<h2 id="headline-3">Gnome</h2>
+<div id="outline-text-headline-3" class="outline-text-2">
 <p>I used the default Ubuntu desktop before, so this is not a dramatic change, but I like the look and feel of the default Gnome desktop. I also get a somewhat newer version of it, which is nice.</p>
 <p>A few weeks after the switch, Tobias Bernard (Gnome developer) posted the article <a href="https://blogs.gnome.org/tbernard/2020/01/17/doing-things-that-scale/">Doing Things That Scale</a>, which resonated with me. While I've done some hacking to set up my development environments "just right" as described above, I'm trying to think of how to make that work more usable for others, maybe by contributing back to the <a href="https://github.com/containers/toolbox">Toolbox</a> project, or by making some sort of GUI wrapper to manage a set of development environment toolboxes.</p>
 </div>
