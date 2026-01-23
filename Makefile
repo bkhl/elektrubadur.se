@@ -1,3 +1,5 @@
+MAKE_FLAGS += --always-make
+
 IMAGE := localhost/elektrubadur-builder:latest
 
 export DOMAIN := elektrubadur.se
@@ -9,9 +11,7 @@ podman run --rm --interactive \
 --workdir "$(CURDIR)"
 endef
 
-.PHONY: all image build serve validate check_links
-
-all:
+help:
 	make --print-targets
 
 image:
@@ -28,3 +28,6 @@ validate: build
 
 check_links:
 	$(run) docker.io/tennox/linkcheck:latest --show-redirects --check-anchors --skip-file build/linkcheck_skipfile.txt --external "https://$(DOMAIN)"
+
+clean:
+	rm -rf public resources
