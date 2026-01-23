@@ -1,8 +1,6 @@
-FROM  ghcr.io/hugomods/hugo:0.135.0 as hugo
+FROM  ghcr.io/gohugoio/hugo:v0.154.5
 
-FROM docker.io/library/alpine:latest
-
-COPY --from=hugo /usr/bin/hugo /usr/local/bin/hugo
+USER root:root
 
 RUN apk add --no-cache \
     bash \
@@ -10,3 +8,5 @@ RUN apk add --no-cache \
     tzdata \
     xmlstarlet \
     tidyhtml
+
+ENTRYPOINT
