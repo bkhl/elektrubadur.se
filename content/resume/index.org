@@ -12,7 +12,7 @@ Some of my computer experience is from university and work, but a lot of it is f
 
 * Work Experience
 
-*** Vizrt Sweden AB
+** Vizrt Sweden AB
 
 /[[https://www.vizrt.com/][Vizrt]] is a software company in the broadcast industry./
 
@@ -25,7 +25,7 @@ Worked with installation, configuration, documentation, testing and fixing of Vi
 - Implemented a proof-of-concept plugin integrating Vizrt products with Adobe After Effects which was used as a demo at a major trade show.
 - Temporarily switched department to R&D for three months, to implement a new feature relating to tiered storage, using Perl and Python.
 
-*** Vizrt Thailand Ltd.
+** Vizrt Thailand Ltd.
 
 - *Systems Engineer* (Feb 2015 --- 2017)
 - *Senior Systems Engineer* (2018 --- 2019)
@@ -39,7 +39,7 @@ Moved to Thailand, initially continuing in similar role.
 - Was made /technical lead/, meaning I take requests for technical advice and estimates from colleagues in the APAC region working as technical sales representatives or solution architects, as well as guiding other systems engineer in best practices for custom software development and deployment.
 - Had a hand in many other large and small projects across the region, including work on-site work at broadcasters in China, Thailand, South Africa, Israel, and Singapore, as well as remotely to Malaysia, the Philippines, Australia, New Zeeland and others.
 
-*** Vizrt Sweden AB
+** Vizrt Sweden AB
 
 - *Senior Software Engineer* (2021 --- present)
 - *Scrum Master* (2022 --- present)
