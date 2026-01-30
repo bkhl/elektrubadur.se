@@ -299,12 +299,6 @@
 <a href="#c">C</a>
 </li>
 <li>
-<a href="#containerfile">Containerfile/Dockerfile</a>
-</li>
-<li>
-<a href="#go">Go</a>
-</li>
-<li>
 <a href="#perl">Perl</a>
 </li>
 <li>
@@ -329,10 +323,10 @@
 <a href="#project-management">Project management</a>
 <ul>
 <li>
-<a href="#headline-92">Show current project in mode line</a>
+<a href="#headline-90">Show current project in mode line</a>
 </li>
 <li>
-<a href="#headline-93">Show paths relative to current project in file name history</a>
+<a href="#headline-91">Show paths relative to current project in file name history</a>
 </li>
 <li>
 <a href="#exercism-projects">Detect Exercism exercises as projects.</a>
@@ -395,10 +389,10 @@
 <a href="#eshell">Eshell</a>
 <ul>
 <li>
-<a href="#headline-112">Disable banner</a>
+<a href="#headline-110">Disable banner</a>
 </li>
 <li>
-<a href="#headline-113">Aliases</a>
+<a href="#headline-111">Aliases</a>
 </li>
 </ul>
 </li>
@@ -509,6 +503,9 @@
 <a href="#add-on-programming-languages">Languages</a>
 <ul>
 <li>
+<a href="#containerfile">Containerfile/Dockerfile</a>
+</li>
+<li>
 <a href="#add-on-emacs-lisp">Emacs Lisp</a>
 <ul>
 <li>
@@ -518,6 +515,9 @@
 <a href="#xr">xr reverse rx</a>
 </li>
 </ul>
+</li>
+<li>
+<a href="#go">Go</a>
 </li>
 <li>
 <a href="#add-on-lua">Lua</a>
@@ -1736,54 +1736,6 @@
 </pre>
 </div>
 </div>
-<div id="outline-container-containerfile" class="outline-5">
-<h5 id="containerfile">Containerfile/Dockerfile</h5>
-<div id="outline-text-containerfile" class="outline-text-5">
-<div class="src src-emacs-lisp">
-<div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">dockerfile-ts-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"/"</span> <span style="color:#00538b">bos</span>)
-</span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"Containerfile"</span> <span style="color:#2544bb">"Dockerfile"</span>)
-</span></span><span style="display:flex;"><span>            (<span style="color:#00538b">opt</span> <span style="color:#2544bb">"."</span> (<span style="color:#721045">*</span>  (<span style="color:#00538b">not</span> (<span style="color:#00538b">any</span> <span style="color:#2544bb">"/"</span>))))
-</span></span><span style="display:flex;"><span>            <span style="color:#00538b">eos</span>))</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-go" class="outline-5">
-<h5 id="go">Go</h5>
-<div id="outline-text-go" class="outline-text-5">
-<div class="src src-emacs-lisp">
-<div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">go-ts-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span>
-</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".go"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">go-ts-mode</span>)
-</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"/"</span> <span style="color:#00538b">bos</span>) <span style="color:#2544bb">"go.mod"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">go-mod-ts-mode</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:custom</span> (<span style="color:#00538b">go-ts-mode-indent-offset</span> <span style="color:#0000c0">4</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span> (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-go-ts-mode</span> ()
-</span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">tab-width</span> <span style="color:#0000c0">4</span>)
-</span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">prettify-symbols-alist</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#00538b">`</span>((<span style="color:#2544bb">"&lt;-"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-left-arrow</span>)
-</span></span><span style="display:flex;"><span>                          (<span style="color:#2544bb">"..."</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-ellipsis</span>))))
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">go-ts-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-go-ts-mode</span>))</span></span></code></pre>
-</div>
-</div>
-<p>Example <code>.dir-locals.el</code> to use the <a href="https://cs.opensource.google/go/x/tools/+/master:gopls/">gopls</a> language server with Eglot, also using it for code formatting on save.</p>
-<pre class="example">
-((go-ts-mode
-  . ((eval
-      . (let ((root (expand-file-name (project-root (project-current)))))
-          (setq-local eglot-server-programs
-                      `((go-ts-mode
-                         "podman" "run" "--rm" "--interactive"
-                         ,(concat "--volume=" root ":" root ":z")
-                         ,(concat "--workdir=" root)
-                         "docker.io/lspcontainers/gopls:latest")))
-          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
-          (eglot-ensure))))))
-</pre>
-</div>
-</div>
 <div id="outline-container-perl" class="outline-5">
 <h5 id="perl">Perl</h5>
 <div id="outline-text-perl" class="outline-text-5">
@@ -1863,9 +1815,9 @@
 <div id="outline-container-project-management" class="outline-3">
 <h3 id="project-management">Project management</h3>
 <div id="outline-text-project-management" class="outline-text-3">
-<div id="outline-container-headline-92" class="outline-4">
-<h4 id="headline-92">Show current project in mode line</h4>
-<div id="outline-text-headline-92" class="outline-text-4">
+<div id="outline-container-headline-90" class="outline-4">
+<h4 id="headline-90">Show current project in mode line</h4>
+<div id="outline-text-headline-90" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">project</span>
@@ -1875,9 +1827,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-93" class="outline-4">
-<h4 id="headline-93">Show paths relative to current project in file name history</h4>
-<div id="outline-text-headline-93" class="outline-text-4">
+<div id="outline-container-headline-91" class="outline-4">
+<h4 id="headline-91">Show paths relative to current project in file name history</h4>
+<div id="outline-text-headline-91" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">project</span>
@@ -2250,9 +2202,9 @@
 <div id="outline-container-eshell" class="outline-3">
 <h3 id="eshell">Eshell</h3>
 <div id="outline-text-eshell" class="outline-text-3">
-<div id="outline-container-headline-112" class="outline-4">
-<h4 id="headline-112">Disable banner</h4>
-<div id="outline-text-headline-112" class="outline-text-4">
+<div id="outline-container-headline-110" class="outline-4">
+<h4 id="headline-110">Disable banner</h4>
+<div id="outline-text-headline-110" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">em-banner</span>
@@ -2262,9 +2214,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-113" class="outline-4">
-<h4 id="headline-113">Aliases</h4>
-<div id="outline-text-headline-113" class="outline-text-4">
+<div id="outline-container-headline-111" class="outline-4">
+<h4 id="headline-111">Aliases</h4>
+<div id="outline-text-headline-111" class="outline-text-4">
 <p>Alias to open file for editing</p>
 <div class="src src-emacs-lisp">
 <div class="highlight">
@@ -2865,6 +2817,20 @@
 <div id="outline-container-add-on-programming-languages" class="outline-4">
 <h4 id="add-on-programming-languages">Languages</h4>
 <div id="outline-text-add-on-programming-languages" class="outline-text-4">
+<div id="outline-container-containerfile" class="outline-5">
+<h5 id="containerfile">Containerfile/Dockerfile</h5>
+<div id="outline-text-containerfile" class="outline-text-5">
+<div class="src src-emacs-lisp">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">dockerfile-mode</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span> (<span style="color:#8f0075">rx</span> (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"/"</span> <span style="color:#00538b">bos</span>)
+</span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"Containerfile"</span> <span style="color:#2544bb">"Dockerfile"</span>)
+</span></span><span style="display:flex;"><span>            (<span style="color:#00538b">opt</span> <span style="color:#2544bb">"."</span> (<span style="color:#721045">*</span>  (<span style="color:#00538b">not</span> (<span style="color:#00538b">any</span> <span style="color:#2544bb">"/"</span>))))
+</span></span><span style="display:flex;"><span>            <span style="color:#00538b">eos</span>))</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
 <div id="outline-container-add-on-emacs-lisp" class="outline-5">
 <h5 id="add-on-emacs-lisp">Emacs Lisp</h5>
 <div id="outline-text-add-on-emacs-lisp" class="outline-text-5">
@@ -2898,6 +2864,39 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+<div id="outline-container-go" class="outline-5">
+<h5 id="go">Go</h5>
+<div id="outline-text-go" class="outline-text-5">
+<div class="src src-emacs-lisp">
+<div class="highlight">
+<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">go-mode</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span>
+</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".go"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">go-mode</span>)
+</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> (<span style="color:#8f0075">or</span> <span style="color:#2544bb">"/"</span> <span style="color:#00538b">bos</span>) <span style="color:#2544bb">"go.mod"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">go-dot-mod-mode</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span> (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-go-mode</span> ()
+</span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">tab-width</span> <span style="color:#0000c0">4</span>)
+</span></span><span style="display:flex;"><span>            (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">prettify-symbols-alist</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#00538b">`</span>((<span style="color:#2544bb">"&lt;-"</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-left-arrow</span>)
+</span></span><span style="display:flex;"><span>                          (<span style="color:#2544bb">"..."</span> <span style="color:#00538b">.</span> <span style="color:#00538b">,</span><span style="color:#00538b">my/prettify-ellipsis</span>))))
+</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">go-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-go-mode</span>))</span></span></code></pre>
+</div>
+</div>
+<p>Example <code>.dir-locals.el</code> to use the <a href="https://cs.opensource.google/go/x/tools/+/master:gopls/">gopls</a> language server with Eglot, also using it for code formatting on save.</p>
+<pre class="example">
+((go-mode
+  . ((eval
+      . (let ((root (expand-file-name (project-root (project-current)))))
+          (setq-local eglot-server-programs
+                      `((go-mode
+                         "podman" "run" "--rm" "--interactive"
+                         ,(concat "--volume=" root ":" root ":z")
+                         ,(concat "--workdir=" root)
+                         "docker.io/lspcontainers/gopls:latest")))
+          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
+          (eglot-ensure))))))
+</pre>
 </div>
 </div>
 <div id="outline-container-add-on-lua" class="outline-5">
