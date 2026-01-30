@@ -545,18 +545,10 @@
 </li>
 </ul>
 </li>
-<li>
-<a href="#headline-155">Typst</a>
-<ul>
-<li>
-<a href="#headline-156">typst-ts-mode for Typst</a>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 <li>
-<a href="#headline-157">Jinx spell checking</a>
+<a href="#headline-155">Jinx spell checking</a>
 </li>
 <li>
 <a href="#olivetti">olivetti to adjust margins of text</a>
@@ -578,7 +570,7 @@
 </ul>
 </li>
 <li>
-<a href="#headline-163">CMake</a>
+<a href="#headline-161">CMake</a>
 </li>
 </ul>
 </li>
@@ -2952,36 +2944,11 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-155" class="outline-5">
-<h5 id="headline-155">Typst</h5>
-<div id="outline-text-headline-155" class="outline-text-5">
-<div id="outline-container-headline-156" class="outline-6">
-<h6 id="headline-156"><a href="https://codeberg.org/meow_king/typst-ts-mode">typst-ts-mode</a> for Typst</h6>
-<div id="outline-text-headline-156" class="outline-text-6">
-<div class="src src-emacs-lisp">
-<div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">typst-ts-mode</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:mode</span>
-</span></span><span style="display:flex;"><span>  ((<span style="color:#8f0075">rx</span> <span style="color:#2544bb">".typ"</span> <span style="color:#00538b">eos</span>) <span style="color:#00538b">.</span> <span style="color:#00538b">typst-ts-mode</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#8f0075">defun</span> <span style="color:#00538b">my/config-typst-ts-mode</span> ()
-</span></span><span style="display:flex;"><span>    (<span style="color:#8f0075">setq-local</span> <span style="color:#00538b">eglot-server-programs</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#00538b">'</span>((<span style="color:#00538b">typst-ts-mode</span> <span style="color:#00538b">.</span> (<span style="color:#2544bb">"tinymist"</span>
-</span></span><span style="display:flex;"><span>                                    <span style="color:#8f0075">:initializationOptions</span>
-</span></span><span style="display:flex;"><span>                                    (<span style="color:#8f0075">:preview</span> (<span style="color:#8f0075">:background</span> (<span style="color:#8f0075">:enabled</span> t)))))))
-</span></span><span style="display:flex;"><span>    (<span style="color:#00538b">eglot-ensure</span>))
-</span></span><span style="display:flex;"><span>  <span style="color:#8f0075">:hook</span> (<span style="color:#00538b">typst-ts-mode</span> <span style="color:#00538b">.</span> <span style="color:#00538b">my/config-typst-ts-mode</span>))</span></span></code></pre>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-157" class="outline-4">
-<h4 id="headline-157"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
-<div id="outline-text-headline-157" class="outline-text-4">
+<div id="outline-container-headline-155" class="outline-4">
+<h4 id="headline-155"><a href="https://github.com/minad/jinx">Jinx</a> spell checking</h4>
+<div id="outline-text-headline-155" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">jinx</span>
@@ -3055,9 +3022,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-headline-163" class="outline-4">
-<h4 id="headline-163">CMake</h4>
-<div id="outline-text-headline-163" class="outline-text-4">
+<div id="outline-container-headline-161" class="outline-4">
+<h4 id="headline-161">CMake</h4>
+<div id="outline-text-headline-161" class="outline-text-4">
 <div class="src src-emacs-lisp">
 <div class="highlight">
 <pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(<span style="color:#8f0075">use-package</span> <span style="color:#00538b">cmake-mode</span>
