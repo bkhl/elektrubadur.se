@@ -1111,54 +1111,6 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
           (eglot-ensure))))))
 #+end_example
 
-**** Containerfile/Dockerfile
-:PROPERTIES:
-:CUSTOM_ID: containerfile
-:END:
-
-#+begin_src emacs-lisp
-(use-package dockerfile-ts-mode
-  :mode (rx (or "/" bos)
-            (or "Containerfile" "Dockerfile")
-            (opt "." (*  (not (any "/"))))
-            eos))
-#+end_src
-
-**** Go
-:PROPERTIES:
-:CUSTOM_ID: go
-:END:
-
-#+begin_src emacs-lisp
-(use-package go-ts-mode
-  :mode
-  ((rx ".go" eos) . go-ts-mode)
-  ((rx (or "/" bos) "go.mod" eos) . go-mod-ts-mode)
-  :custom (go-ts-mode-indent-offset 4)
-  :config (defun my/config-go-ts-mode ()
-            (setq-local tab-width 4)
-            (setq-local prettify-symbols-alist
-                        `(("<-" . ,my/prettify-left-arrow)
-                          ("..." . ,my/prettify-ellipsis))))
-  :hook (go-ts-mode . my/config-go-ts-mode))
-#+end_src
-
-Example ~.dir-locals.el~ to use the [[https://cs.opensource.google/go/x/tools/+/master:gopls/][gopls]] language server with Eglot, also using it for code formatting on save.
-
-#+begin_example emacs-lisp
-((go-ts-mode
-  . ((eval
-      . (let ((root (expand-file-name (project-root (project-current)))))
-          (setq-local eglot-server-programs
-                      `((go-ts-mode
-                         "podman" "run" "--rm" "--interactive"
-                         ,(concat "--volume=" root ":" root ":z")
-                         ,(concat "--workdir=" root)
-                         "docker.io/lspcontainers/gopls:latest")))
-          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
-          (eglot-ensure))))))
-#+end_example
-
 **** Perl
 :PROPERTIES:
 :CUSTOM_ID: perl
@@ -2182,6 +2134,19 @@ This module allows a number of functions to operate on the current line if no re
 :CUSTOM_ID: add-on-programming-languages
 :END:
 
+**** Containerfile/Dockerfile
+:PROPERTIES:
+:CUSTOM_ID: containerfile
+:END:
+
+#+begin_src emacs-lisp
+(use-package dockerfile-mode
+  :mode (rx (or "/" bos)
+            (or "Containerfile" "Dockerfile")
+            (opt "." (*  (not (any "/"))))
+            eos))
+#+end_src
+
 **** Emacs Lisp
 :PROPERTIES:
 :CUSTOM_ID: add-on-emacs-lisp
@@ -2215,6 +2180,40 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
              xr-skip-set-lint
              xr-pp-rx-to-str))
 #+end_src
+
+**** Go
+:PROPERTIES:
+:CUSTOM_ID: go
+:END:
+
+#+begin_src emacs-lisp
+(use-package go-mode
+  :mode
+  ((rx ".go" eos) . go-mode)
+  ((rx (or "/" bos) "go.mod" eos) . go-dot-mod-mode)
+  :config (defun my/config-go-mode ()
+            (setq-local tab-width 4)
+            (setq-local prettify-symbols-alist
+                        `(("<-" . ,my/prettify-left-arrow)
+                          ("..." . ,my/prettify-ellipsis))))
+  :hook (go-mode . my/config-go-mode))
+#+end_src
+
+Example ~.dir-locals.el~ to use the [[https://cs.opensource.google/go/x/tools/+/master:gopls/][gopls]] language server with Eglot, also using it for code formatting on save.
+
+#+begin_example emacs-lisp
+((go-mode
+  . ((eval
+      . (let ((root (expand-file-name (project-root (project-current)))))
+          (setq-local eglot-server-programs
+                      `((go-mode
+                         "podman" "run" "--rm" "--interactive"
+                         ,(concat "--volume=" root ":" root ":z")
+                         ,(concat "--workdir=" root)
+                         "docker.io/lspcontainers/gopls:latest")))
+          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
+          (eglot-ensure))))))
+#+end_example
 
 **** Lua
 :PROPERTIES:
