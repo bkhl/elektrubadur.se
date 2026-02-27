@@ -2,7 +2,6 @@
 
 - [[/posts/][Posts]] :: Blog posts on miscellaneous subjects.
 - [[/galleries/][Galleries]] :: Some photo galleries.
-- [[/emacs/][Emacs]] :: My Emacs configuration and packages.
 
 [[./portrait.jpeg]]
 
@@ -11,9 +10,9 @@
 I am a programmer living in Sweden. My interests include:
 
 - playing go.
+- photography.
 - reading science fiction.
 - tie knots.
-- hacking on [[/emacs/][Emacs]].
 
 I moved back from Bangkok a couple of years ago. If you wish to contact me, send an e-mail to [[mailto:bkhl@elektrubadur.se][bkhl@elektrubadur.se]].
 
