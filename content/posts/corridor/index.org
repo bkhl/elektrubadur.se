@@ -1,7 +1,0 @@
-#+TITLE: Corridor
-#+DATE: 2015-03-08
-#+CATEGORIES[]: Photos
-#+IMAGE: corridor.jpeg
-#+ALIASES[]: /corridor
-
-A corridor somewhere.

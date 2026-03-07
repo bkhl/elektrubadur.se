@@ -29,6 +29,13 @@ isPlainText = true
 [markup.highlight]
 style = "modus-operandi"
 
+[markup.goldmark.parser]
+autoDefinitionTermID = false
+autoHeadingID = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
 [params]
 description = "Personal web page of Björn Lindström"
 author = "Björn Lindström"

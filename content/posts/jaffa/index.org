@@ -1,7 +1,0 @@
-#+TITLE: Jaffa
-#+DATE: 2017-04-22
-#+CATEGORIES[]: Photos
-#+IMAGE: jaffa.jpeg
-#+ALIASES[]: /jaffa
-
-Port of Jaffa.

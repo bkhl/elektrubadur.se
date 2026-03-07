@@ -1,8 +1,0 @@
-#+TITLE: Street Map
-#+DATE: 2016-12-19
-#+CATEGORIES[]: Photos
-#+IMAGE: street-map.jpeg
-#+ALIASES[]: /street-map
-
-My neighbourhood has these maps drawn on pavements, walls, street
-cabinets &c. I'm curious to know what they are for.

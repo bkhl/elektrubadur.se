@@ -1,7 +1,0 @@
-#+TITLE: Bat Yam Beach
-#+DATE: 2017-04-07
-#+CATEGORIES[]: Photos
-#+IMAGE: bat-yam-beach.jpeg
-#+ALIASES[]: /bat-yam-beach
-
-Bat Yam beach.

@@ -1,7 +1,0 @@
-#+TITLE: Van
-#+DATE: 2015-03-27
-#+CATEGORIES[]: Photos
-#+IMAGE: van.jpeg
-#+ALIASES[]: /van
-
-Inside of public van.
