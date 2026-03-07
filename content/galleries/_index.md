@@ -1,7 +1,7 @@
 +++
 title = "Galleries"
 
-[_build]
+[build]
 render = "always"
 list = "always"
 +++

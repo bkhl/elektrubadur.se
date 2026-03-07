@@ -1,7 +1,7 @@
 +++
 title = "Posts"
 
-[_build]
+[build]
 render = "always"
 list = "always"
 +++
