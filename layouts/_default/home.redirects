@@ -10,7 +10,7 @@
 {{- with $.Site.Home -}}
 {{- range .OutputFormats -}}
 {{- if eq .Name "atom" -}}
-{{ .RelPermalink | replaceRE "feed\\.xml$" "rss.xml" }} {{ .RelPermalink }} 301
+{{ .RelPermalink | replaceRE "/feed\\.xml$" "/rss.xml" }} {{ .RelPermalink }} 301
 {{ end -}}
 {{- end -}}
 {{- end -}}
@@ -20,7 +20,7 @@
 {{- with $.Site.GetPage (printf "/%s/%s/" $taxonomy ($term | urlize)) -}}
 {{- range .OutputFormats -}}
 {{- if eq .Name "atom" -}}
-{{ .RelPermalink | replaceRE "feed\\.xml$" "rss.xml" }} {{ .RelPermalink }} 301
+{{ .RelPermalink | replaceRE "/feed\\.xml$" "/rss.xml" }} {{ .RelPermalink }} 301
 {{ end -}}
 {{- end -}}
 {{- end -}}
