@@ -9,7 +9,7 @@ if [[ -d $DESTINATION ]]; then
     find "${DESTINATION}" -depth -mindepth 1 -maxdepth 1 -name .git -prune -o -exec rm -r '{}' '+'
 fi
 
-hugo --baseURL="https://${DOMAIN}" --destination="${DESTINATION}"
+hugo --logLevel info --baseURL="https://${DOMAIN}" --destination="${DESTINATION}"
 
 find "${DESTINATION}" -type f -iname '*.html' \
     -exec tidy \

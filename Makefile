@@ -6,7 +6,7 @@ export DOMAIN := elektrubadur.se
 export DESTINATION := public
 
 define run
-podman run --rm --interactive \
+podman run --rm --interactive --tty \
 --volume "$(CURDIR):$(CURDIR):z" \
 --workdir "$(CURDIR)"
 endef

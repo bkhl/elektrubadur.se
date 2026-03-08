@@ -1,7 +1,7 @@
 title = "Elektrubadur"
 baseURL = "https://elektrubadur.se"
 canonifyURLs = true
-copyright = "© 2010–2024 Björn Lindström"
+copyright = "© 2010–2026 Björn Lindström"
 defaultContentLanguage = "en"
 disableHugoGeneratorInject = true
 enableGitInfo = true
@@ -38,4 +38,7 @@ unsafe = true
 
 [params]
 description = "Personal web page of Björn Lindström"
-author = "Björn Lindström"
+
+[params.author]
+name = "Björn Lindström"
+email = "bkhl@elektrubadur.se"
