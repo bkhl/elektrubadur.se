@@ -10,7 +10,7 @@
 <link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
 <link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
 <title>Simple Nextcloud To-Do List Automation with Python and WebDAV – Elektrubadur</title>
-<link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
+<link rel="alternate" type="application/atom+xml" href="https://elektrubadur.se/feed.xml" title="Elektrubadur">
 <link rel="me" href="https://tilde.zone/@bkhl">
 <meta name="fediverse:creator" content="@bkhl@tilde.zone">
 <meta name="description" content="Personal web page of Björn Lindström">
@@ -44,65 +44,65 @@
 <h2>Implementation</h2>
 <p>Starting with imports and stuff of course:</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#505050">#!/usr/bin/env python3</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> argparse
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> configparser
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> re
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> sys
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">import</span> requests
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">argparse</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">configparser</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
 </span></span></code></pre>
 </div>
 <p>In <a href="http://todotxt.org/">todo.txt</a>, tasks are marked as done by prepending the token <code>x</code> at the start of the line. For this purpose, that’s really all we need to do, so I just create regexp to match these lines:</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>DONE_LINE_RE <span style="color:#00538b">=</span> re<span style="color:#00538b">.</span>compile(<span style="color:#2544bb">r</span><span style="color:#2544bb">"^x\b"</span>)
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">DONE_LINE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^x\b"</span><span class="p">)</span>
 </span></span></code></pre>
 </div>
 <p>That’s it for the parsing.</p>
 <p>Now, as this script will update two files, and I don’t want to lose any tasks, I need to worry about race conditions. In other words, I’ll need to use <a href="https://tools.ietf.org/html/rfc7232">ETags</a>.</p>
 <p>For the structure of the script, I at first wrote it using the <a href="https://plumbum.readthedocs.io/en/latest/cli.html">Plumbum CLI application</a>, but later found that it was adding so little benefit I didn’t want that dependency. Instead I’ll use <code>configparser</code> and <code>argparse</code> for the same thing. For error handling, I’ll have functions return one of these values, and translate them to return codes at the end.</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>SUCCESS <span style="color:#00538b">=</span> <span style="color:#8f0075">object</span>()
-</span></span><span style="display:flex;"><span>FAILURE <span style="color:#00538b">=</span> <span style="color:#8f0075">object</span>()
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">SUCCESS</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">FAILURE</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 </span></span></code></pre>
 </div>
 <p>It’s time for the <code>main</code> function.</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#5317ac">def</span> <span style="color:#721045">main</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#505050"># Parse command line arguments</span>
-</span></span><span style="display:flex;"><span>    argument_parser <span style="color:#00538b">=</span> argparse<span style="color:#00538b">.</span>ArgumentParser()
-</span></span><span style="display:flex;"><span>    argument_parser<span style="color:#00538b">.</span>add_argument(
-</span></span><span style="display:flex;"><span>        <span style="color:#2544bb">"-c"</span>, <span style="color:#2544bb">"--config"</span>, help<span style="color:#00538b">=</span><span style="color:#2544bb">"configuration filename"</span>
-</span></span><span style="display:flex;"><span>    )
-</span></span><span style="display:flex;"><span>    arguments <span style="color:#00538b">=</span> argument_parser<span style="color:#00538b">.</span>parse_args()
-</span></span><span style="display:flex;"><span>    config_filename <span style="color:#00538b">=</span> arguments<span style="color:#00538b">.</span>config
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#505050"># Parse configuration</span>
-</span></span><span style="display:flex;"><span>    config_parser <span style="color:#00538b">=</span> configparser<span style="color:#00538b">.</span>ConfigParser()
-</span></span><span style="display:flex;"><span>    config_parser<span style="color:#00538b">.</span>read(config_filename)
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">try</span>:
-</span></span><span style="display:flex;"><span>        username <span style="color:#00538b">=</span> config_parser<span style="color:#00538b">.</span>get(<span style="color:#2544bb">"Connection"</span>, <span style="color:#2544bb">"username"</span>)
-</span></span><span style="display:flex;"><span>        password <span style="color:#00538b">=</span> config_parser<span style="color:#00538b">.</span>get(<span style="color:#2544bb">"Connection"</span>, <span style="color:#2544bb">"password"</span>)
-</span></span><span style="display:flex;"><span>        hostname <span style="color:#00538b">=</span> config_parser<span style="color:#00538b">.</span>get(<span style="color:#2544bb">"Connection"</span>, <span style="color:#2544bb">"hostname"</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">except</span> configparser<span style="color:#00538b">.</span>Error:
-</span></span><span style="display:flex;"><span>        sys<span style="color:#00538b">.</span>stderr<span style="color:#00538b">.</span>write(
-</span></span><span style="display:flex;"><span>            <span style="color:#2544bb">'Missing configuration in "</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">".</span><span style="color:#2544bb">\n</span><span style="color:#2544bb">'</span><span style="color:#00538b">.</span>format(
-</span></span><span style="display:flex;"><span>                config_filename
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">return</span> FAILURE
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#505050"># Perform maintenance</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">return</span> archive_done_tasks(hostname, username, password)
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Parse command line arguments</span>
+</span></span><span class="line"><span class="cl">    <span class="n">argument_parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">argument_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">"-c"</span><span class="p">,</span> <span class="s2">"--config"</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">"configuration filename"</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">arguments</span> <span class="o">=</span> <span class="n">argument_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config_filename</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">config</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Parse configuration</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config_parser</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config_parser</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">config_filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">username</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Connection"</span><span class="p">,</span> <span class="s2">"username"</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">password</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Connection"</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hostname</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Connection"</span><span class="p">,</span> <span class="s2">"hostname"</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="n">configparser</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">'Missing configuration in "</span><span class="si">{}</span><span class="s1">".</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">config_filename</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">FAILURE</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Perform maintenance</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">archive_done_tasks</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
 </span></span></code></pre>
 </div>
 <p>This allows you to pass a command line argument pointing you to a configfile containing something like this:</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#5317ac">[Connection]</span>
-</span></span><span style="display:flex;"><span>hostname <span style="color:#00538b">=</span> <span style="color:#2544bb">your.nextcloud.instance.net</span>
-</span></span><span style="display:flex;"><span>username <span style="color:#00538b">=</span> <span style="color:#2544bb">your_user_name</span>
-</span></span><span style="display:flex;"><span>password <span style="color:#00538b">=</span> <span style="color:#2544bb">v3ris3curep4ssworð</span>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Connection]</span>
+</span></span><span class="line"><span class="cl"><span class="na">hostname</span> <span class="o">=</span> <span class="s">your.nextcloud.instance.net</span>
+</span></span><span class="line"><span class="cl"><span class="na">username</span> <span class="o">=</span> <span class="s">your_user_name</span>
+</span></span><span class="line"><span class="cl"><span class="na">password</span> <span class="o">=</span> <span class="s">v3ris3curep4ssworð</span>
 </span></span></code></pre>
 </div>
 <p>Now, the function that’s the meat of the script, which actually gets and updates the files, and moves the completed tasks over.</p>
@@ -111,97 +111,97 @@
 <p>The next loop will retry up to ten times, because at that point <code>todo.txt</code> has been updated, so we should try a bit harder to get <code>done.txt</code> into a correct state.</p>
 <p>This function is a bit long and would benefit from refactoring. (Pull requests accepted.)</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#5317ac">def</span> <span style="color:#721045">archive_done_tasks</span>(hostname, username, password):
-</span></span><span style="display:flex;"><span>    base_url <span style="color:#00538b">=</span> <span style="color:#2544bb">"https://</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">/remote.php/dav/files/</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">/"</span><span style="color:#00538b">.</span>format(
-</span></span><span style="display:flex;"><span>        hostname, username
-</span></span><span style="display:flex;"><span>    )
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    session <span style="color:#00538b">=</span> requests<span style="color:#00538b">.</span>Session()
-</span></span><span style="display:flex;"><span>    session<span style="color:#00538b">.</span>auth <span style="color:#00538b">=</span> (username, password)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    todo_url <span style="color:#00538b">=</span> <span style="color:#2544bb">"</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">/todo.txt"</span><span style="color:#00538b">.</span>format(base_url)
-</span></span><span style="display:flex;"><span>    done_url <span style="color:#00538b">=</span> <span style="color:#2544bb">"</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">/done.txt"</span><span style="color:#00538b">.</span>format(base_url)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    todo_put <span style="color:#00538b">=</span> <span style="color:#0000c0">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">while</span> (todo_put <span style="color:#00538b">is</span> <span style="color:#0000c0">None</span>) <span style="color:#00538b">or</span> <span style="color:#00538b">not</span> (
-</span></span><span style="display:flex;"><span>        <span style="color:#0000c0">200</span> <span style="color:#00538b">&lt;=</span> todo_put<span style="color:#00538b">.</span>status_code <span style="color:#00538b">&lt;</span> <span style="color:#0000c0">300</span>
-</span></span><span style="display:flex;"><span>    ):
-</span></span><span style="display:flex;"><span>        todo_get <span style="color:#00538b">=</span> session<span style="color:#00538b">.</span>get(todo_url)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#505050"># If the first GET fails, just return and wait for next</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#505050"># time script is run.</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> <span style="color:#00538b">not</span> (<span style="color:#0000c0">200</span> <span style="color:#00538b">&lt;=</span> todo_get<span style="color:#00538b">.</span>status_code <span style="color:#00538b">&lt;</span> <span style="color:#0000c0">300</span>):
-</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">return</span> SUCCESS
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        todo_lines <span style="color:#00538b">=</span> todo_get<span style="color:#00538b">.</span>content<span style="color:#00538b">.</span>decode(
-</span></span><span style="display:flex;"><span>            encoding<span style="color:#00538b">=</span><span style="color:#2544bb">"utf8"</span>
-</span></span><span style="display:flex;"><span>        )<span style="color:#00538b">.</span>splitlines(<span style="color:#0000c0">True</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        updated_todo_lines <span style="color:#00538b">=</span> []
-</span></span><span style="display:flex;"><span>        added_done_lines <span style="color:#00538b">=</span> []
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">for</span> line <span style="color:#00538b">in</span> todo_lines:
-</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">if</span> DONE_LINE_RE<span style="color:#00538b">.</span><span style="color:#5317ac">match</span>(line):
-</span></span><span style="display:flex;"><span>                added_done_lines<span style="color:#00538b">.</span>append(line)
-</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">else</span>:
-</span></span><span style="display:flex;"><span>                updated_todo_lines<span style="color:#00538b">.</span>append(line)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> <span style="color:#00538b">not</span> added_done_lines:
-</span></span><span style="display:flex;"><span>            <span style="color:#505050"># Nothing to do.</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">return</span> SUCCESS
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        todo_put <span style="color:#00538b">=</span> session<span style="color:#00538b">.</span>put(
-</span></span><span style="display:flex;"><span>            todo_url,
-</span></span><span style="display:flex;"><span>            <span style="color:#2544bb">""</span><span style="color:#00538b">.</span>join(updated_todo_lines)<span style="color:#00538b">.</span>encode(<span style="color:#2544bb">"UTF-8"</span>),
-</span></span><span style="display:flex;"><span>            headers<span style="color:#00538b">=</span>{<span style="color:#2544bb">"If-Match"</span>: get_etag(todo_get)},
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    done_put <span style="color:#00538b">=</span> <span style="color:#0000c0">None</span>
-</span></span><span style="display:flex;"><span>    i <span style="color:#00538b">=</span> <span style="color:#0000c0">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">while</span> (done_put <span style="color:#00538b">is</span> <span style="color:#0000c0">None</span>) <span style="color:#00538b">or</span> <span style="color:#00538b">not</span> (
-</span></span><span style="display:flex;"><span>        <span style="color:#0000c0">200</span> <span style="color:#00538b">&lt;=</span> done_put<span style="color:#00538b">.</span>status_code <span style="color:#00538b">&lt;</span> <span style="color:#0000c0">300</span>
-</span></span><span style="display:flex;"><span>    ):
-</span></span><span style="display:flex;"><span>        done_get <span style="color:#00538b">=</span> session<span style="color:#00538b">.</span>get(done_url)
-</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> <span style="color:#00538b">not</span> (<span style="color:#0000c0">200</span> <span style="color:#00538b">&lt;=</span> done_get<span style="color:#00538b">.</span>status_code <span style="color:#00538b">&lt;</span> <span style="color:#0000c0">300</span>):
-</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">continue</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        done_lines <span style="color:#00538b">=</span> done_get<span style="color:#00538b">.</span>content<span style="color:#00538b">.</span>decode(<span style="color:#2544bb">"UTF-8"</span>)<span style="color:#00538b">.</span>splitlines(
-</span></span><span style="display:flex;"><span>            <span style="color:#0000c0">True</span>
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        done_put <span style="color:#00538b">=</span> session<span style="color:#00538b">.</span>put(
-</span></span><span style="display:flex;"><span>            done_url,
-</span></span><span style="display:flex;"><span>            <span style="color:#2544bb">""</span><span style="color:#00538b">.</span>join(done_lines <span style="color:#00538b">+</span> added_done_lines)<span style="color:#00538b">.</span>encode(
-</span></span><span style="display:flex;"><span>                <span style="color:#2544bb">"UTF-8"</span>
-</span></span><span style="display:flex;"><span>            ),
-</span></span><span style="display:flex;"><span>            headers<span style="color:#00538b">=</span>{<span style="color:#2544bb">"If-Match"</span>: get_etag(done_get)},
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#505050"># Retry this a few times since we updated todo.txt</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#505050">#  and want to get done.txt into a correct state.</span>
-</span></span><span style="display:flex;"><span>        i <span style="color:#00538b">+=</span> <span style="color:#0000c0">1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> i <span style="color:#00538b">&gt;=</span> <span style="color:#0000c0">10</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#5317ac">return</span> SUCCESS
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">archive_done_tasks</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://</span><span class="si">{}</span><span class="s2">/remote.php/dav/files/</span><span class="si">{}</span><span class="s2">/"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hostname</span><span class="p">,</span> <span class="n">username</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">session</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">todo_url</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">/todo.txt"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">done_url</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">/done.txt"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">todo_put</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">todo_put</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">todo_put</span><span class="o">.</span><span class="n">status_code</span> <span class="o">&lt;</span> <span class="mi">300</span>
+</span></span><span class="line"><span class="cl">    <span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">todo_get</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">todo_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># If the first GET fails, just return and wait for next</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># time script is run.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">todo_get</span><span class="o">.</span><span class="n">status_code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">SUCCESS</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">todo_lines</span> <span class="o">=</span> <span class="n">todo_get</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf8"</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">updated_todo_lines</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">added_done_lines</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">todo_lines</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">DONE_LINE_RE</span><span class="o">.</span><span class="k">match</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">added_done_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">updated_todo_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">added_done_lines</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Nothing to do.</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">SUCCESS</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">todo_put</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">todo_url</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">updated_todo_lines</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"UTF-8"</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"If-Match"</span><span class="p">:</span> <span class="n">get_etag</span><span class="p">(</span><span class="n">todo_get</span><span class="p">)},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">done_put</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">done_put</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">done_put</span><span class="o">.</span><span class="n">status_code</span> <span class="o">&lt;</span> <span class="mi">300</span>
+</span></span><span class="line"><span class="cl">    <span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">done_get</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">done_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">done_get</span><span class="o">.</span><span class="n">status_code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">done_lines</span> <span class="o">=</span> <span class="n">done_get</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"UTF-8"</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">done_put</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">done_url</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">done_lines</span> <span class="o">+</span> <span class="n">added_done_lines</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">"UTF-8"</span>
+</span></span><span class="line"><span class="cl">            <span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"If-Match"</span><span class="p">:</span> <span class="n">get_etag</span><span class="p">(</span><span class="n">done_get</span><span class="p">)},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Retry this a few times since we updated todo.txt</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#  and want to get done.txt into a correct state.</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">SUCCESS</span>
 </span></span></code></pre>
 </div>
 <p>Here’s the helper function to get the etag from a <code>requests.Response</code> object. I found that the ETags from Nextcloud has a content type suffix, so had to make another regexp to remove that :</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ETAG_RE <span style="color:#00538b">=</span> re<span style="color:#00538b">.</span>compile(<span style="color:#2544bb">r</span><span style="color:#2544bb">'^"(.*)-gzip"$'</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">def</span> <span style="color:#721045">get_etag</span>(response):
-</span></span><span style="display:flex;"><span>    tag <span style="color:#00538b">=</span> ETAG_RE<span style="color:#00538b">.</span><span style="color:#5317ac">match</span>(response<span style="color:#00538b">.</span>headers[<span style="color:#2544bb">"etag"</span>])<span style="color:#00538b">.</span>group(<span style="color:#0000c0">1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">return</span> <span style="color:#2544bb">'"</span><span style="color:#2544bb">{}</span><span style="color:#2544bb">"'</span><span style="color:#00538b">.</span>format(tag)
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ETAG_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'^"(.*)-gzip"$'</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_etag</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tag</span> <span class="o">=</span> <span class="n">ETAG_RE</span><span class="o">.</span><span class="k">match</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"etag"</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">'"</span><span class="si">{}</span><span class="s1">"'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
 </span></span></code></pre>
 </div>
 <p>Finally, we call the main function like this. The <code>SUCCESS</code> and <code>FAILURE</code> objects are converted into status codes and the script exits accordingly.</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#5317ac">if</span> __name__ <span style="color:#00538b">==</span> <span style="color:#2544bb">"__main__"</span>:
-</span></span><span style="display:flex;"><span>    result <span style="color:#00538b">=</span> main()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">if</span> result <span style="color:#00538b">is</span> SUCCESS:
-</span></span><span style="display:flex;"><span>        sys<span style="color:#00538b">.</span>exit(<span style="color:#0000c0">0</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">elif</span> result <span style="color:#00538b">is</span> FAILURE:
-</span></span><span style="display:flex;"><span>        sys<span style="color:#00538b">.</span>exit(<span style="color:#0000c0">1</span>)
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">SUCCESS</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">FAILURE</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span></code></pre>
 </div>
 <p>Here is <a href="./todo_maintenance.py">the entire script</a>.</p>

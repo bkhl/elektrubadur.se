@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title type="html">Elektrubadur</title>
+  <subtitle type="html">Personal web page of Björn Lindström</subtitle>
+  <link href="https://elektrubadur.se/tags/vimwiki/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
+  <link href="https://elektrubadur.se/tags/vimwiki/" rel="alternate" type="text/html" title="Elektrubadur"/>
+  <updated>2026-03-08T20:50:36+00:00</updated>
+  <rights>© 2010–2026 Björn Lindström</rights>
+  <author>
+    <name>Björn Lindström</name>
+    <email>bkhl@elektrubadur.se</email>
+  </author>
+  <id>https://elektrubadur.se/tags/vimwiki/</id>
+  <entry>
+    <title type="html">Vimwiki + Nextcloud Notes</title>
+    <link href="https://elektrubadur.se/posts/vimwiki_and_nextcloud/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/vimwiki_and_nextcloud/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2020-05-02T00:00:00+02:00</published>
+    <updated>2020-05-02T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
+&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
+&lt;p&gt;The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I&amp;rsquo;ve now finally automated that.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
+&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
+&lt;p&gt;The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I&amp;rsquo;ve now finally automated that.&lt;/p&gt;
+&lt;p&gt;To start with, I added the function &lt;code&gt;SetWikiHeader&lt;/code&gt; to &lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim"&gt;my ~/.vim/plugin/config/vim.wiki&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &amp;amp;&lt;span class="nx"&gt;runtimepath&lt;/span&gt; &lt;span class="p"&gt;!~&lt;/span&gt;? &lt;span class="s2"&gt;&amp;#34;vimwiki&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;  &lt;span class="nx"&gt;finish&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;endif&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; My main wiki.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;g&lt;/span&gt;:&lt;span class="nx"&gt;vimwiki_list&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; [{
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;            \&lt;span class="s2"&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;#34;~/Documents/Notes/&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;            \&lt;span class="s2"&gt;&amp;#34;syntax&amp;#34;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;#34;markdown&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ext&amp;#34;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;#34;.md&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;            \}]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; Disable creation of temporary wikis.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;g&lt;/span&gt;:&lt;span class="nx"&gt;vimwiki_global_ext&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; Function to set header of current file to match filename.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; This helps interoparability with Nextcloud Notes, which assumes that&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; the first line of the file matches the filename.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;SetWikiHeader&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;first_line&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;getline&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;filename&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;expand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;%:t:r&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;# &amp;#34;&lt;/span&gt; . &lt;span class="nx"&gt;filename&lt;/span&gt; &lt;span class="p"&gt;==&lt;/span&gt; &lt;span class="nx"&gt;first_line&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;        &amp;#34; First line is already correct.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        :
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;elseif&lt;/span&gt; &lt;span class="nx"&gt;first_line&lt;/span&gt; &lt;span class="p"&gt;=~&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;^#*\s*\V&amp;#39;&lt;/span&gt; . &lt;span class="nx"&gt;escape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; . &lt;span class="s1"&gt;&amp;#39;\m\s*$&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;        &amp;#34; First line matches filename but has wrong header format.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;        &amp;#34; Reformat to have proper format.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;setline&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;# &amp;#34;&lt;/span&gt; . &lt;span class="nx"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;        &amp;#34; First line not matching filename at all. Prepend lines with&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;        &amp;#34; filename as a header.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nx"&gt;first_line&lt;/span&gt; &lt;span class="p"&gt;!=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;            &lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="k"&gt;endif&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;# &amp;#34;&lt;/span&gt; . &lt;span class="nx"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;endif&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;endfunction&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Vim script is pretty weird, had to search in documentation for how to do most things in there. Props to people who write entire programs in it, like let&amp;rsquo;s say &lt;a href="https://github.com/orgs/vimwiki/people"&gt;those people that wrote Vimwiki&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in &lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim"&gt;my ~/.vim/ftplugin/vimwiki.vim&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; Set header to match filename when opening or saving file, for&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; interoperability with Nextcloud Notes.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;SetWikiHeader&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;autocmd&lt;/span&gt; &lt;span class="nx"&gt;BufWritePre&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;SetWikiHeader&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The end result is pretty nice. The only big catch is that I can&amp;rsquo;t rename files in Nextcloud Notes if they have a lot of links to them, since those links only get updated if I use the rename function in Vimwiki, but then that&amp;rsquo;s not something I do very often.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="programming" label="Programming"/>
+    <category scheme="https://elektrubadur.se/tags" term="vim" label="Vim"/>
+    <category scheme="https://elektrubadur.se/tags" term="vimwiki" label="Vimwiki"/>
+    <category scheme="https://elektrubadur.se/tags" term="nextcloud" label="Nextcloud"/>
+    <category scheme="https://elektrubadur.se/tags" term="notes" label="notes"/>
+  </entry>
+</feed>

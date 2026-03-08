@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title type="html">Elektrubadur</title>
+  <subtitle type="html">Personal web page of Björn Lindström</subtitle>
+  <link href="https://elektrubadur.se/tags/hugo/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
+  <link href="https://elektrubadur.se/tags/hugo/" rel="alternate" type="text/html" title="Elektrubadur"/>
+  <updated>2026-03-08T20:50:36+00:00</updated>
+  <rights>© 2010–2026 Björn Lindström</rights>
+  <author>
+    <name>Björn Lindström</name>
+    <email>bkhl@elektrubadur.se</email>
+  </author>
+  <id>https://elektrubadur.se/tags/hugo/</id>
+  <entry>
+    <title type="html">Converting Sources of This Blog to Org format</title>
+    <link href="https://elektrubadur.se/posts/converting_blog_to_org/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/converting_blog_to_org/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2023-05-28T00:00:00+02:00</published>
+    <updated>2023-05-28T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
+&lt;p&gt;Here I&amp;rsquo;ll just share &lt;a href="/posts/converting_blog_to_org/convert.py
+"&gt;the script&lt;/a&gt; I made to do the format conversion, in case it&amp;rsquo;s useful for anyone else. Actually, half the reason I&amp;rsquo;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
+&lt;p&gt;Here I&amp;rsquo;ll just share &lt;a href="/posts/converting_blog_to_org/convert.py
+"&gt;the script&lt;/a&gt; I made to do the format conversion, in case it&amp;rsquo;s useful for anyone else. Actually, half the reason I&amp;rsquo;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;
+&lt;p&gt;At the same time I&amp;rsquo;ve moved the sources from &lt;a href="https://gitlab.com/"&gt;GitLab&lt;/a&gt; to &lt;a href="https://sr.ht/"&gt;Sourcehut&lt;/a&gt; [Update 2024-11-05: I have since moved them to &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt;].&lt;/p&gt;
+&lt;p&gt;I won&amp;rsquo;t delve deeper into the reasons for that, but I thought I&amp;rsquo;d post the Python script I used for the conversion in case it&amp;rsquo;s useful for anyone else. It&amp;rsquo;s not particularly pretty and has special casing for various things that were particular to my Zola theme, so if anyone else were to use it, they would in all likelyhood need to do some changes. I made a few manual fixes in the Org source after the conversion, of things that occurred to rarely to mke it worth automating.&lt;/p&gt;
+&lt;p&gt;The script does the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clears out the target content directory. That&amp;rsquo;s the &lt;code&gt;content/&lt;/code&gt; directory under your current working directory.&lt;/li&gt;
+&lt;li&gt;Copy any non-Markdown files into the same location from the old content directory, assumed to be &lt;code&gt;content.old/&lt;/code&gt; in your current working directory.&lt;/li&gt;
+&lt;li&gt;Extract TOML front matter from the old source files and convert into Org front matter.&lt;/li&gt;
+&lt;li&gt;Run the remainder of the Markdown file through &lt;a href="https://pandoc.org/"&gt;Pandoc&lt;/a&gt; to convert it from Markdown to Org.&lt;/li&gt;
+&lt;li&gt;Apply various substitutions to the body to fix some things Pandoc doesn&amp;rsquo;t handle, or just according to my preferences.&lt;/li&gt;
+&lt;li&gt;Write some metadata that can not be nicely encoded as Org front matter and put it in a &lt;code&gt;config.toml&lt;/code&gt; file next to the Org file instead.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then I just needed to go ahead and write a Hugo templates that works with this new content directory. Getting the same general structure of the page as in Zola isn&amp;rsquo;t difficult, as Zola is inspired by Hugo and uses a lot of the same conventions. I didn&amp;rsquo;t have to do much to be able to preserve mostly the same hierarchy of the source files for equivalent output.&lt;/p&gt;
+&lt;p&gt;If you are curious about the Hugo templates used to render this page, they are in &lt;a href="https://github.com/bkhl/elektrubadur.se/"&gt;the repository with the sources for this page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finally, if you want to use the script I&amp;rsquo;ve been talking about, you can download it here: &lt;a href="/posts/converting_blog_to_org/convert.py
+"&gt;convert.py&lt;/a&gt;&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="programming" label="Programming"/>
+    <category scheme="https://elektrubadur.se/tags" term="www" label="WWW"/>
+    <category scheme="https://elektrubadur.se/tags" term="markdown" label="Markdown"/>
+    <category scheme="https://elektrubadur.se/tags" term="org" label="Org"/>
+    <category scheme="https://elektrubadur.se/tags" term="hugo" label="Hugo"/>
+    <category scheme="https://elektrubadur.se/tags" term="python" label="Python"/>
+    <category scheme="https://elektrubadur.se/tags" term="emacs" label="Emacs"/>
+  </entry>
+</feed>

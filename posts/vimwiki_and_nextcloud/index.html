@@ -10,7 +10,7 @@
 <link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
 <link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
 <title>Vimwiki + Nextcloud Notes – Elektrubadur</title>
-<link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
+<link rel="alternate" type="application/atom+xml" href="https://elektrubadur.se/feed.xml" title="Elektrubadur">
 <link rel="me" href="https://tilde.zone/@bkhl">
 <meta name="fediverse:creator" content="@bkhl@tilde.zone">
 <meta name="description" content="Personal web page of Björn Lindström">
@@ -32,52 +32,52 @@
 <p>The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I’ve now finally automated that.</p>
 <p>To start with, I added the function <code>SetWikiHeader</code> to <a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim">my ~/.vim/plugin/config/vim.wiki</a>:</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#5317ac">if</span> &amp;runtimepath !~? <span style="color:#2544bb">"vimwiki"</span>
-</span></span><span style="display:flex;"><span>  finish
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">endif</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">
-</span></span></span><span style="display:flex;"><span><span style="color:#505050">" My main wiki.</span>
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">let</span> g:vimwiki_list = [{
-</span></span><span style="display:flex;"><span>            \<span style="color:#2544bb">"path"</span>: <span style="color:#2544bb">"~/Documents/Notes/"</span>,
-</span></span><span style="display:flex;"><span>            \<span style="color:#2544bb">"syntax"</span>: <span style="color:#2544bb">"markdown"</span>, <span style="color:#2544bb">"ext"</span>: <span style="color:#2544bb">".md"</span>
-</span></span><span style="display:flex;"><span>            \}]
-</span></span><span style="display:flex;"><span><span style="color:#505050">
-</span></span></span><span style="display:flex;"><span><span style="color:#505050">" Disable creation of temporary wikis.</span>
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">let</span> g:vimwiki_global_ext = <span style="color:#0000c0">0</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">
-</span></span></span><span style="display:flex;"><span><span style="color:#505050">" Function to set header of current file to match filename.</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">"</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">" This helps interoparability with Nextcloud Notes, which assumes that</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">" the first line of the file matches the filename.</span>
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">function</span> SetWikiHeader()
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">let</span> first_line = getline(<span style="color:#0000c0">1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">let</span> filename = expand(<span style="color:#2544bb">"%:t:r"</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">if</span> <span style="color:#2544bb">"# "</span> . filename == first_line
-</span></span><span style="display:flex;"><span><span style="color:#505050">        " First line is already correct.</span>
-</span></span><span style="display:flex;"><span>        :
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">elseif</span> first_line =~ <span style="color:#2544bb">'^#*\s*\V'</span> . escape(filename, <span style="color:#2544bb">'\'</span>) . <span style="color:#2544bb">'\m\s*$'</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">        " First line matches filename but has wrong header format.</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">        " Reformat to have proper format.</span>
-</span></span><span style="display:flex;"><span>        call setline(<span style="color:#0000c0">1</span>, <span style="color:#2544bb">"# "</span> . filename)
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">else</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">        " First line not matching filename at all. Prepend lines with</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">        " filename as a header.</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">if</span> first_line != <span style="color:#2544bb">""</span>
-</span></span><span style="display:flex;"><span>            call append(<span style="color:#0000c0">0</span>, <span style="color:#2544bb">""</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#5317ac">endif</span>
-</span></span><span style="display:flex;"><span>        call append(<span style="color:#0000c0">0</span>, <span style="color:#2544bb">"# "</span> . filename)
-</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">endif</span>
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">endfunction</span>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="k">if</span> &<span class="nx">runtimepath</span> <span class="p">!~</span>? <span class="s2">"vimwiki"</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">finish</span>
+</span></span><span class="line"><span class="cl"><span class="k">endif</span>
+</span></span><span class="line"><span class="cl"><span class="c">
+</span></span></span><span class="line"><span class="cl"><span class="c">" My main wiki.</span>
+</span></span><span class="line"><span class="cl"><span class="k">let</span> <span class="nx">g</span>:<span class="nx">vimwiki_list</span> <span class="p">=</span> [{
+</span></span><span class="line"><span class="cl">            \<span class="s2">"path"</span>: <span class="s2">"~/Documents/Notes/"</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            \<span class="s2">"syntax"</span>: <span class="s2">"markdown"</span><span class="p">,</span> <span class="s2">"ext"</span>: <span class="s2">".md"</span>
+</span></span><span class="line"><span class="cl">            \}]
+</span></span><span class="line"><span class="cl"><span class="c">
+</span></span></span><span class="line"><span class="cl"><span class="c">" Disable creation of temporary wikis.</span>
+</span></span><span class="line"><span class="cl"><span class="k">let</span> <span class="nx">g</span>:<span class="nx">vimwiki_global_ext</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="c">
+</span></span></span><span class="line"><span class="cl"><span class="c">" Function to set header of current file to match filename.</span>
+</span></span><span class="line"><span class="cl"><span class="c">"</span>
+</span></span><span class="line"><span class="cl"><span class="c">" This helps interoparability with Nextcloud Notes, which assumes that</span>
+</span></span><span class="line"><span class="cl"><span class="c">" the first line of the file matches the filename.</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nx">SetWikiHeader</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">let</span> <span class="nx">first_line</span> <span class="p">=</span> <span class="nx">getline</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">let</span> <span class="nx">filename</span> <span class="p">=</span> <span class="nx">expand</span><span class="p">(</span><span class="s2">"%:t:r"</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s2">"# "</span> . <span class="nx">filename</span> <span class="p">==</span> <span class="nx">first_line</span>
+</span></span><span class="line"><span class="cl"><span class="c">        " First line is already correct.</span>
+</span></span><span class="line"><span class="cl">        :
+</span></span><span class="line"><span class="cl">    <span class="k">elseif</span> <span class="nx">first_line</span> <span class="p">=~</span> <span class="s1">'^#*\s*\V'</span> . <span class="nx">escape</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="s1">'\'</span><span class="p">)</span> . <span class="s1">'\m\s*$'</span>
+</span></span><span class="line"><span class="cl"><span class="c">        " First line matches filename but has wrong header format.</span>
+</span></span><span class="line"><span class="cl"><span class="c">        " Reformat to have proper format.</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">call</span> <span class="nx">setline</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="s2">"# "</span> . <span class="nx">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl"><span class="c">        " First line not matching filename at all. Prepend lines with</span>
+</span></span><span class="line"><span class="cl"><span class="c">        " filename as a header.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">first_line</span> <span class="p">!=</span> <span class="s2">""</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">call</span> <span class="nx">append</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">endif</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">call</span> <span class="nx">append</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s2">"# "</span> . <span class="nx">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">endif</span>
+</span></span><span class="line"><span class="cl"><span class="k">endfunction</span>
 </span></span></code></pre>
 </div>
 <p>Vim script is pretty weird, had to search in documentation for how to do most things in there. Props to people who write entire programs in it, like let’s say <a href="https://github.com/orgs/vimwiki/people">those people that wrote Vimwiki</a>.</p>
 <p>Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in <a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim">my ~/.vim/ftplugin/vimwiki.vim</a>:</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#505050">" Set header to match filename when opening or saving file, for</span>
-</span></span><span style="display:flex;"><span><span style="color:#505050">" interoperability with Nextcloud Notes.</span>
-</span></span><span style="display:flex;"><span>call SetWikiHeader()
-</span></span><span style="display:flex;"><span><span style="color:#5317ac">autocmd</span> BufWritePre &lt;buffer&gt; call SetWikiHeader()
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="c">" Set header to match filename when opening or saving file, for</span>
+</span></span><span class="line"><span class="cl"><span class="c">" interoperability with Nextcloud Notes.</span>
+</span></span><span class="line"><span class="cl"><span class="nx">call</span> <span class="nx">SetWikiHeader</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">autocmd</span> <span class="nx">BufWritePre</span> <span class="p">&lt;</span><span class="nx">buffer</span><span class="p">&gt;</span> <span class="nx">call</span> <span class="nx">SetWikiHeader</span><span class="p">()</span>
 </span></span></code></pre>
 </div>
 <p>The end result is pretty nice. The only big catch is that I can’t rename files in Nextcloud Notes if they have a lot of links to them, since those links only get updated if I use the rename function in Vimwiki, but then that’s not something I do very often.</p>

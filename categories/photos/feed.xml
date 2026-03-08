@@ -1,0 +1,1383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title type="html">Elektrubadur</title>
+  <subtitle type="html">Personal web page of Björn Lindström</subtitle>
+  <link href="https://elektrubadur.se/categories/photos/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
+  <link href="https://elektrubadur.se/categories/photos/" rel="alternate" type="text/html" title="Elektrubadur"/>
+  <updated>2026-03-08T20:50:36+00:00</updated>
+  <rights>© 2010–2026 Björn Lindström</rights>
+  <author>
+    <name>Björn Lindström</name>
+    <email>bkhl@elektrubadur.se</email>
+  </author>
+  <id>https://elektrubadur.se/categories/photos/</id>
+  <entry>
+    <title type="html">Suphan Buri</title>
+    <link href="https://elektrubadur.se/posts/suphan-buri/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/suphan-buri/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2018-12-10T00:00:00+01:00</published>
+    <updated>2018-12-10T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;I went on a work outing to Suphan Buri a little while back, here comes
+some photos. Most of the pictures are from the buffalo themed resort
+where we stayed.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I went on a work outing to Suphan Buri a little while back, here comes
+some photos. Most of the pictures are from the buffalo themed resort
+where we stayed.&lt;/p&gt;
+&lt;figure&gt;
+  
+    &lt;img src="buffalo.jpeg" alt="Buffalo"&gt;
+  
+  
+  &lt;figcaption&gt;Buffalo&lt;/figcaption&gt;
+  
+&lt;/figure&gt;
+
+&lt;figure&gt;
+  
+    &lt;img src="deer.jpeg" alt="Deer"&gt;
+  
+  
+  &lt;figcaption&gt;Deer&lt;/figcaption&gt;
+  
+&lt;/figure&gt;
+
+&lt;figure&gt;
+  
+    &lt;img src="houses.jpeg" alt="Houses"&gt;
+  
+  
+  &lt;figcaption&gt;Accomodations&lt;/figcaption&gt;
+  
+&lt;/figure&gt;
+
+&lt;figure&gt;
+  
+    &lt;img src="peacock.jpeg" alt="Peacock"&gt;
+  
+  
+  &lt;figcaption&gt;Peacock&lt;/figcaption&gt;
+  
+&lt;/figure&gt;
+
+&lt;figure&gt;
+  
+    &lt;img src="river.jpeg" alt="River"&gt;
+  
+  
+  &lt;figcaption&gt;River flowing past nearby Sam Chuk market&lt;/figcaption&gt;
+  
+&lt;/figure&gt;</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Traffic</title>
+    <link href="https://elektrubadur.se/posts/traffic/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/traffic/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-09-15T00:00:00+02:00</published>
+    <updated>2017-09-15T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Lower Parel, Mumbai.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Lower Parel, Mumbai.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Gecko on Window</title>
+    <link href="https://elektrubadur.se/posts/gecko-on-window/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/gecko-on-window/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-05-31T00:00:00+02:00</published>
+    <updated>2017-05-31T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Gecko climbing outside of my window.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Gecko climbing outside of my window.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Frog</title>
+    <link href="https://elektrubadur.se/posts/frog/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/frog/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-05-11T18:00:00+07:00</published>
+    <updated>2017-05-11T18:00:00+07:00</updated>
+    <summary type="html">&lt;p&gt;Bathroom decoration on Koh Lanta.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Bathroom decoration on Koh Lanta.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Cow</title>
+    <link href="https://elektrubadur.se/posts/cow/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/cow/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-05-11T12:00:00+07:00</published>
+    <updated>2017-05-11T12:00:00+07:00</updated>
+    <summary type="html">&lt;p&gt;Resort cow.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Resort cow.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Ants</title>
+    <link href="https://elektrubadur.se/posts/ants/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/ants/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-05-08T00:00:00+02:00</published>
+    <updated>2017-05-08T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Fruit on the porch attracting ants.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Fruit on the porch attracting ants.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Hermit Crab</title>
+    <link href="https://elektrubadur.se/posts/hermit-crab/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/hermit-crab/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-05-06T00:00:00+02:00</published>
+    <updated>2017-05-06T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Hermit crab on the beach.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Hermit crab on the beach.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Bat Yam at Night</title>
+    <link href="https://elektrubadur.se/posts/bat-yam-at-night/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/bat-yam-at-night/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-04-29T00:00:00+02:00</published>
+    <updated>2017-04-29T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Bat Yam night time skyline.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Bat Yam night time skyline.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Jaffa</title>
+    <link href="https://elektrubadur.se/posts/jaffa/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/jaffa/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-04-22T00:00:00+02:00</published>
+    <updated>2017-04-22T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Port of Jaffa.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Port of Jaffa.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Pigeon on Pillar</title>
+    <link href="https://elektrubadur.se/posts/pigeon-on-pillar/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/pigeon-on-pillar/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-04-11T14:00:00+02:00</published>
+    <updated>2017-04-11T14:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Pidgeon on stoa pillar.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Pidgeon on stoa pillar.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Minaret</title>
+    <link href="https://elektrubadur.se/posts/minaret/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/minaret/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-04-11T12:00:00+02:00</published>
+    <updated>2017-04-11T12:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Mosque of Omar minaret, Jerusalem.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Mosque of Omar minaret, Jerusalem.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Pigeon by Sea</title>
+    <link href="https://elektrubadur.se/posts/pigeon-by-sea/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/pigeon-by-sea/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-04-10T00:00:00+02:00</published>
+    <updated>2017-04-10T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Pidgeon by the Eastern Mediterranean Sea.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Pidgeon by the Eastern Mediterranean Sea.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Bat Man</title>
+    <link href="https://elektrubadur.se/posts/bat-man/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/bat-man/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-04-08T18:00:00+02:00</published>
+    <updated>2017-04-08T18:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Bat Man in Bat Yam.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Bat Man in Bat Yam.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Paramotoring</title>
+    <link href="https://elektrubadur.se/posts/paramotoring/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/paramotoring/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-04-08T10:00:00+02:00</published>
+    <updated>2017-04-08T10:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Powered paraglider over Bat Yam beach.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Powered paraglider over Bat Yam beach.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Bat Yam Beach</title>
+    <link href="https://elektrubadur.se/posts/bat-yam-beach/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/bat-yam-beach/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-04-07T00:00:00+02:00</published>
+    <updated>2017-04-07T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Bat Yam beach.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Bat Yam beach.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">ACME</title>
+    <link href="https://elektrubadur.se/posts/acme/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/acme/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-03-22T00:00:00+01:00</published>
+    <updated>2017-03-22T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Selfie outside of ACME building, Bangkok.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Selfie outside of ACME building, Bangkok.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Grasshopper</title>
+    <link href="https://elektrubadur.se/posts/grasshopper/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/grasshopper/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-03-20T00:00:00+01:00</published>
+    <updated>2017-03-20T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Urban grasshopper, Bangkok.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Urban grasshopper, Bangkok.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Morning Coffee</title>
+    <link href="https://elektrubadur.se/posts/morning-coffee/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/morning-coffee/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-03-19T00:00:00+01:00</published>
+    <updated>2017-03-19T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Morning coffee at hotel ฟ้าใส, Buriram.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Morning coffee at hotel ฟ้าใส, Buriram.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Road Trip</title>
+    <link href="https://elektrubadur.se/posts/road-trip/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/road-trip/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-03-18T00:00:00+01:00</published>
+    <updated>2017-03-18T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Isan road trip.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Isan road trip.&lt;/p&gt;
+&lt;figure&gt;
+  
+    &lt;img src="road-trip.jpeg" alt="Road Trip"&gt;
+  
+  
+  &lt;figcaption&gt;Road Trip&lt;/figcaption&gt;
+  
+&lt;/figure&gt;
+
+&lt;figure&gt;
+  
+    &lt;img src="road-trip-in-rain.jpeg" alt="Road Trip in Rain"&gt;
+  
+  
+  &lt;figcaption&gt;Road Trip in Rain&lt;/figcaption&gt;
+  
+&lt;/figure&gt;</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Strawberries</title>
+    <link href="https://elektrubadur.se/posts/strawberries/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/strawberries/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-02-13T00:00:00+01:00</published>
+    <updated>2017-02-13T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Brought some strawberries home from Korea.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Brought some strawberries home from Korea.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Turtle</title>
+    <link href="https://elektrubadur.se/posts/turtle/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/turtle/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-02-11T00:00:00+01:00</published>
+    <updated>2017-02-11T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Turtle at Sealife aquarium, Busan.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Turtle at Sealife aquarium, Busan.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Cold Beach</title>
+    <link href="https://elektrubadur.se/posts/cold-beach/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/cold-beach/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-02-10T00:00:00+01:00</published>
+    <updated>2017-02-10T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Busan beach in winter.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Busan beach in winter.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Spillt Coffee</title>
+    <link href="https://elektrubadur.se/posts/spillt-coffee/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/spillt-coffee/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2017-01-12T00:00:00+01:00</published>
+    <updated>2017-01-12T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Spillt coffee on my desk.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Spillt coffee on my desk.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Street Map</title>
+    <link href="https://elektrubadur.se/posts/street-map/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/street-map/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-12-19T00:00:00+01:00</published>
+    <updated>2016-12-19T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;My neighbourhood has these maps drawn on pavements, walls, street
+cabinets &amp;amp;c. I&amp;rsquo;m curious to know what they are for.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;My neighbourhood has these maps drawn on pavements, walls, street
+cabinets &amp;amp;c. I&amp;rsquo;m curious to know what they are for.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Rubber Band Ball</title>
+    <link href="https://elektrubadur.se/posts/rubber-band-ball/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/rubber-band-ball/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-10-27T00:00:00+02:00</published>
+    <updated>2016-10-27T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Home made rubber band ball.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Home made rubber band ball.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Water Fight</title>
+    <link href="https://elektrubadur.se/posts/water-fight/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/water-fight/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-08-18T15:00:00+02:00</published>
+    <updated>2016-08-18T15:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Dogs playing in water.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Dogs playing in water.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Valley</title>
+    <link href="https://elektrubadur.se/posts/valley/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/valley/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-08-18T12:00:00+02:00</published>
+    <updated>2016-08-18T12:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;View of Ragunda valley.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;View of Ragunda valley.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Crows</title>
+    <link href="https://elektrubadur.se/posts/crows/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/crows/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-07-31T15:00:00+05:30</published>
+    <updated>2016-07-31T15:00:00+05:30</updated>
+    <summary type="html">&lt;p&gt;Crows by Mumbai promenade.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Crows by Mumbai promenade.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Cows</title>
+    <link href="https://elektrubadur.se/posts/cows/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/cows/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-07-31T12:00:00+05:30</published>
+    <updated>2016-07-31T12:00:00+05:30</updated>
+    <summary type="html">&lt;p&gt;Cows in Mumbai.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Cows in Mumbai.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Bridge at Night</title>
+    <link href="https://elektrubadur.se/posts/bridge-at-night/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/bridge-at-night/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-07-11T00:00:00+02:00</published>
+    <updated>2016-07-11T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Sydney Harbour Bridge at night.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Sydney Harbour Bridge at night.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Playground</title>
+    <link href="https://elektrubadur.se/posts/playground/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/playground/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-07-03T12:00:00+05:30</published>
+    <updated>2016-07-03T12:00:00+05:30</updated>
+    <summary type="html">&lt;p&gt;Playground in Mumbai.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Playground in Mumbai.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Windy Beach</title>
+    <link href="https://elektrubadur.se/posts/windy-beach/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/windy-beach/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-07-03T09:00:00+05:30</published>
+    <updated>2016-07-03T09:00:00+05:30</updated>
+    <summary type="html">&lt;p&gt;Bandra beach, Mumbai.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Bandra beach, Mumbai.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Football</title>
+    <link href="https://elektrubadur.se/posts/football/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/football/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-06-22T00:00:00+02:00</published>
+    <updated>2016-06-22T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Osotspa football club fans visiting Muangthong.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Osotspa football club fans visiting Muangthong.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Gecko</title>
+    <link href="https://elektrubadur.se/posts/gecko/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/gecko/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-05-12T00:00:00+02:00</published>
+    <updated>2016-05-12T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Gecko in paper envelope.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Gecko in paper envelope.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Swim</title>
+    <link href="https://elektrubadur.se/posts/swim/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/swim/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-05-02T00:00:00+02:00</published>
+    <updated>2016-05-02T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;With my parents on Koh Samet.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;With my parents on Koh Samet.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Greenery</title>
+    <link href="https://elektrubadur.se/posts/greenery/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/greenery/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-04-03T00:00:00+02:00</published>
+    <updated>2016-04-03T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;It is nice that my new flat has a bit of a view.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;It is nice that my new flat has a bit of a view.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Muay Thai Night</title>
+    <link href="https://elektrubadur.se/posts/muay-thai-night/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/muay-thai-night/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-04-02T00:00:00+02:00</published>
+    <updated>2016-04-02T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;A photo I took while waiting for someone at the National Stadium
+station.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A photo I took while waiting for someone at the National Stadium
+station.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Fire Extinguisher</title>
+    <link href="https://elektrubadur.se/posts/fire-extinguisher/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/fire-extinguisher/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2016-01-29T00:00:00+01:00</published>
+    <updated>2016-01-29T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Fire extinguisher on public van.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Fire extinguisher on public van.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Loi Krathong</title>
+    <link href="https://elektrubadur.se/posts/loi-krathong/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/loi-krathong/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-11-26T00:00:00+01:00</published>
+    <updated>2015-11-26T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Celebrating Loi Krathong.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Celebrating Loi Krathong.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Toast</title>
+    <link href="https://elektrubadur.se/posts/toast/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/toast/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-11-08T00:00:00+01:00</published>
+    <updated>2015-11-08T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Toast with coin for scale.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Toast with coin for scale.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Lake</title>
+    <link href="https://elektrubadur.se/posts/lake/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/lake/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-10-11T00:00:00+02:00</published>
+    <updated>2015-10-11T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;View from my parents&amp;rsquo; cottage.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;View from my parents&amp;rsquo; cottage.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Fogged up</title>
+    <link href="https://elektrubadur.se/posts/fogged-up/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/fogged-up/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-10-05T00:00:00+02:00</published>
+    <updated>2015-10-05T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Fogged up glasses.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Fogged up glasses.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">China</title>
+    <link href="https://elektrubadur.se/posts/china/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/china/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-09-27T00:00:00+02:00</published>
+    <updated>2015-09-27T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Collage of a trip to China.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Collage of a trip to China.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Peafowl</title>
+    <link href="https://elektrubadur.se/posts/peafowl/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/peafowl/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-08-17T00:00:00+02:00</published>
+    <updated>2015-08-17T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Peafowl on Koh Munnork.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Peafowl on Koh Munnork.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Grill</title>
+    <link href="https://elektrubadur.se/posts/grill/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/grill/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-07-25T00:00:00+02:00</published>
+    <updated>2015-07-25T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Grilling seafood.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Grilling seafood.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Seafood</title>
+    <link href="https://elektrubadur.se/posts/seafood/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/seafood/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-06-30T00:00:00+02:00</published>
+    <updated>2015-06-30T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Seafood, ready to be grilled.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Seafood, ready to be grilled.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Rain</title>
+    <link href="https://elektrubadur.se/posts/rain/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/rain/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-06-16T00:00:00+02:00</published>
+    <updated>2015-06-16T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;View from my office, with rain coming.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;View from my office, with rain coming.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Elephants</title>
+    <link href="https://elektrubadur.se/posts/elephants/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/elephants/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-06-08T00:00:00+02:00</published>
+    <updated>2015-06-08T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Painted elephants.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Painted elephants.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Dog on Back Seat</title>
+    <link href="https://elektrubadur.se/posts/dog-on-back-seat/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/dog-on-back-seat/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-05-16T00:00:00+02:00</published>
+    <updated>2015-05-16T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Dog riding on motorcycle back seat.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Dog riding on motorcycle back seat.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Singapore</title>
+    <link href="https://elektrubadur.se/posts/singapore/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/singapore/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-04-05T00:00:00+02:00</published>
+    <updated>2015-04-05T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Singapore skyline.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Singapore skyline.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Racks</title>
+    <link href="https://elektrubadur.se/posts/racks/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/racks/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-04-04T00:00:00+02:00</published>
+    <updated>2015-04-04T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Some server room.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Some server room.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Open Mall</title>
+    <link href="https://elektrubadur.se/posts/open-mall/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/open-mall/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-03-29T00:00:00+01:00</published>
+    <updated>2015-03-29T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Open-air mall in Bangkok.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Open-air mall in Bangkok.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Van</title>
+    <link href="https://elektrubadur.se/posts/van/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/van/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-03-27T00:00:00+01:00</published>
+    <updated>2015-03-27T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Inside of public van.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Inside of public van.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Sunbird</title>
+    <link href="https://elektrubadur.se/posts/sunbird/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/sunbird/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-03-26T00:00:00+01:00</published>
+    <updated>2015-03-26T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Olive-backed sunbird nesting on my balcony.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Olive-backed sunbird nesting on my balcony.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Soekarno–Hatta</title>
+    <link href="https://elektrubadur.se/posts/soekarno-hatta/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/soekarno-hatta/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-03-12T00:00:00+01:00</published>
+    <updated>2015-03-12T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Soekarno&amp;ndash;Hatta International Airport, Jakarta.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Soekarno&amp;ndash;Hatta International Airport, Jakarta.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Jakarta</title>
+    <link href="https://elektrubadur.se/posts/jakarta/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/jakarta/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-03-09T00:00:00+01:00</published>
+    <updated>2015-03-09T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Jakarta skyline.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Jakarta skyline.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Corridor</title>
+    <link href="https://elektrubadur.se/posts/corridor/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/corridor/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-03-08T00:00:00+01:00</published>
+    <updated>2015-03-08T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;A corridor somewhere.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A corridor somewhere.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Semla</title>
+    <link href="https://elektrubadur.se/posts/semla/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/semla/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-03-01T00:00:00+01:00</published>
+    <updated>2015-03-01T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Semla at Hotel Rembrandt, Bangkok.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Semla at Hotel Rembrandt, Bangkok.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Pole</title>
+    <link href="https://elektrubadur.se/posts/pole/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/pole/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-02-22T00:00:00+01:00</published>
+    <updated>2015-02-22T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Painted pole by beach on Koh Samet.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Painted pole by beach on Koh Samet.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Yard</title>
+    <link href="https://elektrubadur.se/posts/yard/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/yard/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-02-21T00:00:00+01:00</published>
+    <updated>2015-02-21T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Yard of resort, Koh Samet.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Yard of resort, Koh Samet.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Mall</title>
+    <link href="https://elektrubadur.se/posts/mall/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/mall/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-02-14T00:00:00+01:00</published>
+    <updated>2015-02-14T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Inside of a mall.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Inside of a mall.&lt;/p&gt;
+&lt;figure&gt;
+  
+    &lt;img src="mall.jpeg" alt="Mall"&gt;
+  
+  
+  &lt;figcaption&gt;Mall&lt;/figcaption&gt;
+  
+&lt;/figure&gt;
+
+&lt;figure&gt;
+  
+    &lt;img src="another-mall.jpeg" alt="Another Mall"&gt;
+  
+  
+  &lt;figcaption&gt;Another Mall&lt;/figcaption&gt;
+  
+&lt;/figure&gt;</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Coffee</title>
+    <link href="https://elektrubadur.se/posts/coffee/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/coffee/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2015-01-04T00:00:00+01:00</published>
+    <updated>2015-01-04T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Coffee in painted cup.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Coffee in painted cup.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">That Look</title>
+    <link href="https://elektrubadur.se/posts/that-look/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/that-look/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2011-01-18T00:00:00+01:00</published>
+    <updated>2011-01-18T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;This is an update on my ongoing project of close-up portraits made with my &lt;em&gt;ЛОМО Т-43 40 mm f/4&lt;/em&gt; lens, &lt;a href="/posts/agonizing/"&gt;mentioned here&lt;/a&gt;. I have a fair collection of portraits by now, I few of which are good enough to probably make the final series. This might be my favourite so far. Watch this space.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;This is an update on my ongoing project of close-up portraits made with my &lt;em&gt;ЛОМО Т-43 40 mm f/4&lt;/em&gt; lens, &lt;a href="/posts/agonizing/"&gt;mentioned here&lt;/a&gt;. I have a fair collection of portraits by now, I few of which are good enough to probably make the final series. This might be my favourite so far. Watch this space.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Family Portrait</title>
+    <link href="https://elektrubadur.se/posts/family-portrait/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/family-portrait/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-12-06T00:00:00+01:00</published>
+    <updated>2010-12-06T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;A family portrait I made for a couple of friends.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A family portrait I made for a couple of friends.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Attention</title>
+    <link href="https://elektrubadur.se/posts/attention/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/attention/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-12-05T00:00:00+01:00</published>
+    <updated>2010-12-05T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;I have been working a lot in black and white portraits lately. Here is a
+vaguely Hitchcockian self-portrait from a couple of days ago.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I have been working a lot in black and white portraits lately. Here is a
+vaguely Hitchcockian self-portrait from a couple of days ago.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Open</title>
+    <link href="https://elektrubadur.se/posts/open/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/open/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-12-01T00:00:00+01:00</published>
+    <updated>2010-12-01T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;A bit of honest street photography. I only had to wait a few minutes in
+front of this somewhat busy scene before the right moment appeared.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A bit of honest street photography. I only had to wait a few minutes in
+front of this somewhat busy scene before the right moment appeared.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Horse 52375</title>
+    <link href="https://elektrubadur.se/posts/horse-52375/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/horse-52375/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-11-21T00:00:00+01:00</published>
+    <updated>2010-11-21T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Anonymous horse.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Anonymous horse.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Giant</title>
+    <link href="https://elektrubadur.se/posts/giant/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/giant/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-11-11T00:00:00+01:00</published>
+    <updated>2010-11-11T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;I photographed this river valley on my way home from Jämtland, a couple
+of months ago.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I photographed this river valley on my way home from Jämtland, a couple
+of months ago.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Agonizing</title>
+    <link href="https://elektrubadur.se/posts/agonizing/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/agonizing/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-11-05T00:00:00+01:00</published>
+    <updated>2010-11-05T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;I just acquired a &lt;em&gt;ЛОМО Т-43 40 mm f/4&lt;/em&gt; lens. It&amp;rsquo;s a very nice glass
+lens from the &lt;em&gt;Leningradskoe Optiko Mechanichesckoe Objedinenie&lt;/em&gt;. Sadly,
+the farthest I can focus it on my SLR without colliding with the mirror
+is a couple of decimeters, giving this field of view. This self-portrait
+is the start of a project I plan to undertake with this very limited
+setup. More on that later.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I just acquired a &lt;em&gt;ЛОМО Т-43 40 mm f/4&lt;/em&gt; lens. It&amp;rsquo;s a very nice glass
+lens from the &lt;em&gt;Leningradskoe Optiko Mechanichesckoe Objedinenie&lt;/em&gt;. Sadly,
+the farthest I can focus it on my SLR without colliding with the mirror
+is a couple of decimeters, giving this field of view. This self-portrait
+is the start of a project I plan to undertake with this very limited
+setup. More on that later.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Duet</title>
+    <link href="https://elektrubadur.se/posts/duet/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/duet/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-10-23T00:00:00+02:00</published>
+    <updated>2010-10-23T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;A playful portrait of a friend meant for advertising her music business.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A playful portrait of a friend meant for advertising her music business.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Flautist Amputee</title>
+    <link href="https://elektrubadur.se/posts/flautist-amputee/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/flautist-amputee/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-10-17T00:00:00+02:00</published>
+    <updated>2010-10-17T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;A fountain sculpture in the Uppsala town garden.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A fountain sculpture in the Uppsala town garden.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Tied Together</title>
+    <link href="https://elektrubadur.se/posts/tied-together/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/tied-together/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-10-10T00:00:00+02:00</published>
+    <updated>2010-10-10T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;I went for a photographic dog walk with an acquaintance. Here posing on
+a bicycle path on Uppsala&amp;rsquo;s east side.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I went for a photographic dog walk with an acquaintance. Here posing on
+a bicycle path on Uppsala&amp;rsquo;s east side.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">An Education</title>
+    <link href="https://elektrubadur.se/posts/an-education/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/an-education/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-09-17T00:00:00+02:00</published>
+    <updated>2010-09-17T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Friend&amp;rsquo;s daughter reading an improving comic book.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Friend&amp;rsquo;s daughter reading an improving comic book.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Aerial</title>
+    <link href="https://elektrubadur.se/posts/aerial/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/aerial/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-09-16T00:00:00+02:00</published>
+    <updated>2010-09-16T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Jackdaws flocking at dusk.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Jackdaws flocking at dusk.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Rebecka, Rebecka, Rebecka</title>
+    <link href="https://elektrubadur.se/posts/rebecka-rebecka-rebecka/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/rebecka-rebecka-rebecka/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-09-14T00:00:00+02:00</published>
+    <updated>2010-09-14T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Another composite with a small acquaintance.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Another composite with a small acquaintance.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Receiving All Things She Never Departs from Her Own Nature</title>
+    <link href="https://elektrubadur.se/posts/receiving-all-things-she-never-departs-from-her-own-nature/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/receiving-all-things-she-never-departs-from-her-own-nature/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-09-12T00:00:00+02:00</published>
+    <updated>2010-09-12T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;A composite group portrait, made in the botanical garden of Uppsala.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A composite group portrait, made in the botanical garden of Uppsala.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Off-road</title>
+    <link href="https://elektrubadur.se/posts/off-road/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/off-road/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-09-11T00:00:00+02:00</published>
+    <updated>2010-09-11T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Me and a sporty French car on a field outside of Uppsala.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Me and a sporty French car on a field outside of Uppsala.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Lost and Found</title>
+    <link href="https://elektrubadur.se/posts/lost-and-found/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/lost-and-found/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-09-07T00:00:00+02:00</published>
+    <updated>2010-09-07T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;This is a line for hanging lost gloves and such in Uppsala&amp;rsquo;s English
+garden. While I was taking the picture a lady took time out of her day
+to stay and point out to me what an eyesore the arrangement is.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;This is a line for hanging lost gloves and such in Uppsala&amp;rsquo;s English
+garden. While I was taking the picture a lady took time out of her day
+to stay and point out to me what an eyesore the arrangement is.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">The Light of Learning</title>
+    <link href="https://elektrubadur.se/posts/the-light-of-learning/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/the-light-of-learning/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-09-03T00:00:00+02:00</published>
+    <updated>2010-09-03T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Portrait with Uppsala&amp;rsquo;s grand university library, taken with a
+make-shift tilt-shift lens, made from a regular 50 mm lens and som
+bicycle inner-tube.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Portrait with Uppsala&amp;rsquo;s grand university library, taken with a
+make-shift tilt-shift lens, made from a regular 50 mm lens and som
+bicycle inner-tube.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">White Water and Colourful Mist</title>
+    <link href="https://elektrubadur.se/posts/white-water-and-colourful-mist/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/white-water-and-colourful-mist/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-08-30T00:00:00+02:00</published>
+    <updated>2010-08-30T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Hällingsåfallet is a waterfall in northern Jämtland, falling into a
+canyon, probably formed by the end of the last ice age.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Hällingsåfallet is a waterfall in northern Jämtland, falling into a
+canyon, probably formed by the end of the last ice age.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Unknown Soldier</title>
+    <link href="https://elektrubadur.se/posts/unknown-soldier/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/unknown-soldier/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-08-27T00:00:00+02:00</published>
+    <updated>2010-08-27T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;By a lake in Jämtland, while waiting for a fish to bite. Made with two
+stacked 50 mm lenses&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;By a lake in Jämtland, while waiting for a fish to bite. Made with two
+stacked 50 mm lenses&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Small Country Church</title>
+    <link href="https://elektrubadur.se/posts/small-country-church/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/small-country-church/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-08-25T00:00:00+02:00</published>
+    <updated>2010-08-25T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;The 15th century church of Ragunda parish, Jämtland, through an aperture
+in its bell tower.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;The 15th century church of Ragunda parish, Jämtland, through an aperture
+in its bell tower.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Flowering Head</title>
+    <link href="https://elektrubadur.se/posts/flowering-head/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/flowering-head/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-08-18T00:00:00+02:00</published>
+    <updated>2010-08-18T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Man and flower in the Uppsala botanical garden.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Man and flower in the Uppsala botanical garden.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Flocking</title>
+    <link href="https://elektrubadur.se/posts/flocking/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/flocking/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-08-11T00:00:00+02:00</published>
+    <updated>2010-08-11T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;Jackdaws flocking over Uppsala.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Jackdaws flocking over Uppsala.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Harvest</title>
+    <link href="https://elektrubadur.se/posts/harvest/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/harvest/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-08-07T00:00:00+02:00</published>
+    <updated>2010-08-07T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;The bumblebees favour these blue flowers in Uppsala&amp;rsquo;s Botanical Garden.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;The bumblebees favour these blue flowers in Uppsala&amp;rsquo;s Botanical Garden.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Sales Pitch</title>
+    <link href="https://elektrubadur.se/posts/sales-pitch/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/sales-pitch/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-08-04T00:00:00+02:00</published>
+    <updated>2010-08-04T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;My friend Zrajm wants to sell you his
+&lt;a href="https://klingonska.org/dict/"&gt;pocket dictionary of Klingon&lt;/a&gt;. Clearly a
+must have for anyone with too much time on their hands.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;My friend Zrajm wants to sell you his
+&lt;a href="https://klingonska.org/dict/"&gt;pocket dictionary of Klingon&lt;/a&gt;. Clearly a
+must have for anyone with too much time on their hands.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Sheep 641</title>
+    <link href="https://elektrubadur.se/posts/sheep-641/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/sheep-641/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-08-03T00:00:00+02:00</published>
+    <updated>2010-08-03T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;I did this long hand held capture using the technique of zooming in
+during the exposure.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I did this long hand held capture using the technique of zooming in
+during the exposure.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">Arch</title>
+    <link href="https://elektrubadur.se/posts/arch/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/arch/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-07-28T00:00:00+02:00</published>
+    <updated>2010-07-28T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;I did this long hand held capture using the technique of zooming in
+during the exposure.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I did this long hand held capture using the technique of zooming in
+during the exposure.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+  <entry>
+    <title type="html">In the Pink</title>
+    <link href="https://elektrubadur.se/posts/in-the-pink/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/in-the-pink/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2010-07-26T00:00:00+02:00</published>
+    <updated>2010-07-26T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;This was made looking for pink subjects for an assignment.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;This was made looking for pink subjects for an assignment.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+  </entry>
+</feed>

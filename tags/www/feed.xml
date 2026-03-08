@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title type="html">Elektrubadur</title>
+  <subtitle type="html">Personal web page of Björn Lindström</subtitle>
+  <link href="https://elektrubadur.se/tags/www/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
+  <link href="https://elektrubadur.se/tags/www/" rel="alternate" type="text/html" title="Elektrubadur"/>
+  <updated>2026-03-08T20:50:36+00:00</updated>
+  <rights>© 2010–2026 Björn Lindström</rights>
+  <author>
+    <name>Björn Lindström</name>
+    <email>bkhl@elektrubadur.se</email>
+  </author>
+  <id>https://elektrubadur.se/tags/www/</id>
+  <entry>
+    <title type="html">Converting Sources of This Blog to Org format</title>
+    <link href="https://elektrubadur.se/posts/converting_blog_to_org/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/converting_blog_to_org/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2023-05-28T00:00:00+02:00</published>
+    <updated>2023-05-28T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
+&lt;p&gt;Here I&amp;rsquo;ll just share &lt;a href="/posts/converting_blog_to_org/convert.py
+"&gt;the script&lt;/a&gt; I made to do the format conversion, in case it&amp;rsquo;s useful for anyone else. Actually, half the reason I&amp;rsquo;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
+&lt;p&gt;Here I&amp;rsquo;ll just share &lt;a href="/posts/converting_blog_to_org/convert.py
+"&gt;the script&lt;/a&gt; I made to do the format conversion, in case it&amp;rsquo;s useful for anyone else. Actually, half the reason I&amp;rsquo;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;
+&lt;p&gt;At the same time I&amp;rsquo;ve moved the sources from &lt;a href="https://gitlab.com/"&gt;GitLab&lt;/a&gt; to &lt;a href="https://sr.ht/"&gt;Sourcehut&lt;/a&gt; [Update 2024-11-05: I have since moved them to &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt;].&lt;/p&gt;
+&lt;p&gt;I won&amp;rsquo;t delve deeper into the reasons for that, but I thought I&amp;rsquo;d post the Python script I used for the conversion in case it&amp;rsquo;s useful for anyone else. It&amp;rsquo;s not particularly pretty and has special casing for various things that were particular to my Zola theme, so if anyone else were to use it, they would in all likelyhood need to do some changes. I made a few manual fixes in the Org source after the conversion, of things that occurred to rarely to mke it worth automating.&lt;/p&gt;
+&lt;p&gt;The script does the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clears out the target content directory. That&amp;rsquo;s the &lt;code&gt;content/&lt;/code&gt; directory under your current working directory.&lt;/li&gt;
+&lt;li&gt;Copy any non-Markdown files into the same location from the old content directory, assumed to be &lt;code&gt;content.old/&lt;/code&gt; in your current working directory.&lt;/li&gt;
+&lt;li&gt;Extract TOML front matter from the old source files and convert into Org front matter.&lt;/li&gt;
+&lt;li&gt;Run the remainder of the Markdown file through &lt;a href="https://pandoc.org/"&gt;Pandoc&lt;/a&gt; to convert it from Markdown to Org.&lt;/li&gt;
+&lt;li&gt;Apply various substitutions to the body to fix some things Pandoc doesn&amp;rsquo;t handle, or just according to my preferences.&lt;/li&gt;
+&lt;li&gt;Write some metadata that can not be nicely encoded as Org front matter and put it in a &lt;code&gt;config.toml&lt;/code&gt; file next to the Org file instead.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then I just needed to go ahead and write a Hugo templates that works with this new content directory. Getting the same general structure of the page as in Zola isn&amp;rsquo;t difficult, as Zola is inspired by Hugo and uses a lot of the same conventions. I didn&amp;rsquo;t have to do much to be able to preserve mostly the same hierarchy of the source files for equivalent output.&lt;/p&gt;
+&lt;p&gt;If you are curious about the Hugo templates used to render this page, they are in &lt;a href="https://github.com/bkhl/elektrubadur.se/"&gt;the repository with the sources for this page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finally, if you want to use the script I&amp;rsquo;ve been talking about, you can download it here: &lt;a href="/posts/converting_blog_to_org/convert.py
+"&gt;convert.py&lt;/a&gt;&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="programming" label="Programming"/>
+    <category scheme="https://elektrubadur.se/tags" term="www" label="WWW"/>
+    <category scheme="https://elektrubadur.se/tags" term="markdown" label="Markdown"/>
+    <category scheme="https://elektrubadur.se/tags" term="org" label="Org"/>
+    <category scheme="https://elektrubadur.se/tags" term="hugo" label="Hugo"/>
+    <category scheme="https://elektrubadur.se/tags" term="python" label="Python"/>
+    <category scheme="https://elektrubadur.se/tags" term="emacs" label="Emacs"/>
+  </entry>
+  <entry>
+    <title type="html">How This Blog Works</title>
+    <link href="https://elektrubadur.se/posts/how_this_blog_works/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/how_this_blog_works/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2020-05-03T00:00:00+02:00</published>
+    <updated>2020-05-03T00:00:00+02:00</updated>
+    <summary type="html">&lt;p&gt;This blog is created using the &lt;a href="https://www.getzola.org/"&gt;Zola static site engine&lt;/a&gt;. I use a combination of &lt;a href="https://docs.gitlab.com/ci/"&gt;GitLab CI&lt;/a&gt; and &lt;code&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the &lt;a href="https://git-scm.com/"&gt;Git&lt;/a&gt; &lt;code&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2024-11-05: &lt;a href="https://github.com/bkhl/elektrubadur.se/"&gt;elektrubadur.se source code since moved to GitHub&lt;/a&gt;]&lt;/em&gt;. While writing a post I just run &lt;code&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;This blog is created using the &lt;a href="https://www.getzola.org/"&gt;Zola static site engine&lt;/a&gt;. I use a combination of &lt;a href="https://docs.gitlab.com/ci/"&gt;GitLab CI&lt;/a&gt; and &lt;code&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the &lt;a href="https://git-scm.com/"&gt;Git&lt;/a&gt; &lt;code&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2024-11-05: &lt;a href="https://github.com/bkhl/elektrubadur.se/"&gt;elektrubadur.se source code since moved to GitHub&lt;/a&gt;]&lt;/em&gt;. While writing a post I just run &lt;code&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;
+&lt;p&gt;Once ready, I commit on a branch and push it to GitLab, and then make a merge request. This might seem a bit silly for a one-man project, but this way I can disable pushes to the &lt;code&gt;master&lt;/code&gt; branch entirely, which can help prevent an accident.&lt;/p&gt;
+&lt;p&gt;The repository includes the separate repository &lt;a href="https://gitlab.com/bkhl/web-build"&gt;web-build&lt;/a&gt; as a submodule. It contains some scripts used to build and publish the web site.&lt;/p&gt;
+&lt;p&gt;My website is hosted at &lt;a href="https://hcoop.net/"&gt;HCoop&lt;/a&gt;, a hosting cooperative. Because it uses AFS, passwordless login requires the use of Kerberos, so I can&amp;rsquo;t just push the page using a deploy key.&lt;/p&gt;
+&lt;p&gt;So, rather than pushing the website there, I&amp;rsquo;m pulling. I&amp;rsquo;ve put the script &lt;code&gt;fetch_website.py&lt;/code&gt; from &lt;a href="https://gitlab.com/bkhl/web-build"&gt;web-build&lt;/a&gt; on the target host, and makes it run it as a cron job:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-crontab" data-lang="crontab"&gt;*/5 * * * * k5start -qtUf &amp;#34;/etc/keytabs/user.daemon/$USER&amp;#34; -- &amp;#34;$HOME/scripts/fetch_website.py&amp;#34; &amp;#34;https://gitlab.com/bkhl/elektrubadur.se/-/jobs/artifacts/master/download?job=build&amp;#34; &amp;#34;$HOME/www/elektrubadur.se&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;k5start&lt;/code&gt; thing is another thing needed because of the use of AFS and Kerberos. The point here is that you give the script a URL to a GitLab artifact, and a target directory, and it will deploy it if there&amp;rsquo;s been any change.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gitlab.com/bkhl/web-build/-/blob/f76df73fd337b43452e7cb934347357b5c9aafa7/fetch_website.py"&gt;The entire script&lt;/a&gt; is a bit long to post here, but it basically checks if there is a new artifact in GitLab for the website, built from the &lt;code&gt;master&lt;/code&gt; branch, and if there is downloads and deploys it. It saves the ETag in a file, so that it can compare to that and skip downloading unless there has been a change.&lt;/p&gt;
+&lt;p&gt;Credits for tools used making this page, inspirations for the design &amp;amp;c. are also on &lt;a href="/about_page/"&gt;About This Page&lt;/a&gt;.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="software" label="Software"/>
+    <category scheme="https://elektrubadur.se/tags" term="www" label="WWW"/>
+    <category scheme="https://elektrubadur.se/tags" term="hcoop" label="HCoop"/>
+    <category scheme="https://elektrubadur.se/tags" term="git" label="Git"/>
+    <category scheme="https://elektrubadur.se/tags" term="automation" label="Automation"/>
+  </entry>
+</feed>

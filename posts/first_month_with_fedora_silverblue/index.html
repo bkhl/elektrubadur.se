@@ -10,7 +10,7 @@
 <link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
 <link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
 <title>First Month with Fedora Silverblue – Elektrubadur</title>
-<link rel="alternate" type="application/rss+xml" href="https://elektrubadur.se/rss.xml" title="Elektrubadur">
+<link rel="alternate" type="application/atom+xml" href="https://elektrubadur.se/feed.xml" title="Elektrubadur">
 <link rel="me" href="https://tilde.zone/@bkhl">
 <meta name="fediverse:creator" content="@bkhl@tilde.zone">
 <meta name="description" content="Personal web page of Björn Lindström">
@@ -41,34 +41,34 @@
 <p>For applications, I’m using mostly Flatpak. I found after a while that applications I had installed from the Fedora Flatpak repository was more buggy than the ones I had from <a href="https://flathub.org/en">Flathub</a>, so at one point I made a switch to get all my applications from Flathub.</p>
 <p>Here’s the entire command line to get <code>rpm-ostree</code> into the current state of my laptop:</p>
 <div class="highlight">
-<pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>rpm-ostree reset
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>rpm-ostree install <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  fedora-workstation-repositories <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  ffmpeg-libs <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  google-chrome-stable <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  gparted <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  krb5-workstation <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  langpacks-en <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  langpacks-en_GB <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  langpacks-sv <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  langpacks-th <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  libgnome-keyring <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  NetworkManager-fortisslvpn-gnome <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  nextcloud-client <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  qemu <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  thai-arundina-sans-fonts <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  thai-arundina-sans-mono-fonts <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  thai-arundina-serif-fonts <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  vim-enhanced <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  vim-X11 <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  virt-manager <span style="color:#2544bb">\
-</span></span></span><span style="display:flex;"><span>  wl-clipboard
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>rpm-ostree install <span style="color:#2544bb">'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-31.noarch.rpm'</span>
-</span></span><span style="display:flex;"><span>rpm-ostree install <span style="color:#2544bb">'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-31.noarch.rpm'</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>rpm-ostree install fuse-exfat exfat-utils
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">rpm-ostree reset
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">rpm-ostree install <span class="se">\
+</span></span></span><span class="line"><span class="cl">  fedora-workstation-repositories <span class="se">\
+</span></span></span><span class="line"><span class="cl">  ffmpeg-libs <span class="se">\
+</span></span></span><span class="line"><span class="cl">  google-chrome-stable <span class="se">\
+</span></span></span><span class="line"><span class="cl">  gparted <span class="se">\
+</span></span></span><span class="line"><span class="cl">  krb5-workstation <span class="se">\
+</span></span></span><span class="line"><span class="cl">  langpacks-en <span class="se">\
+</span></span></span><span class="line"><span class="cl">  langpacks-en_GB <span class="se">\
+</span></span></span><span class="line"><span class="cl">  langpacks-sv <span class="se">\
+</span></span></span><span class="line"><span class="cl">  langpacks-th <span class="se">\
+</span></span></span><span class="line"><span class="cl">  libgnome-keyring <span class="se">\
+</span></span></span><span class="line"><span class="cl">  NetworkManager-fortisslvpn-gnome <span class="se">\
+</span></span></span><span class="line"><span class="cl">  nextcloud-client <span class="se">\
+</span></span></span><span class="line"><span class="cl">  qemu <span class="se">\
+</span></span></span><span class="line"><span class="cl">  thai-arundina-sans-fonts <span class="se">\
+</span></span></span><span class="line"><span class="cl">  thai-arundina-sans-mono-fonts <span class="se">\
+</span></span></span><span class="line"><span class="cl">  thai-arundina-serif-fonts <span class="se">\
+</span></span></span><span class="line"><span class="cl">  vim-enhanced <span class="se">\
+</span></span></span><span class="line"><span class="cl">  vim-X11 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  virt-manager <span class="se">\
+</span></span></span><span class="line"><span class="cl">  wl-clipboard
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">rpm-ostree install <span class="s1">'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-31.noarch.rpm'</span>
+</span></span><span class="line"><span class="cl">rpm-ostree install <span class="s1">'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-31.noarch.rpm'</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">rpm-ostree install fuse-exfat exfat-utils
 </span></span></code></pre>
 </div>
 <p>As you can see, there’s just a few things that has to be added as RPMs. Not a lot, considering that in the default installation, Silverblue just comes with a terminal, a file manager, and Firefox, in terms of applications.</p>
