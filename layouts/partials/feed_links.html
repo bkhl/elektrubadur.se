@@ -1,0 +1,15 @@
+<p>
+  {{ if or (eq .Page $.Site.Home) (eq .Page.Type "posts") }}
+  {{ with $.Site.Home.AlternativeOutputFormats.Get "atom" }}
+  <a href="{{ .RelPermalink }}" rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="Atom feed">Subscribe by Atom</a>
+  {{ end }}
+  {{ else }}
+  Atom Feeds:
+  {{ with $.Site.Home.AlternativeOutputFormats.Get "atom" }}
+  <a href="{{ .RelPermalink }}" rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="Atom feed">All</a>
+  {{ end }}
+  {{ with .AlternativeOutputFormats.Get "atom" }}
+  / <a href="{{ .RelPermalink }}" rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="Atom feed ({{ $.Page.Title }})">{{ $.Page.Title }}</a>
+  {{ end }}
+  {{ end }}
+</p>

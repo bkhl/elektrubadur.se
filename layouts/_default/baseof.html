@@ -16,11 +16,11 @@
 
     <title>{{ if ne .Page.Title .Site.Title }}{{ .Page.Title }} – {{ end }}{{ .Site.Title }}</title>
 
-    {{ with $.Site.Home.AlternativeOutputFormats.Get "rss" }}
+    {{ with $.Site.Home.AlternativeOutputFormats.Get "atom" }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end }}
     {{ if ne $.Site.Home .Page }}
-    {{ with .AlternativeOutputFormats.Get "rss" }}
+    {{ with .AlternativeOutputFormats.Get "atom" }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s on %s" />` .Rel .MediaType.Type .Permalink $.Page.Title $.Site.Title | safeHTML }}
     {{ end }}
     {{ end }}

@@ -4,22 +4,27 @@ canonifyURLs = true
 copyright = "© 2010–2026 Björn Lindström"
 defaultContentLanguage = "en"
 disableHugoGeneratorInject = true
-enableGitInfo = true
+enableGitInfo = false
 enableRobotsTXT = true
 timeZone = "Europe/Stockholm"
 disableAliases = true
 
 [outputs]
-home = ['html', 'rss', 'redirects']
-page = ['html']
-section = ['html']
-taxonomy = ['html']
-term = ['html', 'rss']
+home = ["html", "atom", "redirects"]
+page = ["html"]
+section = ["html"]
+taxonomy = ["html"]
+term = ["html", "atom"]
 
-[outputFormats.RSS]
-baseName = "rss"
+[outputFormats.atom]
+basename = "feed"
+mediaType = "application/atom+xml"
+noUgly = true
 
-[mediaTypes.'text/vnd.statichost.redirects']
+[mediaTypes."application/atom+xml"]
+suffixes = ["xml"]
+
+[mediaTypes."text/vnd.statichost.redirects"]
 
 [outputFormats.redirects]
 mediatype = "text/vnd.statichost.redirects"
@@ -28,6 +33,7 @@ isPlainText = true
 
 [markup.highlight]
 style = "modus-operandi"
+noClasses = false
 
 [markup.goldmark.parser]
 autoDefinitionTermID = false

@@ -20,5 +20,5 @@ about
 {{ range $index, $entry := .Page.GetTerms "tags" }}
 {{ if and (eq $page_tag .Title) $first_page }}<em>{{ .Title }}</em>{{ else }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ if lt (add $index 1) $tag_count }}{{ if eq (add $index 2) $tag_count }} and{{ else }},{{ end }} {{ end -}}
 {{ end -}}
-{{ end }} —&nbsp;<time datetime="{{ .Page.Date | dateFormat "2006-01-02" }}">{{ .Page.Date | dateFormat "Monday Jan 2, 2006" }}</time>
+{{ end }} —&nbsp;<time datetime="{{ .Page.PublishDate | dateFormat "2006-01-02" }}">{{ .Page.PublishDate | dateFormat "Monday Jan 2, 2006" }}</time>
 </p>

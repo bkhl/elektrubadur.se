@@ -1,13 +1,13 @@
- /*
+/*
  * Fonts
  */
 
 // "Old style" font list from https://modernfontstacks.com/
-$font_family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+$font_family:
+    "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
 
 // "Monospace Slab Serif" font list from https://modernfontstacks.com/
-$monospace_font_family: 'Nimbus Mono PS', 'Courier New', monospace;
-
+$monospace_font_family: "Nimbus Mono PS", "Courier New", monospace;
 
 /*
  * Entire page
@@ -21,12 +21,12 @@ body {
     font-size: 120%;
 }
 
-
 /*
  * Basic elements
  */
 
-article > p, article li  {
+article > p,
+article li {
     text-align: justify;
 }
 
@@ -34,7 +34,12 @@ li {
     margin-bottom: 1ex;
 }
 
-code, kbd, tt, pre, samp, textarea {
+code,
+kbd,
+tt,
+pre,
+samp,
+textarea {
     font-family: $monospace_font_family;
 }
 
@@ -49,10 +54,11 @@ img {
     max-height: 100%;
 }
 
-time, figcaption, blockquote {
+time,
+figcaption,
+blockquote {
     font-style: italic;
 }
-
 
 /*
  * Links
@@ -65,14 +71,14 @@ a {
     font-weight: bold;
 }
 
-h1 a, h2 a {
+h1 a,
+h2 a {
     font-style: normal;
 }
 
 a:hover {
     text-decoration: underline;
 }
-
 
 /*
  * Headers and footers
@@ -86,7 +92,8 @@ body > footer {
     border-top-style: dotted;
 }
 
-header p, footer p {
+header p,
+footer p {
     font-size: smaller;
 }
 
@@ -94,7 +101,6 @@ body > footer {
     text-align: right;
     margin-top: 4ex;
 }
-
 
 /*
  * Articles
@@ -113,7 +119,6 @@ article header em {
     font-weight: bold;
 }
 
-
 /*
  * Navigation section
  */
@@ -127,3 +132,9 @@ nav em {
     font-style: italic;
     font-weight: bold;
 }
+
+/*
+ * Import generated code highlight style.
+ */
+
+@import "generated/highlight";
