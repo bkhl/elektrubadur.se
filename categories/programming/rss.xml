@@ -5,13 +5,16 @@
     <link>https://elektrubadur.se/categories/programming/</link>
     <description>Recent content in Programming on Elektrubadur</description>
     <language>en</language>
-    <copyright>© 2010–2024 Björn Lindström</copyright>
+    <managingEditor>bkhl@elektrubadur.se (Björn Lindström)</managingEditor>
+    <webMaster>bkhl@elektrubadur.se (Björn Lindström)</webMaster>
+    <copyright>© 2010–2026 Björn Lindström</copyright>
     <lastBuildDate>Sun, 28 May 2023 00:00:00 +0200</lastBuildDate>
     <atom:link href="https://elektrubadur.se/categories/programming/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Converting Sources of This Blog to Org format</title>
       <link>https://elektrubadur.se/posts/converting_blog_to_org/</link>
       <pubDate>Sun, 28 May 2023 00:00:00 +0200</pubDate>
+      <author>bkhl@elektrubadur.se (Björn Lindström)</author>
       <guid>https://elektrubadur.se/posts/converting_blog_to_org/</guid>
       <description>&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
 &lt;p&gt;Here I&amp;rsquo;ll just share &lt;a href="https://elektrubadur.se/posts/converting_blog_to_org/convert.py
@@ -21,6 +24,7 @@
       <title>Vimwiki + Nextcloud Notes</title>
       <link>https://elektrubadur.se/posts/vimwiki_and_nextcloud/</link>
       <pubDate>Sat, 02 May 2020 00:00:00 +0200</pubDate>
+      <author>bkhl@elektrubadur.se (Björn Lindström)</author>
       <guid>https://elektrubadur.se/posts/vimwiki_and_nextcloud/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
 &lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
@@ -30,6 +34,7 @@
       <title>Simple Nextcloud To-Do List Automation with Python and WebDAV</title>
       <link>https://elektrubadur.se/posts/nextcloud_to_do_automation/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0200</pubDate>
+      <author>bkhl@elektrubadur.se (Björn Lindström)</author>
       <guid>https://elektrubadur.se/posts/nextcloud_to_do_automation/</guid>
       <description>&lt;p&gt;I keep a task list in a &lt;a href="http://todotxt.org/"&gt;todo.txt&lt;/a&gt; format in
 &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt;. They are simply kept as two text

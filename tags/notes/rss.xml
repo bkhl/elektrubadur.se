@@ -5,13 +5,16 @@
     <link>https://elektrubadur.se/tags/notes/</link>
     <description>Recent content in Notes on Elektrubadur</description>
     <language>en</language>
-    <copyright>© 2010–2024 Björn Lindström</copyright>
+    <managingEditor>bkhl@elektrubadur.se (Björn Lindström)</managingEditor>
+    <webMaster>bkhl@elektrubadur.se (Björn Lindström)</webMaster>
+    <copyright>© 2010–2026 Björn Lindström</copyright>
     <lastBuildDate>Sat, 02 May 2020 00:00:00 +0200</lastBuildDate>
     <atom:link href="https://elektrubadur.se/tags/notes/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Vimwiki + Nextcloud Notes</title>
       <link>https://elektrubadur.se/posts/vimwiki_and_nextcloud/</link>
       <pubDate>Sat, 02 May 2020 00:00:00 +0200</pubDate>
+      <author>bkhl@elektrubadur.se (Björn Lindström)</author>
       <guid>https://elektrubadur.se/posts/vimwiki_and_nextcloud/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
 &lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;

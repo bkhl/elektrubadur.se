@@ -5,13 +5,16 @@
     <link>https://elektrubadur.se/tags/containers/</link>
     <description>Recent content in Containers on Elektrubadur</description>
     <language>en</language>
-    <copyright>© 2010–2024 Björn Lindström</copyright>
+    <managingEditor>bkhl@elektrubadur.se (Björn Lindström)</managingEditor>
+    <webMaster>bkhl@elektrubadur.se (Björn Lindström)</webMaster>
+    <copyright>© 2010–2026 Björn Lindström</copyright>
     <lastBuildDate>Sat, 08 Feb 2020 00:00:00 +0100</lastBuildDate>
     <atom:link href="https://elektrubadur.se/tags/containers/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>First Month with Fedora Silverblue</title>
       <link>https://elektrubadur.se/posts/first_month_with_fedora_silverblue/</link>
       <pubDate>Sat, 08 Feb 2020 00:00:00 +0100</pubDate>
+      <author>bkhl@elektrubadur.se (Björn Lindström)</author>
       <guid>https://elektrubadur.se/posts/first_month_with_fedora_silverblue/</guid>
       <description>&lt;p&gt;I decided during my midwinter vacation that I&amp;rsquo;d try out &lt;a href="https://fedoraproject.org/atomic-desktops/silverblue/"&gt;Fedora Silverblue&lt;/a&gt; on my desktop, and I liked it, so here I am still using it on my work laptop.&lt;/p&gt;
 &lt;p&gt;Silverblue is a version of Fedora using &lt;a href="https://coreos.github.io/rpm-ostree/"&gt;rpm-ostree&lt;/a&gt; to provide a minimal and immutable base OS, providing a platform for running applications in containers.&lt;/p&gt;
