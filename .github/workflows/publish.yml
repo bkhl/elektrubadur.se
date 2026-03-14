@@ -14,14 +14,14 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.135.0'
+          hugo-version: '0.157.0'
           extended: true
 
       - name: Install HTML Tidy and XMLStarlet
         run: sudo apt-get -y install tidy xmlstarlet
 
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
