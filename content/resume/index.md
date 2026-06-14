@@ -6,7 +6,7 @@ draft = false
 
 _Björn Lindström_, programmer and scrum master
 
-{{< image file="portrait.jpeg" title="Portrait" alt="Portrait" >}}
+![Portrait](portrait.jpeg "Portrait")
 
 
 ## Summary
@@ -72,7 +72,7 @@ Since 2022 I also wear the Scrum Master hat in my team.
 ### Certified ScrumMaster® (CSM®) (2022 --- present)
 
 
-{{<image file="csm-badge.png" alt="CSM certificate">}}
+![CSM certificate](csm-badge.png)
 
 - [CSM credential link](https://bcert.me/syjixfovh)
 

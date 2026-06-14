@@ -1,0 +1,5 @@
+{{ if strings.HasSuffix .Destination ".md" }}
+<a href="{{ .Destination | relref .Page }}" {{ if .Title }}title="{{ .Title }}"{{ end }}>{{ .Text }}</a>
+{{ else }}
+<a href="{{ .Destination }}" {{ if .Title }}title="{{ .Title }}"{{ end }}>{{ .Text }}</a>
+{{ end }}
