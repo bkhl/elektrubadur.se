@@ -4,7 +4,7 @@
   <subtitle type="html">Personal web page of Björn Lindström</subtitle>
   <link href="https://elektrubadur.se/categories/photos/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
   <link href="https://elektrubadur.se/categories/photos/" rel="alternate" type="text/html" title="Elektrubadur"/>
-  <updated>2026-03-14T09:43:18+00:00</updated>
+  <updated>2026-06-14T15:41:55+00:00</updated>
   <rights>© 2010–2026 Björn Lindström</rights>
   <author>
     <name>Björn Lindström</name>
@@ -971,8 +971,14 @@ station.&lt;/p&gt;
     </author>
     <published>2011-01-18T00:00:00+01:00</published>
     <updated>2011-01-18T00:00:00+01:00</updated>
-    <summary type="html">&lt;p&gt;This is an update on my ongoing project of close-up portraits made with my &lt;em&gt;ЛОМО Т-43 40 mm f/4&lt;/em&gt; lens, &lt;a href="/posts/agonizing/"&gt;mentioned here&lt;/a&gt;. I have a fair collection of portraits by now, I few of which are good enough to probably make the final series. This might be my favourite so far. Watch this space.&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;This is an update on my ongoing project of close-up portraits made with my &lt;em&gt;ЛОМО Т-43 40 mm f/4&lt;/em&gt; lens, &lt;a href="/posts/agonizing/"&gt;mentioned here&lt;/a&gt;. I have a fair collection of portraits by now, I few of which are good enough to probably make the final series. This might be my favourite so far. Watch this space.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;This is an update on my ongoing project of close-up portraits made with my &lt;em&gt;ЛОМО Т-43 40 mm f/4&lt;/em&gt; lens, 
+&lt;a href="/posts/agonizing/" &gt;mentioned here&lt;/a&gt;
+
+. I have a fair collection of portraits by now, I few of which are good enough to probably make the final series. This might be my favourite so far. Watch this space.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;This is an update on my ongoing project of close-up portraits made with my &lt;em&gt;ЛОМО Т-43 40 mm f/4&lt;/em&gt; lens, 
+&lt;a href="/posts/agonizing/" &gt;mentioned here&lt;/a&gt;
+
+. I have a fair collection of portraits by now, I few of which are good enough to probably make the final series. This might be my favourite so far. Watch this space.&lt;/p&gt;
 </content>
     <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
   </entry>
@@ -1326,10 +1332,16 @@ in its bell tower.&lt;/p&gt;
     <published>2010-08-04T00:00:00+02:00</published>
     <updated>2010-08-04T00:00:00+02:00</updated>
     <summary type="html">&lt;p&gt;My friend Zrajm wants to sell you his
-&lt;a href="https://klingonska.org/dict/"&gt;pocket dictionary of Klingon&lt;/a&gt;. Clearly a
+
+&lt;a href="https://klingonska.org/dict/" &gt;pocket dictionary of Klingon&lt;/a&gt;
+
+. Clearly a
 must have for anyone with too much time on their hands.&lt;/p&gt;</summary>
     <content type="html">&lt;p&gt;My friend Zrajm wants to sell you his
-&lt;a href="https://klingonska.org/dict/"&gt;pocket dictionary of Klingon&lt;/a&gt;. Clearly a
+
+&lt;a href="https://klingonska.org/dict/" &gt;pocket dictionary of Klingon&lt;/a&gt;
+
+. Clearly a
 must have for anyone with too much time on their hands.&lt;/p&gt;
 </content>
     <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>

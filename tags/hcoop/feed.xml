@@ -4,7 +4,7 @@
   <subtitle type="html">Personal web page of Björn Lindström</subtitle>
   <link href="https://elektrubadur.se/tags/hcoop/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
   <link href="https://elektrubadur.se/tags/hcoop/" rel="alternate" type="text/html" title="Elektrubadur"/>
-  <updated>2026-03-14T09:43:18+00:00</updated>
+  <updated>2026-06-14T15:41:55+00:00</updated>
   <rights>© 2010–2026 Björn Lindström</rights>
   <author>
     <name>Björn Lindström</name>
@@ -20,18 +20,57 @@
     </author>
     <published>2020-05-03T00:00:00+02:00</published>
     <updated>2020-05-03T00:00:00+02:00</updated>
-    <summary type="html">&lt;p&gt;This blog is created using the &lt;a href="https://www.getzola.org/"&gt;Zola static site engine&lt;/a&gt;. I use a combination of &lt;a href="https://docs.gitlab.com/ci/"&gt;GitLab CI&lt;/a&gt; and &lt;code&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the &lt;a href="https://git-scm.com/"&gt;Git&lt;/a&gt; &lt;code&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2024-11-05: &lt;a href="https://github.com/bkhl/elektrubadur.se/"&gt;elektrubadur.se source code since moved to GitHub&lt;/a&gt;]&lt;/em&gt;. While writing a post I just run &lt;code&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;This blog is created using the &lt;a href="https://www.getzola.org/"&gt;Zola static site engine&lt;/a&gt;. I use a combination of &lt;a href="https://docs.gitlab.com/ci/"&gt;GitLab CI&lt;/a&gt; and &lt;code&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the &lt;a href="https://git-scm.com/"&gt;Git&lt;/a&gt; &lt;code&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2024-11-05: &lt;a href="https://github.com/bkhl/elektrubadur.se/"&gt;elektrubadur.se source code since moved to GitHub&lt;/a&gt;]&lt;/em&gt;. While writing a post I just run &lt;code&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;This blog is created using the 
+&lt;a href="https://www.getzola.org/" &gt;Zola static site engine&lt;/a&gt;
+
+. I use a combination of 
+&lt;a href="https://docs.gitlab.com/ci/" &gt;GitLab CI&lt;/a&gt;
+
+ and &lt;code&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the 
+&lt;a href="https://git-scm.com/" &gt;Git&lt;/a&gt;
+
+ &lt;code&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2024-11-05: 
+&lt;a href="https://github.com/bkhl/elektrubadur.se/" &gt;elektrubadur.se source code since moved to GitHub&lt;/a&gt;
+
+]&lt;/em&gt;. While writing a post I just run &lt;code&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;This blog is created using the 
+&lt;a href="https://www.getzola.org/" &gt;Zola static site engine&lt;/a&gt;
+
+. I use a combination of 
+&lt;a href="https://docs.gitlab.com/ci/" &gt;GitLab CI&lt;/a&gt;
+
+ and &lt;code&gt;cron&lt;/code&gt; to automatically upload it to my web server whenever I merge a change to the 
+&lt;a href="https://git-scm.com/" &gt;Git&lt;/a&gt;
+
+ &lt;code&gt;master&lt;/code&gt; branch of the home page.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;elektrubadur.se&lt;/code&gt; source code is kept &lt;em&gt;here in GitLab&lt;/em&gt; &lt;em&gt;[Update 2024-11-05: 
+&lt;a href="https://github.com/bkhl/elektrubadur.se/" &gt;elektrubadur.se source code since moved to GitHub&lt;/a&gt;
+
+]&lt;/em&gt;. While writing a post I just run &lt;code&gt;zola serve&lt;/code&gt; on my computer and can look at a dynamically updated website on a local web server.&lt;/p&gt;
 &lt;p&gt;Once ready, I commit on a branch and push it to GitLab, and then make a merge request. This might seem a bit silly for a one-man project, but this way I can disable pushes to the &lt;code&gt;master&lt;/code&gt; branch entirely, which can help prevent an accident.&lt;/p&gt;
-&lt;p&gt;The repository includes the separate repository &lt;a href="https://gitlab.com/bkhl/web-build"&gt;web-build&lt;/a&gt; as a submodule. It contains some scripts used to build and publish the web site.&lt;/p&gt;
-&lt;p&gt;My website is hosted at &lt;a href="https://hcoop.net/"&gt;HCoop&lt;/a&gt;, a hosting cooperative. Because it uses AFS, passwordless login requires the use of Kerberos, so I can&amp;rsquo;t just push the page using a deploy key.&lt;/p&gt;
-&lt;p&gt;So, rather than pushing the website there, I&amp;rsquo;m pulling. I&amp;rsquo;ve put the script &lt;code&gt;fetch_website.py&lt;/code&gt; from &lt;a href="https://gitlab.com/bkhl/web-build"&gt;web-build&lt;/a&gt; on the target host, and makes it run it as a cron job:&lt;/p&gt;
+&lt;p&gt;The repository includes the separate repository 
+&lt;a href="https://gitlab.com/bkhl/web-build" &gt;web-build&lt;/a&gt;
+
+ as a submodule. It contains some scripts used to build and publish the web site.&lt;/p&gt;
+&lt;p&gt;My website is hosted at 
+&lt;a href="https://hcoop.net/" &gt;HCoop&lt;/a&gt;
+
+, a hosting cooperative. Because it uses AFS, passwordless login requires the use of Kerberos, so I can&amp;rsquo;t just push the page using a deploy key.&lt;/p&gt;
+&lt;p&gt;So, rather than pushing the website there, I&amp;rsquo;m pulling. I&amp;rsquo;ve put the script &lt;code&gt;fetch_website.py&lt;/code&gt; from 
+&lt;a href="https://gitlab.com/bkhl/web-build" &gt;web-build&lt;/a&gt;
+
+ on the target host, and makes it run it as a cron job:&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code class="language-crontab" data-lang="crontab"&gt;*/5 * * * * k5start -qtUf &amp;#34;/etc/keytabs/user.daemon/$USER&amp;#34; -- &amp;#34;$HOME/scripts/fetch_website.py&amp;#34; &amp;#34;https://gitlab.com/bkhl/elektrubadur.se/-/jobs/artifacts/master/download?job=build&amp;#34; &amp;#34;$HOME/www/elektrubadur.se&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;k5start&lt;/code&gt; thing is another thing needed because of the use of AFS and Kerberos. The point here is that you give the script a URL to a GitLab artifact, and a target directory, and it will deploy it if there&amp;rsquo;s been any change.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://gitlab.com/bkhl/web-build/-/blob/f76df73fd337b43452e7cb934347357b5c9aafa7/fetch_website.py"&gt;The entire script&lt;/a&gt; is a bit long to post here, but it basically checks if there is a new artifact in GitLab for the website, built from the &lt;code&gt;master&lt;/code&gt; branch, and if there is downloads and deploys it. It saves the ETag in a file, so that it can compare to that and skip downloading unless there has been a change.&lt;/p&gt;
-&lt;p&gt;Credits for tools used making this page, inspirations for the design &amp;amp;c. are also on &lt;a href="/about_page/"&gt;About This Page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href="https://gitlab.com/bkhl/web-build/-/blob/f76df73fd337b43452e7cb934347357b5c9aafa7/fetch_website.py" &gt;The entire script&lt;/a&gt;
+
+ is a bit long to post here, but it basically checks if there is a new artifact in GitLab for the website, built from the &lt;code&gt;master&lt;/code&gt; branch, and if there is downloads and deploys it. It saves the ETag in a file, so that it can compare to that and skip downloading unless there has been a change.&lt;/p&gt;
+&lt;p&gt;Credits for tools used making this page, inspirations for the design &amp;amp;c. are also on 
+&lt;a href="/about_page/" &gt;About This Page&lt;/a&gt;
+
+.&lt;/p&gt;
 </content>
     <category scheme="https://elektrubadur.se/categories" term="software" label="Software"/>
     <category scheme="https://elektrubadur.se/tags" term="www" label="WWW"/>

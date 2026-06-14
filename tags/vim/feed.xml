@@ -4,7 +4,7 @@
   <subtitle type="html">Personal web page of Björn Lindström</subtitle>
   <link href="https://elektrubadur.se/tags/vim/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
   <link href="https://elektrubadur.se/tags/vim/" rel="alternate" type="text/html" title="Elektrubadur"/>
-  <updated>2026-03-14T09:43:18+00:00</updated>
+  <updated>2026-06-14T15:41:55+00:00</updated>
   <rights>© 2010–2026 Björn Lindström</rights>
   <author>
     <name>Björn Lindström</name>
@@ -20,13 +20,34 @@
     </author>
     <published>2020-05-02T00:00:00+02:00</published>
     <updated>2020-05-02T00:00:00+02:00</updated>
-    <summary type="html">&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
-&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;I&amp;rsquo;ve been using 
+&lt;a href="http://vimwiki.github.io/" &gt;Vimwiki&lt;/a&gt;
+
+ for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
+&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the 
+&lt;a href="https://apps.nextcloud.com/apps/notes/" &gt;Nextcloud Notes&lt;/a&gt;
+
+ application. I have a self-hosted 
+&lt;a href="https://nextcloud.com/" &gt;Nextcloud&lt;/a&gt;
+
+ instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
 &lt;p&gt;The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I&amp;rsquo;ve now finally automated that.&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
-&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I&amp;rsquo;ve been using 
+&lt;a href="http://vimwiki.github.io/" &gt;Vimwiki&lt;/a&gt;
+
+ for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
+&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the 
+&lt;a href="https://apps.nextcloud.com/apps/notes/" &gt;Nextcloud Notes&lt;/a&gt;
+
+ application. I have a self-hosted 
+&lt;a href="https://nextcloud.com/" &gt;Nextcloud&lt;/a&gt;
+
+ instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
 &lt;p&gt;The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I&amp;rsquo;ve now finally automated that.&lt;/p&gt;
-&lt;p&gt;To start with, I added the function &lt;code&gt;SetWikiHeader&lt;/code&gt; to &lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim"&gt;my ~/.vim/plugin/config/vim.wiki&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;To start with, I added the function &lt;code&gt;SetWikiHeader&lt;/code&gt; to 
+&lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim" &gt;my ~/.vim/plugin/config/vim.wiki&lt;/a&gt;
+
+:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &amp;amp;&lt;span class="nx"&gt;runtimepath&lt;/span&gt; &lt;span class="p"&gt;!~&lt;/span&gt;? &lt;span class="s2"&gt;&amp;#34;vimwiki&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;  &lt;span class="nx"&gt;finish&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;endif&lt;/span&gt;
@@ -64,8 +85,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;# &amp;#34;&lt;/span&gt; . &lt;span class="nx"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;endif&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;endfunction&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Vim script is pretty weird, had to search in documentation for how to do most things in there. Props to people who write entire programs in it, like let&amp;rsquo;s say &lt;a href="https://github.com/orgs/vimwiki/people"&gt;those people that wrote Vimwiki&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in &lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim"&gt;my ~/.vim/ftplugin/vimwiki.vim&lt;/a&gt;:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Vim script is pretty weird, had to search in documentation for how to do most things in there. Props to people who write entire programs in it, like let&amp;rsquo;s say 
+&lt;a href="https://github.com/orgs/vimwiki/people" &gt;those people that wrote Vimwiki&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in 
+&lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim" &gt;my ~/.vim/ftplugin/vimwiki.vim&lt;/a&gt;
+
+:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; Set header to match filename when opening or saving file, for&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; interoperability with Nextcloud Notes.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;SetWikiHeader&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;

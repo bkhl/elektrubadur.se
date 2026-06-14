@@ -27,9 +27,9 @@
 <h1>Simple Nextcloud To-Do List Automation with Python and WebDAV</h1>
 <p>By <em>Björn Lindström</em> in <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/nextcloud/">Nextcloud</a> and <a href="https://elektrubadur.se/tags/planning/">Planning</a> —&nbsp;<time datetime="2019-05-05">Sunday&nbsp;May&nbsp;5,&nbsp;2019</time></p>
 </header>
-<p>I keep a task list in a <a href="http://todotxt.org/">todo.txt</a> format in <a href="https://nextcloud.com/">Nextcloud</a>. They are simply kept as two text files, <code>todo.txt</code> and <code>done.txt</code> in the root of my Nextcloud user directory.</p>
+<p>I keep a task list in a <a href="http://todotxt.org/">todo.txt</a> format in <a href="https://nextcloud.com/">Nextcloud</a> . They are simply kept as two text files, <code>todo.txt</code> and <code>done.txt</code> in the root of my Nextcloud user directory.</p>
 <p>Some clients already have the option to move tasks from <code>todo.txt</code> to <code>done.txt</code> when you mark a task as done. However, I would prefer they stick around in the <code>todo.txt</code> for a while, in case I change my mind.</p>
-<p>At first I thought I’d just write a script to run as a cronjob on the server hosting Nextcloud, but that won’t work with syncrhonization, as it won’t let Nextcloud know the files have changed. I then thought there must be an API to read/write files to Nextcloud, and then quickly realized that this API is <a href="https://tools.ietf.org/html/rfc2518">WebDAV</a>. So, I should be able to make a Python script to do this, using <a href="https://pypi.org/project/requests/">requests</a>. A more full-featured WebDAV library would be overkill for this.</p>
+<p>At first I thought I’d just write a script to run as a cronjob on the server hosting Nextcloud, but that won’t work with syncrhonization, as it won’t let Nextcloud know the files have changed. I then thought there must be an API to read/write files to Nextcloud, and then quickly realized that this API is <a href="https://tools.ietf.org/html/rfc2518">WebDAV</a> . So, I should be able to make a Python script to do this, using <a href="https://pypi.org/project/requests/">requests</a> . A more full-featured WebDAV library would be overkill for this.</p>
 <h2>Outline</h2>
 <p>Here’s what the script will do.</p>
 <ol>
@@ -54,14 +54,14 @@
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
 </span></span></code></pre>
 </div>
-<p>In <a href="http://todotxt.org/">todo.txt</a>, tasks are marked as done by prepending the token <code>x</code> at the start of the line. For this purpose, that’s really all we need to do, so I just create regexp to match these lines:</p>
+<p>In <a href="http://todotxt.org/">todo.txt</a> , tasks are marked as done by prepending the token <code>x</code> at the start of the line. For this purpose, that’s really all we need to do, so I just create regexp to match these lines:</p>
 <div class="highlight">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">DONE_LINE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^x\b"</span><span class="p">)</span>
 </span></span></code></pre>
 </div>
 <p>That’s it for the parsing.</p>
-<p>Now, as this script will update two files, and I don’t want to lose any tasks, I need to worry about race conditions. In other words, I’ll need to use <a href="https://tools.ietf.org/html/rfc7232">ETags</a>.</p>
-<p>For the structure of the script, I at first wrote it using the <a href="https://plumbum.readthedocs.io/en/latest/cli.html">Plumbum CLI application</a>, but later found that it was adding so little benefit I didn’t want that dependency. Instead I’ll use <code>configparser</code> and <code>argparse</code> for the same thing. For error handling, I’ll have functions return one of these values, and translate them to return codes at the end.</p>
+<p>Now, as this script will update two files, and I don’t want to lose any tasks, I need to worry about race conditions. In other words, I’ll need to use <a href="https://tools.ietf.org/html/rfc7232">ETags</a> .</p>
+<p>For the structure of the script, I at first wrote it using the <a href="https://plumbum.readthedocs.io/en/latest/cli.html">Plumbum CLI application</a> , but later found that it was adding so little benefit I didn’t want that dependency. Instead I’ll use <code>configparser</code> and <code>argparse</code> for the same thing. For error handling, I’ll have functions return one of these values, and translate them to return codes at the end.</p>
 <div class="highlight">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">SUCCESS</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">FAILURE</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
@@ -204,7 +204,7 @@
 </span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span></code></pre>
 </div>
-<p>Here is <a href="./todo_maintenance.py">the entire script</a>.</p>
+<p>Here is <a href="./todo_maintenance.py">the entire script</a> .</p>
 <p>This is just a start, if you want more advanced automation, handy things that could be added include (again, pull requests accepted):</p>
 <ul>
 <li>Parse tags indicating repeating tasks. When those are completed, move the current one to <code>done.txt</code>, but create a new task for the next occurance at the same time.</li>

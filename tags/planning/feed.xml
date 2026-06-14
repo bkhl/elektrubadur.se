@@ -4,7 +4,7 @@
   <subtitle type="html">Personal web page of Björn Lindström</subtitle>
   <link href="https://elektrubadur.se/tags/planning/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
   <link href="https://elektrubadur.se/tags/planning/" rel="alternate" type="text/html" title="Elektrubadur"/>
-  <updated>2026-03-14T09:43:18+00:00</updated>
+  <updated>2026-06-14T15:41:55+00:00</updated>
   <rights>© 2010–2026 Björn Lindström</rights>
   <author>
     <name>Björn Lindström</name>
@@ -20,8 +20,27 @@
     </author>
     <published>2019-05-05T00:00:00+02:00</published>
     <updated>2019-05-05T00:00:00+02:00</updated>
-    <summary type="html">&lt;p&gt;I keep a task list in a &lt;a href="http://todotxt.org/"&gt;todo.txt&lt;/a&gt; format in
-&lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt;. They are simply kept as two text
+    <summary type="html">&lt;p&gt;I keep a task list in a 
+&lt;a href="http://todotxt.org/" &gt;todo.txt&lt;/a&gt;
+
+ format in
+
+&lt;a href="https://nextcloud.com/" &gt;Nextcloud&lt;/a&gt;
+
+. They are simply kept as two text
+files, &lt;code&gt;todo.txt&lt;/code&gt; and &lt;code&gt;done.txt&lt;/code&gt; in the root of my Nextcloud user
+directory.&lt;/p&gt;
+&lt;p&gt;Some clients already have the option to move tasks from &lt;code&gt;todo.txt&lt;/code&gt; to
+&lt;code&gt;done.txt&lt;/code&gt; when you mark a task as done. However, I would prefer they
+stick around in the &lt;code&gt;todo.txt&lt;/code&gt; for a while, in case I change my mind.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I keep a task list in a 
+&lt;a href="http://todotxt.org/" &gt;todo.txt&lt;/a&gt;
+
+ format in
+
+&lt;a href="https://nextcloud.com/" &gt;Nextcloud&lt;/a&gt;
+
+. They are simply kept as two text
 files, &lt;code&gt;todo.txt&lt;/code&gt; and &lt;code&gt;done.txt&lt;/code&gt; in the root of my Nextcloud user
 directory.&lt;/p&gt;
 &lt;p&gt;Some clients already have the option to move tasks from &lt;code&gt;todo.txt&lt;/code&gt; to
@@ -32,25 +51,15 @@ server hosting Nextcloud, but that won&amp;rsquo;t work with syncrhonization, as
 it won&amp;rsquo;t let Nextcloud know the files have changed. I then thought there
 must be an API to read/write files to Nextcloud, and then quickly
 realized that this API is
-&lt;a href="https://tools.ietf.org/html/rfc2518"&gt;WebDAV&lt;/a&gt;. So, I should be able to
+
+&lt;a href="https://tools.ietf.org/html/rfc2518" &gt;WebDAV&lt;/a&gt;
+
+. So, I should be able to
 make a Python script to do this, using
-&lt;a href="https://pypi.org/project/requests/"&gt;requests&lt;/a&gt;. A more full-featured
-WebDAV library would be overkill for this.&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;I keep a task list in a &lt;a href="http://todotxt.org/"&gt;todo.txt&lt;/a&gt; format in
-&lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt;. They are simply kept as two text
-files, &lt;code&gt;todo.txt&lt;/code&gt; and &lt;code&gt;done.txt&lt;/code&gt; in the root of my Nextcloud user
-directory.&lt;/p&gt;
-&lt;p&gt;Some clients already have the option to move tasks from &lt;code&gt;todo.txt&lt;/code&gt; to
-&lt;code&gt;done.txt&lt;/code&gt; when you mark a task as done. However, I would prefer they
-stick around in the &lt;code&gt;todo.txt&lt;/code&gt; for a while, in case I change my mind.&lt;/p&gt;
-&lt;p&gt;At first I thought I&amp;rsquo;d just write a script to run as a cronjob on the
-server hosting Nextcloud, but that won&amp;rsquo;t work with syncrhonization, as
-it won&amp;rsquo;t let Nextcloud know the files have changed. I then thought there
-must be an API to read/write files to Nextcloud, and then quickly
-realized that this API is
-&lt;a href="https://tools.ietf.org/html/rfc2518"&gt;WebDAV&lt;/a&gt;. So, I should be able to
-make a Python script to do this, using
-&lt;a href="https://pypi.org/project/requests/"&gt;requests&lt;/a&gt;. A more full-featured
+
+&lt;a href="https://pypi.org/project/requests/" &gt;requests&lt;/a&gt;
+
+. A more full-featured
 WebDAV library would be overkill for this.&lt;/p&gt;
 &lt;h2&gt;Outline&lt;/h2&gt;
 &lt;p&gt;Here&amp;rsquo;s what the script will do.&lt;/p&gt;
@@ -78,7 +87,10 @@ running this a few months now it still hasn&amp;rsquo;t happened.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In &lt;a href="http://todotxt.org/"&gt;todo.txt&lt;/a&gt;, tasks are marked as done by
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In 
+&lt;a href="http://todotxt.org/" &gt;todo.txt&lt;/a&gt;
+
+, tasks are marked as done by
 prepending the token &lt;code&gt;x&lt;/code&gt; at the start of the line. For this purpose,
 that&amp;rsquo;s really all we need to do, so I just create regexp to match these
 lines:&lt;/p&gt;
@@ -86,10 +98,16 @@ lines:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it for the parsing.&lt;/p&gt;
 &lt;p&gt;Now, as this script will update two files, and I don&amp;rsquo;t want to lose any
 tasks, I need to worry about race conditions. In other words, I&amp;rsquo;ll need
-to use &lt;a href="https://tools.ietf.org/html/rfc7232"&gt;ETags&lt;/a&gt;.&lt;/p&gt;
+to use 
+&lt;a href="https://tools.ietf.org/html/rfc7232" &gt;ETags&lt;/a&gt;
+
+.&lt;/p&gt;
 &lt;p&gt;For the structure of the script, I at first wrote it using the
-&lt;a href="https://plumbum.readthedocs.io/en/latest/cli.html"&gt;Plumbum CLI
-application&lt;/a&gt;, but later found that it was adding so little benefit I
+
+&lt;a href="https://plumbum.readthedocs.io/en/latest/cli.html" &gt;Plumbum CLI
+application&lt;/a&gt;
+
+, but later found that it was adding so little benefit I
 didn&amp;rsquo;t want that dependency. Instead I&amp;rsquo;ll use &lt;code&gt;configparser&lt;/code&gt; and
 &lt;code&gt;argparse&lt;/code&gt; for the same thing. For error handling, I&amp;rsquo;ll have functions
 return one of these values, and translate them to return codes at the
@@ -230,7 +248,10 @@ accordingly.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;FAILURE&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here is &lt;a href="./todo_maintenance.py"&gt;the entire script&lt;/a&gt;.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here is 
+&lt;a href="./todo_maintenance.py" &gt;the entire script&lt;/a&gt;
+
+.&lt;/p&gt;
 &lt;p&gt;This is just a start, if you want more advanced automation, handy things
 that could be added include (again, pull requests accepted):&lt;/p&gt;
 &lt;ul&gt;

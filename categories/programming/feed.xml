@@ -4,7 +4,7 @@
   <subtitle type="html">Personal web page of Björn Lindström</subtitle>
   <link href="https://elektrubadur.se/categories/programming/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
   <link href="https://elektrubadur.se/categories/programming/" rel="alternate" type="text/html" title="Elektrubadur"/>
-  <updated>2026-03-14T09:43:18+00:00</updated>
+  <updated>2026-06-14T15:41:55+00:00</updated>
   <rights>© 2010–2026 Björn Lindström</rights>
   <author>
     <name>Björn Lindström</name>
@@ -20,27 +20,63 @@
     </author>
     <published>2023-05-28T00:00:00+02:00</published>
     <updated>2023-05-28T00:00:00+02:00</updated>
-    <summary type="html">&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
-&lt;p&gt;Here I&amp;rsquo;ll just share &lt;a href="/posts/converting_blog_to_org/convert.py
-"&gt;the script&lt;/a&gt; I made to do the format conversion, in case it&amp;rsquo;s useful for anyone else. Actually, half the reason I&amp;rsquo;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from &lt;a href="https://www.getzola.org/"&gt;Zola&lt;/a&gt; to &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; in order to be able to keep the sources in Org format.&lt;/p&gt;
-&lt;p&gt;Here I&amp;rsquo;ll just share &lt;a href="/posts/converting_blog_to_org/convert.py
-"&gt;the script&lt;/a&gt; I made to do the format conversion, in case it&amp;rsquo;s useful for anyone else. Actually, half the reason I&amp;rsquo;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;
-&lt;p&gt;At the same time I&amp;rsquo;ve moved the sources from &lt;a href="https://gitlab.com/"&gt;GitLab&lt;/a&gt; to &lt;a href="https://sr.ht/"&gt;Sourcehut&lt;/a&gt; [Update 2024-11-05: I have since moved them to &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt;].&lt;/p&gt;
+    <summary type="html">&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from 
+&lt;a href="https://www.getzola.org/" &gt;Zola&lt;/a&gt;
+
+ to 
+&lt;a href="https://gohugo.io/" &gt;Hugo&lt;/a&gt;
+
+ in order to be able to keep the sources in Org format.&lt;/p&gt;
+&lt;p&gt;Here I&amp;rsquo;ll just share 
+&lt;a href="/posts/converting_blog_to_org/convert.py
+" &gt;the script&lt;/a&gt;
+
+ I made to do the format conversion, in case it&amp;rsquo;s useful for anyone else. Actually, half the reason I&amp;rsquo;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;It looks a bit bad that the last entry here was three years ago and was about how the site generation works, and here is another one on the same topic. However, it&amp;rsquo;s in the interest of making it more enjoyable for me to write more that I&amp;rsquo;ve switched from 
+&lt;a href="https://www.getzola.org/" &gt;Zola&lt;/a&gt;
+
+ to 
+&lt;a href="https://gohugo.io/" &gt;Hugo&lt;/a&gt;
+
+ in order to be able to keep the sources in Org format.&lt;/p&gt;
+&lt;p&gt;Here I&amp;rsquo;ll just share 
+&lt;a href="/posts/converting_blog_to_org/convert.py
+" &gt;the script&lt;/a&gt;
+
+ I made to do the format conversion, in case it&amp;rsquo;s useful for anyone else. Actually, half the reason I&amp;rsquo;m even writing this entry is that I will need to later on repeat this process for another page I manage, and this way I have the script and some notes for then.&lt;/p&gt;
+&lt;p&gt;At the same time I&amp;rsquo;ve moved the sources from 
+&lt;a href="https://gitlab.com/" &gt;GitLab&lt;/a&gt;
+
+ to 
+&lt;a href="https://sr.ht/" &gt;Sourcehut&lt;/a&gt;
+
+ [Update 2024-11-05: I have since moved them to 
+&lt;a href="https://github.com/" &gt;GitHub&lt;/a&gt;
+
+].&lt;/p&gt;
 &lt;p&gt;I won&amp;rsquo;t delve deeper into the reasons for that, but I thought I&amp;rsquo;d post the Python script I used for the conversion in case it&amp;rsquo;s useful for anyone else. It&amp;rsquo;s not particularly pretty and has special casing for various things that were particular to my Zola theme, so if anyone else were to use it, they would in all likelyhood need to do some changes. I made a few manual fixes in the Org source after the conversion, of things that occurred to rarely to mke it worth automating.&lt;/p&gt;
 &lt;p&gt;The script does the following:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Clears out the target content directory. That&amp;rsquo;s the &lt;code&gt;content/&lt;/code&gt; directory under your current working directory.&lt;/li&gt;
 &lt;li&gt;Copy any non-Markdown files into the same location from the old content directory, assumed to be &lt;code&gt;content.old/&lt;/code&gt; in your current working directory.&lt;/li&gt;
 &lt;li&gt;Extract TOML front matter from the old source files and convert into Org front matter.&lt;/li&gt;
-&lt;li&gt;Run the remainder of the Markdown file through &lt;a href="https://pandoc.org/"&gt;Pandoc&lt;/a&gt; to convert it from Markdown to Org.&lt;/li&gt;
+&lt;li&gt;Run the remainder of the Markdown file through 
+&lt;a href="https://pandoc.org/" &gt;Pandoc&lt;/a&gt;
+
+ to convert it from Markdown to Org.&lt;/li&gt;
 &lt;li&gt;Apply various substitutions to the body to fix some things Pandoc doesn&amp;rsquo;t handle, or just according to my preferences.&lt;/li&gt;
 &lt;li&gt;Write some metadata that can not be nicely encoded as Org front matter and put it in a &lt;code&gt;config.toml&lt;/code&gt; file next to the Org file instead.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Then I just needed to go ahead and write a Hugo templates that works with this new content directory. Getting the same general structure of the page as in Zola isn&amp;rsquo;t difficult, as Zola is inspired by Hugo and uses a lot of the same conventions. I didn&amp;rsquo;t have to do much to be able to preserve mostly the same hierarchy of the source files for equivalent output.&lt;/p&gt;
-&lt;p&gt;If you are curious about the Hugo templates used to render this page, they are in &lt;a href="https://github.com/bkhl/elektrubadur.se/"&gt;the repository with the sources for this page&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Finally, if you want to use the script I&amp;rsquo;ve been talking about, you can download it here: &lt;a href="/posts/converting_blog_to_org/convert.py
-"&gt;convert.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you are curious about the Hugo templates used to render this page, they are in 
+&lt;a href="https://github.com/bkhl/elektrubadur.se/" &gt;the repository with the sources for this page&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Finally, if you want to use the script I&amp;rsquo;ve been talking about, you can download it here: 
+&lt;a href="/posts/converting_blog_to_org/convert.py
+" &gt;convert.py&lt;/a&gt;
+
+&lt;/p&gt;
 </content>
     <category scheme="https://elektrubadur.se/categories" term="programming" label="Programming"/>
     <category scheme="https://elektrubadur.se/tags" term="www" label="WWW"/>
@@ -59,13 +95,34 @@
     </author>
     <published>2020-05-02T00:00:00+02:00</published>
     <updated>2020-05-02T00:00:00+02:00</updated>
-    <summary type="html">&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
-&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;I&amp;rsquo;ve been using 
+&lt;a href="http://vimwiki.github.io/" &gt;Vimwiki&lt;/a&gt;
+
+ for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
+&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the 
+&lt;a href="https://apps.nextcloud.com/apps/notes/" &gt;Nextcloud Notes&lt;/a&gt;
+
+ application. I have a self-hosted 
+&lt;a href="https://nextcloud.com/" &gt;Nextcloud&lt;/a&gt;
+
+ instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
 &lt;p&gt;The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I&amp;rsquo;ve now finally automated that.&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
-&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the &lt;a href="https://apps.nextcloud.com/apps/notes/"&gt;Nextcloud Notes&lt;/a&gt; application. I have a self-hosted &lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt; instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I&amp;rsquo;ve been using 
+&lt;a href="http://vimwiki.github.io/" &gt;Vimwiki&lt;/a&gt;
+
+ for a while, which lets me keep interlinked plain text notes on my computer with minimal hassle.&lt;/p&gt;
+&lt;p&gt;For a while I&amp;rsquo;ve also kept these synced to my phone via the 
+&lt;a href="https://apps.nextcloud.com/apps/notes/" &gt;Nextcloud Notes&lt;/a&gt;
+
+ application. I have a self-hosted 
+&lt;a href="https://nextcloud.com/" &gt;Nextcloud&lt;/a&gt;
+
+ instance, and simply point Vimwiki on my computer to the same directory in the directory that I have synchronized with Nextcloud.&lt;/p&gt;
 &lt;p&gt;The Nextcloud Notes app uses Markdown, so I have to configure Vimwiki to use that syntax, which is fine with me. One quirk of the Nextcloud Notes app is that rather than letting you name files independently, it will change filenames to whatever the first line of your note is. Until today that meant I had to keep making sure in Vimwiki to add those headers, but I&amp;rsquo;ve now finally automated that.&lt;/p&gt;
-&lt;p&gt;To start with, I added the function &lt;code&gt;SetWikiHeader&lt;/code&gt; to &lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim"&gt;my ~/.vim/plugin/config/vim.wiki&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;To start with, I added the function &lt;code&gt;SetWikiHeader&lt;/code&gt; to 
+&lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim" &gt;my ~/.vim/plugin/config/vim.wiki&lt;/a&gt;
+
+:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &amp;amp;&lt;span class="nx"&gt;runtimepath&lt;/span&gt; &lt;span class="p"&gt;!~&lt;/span&gt;? &lt;span class="s2"&gt;&amp;#34;vimwiki&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;  &lt;span class="nx"&gt;finish&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;endif&lt;/span&gt;
@@ -103,8 +160,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;# &amp;#34;&lt;/span&gt; . &lt;span class="nx"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;endif&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;endfunction&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Vim script is pretty weird, had to search in documentation for how to do most things in there. Props to people who write entire programs in it, like let&amp;rsquo;s say &lt;a href="https://github.com/orgs/vimwiki/people"&gt;those people that wrote Vimwiki&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in &lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim"&gt;my ~/.vim/ftplugin/vimwiki.vim&lt;/a&gt;:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Vim script is pretty weird, had to search in documentation for how to do most things in there. Props to people who write entire programs in it, like let&amp;rsquo;s say 
+&lt;a href="https://github.com/orgs/vimwiki/people" &gt;those people that wrote Vimwiki&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Now, to make this run whenever I open a Vimwiki file, or before saving it, I put this in 
+&lt;a href="https://github.com/bkhl/dotfiles/blob/c122d0b5016a9e4cfc29947ff7ecb9741ab4d11e/.vim/plugin/config/vimwiki.vim" &gt;my ~/.vim/ftplugin/vimwiki.vim&lt;/a&gt;
+
+:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-vim" data-lang="vim"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; Set header to match filename when opening or saving file, for&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;#34; interoperability with Nextcloud Notes.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;call&lt;/span&gt; &lt;span class="nx"&gt;SetWikiHeader&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -126,8 +189,27 @@
     </author>
     <published>2019-05-05T00:00:00+02:00</published>
     <updated>2019-05-05T00:00:00+02:00</updated>
-    <summary type="html">&lt;p&gt;I keep a task list in a &lt;a href="http://todotxt.org/"&gt;todo.txt&lt;/a&gt; format in
-&lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt;. They are simply kept as two text
+    <summary type="html">&lt;p&gt;I keep a task list in a 
+&lt;a href="http://todotxt.org/" &gt;todo.txt&lt;/a&gt;
+
+ format in
+
+&lt;a href="https://nextcloud.com/" &gt;Nextcloud&lt;/a&gt;
+
+. They are simply kept as two text
+files, &lt;code&gt;todo.txt&lt;/code&gt; and &lt;code&gt;done.txt&lt;/code&gt; in the root of my Nextcloud user
+directory.&lt;/p&gt;
+&lt;p&gt;Some clients already have the option to move tasks from &lt;code&gt;todo.txt&lt;/code&gt; to
+&lt;code&gt;done.txt&lt;/code&gt; when you mark a task as done. However, I would prefer they
+stick around in the &lt;code&gt;todo.txt&lt;/code&gt; for a while, in case I change my mind.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I keep a task list in a 
+&lt;a href="http://todotxt.org/" &gt;todo.txt&lt;/a&gt;
+
+ format in
+
+&lt;a href="https://nextcloud.com/" &gt;Nextcloud&lt;/a&gt;
+
+. They are simply kept as two text
 files, &lt;code&gt;todo.txt&lt;/code&gt; and &lt;code&gt;done.txt&lt;/code&gt; in the root of my Nextcloud user
 directory.&lt;/p&gt;
 &lt;p&gt;Some clients already have the option to move tasks from &lt;code&gt;todo.txt&lt;/code&gt; to
@@ -138,25 +220,15 @@ server hosting Nextcloud, but that won&amp;rsquo;t work with syncrhonization, as
 it won&amp;rsquo;t let Nextcloud know the files have changed. I then thought there
 must be an API to read/write files to Nextcloud, and then quickly
 realized that this API is
-&lt;a href="https://tools.ietf.org/html/rfc2518"&gt;WebDAV&lt;/a&gt;. So, I should be able to
+
+&lt;a href="https://tools.ietf.org/html/rfc2518" &gt;WebDAV&lt;/a&gt;
+
+. So, I should be able to
 make a Python script to do this, using
-&lt;a href="https://pypi.org/project/requests/"&gt;requests&lt;/a&gt;. A more full-featured
-WebDAV library would be overkill for this.&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;I keep a task list in a &lt;a href="http://todotxt.org/"&gt;todo.txt&lt;/a&gt; format in
-&lt;a href="https://nextcloud.com/"&gt;Nextcloud&lt;/a&gt;. They are simply kept as two text
-files, &lt;code&gt;todo.txt&lt;/code&gt; and &lt;code&gt;done.txt&lt;/code&gt; in the root of my Nextcloud user
-directory.&lt;/p&gt;
-&lt;p&gt;Some clients already have the option to move tasks from &lt;code&gt;todo.txt&lt;/code&gt; to
-&lt;code&gt;done.txt&lt;/code&gt; when you mark a task as done. However, I would prefer they
-stick around in the &lt;code&gt;todo.txt&lt;/code&gt; for a while, in case I change my mind.&lt;/p&gt;
-&lt;p&gt;At first I thought I&amp;rsquo;d just write a script to run as a cronjob on the
-server hosting Nextcloud, but that won&amp;rsquo;t work with syncrhonization, as
-it won&amp;rsquo;t let Nextcloud know the files have changed. I then thought there
-must be an API to read/write files to Nextcloud, and then quickly
-realized that this API is
-&lt;a href="https://tools.ietf.org/html/rfc2518"&gt;WebDAV&lt;/a&gt;. So, I should be able to
-make a Python script to do this, using
-&lt;a href="https://pypi.org/project/requests/"&gt;requests&lt;/a&gt;. A more full-featured
+
+&lt;a href="https://pypi.org/project/requests/" &gt;requests&lt;/a&gt;
+
+. A more full-featured
 WebDAV library would be overkill for this.&lt;/p&gt;
 &lt;h2&gt;Outline&lt;/h2&gt;
 &lt;p&gt;Here&amp;rsquo;s what the script will do.&lt;/p&gt;
@@ -184,7 +256,10 @@ running this a few months now it still hasn&amp;rsquo;t happened.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In &lt;a href="http://todotxt.org/"&gt;todo.txt&lt;/a&gt;, tasks are marked as done by
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In 
+&lt;a href="http://todotxt.org/" &gt;todo.txt&lt;/a&gt;
+
+, tasks are marked as done by
 prepending the token &lt;code&gt;x&lt;/code&gt; at the start of the line. For this purpose,
 that&amp;rsquo;s really all we need to do, so I just create regexp to match these
 lines:&lt;/p&gt;
@@ -192,10 +267,16 @@ lines:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it for the parsing.&lt;/p&gt;
 &lt;p&gt;Now, as this script will update two files, and I don&amp;rsquo;t want to lose any
 tasks, I need to worry about race conditions. In other words, I&amp;rsquo;ll need
-to use &lt;a href="https://tools.ietf.org/html/rfc7232"&gt;ETags&lt;/a&gt;.&lt;/p&gt;
+to use 
+&lt;a href="https://tools.ietf.org/html/rfc7232" &gt;ETags&lt;/a&gt;
+
+.&lt;/p&gt;
 &lt;p&gt;For the structure of the script, I at first wrote it using the
-&lt;a href="https://plumbum.readthedocs.io/en/latest/cli.html"&gt;Plumbum CLI
-application&lt;/a&gt;, but later found that it was adding so little benefit I
+
+&lt;a href="https://plumbum.readthedocs.io/en/latest/cli.html" &gt;Plumbum CLI
+application&lt;/a&gt;
+
+, but later found that it was adding so little benefit I
 didn&amp;rsquo;t want that dependency. Instead I&amp;rsquo;ll use &lt;code&gt;configparser&lt;/code&gt; and
 &lt;code&gt;argparse&lt;/code&gt; for the same thing. For error handling, I&amp;rsquo;ll have functions
 return one of these values, and translate them to return codes at the
@@ -336,7 +417,10 @@ accordingly.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;FAILURE&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;        &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here is &lt;a href="./todo_maintenance.py"&gt;the entire script&lt;/a&gt;.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here is 
+&lt;a href="./todo_maintenance.py" &gt;the entire script&lt;/a&gt;
+
+.&lt;/p&gt;
 &lt;p&gt;This is just a start, if you want more advanced automation, handy things
 that could be added include (again, pull requests accepted):&lt;/p&gt;
 &lt;ul&gt;
