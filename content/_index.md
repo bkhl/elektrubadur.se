@@ -31,7 +31,7 @@ I moved back from Bangkok a couple of years ago. If you wish to contact me, send
 - [GitHub](https://github.com/bkhl)
 - [Exercism](https://exercism.org/profiles/bkhl)
 - [Online-Go.com](https://online-go.com/player/52248/)
-- [LinkedIn](https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261/)
+- [LinkedIn](https://www.linkedin.com/in/bj%C3%B6rn-lindstr%C3%B6m-573a9261)
 - [Pinboard](https://pinboard.in/u:bkhl)
 - [Resumé](/resume/)
 

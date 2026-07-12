@@ -10,17 +10,22 @@ jobs:
     name: Check links
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out repository public branch
         uses: actions/checkout@v6
         with:
+          ref: public
           fetch-depth: 0
 
       - name: Check links
-        uses: docker://docker.io/tennox/linkcheck:latest
+        uses: docker://docker.io/lycheeverse/lychee:latest
         with:
           args: >-
-            --show-redirects
-            --check-anchors
-            --external
-            --skip-file build/linkcheck_skipfile.txt
-            "https://elektrubadur.se"
+            -v
+            --host-concurrency=1
+            --host-request-interval=1s
+            --max-redirects=2
+            --root-dir="/github/workspace"
+            --remap="^https://elektrubadur\.se file:///github/workspace"
+            --exclude="^https://www.linkedin.com(/|$)"
+            --exclude="^https://web\.archive\.org(/|$)"
+            .

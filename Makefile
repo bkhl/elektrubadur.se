@@ -26,8 +26,5 @@ serve: image
 validate: build
 	$(run) ghcr.io/validator/validator:latest vnu --skip-non-html --also-check-css --also-check-svg public
 
-check_links:
-	$(run) docker.io/tennox/linkcheck:latest --show-redirects --check-anchors --skip-file build/linkcheck_skipfile.txt --external "https://$(DOMAIN)"
-
 clean:
 	rm -rf public resources
