@@ -34,7 +34,7 @@ jobs:
           args: vnu --skip-non-html --also-check-css --also-check-svg public
 
       - name: Upload web site as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: public
           path: public
@@ -50,13 +50,13 @@ jobs:
       contents: write
     steps:
       - name: Check out repository (current branch)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           path: source
 
       - name: Check out repository (public branch)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: public
           path: prev-public
@@ -64,7 +64,7 @@ jobs:
           fetch-depth: 0
 
       - name: Download web site artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: public
           path: "${{ github.workspace }}/public"
