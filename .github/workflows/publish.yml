@@ -75,4 +75,9 @@ jobs:
           SOURCE: "${{ github.workspace }}/source"
           PREV_PUBLIC: "${{ github.workspace }}/prev-public"
           PUBLIC: "${{ github.workspace }}/public"
-          SITE_NAME: elektrubadur-se
+          SITE_NAME: "elektrubadur-se"
+          GIT_CONFIG_COUNT: "2"
+          GIT_CONFIG_KEY_0: "credential.https://github.com.username"
+          GIT_CONFIG_VALUE_0: "x-access-token"
+          GIT_CONFIG_KEY_1: "credential.https://github.com.password"
+          GIT_CONFIG_VALUE_1: "${{ secrets.GITHUB_TOKEN }}"
