@@ -8,6 +8,7 @@ enableGitInfo = false
 enableRobotsTXT = true
 timeZone = "Europe/Stockholm"
 disableAliases = true
+titleCaseStyle = "none"
 
 [outputs]
 home = ["html", "atom", "redirects"]
