@@ -6,32 +6,28 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "0.169.0"
-          extended: true
-
-      - name: Install HTML Tidy and XMLStarlet
-        run: sudo apt-get -y install tidy xmlstarlet
-
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - name: Build web site
-        run: bash build/build.sh
+      - name: Build image
+        run: make image
 
-      - name: Validate web site
-        uses: docker://ghcr.io/validator/validator:latest
-        with:
-          args: vnu --skip-non-html --also-check-css --also-check-svg public
+      - name: Build page
+        run: make build
+
+      - name: Validate page
+        run: make validate
 
       - name: Upload web site as artifact
         uses: actions/upload-artifact@v7
@@ -42,9 +38,9 @@ jobs:
 
   publish:
     name: Publish
-    needs: build
-    if: >-
-      github.ref == 'refs/heads/main'
+    needs:
+      - build
+    if: github.ref == github.event.repository.default_branch
     runs-on: ubuntu-latest
     permissions:
       contents: write
