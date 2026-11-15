@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://elektrubadur.se/style.min.css">
-<link href="https://elektrubadur.se/favicon.ico" rel="icon">
-<link href="https://elektrubadur.se/favicon-16x16.png" rel="icon" sizes="16x16">
-<link href="https://elektrubadur.se/favicon-32x32.png" rel="icon" sizes="32x32">
-<link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
-<link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
-<title>Simple Nextcloud To-Do List Automation with Python and WebDAV – Elektrubadur</title>
-<link rel="alternate" type="application/atom+xml" href="https://elektrubadur.se/feed.xml" title="Elektrubadur">
-<link rel="me" href="https://tilde.zone/@bkhl">
-<meta name="fediverse:creator" content="@bkhl@tilde.zone">
-<meta name="description" content="Personal web page of Björn Lindström">
-<meta name="author" content="map[email:bkhl@elektrubadur.se name:Björn Lindström]">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://elektrubadur.se/style.min.css">
+  <link href="https://elektrubadur.se/favicon.ico" rel="icon">
+  <link href="https://elektrubadur.se/favicon-16x16.png" rel="icon" sizes="16x16">
+  <link href="https://elektrubadur.se/favicon-32x32.png" rel="icon" sizes="32x32">
+  <link href="https://elektrubadur.se/favicon-96x96.png" rel="icon" sizes="96x96">
+  <link href="https://elektrubadur.se/favicon-192x192.png" rel="icon" sizes="192x192">
+  <title>Simple Nextcloud To-Do List Automation with Python and WebDAV – Elektrubadur</title>
+  <link rel="alternate" type="application/atom+xml" href="https://elektrubadur.se/feed.xml" title="Elektrubadur">
+  <link rel="me" href="https://tilde.zone/@bkhl">
+  <meta name="fediverse:creator" content="@bkhl@tilde.zone">
+  <meta name="description" content="Personal web page of Björn Lindström">
+  <meta name="author" content="map[email:bkhl@elektrubadur.se name:Björn Lindström]">
 </head>
 <body>
-<header>
-<h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
-<p><em>Personal web page of Björn Lindström</em></p>
-</header>
-<main>
-<article>
-<header>
-<h1>Simple Nextcloud To-Do List Automation with Python and WebDAV</h1>
-<p>By <em>Björn Lindström</em> in <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/nextcloud/">Nextcloud</a> and <a href="https://elektrubadur.se/tags/planning/">Planning</a> —&nbsp;<time datetime="2019-05-05">Sunday&nbsp;May&nbsp;5,&nbsp;2019</time></p>
-</header>
-<p>I keep a task list in a <a href="http://todotxt.org/">todo.txt</a> format in <a href="https://nextcloud.com/">Nextcloud</a> . They are simply kept as two text files, <code>todo.txt</code> and <code>done.txt</code> in the root of my Nextcloud user directory.</p>
-<p>Some clients already have the option to move tasks from <code>todo.txt</code> to <code>done.txt</code> when you mark a task as done. However, I would prefer they stick around in the <code>todo.txt</code> for a while, in case I change my mind.</p>
-<p>At first I thought I’d just write a script to run as a cronjob on the server hosting Nextcloud, but that won’t work with syncrhonization, as it won’t let Nextcloud know the files have changed. I then thought there must be an API to read/write files to Nextcloud, and then quickly realized that this API is <a href="https://tools.ietf.org/html/rfc2518">WebDAV</a> . So, I should be able to make a Python script to do this, using <a href="https://pypi.org/project/requests/">requests</a> . A more full-featured WebDAV library would be overkill for this.</p>
-<h2>Outline</h2>
-<p>Here’s what the script will do.</p>
-<ol>
-<li>Get the <code>todo.txt</code> file.</li>
-<li>If there are any completed tasks in there, get the <code>done.txt</code> file.</li>
-<li>Strip the completed tasks from <code>todo.txt</code>.</li>
-<li>Append the completed tasks to the content from <code>done.txt</code>.</li>
-<li>Update <code>todo.txt</code>.</li>
-<li>If there was no problem updating <code>todo.txt</code>, update <code>done.txt</code>. This step has to be retried in case of a conflict, because now the only copy of those done tasks is in the script’s memory.</li>
-</ol>
-<p>This still leaves room for some issues if the script crashes in the middle of running, but I figured if it happens I’d get a mail from cron, and there’s a file history in Nextcloud so I can sort it out then. After running this a few months now it still hasn’t happened.</p>
-<h2>Implementation</h2>
-<p>Starting with imports and stuff of course:</p>
-<div class="highlight">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+  <header>
+    <h2><a href="https://elektrubadur.se/">Elektrubadur</a></h2>
+    <p><em>Personal web page of Björn Lindström</em></p>
+  </header>
+  <main>
+    <article>
+      <header>
+        <h1>Simple Nextcloud To-Do List Automation with Python and WebDAV</h1>
+        <p>By <em>Björn Lindström</em> in <a href="https://elektrubadur.se/categories/programming/">Programming</a> about <a href="https://elektrubadur.se/tags/nextcloud/">Nextcloud</a> and <a href="https://elektrubadur.se/tags/planning/">planning</a> —&nbsp;<time datetime="2019-05-05">Sunday&nbsp;May&nbsp;5,&nbsp;2019</time></p>
+      </header>
+      <p>I keep a task list in a <a href="http://todotxt.org/">todo.txt</a> format in <a href="https://nextcloud.com/">Nextcloud</a> . They are simply kept as two text files, <code>todo.txt</code> and <code>done.txt</code> in the root of my Nextcloud user directory.</p>
+      <p>Some clients already have the option to move tasks from <code>todo.txt</code> to <code>done.txt</code> when you mark a task as done. However, I would prefer they stick around in the <code>todo.txt</code> for a while, in case I change my mind.</p>
+      <p>At first I thought I’d just write a script to run as a cronjob on the server hosting Nextcloud, but that won’t work with syncrhonization, as it won’t let Nextcloud know the files have changed. I then thought there must be an API to read/write files to Nextcloud, and then quickly realized that this API is <a href="https://tools.ietf.org/html/rfc2518">WebDAV</a> . So, I should be able to make a Python script to do this, using <a href="https://pypi.org/project/requests/">requests</a> . A more full-featured WebDAV library would be overkill for this.</p>
+      <h2>Outline</h2>
+      <p>Here’s what the script will do.</p>
+      <ol>
+        <li>Get the <code>todo.txt</code> file.</li>
+        <li>If there are any completed tasks in there, get the <code>done.txt</code> file.</li>
+        <li>Strip the completed tasks from <code>todo.txt</code>.</li>
+        <li>Append the completed tasks to the content from <code>done.txt</code>.</li>
+        <li>Update <code>todo.txt</code>.</li>
+        <li>If there was no problem updating <code>todo.txt</code>, update <code>done.txt</code>. This step has to be retried in case of a conflict, because now the only copy of those done tasks is in the script’s memory.</li>
+      </ol>
+      <p>This still leaves room for some issues if the script crashes in the middle of running, but I figured if it happens I’d get a mail from cron, and there’s a file history in Nextcloud so I can sort it out then. After running this a few months now it still hasn’t happened.</p>
+      <h2>Implementation</h2>
+      <p>Starting with imports and stuff of course:</p>
+      <div class="highlight">
+        <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">argparse</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">configparser</span>
@@ -53,23 +53,23 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
 </span></span></code></pre>
-</div>
-<p>In <a href="http://todotxt.org/">todo.txt</a> , tasks are marked as done by prepending the token <code>x</code> at the start of the line. For this purpose, that’s really all we need to do, so I just create regexp to match these lines:</p>
-<div class="highlight">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">DONE_LINE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^x\b"</span><span class="p">)</span>
+      </div>
+      <p>In <a href="http://todotxt.org/">todo.txt</a> , tasks are marked as done by prepending the token <code>x</code> at the start of the line. For this purpose, that’s really all we need to do, so I just create regexp to match these lines:</p>
+      <div class="highlight">
+        <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">DONE_LINE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^x\b"</span><span class="p">)</span>
 </span></span></code></pre>
-</div>
-<p>That’s it for the parsing.</p>
-<p>Now, as this script will update two files, and I don’t want to lose any tasks, I need to worry about race conditions. In other words, I’ll need to use <a href="https://tools.ietf.org/html/rfc7232">ETags</a> .</p>
-<p>For the structure of the script, I at first wrote it using the <a href="https://plumbum.readthedocs.io/en/latest/cli.html">Plumbum CLI application</a> , but later found that it was adding so little benefit I didn’t want that dependency. Instead I’ll use <code>configparser</code> and <code>argparse</code> for the same thing. For error handling, I’ll have functions return one of these values, and translate them to return codes at the end.</p>
-<div class="highlight">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">SUCCESS</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+      </div>
+      <p>That’s it for the parsing.</p>
+      <p>Now, as this script will update two files, and I don’t want to lose any tasks, I need to worry about race conditions. In other words, I’ll need to use <a href="https://tools.ietf.org/html/rfc7232">ETags</a> .</p>
+      <p>For the structure of the script, I at first wrote it using the <a href="https://plumbum.readthedocs.io/en/latest/cli.html">Plumbum CLI application</a> , but later found that it was adding so little benefit I didn’t want that dependency. Instead I’ll use <code>configparser</code> and <code>argparse</code> for the same thing. For error handling, I’ll have functions return one of these values, and translate them to return codes at the end.</p>
+      <div class="highlight">
+        <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">SUCCESS</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">FAILURE</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 </span></span></code></pre>
-</div>
-<p>It’s time for the <code>main</code> function.</p>
-<div class="highlight">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+      </div>
+      <p>It’s time for the <code>main</code> function.</p>
+      <div class="highlight">
+        <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># Parse command line arguments</span>
 </span></span><span class="line"><span class="cl">    <span class="n">argument_parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="n">argument_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -96,22 +96,22 @@
 </span></span><span class="line"><span class="cl">    <span class="c1"># Perform maintenance</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">archive_done_tasks</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
 </span></span></code></pre>
-</div>
-<p>This allows you to pass a command line argument pointing you to a configfile containing something like this:</p>
-<div class="highlight">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Connection]</span>
+      </div>
+      <p>This allows you to pass a command line argument pointing you to a configfile containing something like this:</p>
+      <div class="highlight">
+        <pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Connection]</span>
 </span></span><span class="line"><span class="cl"><span class="na">hostname</span> <span class="o">=</span> <span class="s">your.nextcloud.instance.net</span>
 </span></span><span class="line"><span class="cl"><span class="na">username</span> <span class="o">=</span> <span class="s">your_user_name</span>
 </span></span><span class="line"><span class="cl"><span class="na">password</span> <span class="o">=</span> <span class="s">v3ris3curep4ssworð</span>
 </span></span></code></pre>
-</div>
-<p>Now, the function that’s the meat of the script, which actually gets and updates the files, and moves the completed tasks over.</p>
-<p>The first loop will get the <code>todo.txt</code>, then put it back after filtering out the completed tasks.</p>
-<p>If the initial GET fails, it will return successfully, since that probably means the server is unavailable, and we are better off just waiting for the next time cron triggers the script.</p>
-<p>The next loop will retry up to ten times, because at that point <code>todo.txt</code> has been updated, so we should try a bit harder to get <code>done.txt</code> into a correct state.</p>
-<p>This function is a bit long and would benefit from refactoring. (Pull requests accepted.)</p>
-<div class="highlight">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">archive_done_tasks</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+      </div>
+      <p>Now, the function that’s the meat of the script, which actually gets and updates the files, and moves the completed tasks over.</p>
+      <p>The first loop will get the <code>todo.txt</code>, then put it back after filtering out the completed tasks.</p>
+      <p>If the initial GET fails, it will return successfully, since that probably means the server is unavailable, and we are better off just waiting for the next time cron triggers the script.</p>
+      <p>The next loop will retry up to ten times, because at that point <code>todo.txt</code> has been updated, so we should try a bit harder to get <code>done.txt</code> into a correct state.</p>
+      <p>This function is a bit long and would benefit from refactoring. (Pull requests accepted.)</p>
+      <div class="highlight">
+        <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">archive_done_tasks</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://</span><span class="si">{}</span><span class="s2">/remote.php/dav/files/</span><span class="si">{}</span><span class="s2">/"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="n">hostname</span><span class="p">,</span> <span class="n">username</span>
 </span></span><span class="line"><span class="cl">    <span class="p">)</span>
@@ -183,19 +183,19 @@
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">SUCCESS</span>
 </span></span></code></pre>
-</div>
-<p>Here’s the helper function to get the etag from a <code>requests.Response</code> object. I found that the ETags from Nextcloud has a content type suffix, so had to make another regexp to remove that :</p>
-<div class="highlight">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ETAG_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'^"(.*)-gzip"$'</span><span class="p">)</span>
+      </div>
+      <p>Here’s the helper function to get the etag from a <code>requests.Response</code> object. I found that the ETags from Nextcloud has a content type suffix, so had to make another regexp to remove that :</p>
+      <div class="highlight">
+        <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ETAG_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'^"(.*)-gzip"$'</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_etag</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">tag</span> <span class="o">=</span> <span class="n">ETAG_RE</span><span class="o">.</span><span class="k">match</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"etag"</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">'"</span><span class="si">{}</span><span class="s1">"'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
 </span></span></code></pre>
-</div>
-<p>Finally, we call the main function like this. The <code>SUCCESS</code> and <code>FAILURE</code> objects are converted into status codes and the script exits accordingly.</p>
-<div class="highlight">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+      </div>
+      <p>Finally, we call the main function like this. The <code>SUCCESS</code> and <code>FAILURE</code> objects are converted into status codes and the script exits accordingly.</p>
+      <div class="highlight">
+        <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">main</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">SUCCESS</span><span class="p">:</span>
@@ -203,17 +203,17 @@
 </span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">FAILURE</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span></code></pre>
-</div>
-<p>Here is <a href="./todo_maintenance.py">the entire script</a> .</p>
-<p>This is just a start, if you want more advanced automation, handy things that could be added include (again, pull requests accepted):</p>
-<ul>
-<li>Parse tags indicating repeating tasks. When those are completed, move the current one to <code>done.txt</code>, but create a new task for the next occurance at the same time.</li>
-<li>Change it to keep completed tasks in <code>done.txt</code> for a certain numer of days after the completion date.</li>
-</ul>
-</article>
-</main>
-<footer>
-<p>© 2010–2026 Björn Lindström</p>
-</footer>
+      </div>
+      <p>Here is <a href="./todo_maintenance.py">the entire script</a> .</p>
+      <p>This is just a start, if you want more advanced automation, handy things that could be added include (again, pull requests accepted):</p>
+      <ul>
+        <li>Parse tags indicating repeating tasks. When those are completed, move the current one to <code>done.txt</code>, but create a new task for the next occurance at the same time.</li>
+        <li>Change it to keep completed tasks in <code>done.txt</code> for a certain numer of days after the completion date.</li>
+      </ul>
+    </article>
+  </main>
+  <footer>
+    <p>© 2010–2026 Björn Lindström</p>
+  </footer>
 </body>
 </html>
