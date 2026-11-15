@@ -1,4 +1,7 @@
 {
+  "file_types": {
+    "Go HTML Template": ["**/layouts/**/*.html"],
+  },
   "languages": {
     "HTML": {
       "format_on_save": "off",
