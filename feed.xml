@@ -4,13 +4,31 @@
   <subtitle type="html">Personal web page of Björn Lindström</subtitle>
   <link href="https://elektrubadur.se/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
   <link href="https://elektrubadur.se/" rel="alternate" type="text/html" title="Elektrubadur"/>
-  <updated>2026-11-15T14:14:43+00:00</updated>
+  <updated>2026-11-15T14:20:29+00:00</updated>
   <rights>© 2010–2026 Björn Lindström</rights>
   <author>
     <name>Björn Lindström</name>
     <email>bkhl@elektrubadur.se</email>
   </author>
   <id>https://elektrubadur.se/</id>
+  <entry>
+    <title type="html">The Butterfly House</title>
+    <link href="https://elektrubadur.se/posts/the-butterfly-house/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/the-butterfly-house/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2026-11-15T00:00:00+01:00</published>
+    <updated>2026-11-15T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Giant owl butterfly (&lt;em&gt;Caligo telamonius memnon&lt;/em&gt;) in the Haga Butterfly house in Solna. I thought I was lucky finding them sitting opposite each other like this, but then learned they do that habitually.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Giant owl butterfly (&lt;em&gt;Caligo telamonius memnon&lt;/em&gt;) in the Haga Butterfly house in Solna. I thought I was lucky finding them sitting opposite each other like this, but then learned they do that habitually.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+    <category scheme="https://elektrubadur.se/tags" term="butterflies" label="butterflies"/>
+    <category scheme="https://elektrubadur.se/tags" term="insects" label="insects"/>
+    <category scheme="https://elektrubadur.se/tags" term="nature" label="nature"/>
+    <category scheme="https://elektrubadur.se/tags" term="animals" label="animals"/>
+  </entry>
   <entry>
     <title type="html">Converting Sources of This Blog to Org format</title>
     <link href="https://elektrubadur.se/posts/converting_blog_to_org/" rel="alternate" type="text/html"/>
@@ -151,7 +169,7 @@
     <category scheme="https://elektrubadur.se/tags" term="www" label="WWW"/>
     <category scheme="https://elektrubadur.se/tags" term="hcoop" label="HCoop"/>
     <category scheme="https://elektrubadur.se/tags" term="git" label="Git"/>
-    <category scheme="https://elektrubadur.se/tags" term="automation" label="Automation"/>
+    <category scheme="https://elektrubadur.se/tags" term="automation" label="automation"/>
   </entry>
   <entry>
     <title type="html">Vimwiki + Nextcloud Notes</title>

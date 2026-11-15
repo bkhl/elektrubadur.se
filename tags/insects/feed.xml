@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title type="html">Elektrubadur</title>
+  <subtitle type="html">Personal web page of Björn Lindström</subtitle>
+  <link href="https://elektrubadur.se/tags/insects/feed.xml" rel="self" type="application/atom+xml" title="Elektrubadur"/>
+  <link href="https://elektrubadur.se/tags/insects/" rel="alternate" type="text/html" title="Elektrubadur"/>
+  <updated>2026-11-15T14:20:29+00:00</updated>
+  <rights>© 2010–2026 Björn Lindström</rights>
+  <author>
+    <name>Björn Lindström</name>
+    <email>bkhl@elektrubadur.se</email>
+  </author>
+  <id>https://elektrubadur.se/tags/insects/</id>
+  <entry>
+    <title type="html">The Butterfly House</title>
+    <link href="https://elektrubadur.se/posts/the-butterfly-house/" rel="alternate" type="text/html"/>
+    <id>https://elektrubadur.se/posts/the-butterfly-house/</id>
+    <author>
+      <name>Björn Lindström</name>
+    </author>
+    <published>2026-11-15T00:00:00+01:00</published>
+    <updated>2026-11-15T00:00:00+01:00</updated>
+    <summary type="html">&lt;p&gt;Giant owl butterfly (&lt;em&gt;Caligo telamonius memnon&lt;/em&gt;) in the Haga Butterfly house in Solna. I thought I was lucky finding them sitting opposite each other like this, but then learned they do that habitually.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Giant owl butterfly (&lt;em&gt;Caligo telamonius memnon&lt;/em&gt;) in the Haga Butterfly house in Solna. I thought I was lucky finding them sitting opposite each other like this, but then learned they do that habitually.&lt;/p&gt;
+</content>
+    <category scheme="https://elektrubadur.se/categories" term="photos" label="Photos"/>
+    <category scheme="https://elektrubadur.se/tags" term="butterflies" label="butterflies"/>
+    <category scheme="https://elektrubadur.se/tags" term="insects" label="insects"/>
+    <category scheme="https://elektrubadur.se/tags" term="nature" label="nature"/>
+    <category scheme="https://elektrubadur.se/tags" term="animals" label="animals"/>
+  </entry>
+</feed>

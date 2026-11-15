@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://elektrubadur.se/categories/</loc>
-    <lastmod>2023-05-28T00:00:00+02:00</lastmod>
+    <loc>https://elektrubadur.se/tags/animals/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
   </url>
   <url>
-    <loc>https://elektrubadur.se/posts/converting_blog_to_org/</loc>
-    <lastmod>2023-05-28T00:00:00+02:00</lastmod>
+    <loc>https://elektrubadur.se/tags/butterflies/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/categories/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/tags/insects/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/tags/nature/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/categories/photos/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/posts/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/tags/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/posts/the-butterfly-house/</loc>
+    <lastmod>2026-11-15T00:00:00+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://elektrubadur.se/posts/converting_blog_to_org/</loc>
     <lastmod>2023-05-28T00:00:00+02:00</lastmod>
   </url>
   <url>
@@ -29,19 +61,11 @@
     <lastmod>2023-05-28T00:00:00+02:00</lastmod>
   </url>
   <url>
-    <loc>https://elektrubadur.se/posts/</loc>
-    <lastmod>2023-05-28T00:00:00+02:00</lastmod>
-  </url>
-  <url>
     <loc>https://elektrubadur.se/categories/programming/</loc>
     <lastmod>2023-05-28T00:00:00+02:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/tags/python/</loc>
-    <lastmod>2023-05-28T00:00:00+02:00</lastmod>
-  </url>
-  <url>
-    <loc>https://elektrubadur.se/tags/</loc>
     <lastmod>2023-05-28T00:00:00+02:00</lastmod>
   </url>
   <url>
@@ -115,10 +139,6 @@
   <url>
     <loc>https://elektrubadur.se/posts/nextcloud_to_do_automation/</loc>
     <lastmod>2019-05-05T00:00:00+02:00</lastmod>
-  </url>
-  <url>
-    <loc>https://elektrubadur.se/categories/photos/</loc>
-    <lastmod>2018-12-10T00:00:00+01:00</lastmod>
   </url>
   <url>
     <loc>https://elektrubadur.se/posts/suphan-buri/</loc>
