@@ -2,7 +2,7 @@
 title = "How This Blog Works"
 author = "Björn Lindström"
 date = 2020-05-03
-tags = ["WWW", "HCoop", "Git", "Automation"]
+tags = ["WWW", "HCoop", "Git", "automation"]
 categories = ["Software"]
 draft = false
 aliases = ["/how_this_blog_works"]
